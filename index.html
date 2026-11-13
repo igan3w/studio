@@ -231,9 +231,9 @@
         🔋 무매연 배터리 (PCW-3000LI)
       </button>
     </div>
-    <span class="hidden lg:inline-flex items-center gap-1 text-[10.5px] font-bold text-sky-300/90 shrink-0">
-      <i class="fa-solid fa-shield-check text-emerald-400"></i> AI 슬롭/번역체 자동 필터 ON
-    </span>
+    <button type="button" onclick="openAiPosterDirector()" class="bg-gradient-to-r from-indigo-600 to-sky-500 hover:brightness-110 text-white font-black px-2.5 py-0.5 rounded-md shadow flex items-center gap-1 transition shrink-0">
+      <i class="fa-solid fa-wand-magic-sparkles text-yellow-200"></i> AI 통이미지 제작
+    </button>
   </div>
 
   <!-- ==================== 메인 워크스페이스 ==================== -->
@@ -248,7 +248,7 @@
           <i class="fa-solid fa-wand-magic-sparkles"></i> AI 디렉터
         </button>
         <button id="tabBtn2" onclick="switchLeftTab(2)" class="flex-1 py-3 border-b-2 border-transparent hover:text-white flex justify-center items-center gap-1">
-          <i class="fa-solid fa-images text-blue-400"></i> 실물 컷
+          <i class="fa-solid fa-images text-blue-400"></i> 통이미지·실물
         </button>
         <button id="tabBtn3" onclick="switchLeftTab(3)" class="flex-1 py-3 border-b-2 border-transparent hover:text-white flex justify-center items-center gap-1">
           <i class="fa-solid fa-sliders text-emerald-400"></i> 스펙/마진
@@ -401,8 +401,81 @@
 
       </div>
 
-      <!-- 탭 2: 공식 실물 사진 및 AI 이미지 생성 관리 -->
+      <!-- 탭 2: AI 통이미지 스튜디오 및 공식 실물 사진 관리 -->
       <div id="tabContent2" class="hidden flex-1 overflow-y-auto p-4 space-y-4 text-xs bg-slate-900">
+
+        <!-- [NEW] AI 상세페이지 통이미지 아트디렉터 스튜디오 -->
+        <div id="aiPosterDirectorCard" class="bg-gradient-to-br from-[#081b44] via-slate-900 to-[#0b2761] border border-sky-500/50 rounded-xl p-3.5 space-y-2.5 shadow-lg">
+          <div class="flex items-center justify-between">
+            <label class="font-black text-sky-300 text-xs flex items-center gap-1.5">
+              <i class="fa-solid fa-paintbrush text-amber-400"></i> ✨ AI 상세페이지 통이미지 스튜디오
+            </label>
+            <span class="text-[10px] bg-sky-500/20 text-sky-200 border border-sky-400/35 px-2 py-0.5 rounded-full font-black">860px 2x Retina</span>
+          </div>
+          <p class="text-[11px] text-slate-300 leading-relaxed">
+            원하는 분위기나 강조 포인트를 지시하면 <b>Gemini 카피·Imagen 실사·전문 860px 타이포 포스터 엔진</b>이 고해상도 상세페이지 통이미지를 즉시 디자인합니다.
+          </p>
+
+          <!-- 스타일 & Imagen 실사 옵션 -->
+          <div class="grid grid-cols-2 gap-1.5">
+            <select id="posterThemeSel" class="bg-slate-950 border border-slate-700 rounded-lg px-2 py-1.5 text-[11px] text-sky-200 font-bold outline-none focus:border-sky-400">
+              <option value="ROYAL_BLUE" selected>🔵 로열 블루 공식·신뢰형</option>
+              <option value="EDITORIAL_WHITE">☀️ 화이트 매거진 고급형</option>
+              <option value="DARK_PRO">⚫ 다크 네이비·골드 하이엔드</option>
+              <option value="FIELD_ORANGE">🟠 산악·현장 임팩트형</option>
+            </select>
+            <label class="flex items-center gap-1.5 bg-slate-950 border border-slate-700 rounded-lg px-2 py-1.5 text-[11px] text-slate-200 font-bold cursor-pointer select-none">
+              <input type="checkbox" id="chkUseImagenBg" checked class="accent-sky-500">
+              <span>🌐 Imagen 실사배경 활용</span>
+            </label>
+          </div>
+
+          <!-- 5대 통이미지 프리셋 칩 -->
+          <div class="grid grid-cols-2 gap-1.5">
+            <button type="button" onclick="selectPosterPreset('HERO_POSTER')" data-poster-preset="HERO_POSTER" class="poster-preset-btn bg-blue-600/35 border border-sky-400 text-white font-black py-1.5 px-2 rounded-lg text-[11px] text-left transition">
+              🏆 매거진 히어로 포스터
+            </button>
+            <button type="button" onclick="selectPosterPreset('SCENE_BANNER')" data-poster-preset="SCENE_BANNER" class="poster-preset-btn bg-slate-900 border border-slate-700 hover:border-sky-400 text-slate-200 font-bold py-1.5 px-2 rounded-lg text-[11px] text-left transition">
+              🏔️ 현장 실사·카피 합성컷
+            </button>
+            <button type="button" onclick="selectPosterPreset('PULLEY_INFOGRAPHIC')" data-poster-preset="PULLEY_INFOGRAPHIC" class="poster-preset-btn bg-slate-900 border border-slate-700 hover:border-emerald-400 text-slate-200 font-bold py-1.5 px-2 rounded-lg text-[11px] text-left transition">
+              ⚙️ 도르래 2배 배력 도해컷
+            </button>
+            <button type="button" onclick="selectPosterPreset('SPEC_POSTER')" data-poster-preset="SPEC_POSTER" class="poster-preset-btn bg-slate-900 border border-slate-700 hover:border-amber-400 text-slate-200 font-bold py-1.5 px-2 rounded-lg text-[11px] text-left transition">
+              📐 정밀 제원 인포그래픽
+            </button>
+            <button type="button" onclick="selectPosterPreset('TRUST_BANNER')" data-poster-preset="TRUST_BANNER" class="poster-preset-btn col-span-2 bg-slate-900 border border-slate-700 hover:border-cyan-400 text-slate-200 font-bold py-1.5 px-2 rounded-lg text-[11px] text-center transition">
+              🛡️ 정품인증 · 오후 3시 당일출고 · 관공서 B2B 신뢰 배너
+            </button>
+          </div>
+
+          <!-- 자연어 디렉터 프롬프트 -->
+          <textarea id="posterDirectorPrompt" rows="2" placeholder="예: 산악 현장에서 혼자 1톤 원목을 거뜬히 끄는 압도적인 신뢰감의 메인 히어로 통이미지로 디자인해줘" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-2.5 py-2 text-[11.5px] text-white outline-none focus:border-sky-400 resize-none leading-snug"></textarea>
+
+          <!-- 실행 버튼 2종 -->
+          <div class="grid grid-cols-2 gap-1.5">
+            <button type="button" id="btnRunPosterSingle" onclick="runAiPosterDirector('SINGLE')" class="bg-gradient-to-r from-sky-500 to-blue-600 hover:brightness-110 text-white font-black py-2 px-2 rounded-lg text-[11px] shadow flex items-center justify-center gap-1 transition">
+              <i class="fa-solid fa-sparkles text-yellow-200"></i> 선택 1장 통이미지 제작
+            </button>
+            <button type="button" id="btnRunPosterPack" onclick="runAiPosterDirector('FULL_PACK')" class="bg-gradient-to-r from-amber-500 to-orange-500 hover:brightness-110 text-slate-950 font-black py-2 px-2 rounded-lg text-[11px] shadow flex items-center justify-center gap-1 transition">
+              <i class="fa-solid fa-layer-group"></i> 풀세트 4장 일괄 제작
+            </button>
+          </div>
+
+          <div id="posterDirectorStatus" class="hidden bg-slate-950/90 border border-sky-500/35 rounded-lg px-2.5 py-2 text-[10.5px] text-sky-200 font-semibold leading-relaxed"></div>
+
+          <!-- 생성된 860px 통이미지 갤러리 -->
+          <div id="generatedPosterGalleryWrap" class="hidden space-y-2 pt-1 border-t border-slate-700/70">
+            <div class="flex items-center justify-between">
+              <span class="font-black text-emerald-300 text-[11px]">🖼️ 완성된 고해상도 860px 통이미지</span>
+              <div class="flex gap-1">
+                <button type="button" onclick="insertAllGeneratedPosters()" class="bg-emerald-600/25 hover:bg-emerald-600/45 border border-emerald-400/50 text-emerald-200 font-bold px-2 py-0.5 rounded text-[10px]">전체 페이지 삽입</button>
+                <button type="button" onclick="downloadAllGeneratedPosters()" class="bg-sky-600/25 hover:bg-sky-600/45 border border-sky-400/50 text-sky-200 font-bold px-2 py-0.5 rounded text-[10px]">일괄 JPG 저장</button>
+              </div>
+            </div>
+            <div id="generatedPosterGallery" class="space-y-2 max-h-[420px] overflow-y-auto pr-0.5"></div>
+          </div>
+        </div>
         
         <!-- 메인 이미지 변경 & AI 생성 & PC 업로드 카드 -->
         <div class="bg-slate-950 border border-slate-800 rounded-xl p-3.5 space-y-3 shadow-md">
@@ -4084,9 +4157,18 @@
       const rawScenes = (p.images && Array.isArray(p.images.scenes)) ? p.images.scenes : [];
       const cleanScenes = rawScenes.filter(sc => sc && sc.url && !isBannedOrTextImage(sc.url));
 
-      // 커스텀 추가 섹션 HTML 생성 (AI 코파일럿으로 사용자가 추가 지시한 섹션)
+      // 커스텀 추가 섹션 HTML 생성 (AI 코파일럿으로 사용자가 추가 지시한 섹션 + 풀블리드 860px 통이미지 섹션)
       const customSectionsHtml = (Array.isArray(p.customSections) && p.customSections.length > 0)
-        ? p.customSections.map((cs, idx) => `
+        ? p.customSections.map((cs, idx) => {
+            if (cs && cs.type === 'FULL_IMAGE' && cs.imgUrl) {
+              const safeTitle = String(cs.title || '오라테크 마스터피스 통이미지').replace(/"/g, '&quot;').replace(/</g, '&lt;');
+              return `
+  <!-- CUSTOM FULL-WIDTH POSTER IMAGE ${idx + 1} -->
+  <div class="ora-sec-poster" style="padding:0; margin:0; background:#ffffff; text-align:center; border-bottom:1px solid #e2e8f0;">
+    <img src="${cs.imgUrl}" alt="${safeTitle}" style="width:100%; max-width:860px; height:auto; display:block; margin:0 auto;">
+  </div>`;
+            }
+            return `
   <!-- CUSTOM SECTION ${idx + 1} -->
   <div class="ora-sec" style="padding:48px 32px; background:#ffffff; border-bottom:1px solid #e2e8f0;">
     <div class="ora-box-pad" style="max-width:796px; margin:0 auto; background:${themeLightBg}; border:2px solid ${themeBorder}; border-radius:16px; padding:28px 28px;">
@@ -4096,7 +4178,8 @@
       <h3 class="ora-h3" style="font-size:21px; font-weight:900; color:#0f172a; margin:0 0 12px 0;">${cs.title || '현장 맞춤 엔지니어링 안내'}</h3>
       <div style="font-size:13.5px; color:#334155; line-height:1.75; text-align:left;">${cs.body || ''}</div>
     </div>
-  </div>`).join('\n')
+  </div>`;
+          }).join('\n')
         : '';
 
       const densityMode = window.oraCopyDensity || 'compact'; // 'compact' | 'standard' | 'full'
@@ -5604,18 +5687,19 @@
 
       const p = curProduct;
       const apiKey = getGeminiKey();
+      const canUseServerProxy = window.location.protocol.startsWith('http') && !isStaticWebHost();
 
-      if (apiKey) {
+      if (apiKey || canUseServerProxy) {
         try {
           const promptText = `Industrial commercial studio product photography of ${p.name} (${p.code}), high-end precision machinery, crisp metallic textures, sharp focus, 8k resolution, award-winning industrial catalog photography, pure white seamless cyclorama background, realistic studio lighting, no text, no watermark, no CGI look`;
 
           let b64 = null;
-          let imagenModel = 'imagen-3.0-generate-002';
-          if (window.location.protocol.startsWith('http') && !isStaticWebHost()) {
+          let imagenModel = 'imagen-4.0-generate-001';
+          if (canUseServerProxy) {
             const resp = await fetch('/api/imagen', {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ prompt: promptText, apiKey: apiKey })
+              body: JSON.stringify({ prompt: promptText, apiKey: apiKey, aspectRatio: '1:1' })
             });
             if (resp.ok) {
               const resJson = await resp.json();
@@ -5627,7 +5711,7 @@
             }
           }
 
-          if (!b64) {
+          if (!b64 && apiKey) {
             const imagenUrl = `https://generativelanguage.googleapis.com/v1beta/models/imagen-3.0-generate-002:predict?key=${encodeURIComponent(apiKey)}`;
             const response = await fetch(imagenUrl, {
               method: 'POST',
@@ -6840,6 +6924,566 @@ D. 담백한 명사형 종결 또는 짧은 존댓말 단문. 느낌표·이모�
       }
       appendChat('ai', `🎨 <b>[${code}] 카본 시나리오 비주얼(${mode}) 1000x1000px 고해상도 합성 완료!</b><br>우측 상세페이지 상단 대표 이미지와 좌측 썸네일에 즉시 반영되었습니다.`);
       showToast('🎨 카본 고해상도 시나리오 인포그래픽 합성 완료!');
+    };
+
+    // ==================== [NEW] AI 상세페이지 860px 2x 통이미지 아트디렉터 엔진 ====================
+    window.ACTIVE_POSTER_PRESET = 'HERO_POSTER';
+    window.GENERATED_POSTERS = [];
+
+    window.openAiPosterDirector = function() {
+      switchLeftTab(2);
+      const card = document.getElementById('aiPosterDirectorCard');
+      if (card) card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      const inp = document.getElementById('posterDirectorPrompt');
+      if (inp) inp.focus();
+    };
+
+    window.selectPosterPreset = function(presetKey) {
+      window.ACTIVE_POSTER_PRESET = presetKey;
+      document.querySelectorAll('.poster-preset-btn').forEach(btn => {
+        const isSel = btn.getAttribute('data-poster-preset') === presetKey;
+        btn.className = isSel
+          ? 'poster-preset-btn ' + (presetKey === 'TRUST_BANNER' ? 'col-span-2 ' : '') + 'bg-blue-600/35 border border-sky-400 text-white font-black py-1.5 px-2 rounded-lg text-[11px] ' + (presetKey === 'TRUST_BANNER' ? 'text-center ' : 'text-left ') + 'transition shadow-sm'
+          : 'poster-preset-btn ' + (presetKey === 'TRUST_BANNER' && btn.getAttribute('data-poster-preset') === 'TRUST_BANNER' ? '' : (btn.getAttribute('data-poster-preset') === 'TRUST_BANNER' ? 'col-span-2 text-center ' : 'text-left ')) + 'bg-slate-900 border border-slate-700 hover:border-sky-400 text-slate-200 font-bold py-1.5 px-2 rounded-lg text-[11px] transition';
+      });
+    };
+
+    function roundRectBox(ctx, x, y, w, h, r) {
+      const rad = Math.min(r, w / 2, h / 2);
+      ctx.beginPath();
+      ctx.moveTo(x + rad, y);
+      ctx.arcTo(x + w, y, x + w, y + h, rad);
+      ctx.arcTo(x + w, y + h, x, y + h, rad);
+      ctx.arcTo(x, y + h, x, y, rad);
+      ctx.arcTo(x, y, x + w, y, rad);
+      ctx.closePath();
+    }
+
+    function drawWrappedKrText(ctx, text, x, y, maxW, lineH, maxLines = 3) {
+      const words = String(text || '').trim().split(/\s+/);
+      let line = '';
+      let curY = y;
+      let drawn = 0;
+      for (let i = 0; i < words.length; i++) {
+        const test = line ? line + ' ' + words[i] : words[i];
+        if (ctx.measureText(test).width > maxW && line) {
+          ctx.fillText(line, x, curY);
+          drawn++;
+          if (drawn >= maxLines) return curY + lineH;
+          curY += lineH;
+          line = words[i];
+        } else {
+          line = test;
+        }
+      }
+      if (line && drawn < maxLines) {
+        ctx.fillText(line, x, curY);
+        curY += lineH;
+      }
+      return curY;
+    }
+
+    function loadCanvasImg(src) {
+      return new Promise(resolve => {
+        if (!src) return resolve(null);
+        const im = new Image();
+        im.crossOrigin = 'anonymous';
+        const timer = setTimeout(() => resolve(null), 5000);
+        im.onload = () => { clearTimeout(timer); resolve(im); };
+        im.onerror = () => { clearTimeout(timer); resolve(null); };
+        im.src = src;
+      });
+    }
+
+    function getPosterThemePalette(themeKey) {
+      const map = {
+        ROYAL_BLUE: { bg1: '#07225A', bg2: '#0F3D99', card: 'rgba(255,255,255,0.96)', cardText: '#0F172A', accent: '#38BDF8', gold: '#FBBF24', titleColor: '#FFFFFF', subColor: '#DBEAFE', lightBand: '#EFF6FF' },
+        EDITORIAL_WHITE: { bg1: '#F8FAFF', bg2: '#E8F1FE', card: '#FFFFFF', cardText: '#0F172A', accent: '#1D4ED8', gold: '#0284C7', titleColor: '#07225A', subColor: '#334155', lightBand: '#07225A' },
+        DARK_PRO: { bg1: '#080E1E', bg2: '#121E36', card: 'rgba(15,23,42,0.94)', cardText: '#F8FAFC', accent: '#F59E0B', gold: '#FBBF24', titleColor: '#FFFFFF', subColor: '#CBD5E1', lightBand: '#1E293B' },
+        FIELD_ORANGE: { bg1: '#111827', bg2: '#1E293B', card: '#FFFFFF', cardText: '#0F172A', accent: '#F97316', gold: '#FBBF24', titleColor: '#FFFFFF', subColor: '#E2E8F0', lightBand: '#FFF7ED' }
+      };
+      return map[themeKey] || map.ROYAL_BLUE;
+    }
+
+    async function fetchDirectorCopyAndScene(presetType, userPrompt, p, useImagenBg) {
+      const code = p.code || 'PCW-5000';
+      const pull = p.pull || p.cap || '정격 하중 준수';
+      const eng = p.engine || '산업용 정품 구동계';
+      const wt = p.weight || '경량 고강도 바디';
+
+      const fallbackMap = {
+        HERO_POSTER: {
+          kicker: `ORATECH OFFICIAL EDITION · ${code}`,
+          h1: p.headline ? String(p.headline).slice(0, 18) : `현장 하중의 기준, ${code}`,
+          h2: `정격 ${pull} · ${eng.split('(')[0].trim()}`,
+          sub: p.subheadline ? String(p.subheadline).slice(0, 48) : `허수 없는 1단 직결 정격 파워와 청계천 본사 직영 순정부품 A/S를 보증합니다.`,
+          bullets: [`정격 ${pull} 보증`, eng.slice(0, 26), `자체중량 ${wt}`],
+          cta: `공식 수입원 (주)오라테크 · 당일 화물 상차`
+        },
+        SCENE_BANNER: {
+          kicker: `FIELD PERFORMANCE · ${code}`,
+          h1: `거친 산악·산업 현장에서도`,
+          h2: `지치지 않는 연속 견인력`,
+          sub: userPrompt ? userPrompt.slice(0, 48) : `${code}만의 고토크 감속 설계로 장거리 고하중 작업을 단 1~2인이 안전하게 완수합니다.`,
+          bullets: ['고토크 정밀 감속기', '과부하·역회전 차단', '15시 이전 당일출고'],
+          cta: `현장 맞춤형 세팅 기술상담 1600-5157`
+        },
+        PULLEY_INFOGRAPHIC: {
+          kicker: `MECHANICAL ADVANTAGE · 2X POWER`,
+          h1: `스윙 도르래 1개 결합으로`,
+          h2: `견인 하중이 정확히 2배로 증폭`,
+          sub: `1:1 단선 직결 대비 활차 복선(2:1) 구성 시 기계에 걸리는 부하가 절반으로 분산되어 수명까지 연장됩니다.`,
+          bullets: ['1단 단선 정격 하중', '도르래 1개 = 정확히 2배', '로프·와이어 피로도 50% 감소'],
+          cta: `(주)오라테크 정품 도르래·슬링 풀패키지 호환`
+        },
+        SPEC_POSTER: {
+          kicker: `CERTIFIED TECHNICAL SPEC SHEET`,
+          h1: `[${code}] 엔지니어링 정밀 제원`,
+          h2: `비교 불가한 정품 하드웨어 스펙`,
+          sub: `${p.origin || '(주)오라테크 공식 수입 정품'} · 현장 발주 및 관공서 규격서 제출용 공식 데이터입니다.`,
+          bullets: [`정격하중: ${pull}`, `작업속도: ${p.speed || '카탈로그 기준'}`, `제동장치: 자동 안전 브레이크`],
+          cta: `공식 카탈로그 규격서 · 도면 PDF 즉시 발급`
+        },
+        TRUST_BANNER: {
+          kicker: `OFFICIAL GENUINE WARRANTY & B2B`,
+          h1: `(주)오라테크 본사 직영 출고 보증`,
+          h2: `전자세금계산서 · 순정부품 100% 상시 보유`,
+          sub: `비교견적서·나라장터 규격서 5분 내 발행, 오후 3시 이전 결제 건 당일 경동화물·택배 직송 원칙을 지킵니다.`,
+          bullets: ['국세청 세금계산서 당일발행', '청계천 직영 정비센터 완비', '관공서·법인 후불 협의'],
+          cta: `대표 기술영업 직통 1600-5157 · 010-8931-7788`
+        }
+      };
+      let copy = fallbackMap[presetType] || fallbackMap.HERO_POSTER;
+      let bgPhotoUrl = null;
+
+      const apiKey = getGeminiKey();
+      const canProxy = window.location.protocol.startsWith('http') && !isStaticWebHost();
+
+      if ((apiKey || canProxy) && userPrompt && userPrompt.trim().length > 3) {
+        try {
+          const ctrl = new AbortController();
+          const tid = setTimeout(() => ctrl.abort(), 8000);
+          const gemPrompt = `제품 [${code}] (${p.name}), 정격하중 [${pull}], 동력원 [${eng}], 속도 [${p.speed || '-'}].
+사용자 이미지 디자인 지시: "${userPrompt}"
+프리셋 유형: ${presetType}.
+AI 슬롭/번역체/느낌표 없이 실제 대한민국 산업장비 카피라이터 톤으로 JSON만 응답하세요:
+{"kicker":"영문대문자+코드 28자이내","h1":"임팩트 메인헤드 16자이내","h2":"보조헤드 20자이내","sub":"현장 핵심설명 45자이내","bullets":["칩1(14자)","칩2(14자)","칩3(14자)"],"imagenScene":"English clean editorial photography scene without any text, logo or watermark"}`;
+          const endpoint = canProxy
+            ? '/api/generate'
+            : `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${encodeURIComponent(apiKey)}`;
+          const r = await fetch(endpoint, {
+            method: 'POST',
+            signal: ctrl.signal,
+            headers: { 'Content-Type': 'application/json' },
+            body: canProxy
+              ? JSON.stringify({ model: document.getElementById('topAiModelSelector')?.value || 'gemini-4-carbon', apiKey, prompt: gemPrompt, refine: false })
+              : JSON.stringify({ contents: [{ parts: [{ text: gemPrompt }] }], generationConfig: { responseMimeType: 'application/json', temperature: 0.4 } })
+          });
+          clearTimeout(tid);
+          if (r.ok) {
+            const j = await r.json();
+            const parsed = j.data || (j.candidates?.[0]?.content?.parts?.[0]?.text ? JSON.parse(j.candidates[0].content.parts[0].text) : null);
+            if (parsed && parsed.h1) {
+              copy = {
+                kicker: String(parsed.kicker || copy.kicker).slice(0, 36),
+                h1: String(parsed.h1 || copy.h1).slice(0, 24),
+                h2: String(parsed.h2 || copy.h2).slice(0, 28),
+                sub: String(parsed.sub || copy.sub).slice(0, 62),
+                bullets: Array.isArray(parsed.bullets) && parsed.bullets.length >= 3 ? parsed.bullets.slice(0, 3) : copy.bullets,
+                cta: copy.cta,
+                imagenScene: parsed.imagenScene || ''
+              };
+            }
+          }
+        } catch (_) {}
+      }
+
+      if (useImagenBg && (presetType === 'SCENE_BANNER' || presetType === 'HERO_POSTER') && (apiKey || canProxy)) {
+        try {
+          const ctrl = new AbortController();
+          const tid = setTimeout(() => ctrl.abort(), 12000);
+          const scenePrompt = copy.imagenScene || `Editorial commercial photography of rugged outdoor Korean forest logging slope or heavy industrial factory hoist rigging scene, crisp daylight atmosphere, shallow depth of field, clean open composition, zero text, zero watermarks`;
+          if (canProxy) {
+            const ir = await fetch('/api/imagen', {
+              method: 'POST',
+              signal: ctrl.signal,
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ prompt: scenePrompt, apiKey, aspectRatio: presetType === 'SCENE_BANNER' ? '16:9' : '4:3' })
+            });
+            clearTimeout(tid);
+            if (ir.ok) {
+              const ij = await ir.json();
+              const b64 = ij.predictions?.[0]?.bytesBase64Encoded;
+              if (b64) bgPhotoUrl = `data:image/jpeg;base64,${b64}`;
+            }
+          }
+        } catch (_) {}
+      }
+
+      return { copy, bgPhotoUrl };
+    }
+
+    window.buildStudioPosterArt = async function(presetType, userPrompt, themeKey, useImagenBg) {
+      const p = curProduct || {};
+      const code = p.code || 'PCW-5000';
+      const pal = getPosterThemePalette(themeKey);
+      const { copy, bgPhotoUrl } = await fetchDirectorCopyAndScene(presetType, userPrompt, p, useImagenBg);
+
+      const heightMap = {
+        HERO_POSTER: 1920,
+        SCENE_BANNER: 1400,
+        PULLEY_INFOGRAPHIC: 1500,
+        SPEC_POSTER: 1560,
+        TRUST_BANNER: 1240
+      };
+      const W = 1720;
+      const H = heightMap[presetType] || 1680;
+      const canvas = document.createElement('canvas');
+      canvas.width = W;
+      canvas.height = H;
+      const ctx = canvas.getContext('2d');
+
+      // 배경 그라데이션 & 미세 엔지니어링 격자
+      const bgGrad = ctx.createLinearGradient(0, 0, W, H);
+      bgGrad.addColorStop(0, pal.bg1);
+      bgGrad.addColorStop(1, pal.bg2);
+      ctx.fillStyle = bgGrad;
+      ctx.fillRect(0, 0, W, H);
+
+      ctx.save();
+      ctx.strokeStyle = themeKey === 'EDITORIAL_WHITE' ? 'rgba(29,78,216,0.06)' : 'rgba(147,197,253,0.07)';
+      ctx.lineWidth = 2;
+      for (let gx = 0; gx <= W; gx += 86) { ctx.beginPath(); ctx.moveTo(gx, 0); ctx.lineTo(gx, H); ctx.stroke(); }
+      for (let gy = 0; gy <= H; gy += 86) { ctx.beginPath(); ctx.moveTo(0, gy); ctx.lineTo(W, gy); ctx.stroke(); }
+      ctx.restore();
+
+      const prodSrc = (p.images && (p.images.mainClear || p.images.collection)) || '';
+      const sceneFallback = Array.isArray(p.scenes) && p.scenes[0]?.url ? p.scenes[0].url : prodSrc;
+      const [prodImg, bgImg] = await Promise.all([
+        loadCanvasImg(prodSrc),
+        loadCanvasImg(bgPhotoUrl || (presetType === 'SCENE_BANNER' ? sceneFallback : null))
+      ]);
+
+      // 씬 배너 배경 합성 (있는 경우)
+      if (bgImg && (presetType === 'SCENE_BANNER' || presetType === 'HERO_POSTER')) {
+        ctx.save();
+        ctx.globalAlpha = presetType === 'SCENE_BANNER' ? 0.44 : 0.20;
+        const sc = Math.max(W / bgImg.width, H / bgImg.height);
+        const bw = bgImg.width * sc, bh = bgImg.height * sc;
+        ctx.drawImage(bgImg, (W - bw) / 2, (H - bh) / 2, bw, bh);
+        ctx.restore();
+        const scrim = ctx.createLinearGradient(0, 0, 0, H);
+        scrim.addColorStop(0, themeKey === 'EDITORIAL_WHITE' ? 'rgba(248,250,255,0.88)' : 'rgba(7,34,90,0.86)');
+        scrim.addColorStop(0.55, themeKey === 'EDITORIAL_WHITE' ? 'rgba(248,250,255,0.68)' : 'rgba(7,34,90,0.55)');
+        scrim.addColorStop(1, themeKey === 'EDITORIAL_WHITE' ? 'rgba(255,255,255,0.96)' : 'rgba(7,34,90,0.95)');
+        ctx.fillStyle = scrim;
+        ctx.fillRect(0, 0, W, H);
+      }
+
+      // 상단 액센트 바 & Kicker 배지
+      ctx.fillStyle = pal.accent;
+      ctx.fillRect(0, 0, W, 16);
+
+      roundRectBox(ctx, 96, 84, 720, 56, 28);
+      ctx.fillStyle = themeKey === 'EDITORIAL_WHITE' ? '#1D4ED8' : 'rgba(56,189,248,0.18)';
+      ctx.fill();
+      ctx.strokeStyle = pal.accent;
+      ctx.lineWidth = 2.5;
+      ctx.stroke();
+      ctx.fillStyle = themeKey === 'EDITORIAL_WHITE' ? '#FFFFFF' : '#7DD3FC';
+      ctx.font = '900 25px "Pretendard", "Malgun Gothic", sans-serif';
+      ctx.fillText(copy.kicker, 130, 121);
+
+      // 메인 헤드라인 2줄 + 서브카피
+      ctx.fillStyle = pal.titleColor;
+      ctx.font = '900 84px "Pretendard", "Malgun Gothic", sans-serif';
+      ctx.fillText(copy.h1, 96, 248);
+      ctx.fillStyle = pal.gold;
+      ctx.fillText(copy.h2, 96, 348);
+
+      ctx.fillStyle = pal.subColor;
+      ctx.font = '600 34px "Pretendard", "Malgun Gothic", sans-serif';
+      const nextY = drawWrappedKrText(ctx, copy.sub, 96, 424, W - 192, 50, 2);
+
+      // 프리셋별 핵심 중앙 비주얼 영역
+      if (presetType === 'PULLEY_INFOGRAPHIC') {
+        const y0 = nextY + 34;
+        // 좌측: 1:1 단선 카드
+        roundRectBox(ctx, 96, y0, 740, 760, 28);
+        ctx.fillStyle = '#FFFFFF';
+        ctx.fill();
+        ctx.strokeStyle = '#94A3B8';
+        ctx.lineWidth = 3;
+        ctx.stroke();
+
+        ctx.fillStyle = '#334155';
+        ctx.font = '900 34px "Pretendard", "Malgun Gothic", sans-serif';
+        ctx.fillText('CASE 01 · 1:1 단선 직결 (기본)', 142, y0 + 72);
+        // 단선 벡터 다이어그램
+        ctx.fillStyle = '#E2E8F0';
+        roundRectBox(ctx, 146, y0 + 120, 640, 360, 20);
+        ctx.fill();
+        ctx.strokeStyle = '#1E293B';
+        ctx.lineWidth = 10;
+        ctx.beginPath();
+        ctx.moveTo(230, y0 + 300);
+        ctx.lineTo(660, y0 + 300);
+        ctx.stroke();
+        ctx.fillStyle = '#0F3D99';
+        ctx.beginPath(); ctx.arc(230, y0 + 300, 44, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = '#FFFFFF'; ctx.font = '900 22px sans-serif'; ctx.fillText('윈치', 208, y0 + 308);
+        ctx.fillStyle = '#334155';
+        roundRectBox(ctx, 620, y0 + 245, 110, 110, 14); ctx.fill();
+        ctx.fillStyle = '#FFFFFF'; ctx.fillText('1X', 658, y0 + 308);
+        ctx.fillStyle = '#0F172A'; ctx.font = '900 44px "Pretendard", sans-serif';
+        ctx.fillText(String(p.pull || p.cap || '1,000 kg 정격'), 146, y0 + 575);
+        ctx.fillStyle = '#475569'; ctx.font = '700 28px "Pretendard", sans-serif';
+        ctx.fillText('최대 작업 속도 · 기본 로프 1줄 인장', 146, y0 + 635);
+
+        // 우측: 2:1 도르래 배력 카드
+        roundRectBox(ctx, 884, y0, 740, 760, 28);
+        ctx.fillStyle = '#FFFFFF';
+        ctx.fill();
+        ctx.strokeStyle = '#1D4ED8';
+        ctx.lineWidth = 5;
+        ctx.stroke();
+        roundRectBox(ctx, 920, y0 + 26, 230, 42, 21);
+        ctx.fillStyle = '#1D4ED8'; ctx.fill();
+        ctx.fillStyle = '#FFFFFF'; ctx.font = '900 22px "Pretendard", sans-serif';
+        ctx.fillText('POWER 200% UP', 944, y0 + 55);
+        ctx.fillStyle = '#07225A'; ctx.font = '900 34px "Pretendard", sans-serif';
+        ctx.fillText('CASE 02 · 스윙 도르래 복선 (2:1)', 930, y0 + 114);
+        ctx.fillStyle = '#EFF6FF';
+        roundRectBox(ctx, 930, y0 + 150, 648, 330, 20); ctx.fill();
+        ctx.strokeStyle = '#1D4ED8'; ctx.lineWidth = 10;
+        ctx.beginPath(); ctx.moveTo(1000, y0 + 275); ctx.lineTo(1480, y0 + 275); ctx.arc(1480, y0 + 315, 40, -Math.PI/2, Math.PI/2); ctx.lineTo(1000, y0 + 355); ctx.stroke();
+        ctx.fillStyle = '#F59E0B'; ctx.beginPath(); ctx.arc(1480, y0 + 315, 46, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = '#07225A'; ctx.font = '900 22px sans-serif'; ctx.fillText('도르래', 1448, y0 + 323);
+        ctx.fillStyle = '#1D4ED8'; ctx.font = '900 46px "Pretendard", sans-serif';
+        ctx.fillText('정격 견인력 정확히 2배 (2X)', 930, y0 + 575);
+        ctx.fillStyle = '#1E3A8A'; ctx.font = '700 28px "Pretendard", sans-serif';
+        ctx.fillText('엔진·모터 부하 50% 분산 · 안전율 극대화', 930, y0 + 635);
+      } else if (presetType === 'TRUST_BANNER') {
+        const y0 = nextY + 34;
+        const cards = [
+          ['오늘 15시 이전', '당일 경동화물·택배 직발송', '청계천 본사 실물 상시 재고 운영으로 현장 멈춤 없이 즉시 상차합니다.'],
+          ['전자세금계산서', '관공서 G2B·비교견적 5분', '국세청 전자세금계산서 100% 당일 발행 및 사업자·규격서 일체 즉시 지원.'],
+          ['본사 직영 정비실', '모터·브레이크 순정부품 완비', '직구 제품이 따라올 수 없는 1:1 정품 무상 보증과 부품 수급 책임.']
+        ];
+        cards.forEach((c, i) => {
+          const cx = 96 + i * 524;
+          roundRectBox(ctx, cx, y0, 492, 480, 26);
+          ctx.fillStyle = pal.card; ctx.fill();
+          ctx.strokeStyle = pal.accent; ctx.lineWidth = 3; ctx.stroke();
+          roundRectBox(ctx, cx + 32, y0 + 34, 130, 40, 20);
+          ctx.fillStyle = '#1D4ED8'; ctx.fill();
+          ctx.fillStyle = '#FFFFFF'; ctx.font = '900 21px "Pretendard", sans-serif';
+          ctx.fillText(`0${i + 1} · 신뢰`, cx + 52, y0 + 62);
+          ctx.fillStyle = '#07225A'; ctx.font = '900 36px "Pretendard", sans-serif';
+          ctx.fillText(c[0], cx + 32, y0 + 145);
+          ctx.fillStyle = '#1D4ED8'; ctx.font = '900 26px "Pretendard", sans-serif';
+          ctx.fillText(c[1], cx + 32, y0 + 202);
+          ctx.fillStyle = '#475569'; ctx.font = '600 26px "Pretendard", sans-serif';
+          drawWrappedKrText(ctx, c[2], cx + 32, y0 + 275, 428, 42, 4);
+        });
+      } else {
+        // HERO_POSTER, SCENE_BANNER, SPEC_POSTER: 중앙 좌/우 균형 스튜디오 쇼케이스
+        const y0 = nextY + 34;
+        const boxH = presetType === 'HERO_POSTER' ? 980 : 690;
+        // 우측/중앙 제품 쇼케이스 카드
+        const imgBoxW = presetType === 'HERO_POSTER' ? 860 : 700;
+        const imgBoxX = W - 96 - imgBoxW;
+        roundRectBox(ctx, imgBoxX, y0, imgBoxW, boxH, 32);
+        ctx.fillStyle = '#FFFFFF';
+        ctx.fill();
+        ctx.strokeStyle = pal.accent;
+        ctx.lineWidth = 4;
+        ctx.stroke();
+
+        if (prodImg) {
+          const pad = 64;
+          const sc = Math.min((imgBoxW - pad * 2) / prodImg.width, (boxH - 170) / prodImg.height);
+          const dw = prodImg.width * sc;
+          const dh = prodImg.height * sc;
+          ctx.save();
+          ctx.shadowColor = 'rgba(7,34,90,0.18)';
+          ctx.shadowBlur = 32;
+          ctx.shadowOffsetY = 16;
+          ctx.drawImage(prodImg, imgBoxX + (imgBoxW - dw) / 2, y0 + (boxH - 80 - dh) / 2, dw, dh);
+          ctx.restore();
+        }
+        roundRectBox(ctx, imgBoxX + 36, y0 + boxH - 88, imgBoxW - 72, 56, 16);
+        ctx.fillStyle = '#EFF6FF'; ctx.fill();
+        ctx.fillStyle = '#07225A'; ctx.font = '900 25px "Pretendard", sans-serif';
+        ctx.fillText(`MODEL: ${code} · 공식 정품 스튜디오 실물`, imgBoxX + 60, y0 + boxH - 51);
+
+        // 좌측 핵심 제원 & 3대 포인트 카드
+        const leftW = W - 192 - imgBoxW - 44;
+        const rows = presetType === 'SPEC_POSTER'
+          ? [
+              ['정격 견인/인양 하중', String(p.pull || p.cap || '정격 준수')],
+              ['핵심 동력/모터', String(p.engine || '고토크 정품 구동계').slice(0, 26)],
+              ['작업 속도 / 중량', `${p.speed || '-'} · ${p.weight || '-'}`],
+              ['안전 제동 시스템', '자동 마그네틱·기계식 역회전 차단']
+            ]
+          : [
+              ['POINT 01 · 핵심 성능', copy.bullets[0] || `정격 ${p.pull || p.cap || '규격 준수'}`],
+              ['POINT 02 · 구동 신뢰성', copy.bullets[1] || String(p.engine || '정품 동력').slice(0, 24)],
+              ['POINT 03 · 직영 서포트', copy.bullets[2] || '당일 출고 & 청계천 A/S']
+            ];
+        const cardGap = 24;
+        const perH = Math.floor((boxH - cardGap * (rows.length - 1)) / rows.length);
+        rows.forEach((r, idx) => {
+          const ry = y0 + idx * (perH + cardGap);
+          roundRectBox(ctx, 96, ry, leftW, perH, 24);
+          ctx.fillStyle = pal.card; ctx.fill();
+          ctx.strokeStyle = idx === 0 ? pal.accent : '#CBD5E1';
+          ctx.lineWidth = idx === 0 ? 4 : 2;
+          ctx.stroke();
+          ctx.fillStyle = '#1D4ED8';
+          ctx.font = '900 24px "Pretendard", sans-serif';
+          ctx.fillText(r[0], 132, ry + 56);
+          ctx.fillStyle = pal.cardText;
+          ctx.font = '900 34px "Pretendard", sans-serif';
+          drawWrappedKrText(ctx, r[1], 132, ry + 114, leftW - 68, 44, 2);
+        });
+      }
+
+      // 하단 브랜드 콜센터 배너
+      const footY = H - 180;
+      roundRectBox(ctx, 96, footY, W - 192, 114, 24);
+      ctx.fillStyle = '#061942';
+      ctx.fill();
+      ctx.strokeStyle = pal.accent;
+      ctx.lineWidth = 3;
+      ctx.stroke();
+      ctx.fillStyle = '#FFFFFF';
+      ctx.font = '900 30px "Pretendard", sans-serif';
+      ctx.fillText(copy.cta, 140, footY + 67);
+      ctx.fillStyle = '#FBBF24';
+      ctx.font = '900 30px "JetBrains Mono", "Pretendard", sans-serif';
+      ctx.fillText('ORATECH 1600-5157', W - 470, footY + 67);
+
+      const dataUrl = canvas.toDataURL('image/jpeg', 0.94);
+      return {
+        id: 'poster_' + Date.now() + '_' + Math.random().toString(36).slice(2, 6),
+        code,
+        presetType,
+        title: copy.h1 + ' ' + copy.h2,
+        width: W,
+        height: H,
+        usedImagen: Boolean(bgPhotoUrl),
+        dataUrl
+      };
+    };
+
+    window.renderGeneratedPostersGallery = function() {
+      const wrap = document.getElementById('generatedPosterGalleryWrap');
+      const box = document.getElementById('generatedPosterGallery');
+      if (!wrap || !box) return;
+      if (!window.GENERATED_POSTERS.length) {
+        wrap.classList.add('hidden');
+        box.innerHTML = '';
+        return;
+      }
+      wrap.classList.remove('hidden');
+      box.innerHTML = window.GENERATED_POSTERS.map((po, i) => `
+        <div class="bg-slate-950 border border-slate-700 rounded-lg p-2 space-y-1.5">
+          <div class="flex items-center justify-between text-[10px]">
+            <span class="font-black text-sky-300">#${i + 1} · ${po.presetType} (${Math.round(po.width/2)}×${Math.round(po.height/2)}px @2x)</span>
+            <span class="text-slate-400">${po.usedImagen ? '🌐 Imagen 배경' : '🎨 스튜디오 합성'}</span>
+          </div>
+          <img src="${po.dataUrl}" class="w-full h-36 object-cover object-top rounded border border-slate-800 cursor-pointer" onclick="insertPosterToDetailPage('${po.id}')" title="클릭 시 상세페이지에 통이미지 섹션으로 삽입">
+          <div class="grid grid-cols-3 gap-1 text-[10px] font-bold">
+            <button type="button" onclick="insertPosterToDetailPage('${po.id}')" class="bg-emerald-600/30 hover:bg-emerald-600/50 border border-emerald-400/50 text-emerald-200 py-1 rounded">➕ 페이지 삽입</button>
+            <button type="button" onclick="setPosterAsMain('${po.id}')" class="bg-blue-600/30 hover:bg-blue-600/50 border border-blue-400/50 text-blue-200 py-1 rounded">⭐ 대표이미지</button>
+            <button type="button" onclick="downloadPosterImage('${po.id}')" class="bg-amber-600/30 hover:bg-amber-600/50 border border-amber-400/50 text-amber-200 py-1 rounded">💾 JPG 저장</button>
+          </div>
+        </div>
+      `).join('');
+    };
+
+    window.insertPosterToDetailPage = function(posterId) {
+      const po = window.GENERATED_POSTERS.find(x => x.id === posterId);
+      if (!po || !curProduct) return;
+      if (!Array.isArray(curProduct.customSections)) curProduct.customSections = [];
+      curProduct.customSections.push({
+        type: 'FULL_IMAGE',
+        title: po.title,
+        imgUrl: po.dataUrl
+      });
+      renderMasterpieceHtml();
+      showToast(`✅ 상세페이지에 [${po.presetType}] 860px 통이미지 섹션이 삽입되었습니다!`);
+      appendChat('ai', `🖼️ <b>[${po.code}] 고해상도 860px 통이미지(${po.presetType})가 우측 상세페이지에 삽입되었습니다!</b>`);
+    };
+
+    window.insertAllGeneratedPosters = function() {
+      if (!window.GENERATED_POSTERS.length || !curProduct) return;
+      if (!Array.isArray(curProduct.customSections)) curProduct.customSections = [];
+      window.GENERATED_POSTERS.forEach(po => {
+        curProduct.customSections.push({ type: 'FULL_IMAGE', title: po.title, imgUrl: po.dataUrl });
+      });
+      renderMasterpieceHtml();
+      showToast(`✅ 통이미지 ${window.GENERATED_POSTERS.length}장이 상세페이지에 순서대로 삽입되었습니다!`);
+    };
+
+    window.setPosterAsMain = function(posterId) {
+      const po = window.GENERATED_POSTERS.find(x => x.id === posterId);
+      if (!po) return;
+      updateMainImage(po.dataUrl);
+      showToast('⭐ 생성된 통이미지가 메인 대표 이미지에 적용되었습니다!');
+    };
+
+    window.downloadPosterImage = function(posterId) {
+      const po = window.GENERATED_POSTERS.find(x => x.id === posterId);
+      if (!po) return;
+      const a = document.createElement('a');
+      a.download = `오라테크_${po.code}_${po.presetType}_860px.jpg`;
+      a.href = po.dataUrl;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    };
+
+    window.downloadAllGeneratedPosters = async function() {
+      if (!window.GENERATED_POSTERS.length) return;
+      for (const po of window.GENERATED_POSTERS) {
+        downloadPosterImage(po.id);
+        await new Promise(r => setTimeout(r, 250));
+      }
+      showToast(`💾 통이미지 ${window.GENERATED_POSTERS.length}장 일괄 저장 완료!`);
+    };
+
+    window.runAiPosterDirector = async function(mode = 'SINGLE') {
+      const statusEl = document.getElementById('posterDirectorStatus');
+      const promptEl = document.getElementById('posterDirectorPrompt');
+      const themeKey = document.getElementById('posterThemeSel')?.value || 'ROYAL_BLUE';
+      const useImagen = Boolean(document.getElementById('chkUseImagenBg')?.checked);
+      const userPrompt = (promptEl?.value || '').trim();
+      const presets = mode === 'FULL_PACK'
+        ? ['HERO_POSTER', 'SCENE_BANNER', 'PULLEY_INFOGRAPHIC', 'TRUST_BANNER']
+        : [window.ACTIVE_POSTER_PRESET || 'HERO_POSTER'];
+
+      if (statusEl) {
+        statusEl.classList.remove('hidden');
+        statusEl.innerHTML = `⏳ <b>[AI 통이미지 아트디렉터 가동 중]</b> ${presets.length}장(860px 2x 고해상도) 제작 중...`;
+      }
+      try {
+        const created = [];
+        for (let i = 0; i < presets.length; i++) {
+          if (statusEl) statusEl.innerHTML = `⏳ (${i + 1}/${presets.length}) <b>${presets[i]}</b> 카피·레이아웃·실사 합성 중...`;
+          const po = await buildStudioPosterArt(presets[i], userPrompt, themeKey, useImagen);
+          window.GENERATED_POSTERS.unshift(po);
+          created.push(po);
+        }
+        renderGeneratedPostersGallery();
+        if (statusEl) {
+          statusEl.innerHTML = `✅ <b>통이미지 ${created.length}장 제작 완료!</b> 아래 [➕ 페이지 삽입]을 누르면 즉시 상세페이지 통이미지 섹션으로 들어갑니다.`;
+        }
+        showToast(`🎨 860px 고해상도 통이미지 ${created.length}장 제작 완료!`);
+      } catch (err) {
+        if (statusEl) statusEl.innerHTML = `⚠️ 제작 오류: ${String(err.message || err).replace(/</g, '&lt;')}`;
+      }
     };
 
     function appendChat(role, msg) {
