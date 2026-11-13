@@ -100,11 +100,12 @@
       <span class="inline-flex items-center gap-1.5 text-[11px] font-black text-sky-300 pr-2 border-r border-blue-800/70 shrink-0">
         <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>ORATECH OS
       </span>
-      <a href="https://www.orawinch.com" target="_blank" onclick="if(location.hostname==='localhost'||location.hostname==='127.0.0.1'){this.href='/orawinch';}" class="ora-eco-pill">🌐 공식 홈페이지</a>
-      <a id="btnNavKimDaeri" href="http://localhost:3080" onclick="return openKimDaeriWeb(event)" target="_blank" class="ora-eco-pill">📣 키워드·광고</a>
-      <span class="ora-eco-pill active">🎨 상세페이지 스튜디오</span>
-      <a href="https://igan3w.github.io/sourcing" target="_blank" class="ora-eco-pill">🌏 소싱 랩</a>
-      <a href="https://igan3w.github.io/erp" target="_blank" class="ora-eco-pill">🏭 통합 ERP</a>
+      <a href="https://www.orawinch.com" target="_blank" onclick="if(location.hostname==='localhost'||location.hostname==='127.0.0.1'){this.href='/orawinch';}" class="ora-eco-pill">🌐 공식홈</a>
+      <a id="btnNavKimDaeri" href="http://localhost:3080" onclick="return openKimDaeriWeb(event)" target="_blank" class="ora-eco-pill">📣 김대리</a>
+      <span class="ora-eco-pill active">🎨 상세 스튜디오</span>
+      <a href="https://igan3w.github.io/sourcing" onclick="if(location.hostname==='localhost'||location.hostname==='127.0.0.1'){this.href='/sourcing';}" target="_blank" class="ora-eco-pill">🌏 소싱랩</a>
+      <a href="https://igan3w.github.io/strategy" onclick="if(location.hostname==='localhost'||location.hostname==='127.0.0.1'){this.href='/strategy';}" target="_blank" class="ora-eco-pill">📈 시장전략</a>
+      <a href="https://igan3w.github.io/erp" target="_blank" class="ora-eco-pill">🏭 ERP</a>
     </div>
     <div class="flex items-center gap-1.5 shrink-0">
       <div class="flex items-center bg-slate-950/90 border border-amber-500/55 rounded-md px-2 py-0.5 shrink-0">
@@ -404,16 +405,16 @@
       <!-- 탭 2: AI 통이미지 스튜디오 및 공식 실물 사진 관리 -->
       <div id="tabContent2" class="hidden flex-1 overflow-y-auto p-4 space-y-4 text-xs bg-slate-900">
 
-        <!-- [NEW] AI 상세페이지 통이미지 아트디렉터 스튜디오 -->
+        <!-- [UPGRADED v4.0] AI 올인원 풀-상세페이지 통이미지 아트디렉터 스튜디오 -->
         <div id="aiPosterDirectorCard" class="bg-gradient-to-br from-[#081b44] via-slate-900 to-[#0b2761] border border-sky-500/50 rounded-xl p-3.5 space-y-2.5 shadow-lg">
           <div class="flex items-center justify-between">
             <label class="font-black text-sky-300 text-xs flex items-center gap-1.5">
-              <i class="fa-solid fa-paintbrush text-amber-400"></i> ✨ AI 상세페이지 통이미지 스튜디오
+              <i class="fa-solid fa-paintbrush text-amber-400"></i> ✨ AI 올인원 상세페이지 통이미지
             </label>
-            <span class="text-[10px] bg-sky-500/20 text-sky-200 border border-sky-400/35 px-2 py-0.5 rounded-full font-black">860px 2x Retina</span>
+            <span class="text-[10px] bg-sky-500/20 text-sky-200 border border-sky-400/35 px-2 py-0.5 rounded-full font-black">860px 풀패키지 Retina</span>
           </div>
           <p class="text-[11px] text-slate-300 leading-relaxed">
-            원하는 분위기나 강조 포인트를 지시하면 <b>Gemini 카피·Imagen 실사·전문 860px 타이포 포스터 엔진</b>이 고해상도 상세페이지 통이미지를 즉시 디자인합니다.
+            선택 중인 <b>실제 상품 제원·실물·현장사진·비교표·FAQ·보증</b>까지 대행사 9개 챕터 전체를 <b>긴 1장 통이미지(860px)</b>로 한 번에 디자인합니다.
           </p>
 
           <!-- 스타일 & Imagen 실사 옵션 -->
@@ -426,23 +427,26 @@
             </select>
             <label class="flex items-center gap-1.5 bg-slate-950 border border-slate-700 rounded-lg px-2 py-1.5 text-[11px] text-slate-200 font-bold cursor-pointer select-none">
               <input type="checkbox" id="chkUseImagenBg" checked class="accent-sky-500">
-              <span>🌐 Imagen 실사배경 활용</span>
+              <span>🌐 Imagen 실사컷 융합</span>
             </label>
           </div>
 
-          <!-- 5대 통이미지 프리셋 칩 -->
+          <!-- 통이미지 제작 유형 선택 (올인원 풀-상세페이지 기본) -->
           <div class="grid grid-cols-2 gap-1.5">
-            <button type="button" onclick="selectPosterPreset('HERO_POSTER')" data-poster-preset="HERO_POSTER" class="poster-preset-btn bg-blue-600/35 border border-sky-400 text-white font-black py-1.5 px-2 rounded-lg text-[11px] text-left transition">
-              🏆 매거진 히어로 포스터
+            <button type="button" onclick="selectPosterPreset('ALL_IN_ONE_LONG')" data-poster-preset="ALL_IN_ONE_LONG" class="poster-preset-btn col-span-2 bg-gradient-to-r from-blue-600/60 to-sky-600/50 border border-sky-300 text-white font-black py-2 px-2.5 rounded-lg text-[11.5px] text-center transition shadow-md">
+              🏆 올인원 풀-상세페이지 1장 통이미지 (전체 9챕터 수록 · 강력 추천)
+            </button>
+            <button type="button" onclick="selectPosterPreset('HERO_POSTER')" data-poster-preset="HERO_POSTER" class="poster-preset-btn bg-slate-900 border border-slate-700 hover:border-sky-400 text-slate-200 font-bold py-1.5 px-2 rounded-lg text-[11px] text-left transition">
+              🥇 히어로 커버 단독컷
             </button>
             <button type="button" onclick="selectPosterPreset('SCENE_BANNER')" data-poster-preset="SCENE_BANNER" class="poster-preset-btn bg-slate-900 border border-slate-700 hover:border-sky-400 text-slate-200 font-bold py-1.5 px-2 rounded-lg text-[11px] text-left transition">
-              🏔️ 현장 실사·카피 합성컷
+              🏔️ 현장 실사·카피 컷
             </button>
             <button type="button" onclick="selectPosterPreset('PULLEY_INFOGRAPHIC')" data-poster-preset="PULLEY_INFOGRAPHIC" class="poster-preset-btn bg-slate-900 border border-slate-700 hover:border-emerald-400 text-slate-200 font-bold py-1.5 px-2 rounded-lg text-[11px] text-left transition">
               ⚙️ 도르래 2배 배력 도해컷
             </button>
             <button type="button" onclick="selectPosterPreset('SPEC_POSTER')" data-poster-preset="SPEC_POSTER" class="poster-preset-btn bg-slate-900 border border-slate-700 hover:border-amber-400 text-slate-200 font-bold py-1.5 px-2 rounded-lg text-[11px] text-left transition">
-              📐 정밀 제원 인포그래픽
+              📐 정밀 제원·비교표 컷
             </button>
             <button type="button" onclick="selectPosterPreset('TRUST_BANNER')" data-poster-preset="TRUST_BANNER" class="poster-preset-btn col-span-2 bg-slate-900 border border-slate-700 hover:border-cyan-400 text-slate-200 font-bold py-1.5 px-2 rounded-lg text-[11px] text-center transition">
               🛡️ 정품인증 · 오후 3시 당일출고 · 관공서 B2B 신뢰 배너
@@ -450,7 +454,7 @@
           </div>
 
           <!-- 자연어 디렉터 프롬프트 -->
-          <textarea id="posterDirectorPrompt" rows="2" placeholder="예: 산악 현장에서 혼자 1톤 원목을 거뜬히 끄는 압도적인 신뢰감의 메인 히어로 통이미지로 디자인해줘" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-2.5 py-2 text-[11.5px] text-white outline-none focus:border-sky-400 resize-none leading-snug"></textarea>
+          <textarea id="posterDirectorPrompt" rows="2" placeholder="예: 저가 중국 직구 대비 내구성과 도르래 2배 배력을 강조하고, 관공서 세금계산서·오후 3시 당일출고까지 한 장에 꽉 차게 디자인해줘" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-2.5 py-2 text-[11.5px] text-white outline-none focus:border-sky-400 resize-none leading-snug"></textarea>
 
           <!-- 실행 버튼 2종 -->
           <div class="grid grid-cols-2 gap-1.5">
@@ -458,7 +462,7 @@
               <i class="fa-solid fa-sparkles text-yellow-200"></i> 선택 1장 통이미지 제작
             </button>
             <button type="button" id="btnRunPosterPack" onclick="runAiPosterDirector('FULL_PACK')" class="bg-gradient-to-r from-amber-500 to-orange-500 hover:brightness-110 text-slate-950 font-black py-2 px-2 rounded-lg text-[11px] shadow flex items-center justify-center gap-1 transition">
-              <i class="fa-solid fa-layer-group"></i> 풀세트 4장 일괄 제작
+              <i class="fa-solid fa-layer-group"></i> 섹션별 4장 분할세트
             </button>
           </div>
 
@@ -6926,8 +6930,8 @@ D. 담백한 명사형 종결 또는 짧은 존댓말 단문. 느낌표·이모�
       showToast('🎨 카본 고해상도 시나리오 인포그래픽 합성 완료!');
     };
 
-    // ==================== [NEW] AI 상세페이지 860px 2x 통이미지 아트디렉터 엔진 ====================
-    window.ACTIVE_POSTER_PRESET = 'HERO_POSTER';
+    // ==================== [v4.0 UPGRADE] AI 올인원 풀-상세페이지 860px 통이미지 아트디렉터 엔진 ====================
+    window.ACTIVE_POSTER_PRESET = 'ALL_IN_ONE_LONG';
     window.GENERATED_POSTERS = [];
 
     window.openAiPosterDirector = function() {
@@ -6941,142 +6945,473 @@ D. 담백한 명사형 종결 또는 짧은 존댓말 단문. 느낌표·이모�
     window.selectPosterPreset = function(presetKey) {
       window.ACTIVE_POSTER_PRESET = presetKey;
       document.querySelectorAll('.poster-preset-btn').forEach(btn => {
-        const isSel = btn.getAttribute('data-poster-preset') === presetKey;
-        btn.className = isSel
-          ? 'poster-preset-btn ' + (presetKey === 'TRUST_BANNER' ? 'col-span-2 ' : '') + 'bg-blue-600/35 border border-sky-400 text-white font-black py-1.5 px-2 rounded-lg text-[11px] ' + (presetKey === 'TRUST_BANNER' ? 'text-center ' : 'text-left ') + 'transition shadow-sm'
-          : 'poster-preset-btn ' + (presetKey === 'TRUST_BANNER' && btn.getAttribute('data-poster-preset') === 'TRUST_BANNER' ? '' : (btn.getAttribute('data-poster-preset') === 'TRUST_BANNER' ? 'col-span-2 text-center ' : 'text-left ')) + 'bg-slate-900 border border-slate-700 hover:border-sky-400 text-slate-200 font-bold py-1.5 px-2 rounded-lg text-[11px] transition';
+        const key = btn.getAttribute('data-poster-preset');
+        const isSel = key === presetKey;
+        const isFull = key === 'ALL_IN_ONE_LONG' || key === 'TRUST_BANNER';
+        if (isSel) {
+          btn.className = 'poster-preset-btn ' + (isFull ? 'col-span-2 text-center ' : 'text-left ') +
+            'bg-gradient-to-r from-blue-600/60 to-sky-600/50 border border-sky-300 text-white font-black ' +
+            (key === 'ALL_IN_ONE_LONG' ? 'py-2 px-2.5 text-[11.5px] ' : 'py-1.5 px-2 text-[11px] ') +
+            'rounded-lg transition shadow-md';
+        } else {
+          btn.className = 'poster-preset-btn ' + (isFull ? 'col-span-2 text-center ' : 'text-left ') +
+            'bg-slate-900 border border-slate-700 hover:border-sky-400 text-slate-200 font-bold ' +
+            (key === 'ALL_IN_ONE_LONG' ? 'py-2 px-2.5 text-[11.5px] ' : 'py-1.5 px-2 text-[11px] ') +
+            'rounded-lg transition';
+        }
       });
     };
 
-    function roundRectBox(ctx, x, y, w, h, r) {
-      const rad = Math.min(r, w / 2, h / 2);
-      ctx.beginPath();
-      ctx.moveTo(x + rad, y);
-      ctx.arcTo(x + w, y, x + w, y + h, rad);
-      ctx.arcTo(x + w, y + h, x, y + h, rad);
-      ctx.arcTo(x, y + h, x, y, rad);
-      ctx.arcTo(x, y, x + w, y, rad);
-      ctx.closePath();
-    }
-
-    function drawWrappedKrText(ctx, text, x, y, maxW, lineH, maxLines = 3) {
-      const words = String(text || '').trim().split(/\s+/);
-      let line = '';
-      let curY = y;
-      let drawn = 0;
-      for (let i = 0; i < words.length; i++) {
-        const test = line ? line + ' ' + words[i] : words[i];
-        if (ctx.measureText(test).width > maxW && line) {
-          ctx.fillText(line, x, curY);
-          drawn++;
-          if (drawn >= maxLines) return curY + lineH;
-          curY += lineH;
-          line = words[i];
-        } else {
-          line = test;
-        }
-      }
-      if (line && drawn < maxLines) {
-        ctx.fillText(line, x, curY);
-        curY += lineH;
-      }
-      return curY;
-    }
-
-    function loadCanvasImg(src) {
-      return new Promise(resolve => {
-        if (!src) return resolve(null);
-        const im = new Image();
-        im.crossOrigin = 'anonymous';
-        const timer = setTimeout(() => resolve(null), 5000);
-        im.onload = () => { clearTimeout(timer); resolve(im); };
-        im.onerror = () => { clearTimeout(timer); resolve(null); };
-        im.src = src;
-      });
-    }
-
     function getPosterThemePalette(themeKey) {
       const map = {
-        ROYAL_BLUE: { bg1: '#07225A', bg2: '#0F3D99', card: 'rgba(255,255,255,0.96)', cardText: '#0F172A', accent: '#38BDF8', gold: '#FBBF24', titleColor: '#FFFFFF', subColor: '#DBEAFE', lightBand: '#EFF6FF' },
-        EDITORIAL_WHITE: { bg1: '#F8FAFF', bg2: '#E8F1FE', card: '#FFFFFF', cardText: '#0F172A', accent: '#1D4ED8', gold: '#0284C7', titleColor: '#07225A', subColor: '#334155', lightBand: '#07225A' },
-        DARK_PRO: { bg1: '#080E1E', bg2: '#121E36', card: 'rgba(15,23,42,0.94)', cardText: '#F8FAFC', accent: '#F59E0B', gold: '#FBBF24', titleColor: '#FFFFFF', subColor: '#CBD5E1', lightBand: '#1E293B' },
-        FIELD_ORANGE: { bg1: '#111827', bg2: '#1E293B', card: '#FFFFFF', cardText: '#0F172A', accent: '#F97316', gold: '#FBBF24', titleColor: '#FFFFFF', subColor: '#E2E8F0', lightBand: '#FFF7ED' }
+        ROYAL_BLUE: {
+          primary: '#1D4ED8', dark: '#07225A', soft: '#EFF6FF', border: '#BFDBFE',
+          accent: '#38BDF8', gold: '#FBBF24', heroBg1: '#05163B', heroBg2: '#0F3D99',
+          heroTitle: '#FFFFFF', heroSub: '#DBEAFE', cardBg: '#FFFFFF', ink: '#0F172A'
+        },
+        EDITORIAL_WHITE: {
+          primary: '#1D4ED8', dark: '#0F172A', soft: '#F8FAFC', border: '#CBD5E1',
+          accent: '#2563EB', gold: '#D97706', heroBg1: '#0F172A', heroBg2: '#1E293B',
+          heroTitle: '#FFFFFF', heroSub: '#CBD5E1', cardBg: '#FFFFFF', ink: '#0F172A'
+        },
+        DARK_PRO: {
+          primary: '#D97706', dark: '#090D16', soft: '#FFFBEB', border: '#FDE68A',
+          accent: '#F59E0B', gold: '#FBBF24', heroBg1: '#070B14', heroBg2: '#16213E',
+          heroTitle: '#FFFFFF', heroSub: '#E2E8F0', cardBg: '#FFFFFF', ink: '#0F172A'
+        },
+        FIELD_ORANGE: {
+          primary: '#EA580C', dark: '#7C2D12', soft: '#FFF7ED', border: '#FED7AA',
+          accent: '#FB923C', gold: '#FACC15', heroBg1: '#111827', heroBg2: '#1F2937',
+          heroTitle: '#FFFFFF', heroSub: '#E5E7EB', cardBg: '#FFFFFF', ink: '#0F172A'
+        }
       };
       return map[themeKey] || map.ROYAL_BLUE;
     }
 
-    async function fetchDirectorCopyAndScene(presetType, userPrompt, p, useImagenBg) {
+    function escPosterHtml(s) {
+      return String(s == null ? '' : s)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+
+    function extractStudioProductContext(rawP) {
+      const p = rawP || curProduct || {};
       const code = p.code || 'PCW-5000';
-      const pull = p.pull || p.cap || '정격 하중 준수';
-      const eng = p.engine || '산업용 정품 구동계';
-      const wt = p.weight || '경량 고강도 바디';
+      const isBattery = Boolean(p.category?.includes('배터리') || code === 'PCW-3000LI' || code === 'APW-6000');
+      const isHoist = Boolean(p.category?.includes('호이스트') || p.name?.includes('호이스트') || code.startsWith('KD-'));
+      const isSpecialTruck = Boolean(p.category?.includes('특장') || /^(DV-|HV-|RKEP-|DHC-)/.test(code) || (p.name && (p.name.includes('특장') || p.name.includes('12V') || p.name.includes('24V'))));
+      const isHydraulicOrManual = !isBattery && !isHoist && Boolean(isSpecialTruck || p.category?.includes('운반') || p.category?.includes('수동') || p.name?.includes('파레트') || p.name?.includes('스태커') || p.name?.includes('리프트') || p.name?.includes('블럭'));
+      const isElectric = !isBattery && !isHoist && !isHydraulicOrManual && Boolean(p.category?.includes('전동') || p.category?.includes('미니') || /^(DU|YT|FY|RT|KW|PU|FU|CP|GX|CWG|CW)/.test(code));
+      const isEngine = !isBattery && !isElectric && !isHoist && !isHydraulicOrManual;
+      const isPortableWinchCo = code.startsWith('PCW-') || code.startsWith('PCH-');
+      const isDocma = code.startsWith('VF-');
 
-      const fallbackMap = {
-        HERO_POSTER: {
-          kicker: `ORATECH OFFICIAL EDITION · ${code}`,
-          h1: p.headline ? String(p.headline).slice(0, 18) : `현장 하중의 기준, ${code}`,
-          h2: `정격 ${pull} · ${eng.split('(')[0].trim()}`,
-          sub: p.subheadline ? String(p.subheadline).slice(0, 48) : `허수 없는 1단 직결 정격 파워와 청계천 본사 직영 순정부품 A/S를 보증합니다.`,
-          bullets: [`정격 ${pull} 보증`, eng.slice(0, 26), `자체중량 ${wt}`],
-          cta: `공식 수입원 (주)오라테크 · 당일 화물 상차`
-        },
-        SCENE_BANNER: {
-          kicker: `FIELD PERFORMANCE · ${code}`,
-          h1: `거친 산악·산업 현장에서도`,
-          h2: `지치지 않는 연속 견인력`,
-          sub: userPrompt ? userPrompt.slice(0, 48) : `${code}만의 고토크 감속 설계로 장거리 고하중 작업을 단 1~2인이 안전하게 완수합니다.`,
-          bullets: ['고토크 정밀 감속기', '과부하·역회전 차단', '15시 이전 당일출고'],
-          cta: `현장 맞춤형 세팅 기술상담 1600-5157`
-        },
-        PULLEY_INFOGRAPHIC: {
-          kicker: `MECHANICAL ADVANTAGE · 2X POWER`,
-          h1: `스윙 도르래 1개 결합으로`,
-          h2: `견인 하중이 정확히 2배로 증폭`,
-          sub: `1:1 단선 직결 대비 활차 복선(2:1) 구성 시 기계에 걸리는 부하가 절반으로 분산되어 수명까지 연장됩니다.`,
-          bullets: ['1단 단선 정격 하중', '도르래 1개 = 정확히 2배', '로프·와이어 피로도 50% 감소'],
-          cta: `(주)오라테크 정품 도르래·슬링 풀패키지 호환`
-        },
-        SPEC_POSTER: {
-          kicker: `CERTIFIED TECHNICAL SPEC SHEET`,
-          h1: `[${code}] 엔지니어링 정밀 제원`,
-          h2: `비교 불가한 정품 하드웨어 스펙`,
-          sub: `${p.origin || '(주)오라테크 공식 수입 정품'} · 현장 발주 및 관공서 규격서 제출용 공식 데이터입니다.`,
-          bullets: [`정격하중: ${pull}`, `작업속도: ${p.speed || '카탈로그 기준'}`, `제동장치: 자동 안전 브레이크`],
-          cta: `공식 카탈로그 규격서 · 도면 PDF 즉시 발급`
-        },
-        TRUST_BANNER: {
-          kicker: `OFFICIAL GENUINE WARRANTY & B2B`,
-          h1: `(주)오라테크 본사 직영 출고 보증`,
-          h2: `전자세금계산서 · 순정부품 100% 상시 보유`,
-          sub: `비교견적서·나라장터 규격서 5분 내 발행, 오후 3시 이전 결제 건 당일 경동화물·택배 직송 원칙을 지킵니다.`,
-          bullets: ['국세청 세금계산서 당일발행', '청계천 직영 정비센터 완비', '관공서·법인 후불 협의'],
-          cta: `대표 기술영업 직통 1600-5157 · 010-8931-7788`
+      let defaultHeroImg = p.img || '';
+      let modelBasicKitImg = '';
+      let multiAngleImgs = [];
+      let cadImg = '';
+      let hwMacros = [];
+      let accCards = [];
+
+      let pullCap = p.pull || p.cap || '1,000 kg';
+      let doublePull = '2,000 kg (2톤)';
+      let triplePull = '3,000 kg (3톤)';
+      let maxPull = '4,000 kg (4톤)';
+      let weight = p.weight || '16.0 kg';
+      let speed = p.speed || '분당 12m';
+      let engine = p.engine || '일본 HONDA 정품 4행정 OHV 엔진';
+      let ropeSpec = p.rope || '12mm 더블브레이드 저신율 폴리에스터 로프';
+      let dimensions = p.size || '371 × 366 × 366 mm';
+      let drumSpec = '76mm 알루미늄 합금 캡스턴 드럼';
+      let gearRatio = '110 : 1 (침탄 열처리 합금강 기어박스)';
+      let brakeSystem = '캡스턴 오일러 마찰 제어 + 역회전 차단 락';
+      let certSpec = 'CE 유럽안전인증 · ISO 9001 · 오라테크 정품 검수';
+
+      if (code === 'PCW-3000') {
+        defaultHeroImg = 'ora_assets/PCW3000-Collection.jpg';
+        modelBasicKitImg = 'ora_assets/clean_kit_pcw3000.jpg';
+        pullCap = '700 kg'; doublePull = '1,400 kg (1.4톤)'; triplePull = '2,100 kg (2.1톤)'; maxPull = '2,800 kg (2.8톤)';
+        weight = '9.5 kg'; speed = '분당 10m';
+        engine = '일본 HONDA 정품 GX-35 4행정 (35.8cc / 360도 전방향)';
+        ropeSpec = '10mm 더블브레이드 저신율 폴리에스터 (PCA-1205M)';
+        dimensions = '350 × 289 × 261 mm'; gearRatio = '200 : 1 (오일배스 밀폐형 감속 기어박스)';
+      } else if (code === 'PCW-4000') {
+        defaultHeroImg = 'ora_assets/PCW4000-Collection.jpg';
+        modelBasicKitImg = 'ora_assets/clean_kit_pcw4000.jpg';
+        multiAngleImgs = [
+          { url: 'ora_assets/single_angle_4000_side.jpg', label: '측면 프레임 · 가이드 구조' },
+          { url: 'ora_assets/single_angle_4000_engine.jpg', label: '혼다 GX-50 엔진부 정밀 컷' },
+          { url: 'ora_assets/single_angle_4000_front.jpg', label: '원심클러치 · 안티리버스 브레이크' }
+        ];
+        pullCap = '1,000 kg'; doublePull = '2,000 kg (2톤)'; triplePull = '3,000 kg (3톤)'; maxPull = '4,000 kg (4톤)';
+        weight = '12.0 kg'; speed = '분당 13.4m';
+        engine = '일본 HONDA 정품 GX-50 4행정 (47.9cc / 전방향)';
+        ropeSpec = '10~12mm 더블브레이드 저신율 폴리에스터 (PCA-1215M)';
+        dimensions = '420 × 300 × 310 mm';
+        drumSpec = '76mm 알루미늄 합금 캡스턴 드럼 (원심클러치 연동)';
+        brakeSystem = '자동 원심클러치 + 퀵 릴리즈 역회전 방지 락(Anti-Reverse)';
+      } else if (code === 'PCW-5000' || code === 'PCW-5000HS') {
+        defaultHeroImg = 'ora_assets/PCW5000-Collection.jpg';
+        modelBasicKitImg = 'ora_assets/clean_kit_pcw5000.jpg';
+        multiAngleImgs = [
+          { url: 'ora_assets/single_angle_5000_front.jpg', label: '정면 캡스턴 드럼 · 로프 진입부' },
+          { url: 'ora_assets/single_angle_5000_side.jpg', label: '측면 기어박스 · 엔진 마운트' },
+          { url: 'ora_assets/single_angle_5000_rear.jpg', label: '후면 고하중 슬링 결속 후크' }
+        ];
+        pullCap = code === 'PCW-5000HS' ? '350 kg' : '1,000 kg';
+        doublePull = code === 'PCW-5000HS' ? '700 kg' : '2,000 kg (2톤)';
+        triplePull = code === 'PCW-5000HS' ? '1,050 kg' : '3,000 kg (3톤)';
+        maxPull = code === 'PCW-5000HS' ? '1,400 kg' : '5,000 kg (5톤)';
+        weight = '16.0 kg';
+        speed = code === 'PCW-5000HS' ? '분당 36m (초고속)' : '분당 12m (85mm 드럼 시 18m)';
+        engine = '일본 HONDA 정품 GXH-50 OHV 4행정 (49cc / 2.1마력)';
+        dimensions = '371 × 366 × 366 mm';
+        drumSpec = code === 'PCW-5000HS' ? '85mm 하이스피드 알루미늄 캡스턴 드럼' : '57mm 표준 드럼 (85mm 고속 드럼 호환)';
+        gearRatio = code === 'PCW-5000HS' ? '53 : 1 (초고속 전용 기어비)' : '110 : 1 (침탄 열처리 합금강 기어박스)';
+      } else if (code === 'PCW-4500') {
+        defaultHeroImg = 'ora_assets/PCW4500-Collection.jpg';
+        pullCap = '1,200 kg'; doublePull = '2,400 kg (2.4톤)'; triplePull = '3,600 kg'; maxPull = '4,800 kg';
+        weight = '12.6 kg'; speed = '분당 12m'; engine = '고출력 산업용 엔진 (원심클러치 일체형)';
+        dimensions = '410 × 310 × 320 mm'; brakeSystem = '원심클러치 + 일체형 로프 락 브레이크';
+      } else if (code === 'PCW-3000LI') {
+        defaultHeroImg = 'ora_assets/PCW3000Li-Collection.jpg';
+        modelBasicKitImg = 'ora_assets/clean_kit_pcw3000li.jpg';
+        multiAngleImgs = [
+          { url: 'ora_assets/PCW3000-Li-Collection1.jpg', label: '82V 배터리 슬롯 · 3단 속도 제어부' },
+          { url: 'ora_assets/PCW3000-Li-Collection2.jpg', label: '캡스턴 드럼 · 로프 가이드 라인' }
+        ];
+        pullCap = '1,000 kg'; doublePull = '2,000 kg (2톤)'; triplePull = '3,000 kg'; maxPull = '4,000 kg';
+        weight = '9.5 kg (배터리 제외)'; speed = '1단 8.1m / 2단 9.9m / 3단 11.6m (분당)';
+        engine = '82V 하이퍼 브러시리스 DC 모터 (1,000W / 디지털 3단 변속)';
+        ropeSpec = '10~12mm 더블브레이드 저신율 폴리에스터 전용 로프';
+        dimensions = '318 × 302 × 310 mm'; gearRatio = '200 : 1 (유성/헬리컬 고효율 밀폐형)';
+        brakeSystem = '스마트 BMS 과부하 차단 + 캡스턴 마찰 제동';
+      } else if (code === 'APW-6000') {
+        defaultHeroImg = 'ora_assets/apw6000_main_prod.jpg';
+        multiAngleImgs = [
+          { url: 'ora_assets/apw6000_slide2.jpg', label: '36V STIHL 배터리 결합부' },
+          { url: 'ora_assets/apw6000_slide3.jpg', label: '고강도 알루미늄 하우징 컷' }
+        ];
+        pullCap = '600 kg'; doublePull = '1,200 kg (1.2톤)'; triplePull = '1,800 kg'; maxPull = '2,400 kg';
+        weight = '8.5 kg (배터리 제외)'; speed = '디지털 3단 가변 제어';
+        engine = '36V STIHL 호환 브러시리스 모터 (AP 500 S 호환)';
+        dimensions = '340 × 290 × 280 mm'; brakeSystem = '스마트 전자식 부하 제어 + 마찰 제동';
+      } else if (code.startsWith('DU-')) {
+        defaultHeroImg = code === 'DU-200' ? 'ora_assets/DU-200.jpg' : (code === 'DU-250' ? 'ora_assets/DU-250.jpg' : (code === 'DU-300A' ? 'ora_assets/DU-300A.jpg' : 'ora_assets/duke_main.jpg'));
+        cadImg = 'ora_assets/DU_dim.jpg';
+        pullCap = p.cap || (code === 'DU-200' ? '200 kg' : (code === 'DU-250' ? '250 kg' : '300 kg'));
+        const numCap = parseInt(String(pullCap).replace(/[^0-9]/g, ''), 10) || 250;
+        doublePull = (numCap * 2).toLocaleString() + ' kg (복선 2배)';
+        triplePull = '안전율 5:1 설계'; maxPull = (numCap * 2).toLocaleString() + ' kg';
+        weight = code === 'DU-200' ? '14.0 kg' : '15.0 kg';
+        speed = '단선 15~23m/min (복선 7.5~11.5m/min)';
+        engine = code === 'DU-200' ? '단상 220V 60Hz 100% 순동선 모터 (1,200W)' : '단상 220V 60Hz 100% 순동선 모터 (1,300W)';
+        ropeSpec = '외경 5mm × 30m 항공기용 고장력 아연도금 와이어로프';
+        dimensions = '240 × 180 × 660 mm (DUKE 표준 규격)';
+        drumSpec = '정밀 홈 가공 강철 와이어 권상 드럼';
+        gearRatio = '합금강 열처리 유성기어 감속 시스템';
+        brakeSystem = '듀얼 전자식 마그네틱 + 기계식 래칫 (정전 0.05초 잠금)';
+      } else if (code.startsWith('CP-')) {
+        defaultHeroImg = (code === 'CP-500' || code === 'CP-1000T') ? 'ora_assets/duke_cp_hydraulic.jpg' : 'ora_assets/CP-200.jpg';
+        cadImg = 'ora_assets/CP_dim.jpg';
+        pullCap = p.cap || '500 kg';
+        const numCap = parseInt(String(pullCap).replace(/[^0-9]/g, ''), 10) || 500;
+        doublePull = (numCap * 2).toLocaleString() + ' kg (복선 2배)';
+        maxPull = (numCap * 2).toLocaleString() + ' kg';
+        engine = '산업용 고토크 순동선 유도 전동기';
+        ropeSpec = '항공기용 고장력 아연도금 와이어로프';
+        brakeSystem = '전자식 마그네틱 + 기계식 듀얼 브레이크';
+      } else if (code === 'VF-150' || code === 'VF-155') {
+        defaultHeroImg = 'ora_assets/docma_vf150_main.jpg';
+        multiAngleImgs = [{ url: 'ora_assets/docma_vf150_detail.jpg', label: 'DOCMA 특허 자동정렬 와인딩 & 브레이크' }];
+        pullCap = '1,420 kg'; doublePull = '2,840 kg (도르래 복선)'; triplePull = '4,260 kg'; maxPull = '2,840 kg';
+        weight = '25.5 kg'; speed = '분당 20m';
+        engine = code === 'VF-155' ? '일본 HONDA GX-50 4행정 엔진' : '이탈리아 DOCMA 54.2cc 고출력 산림 엔진';
+        ropeSpec = '고장력 아연도금 와이어로프 / 섬유로프 내장 드럼';
+        dimensions = '590 × 360 × 360 mm';
+        drumSpec = '특허 자동 정렬 와인딩(Auto-Winding) 강철 드럼';
+        brakeSystem = '스로틀 연동 자동 정지 안전 브레이크';
+      } else if (code === 'VF-80') {
+        defaultHeroImg = 'ora_assets/docma_vf80_bolt.jpg';
+        pullCap = '815 kg'; doublePull = '1,630 kg (복선 2배)'; maxPull = '1,630 kg';
+        weight = '10.5 kg'; speed = '분당 15m'; engine = '이탈리아 DOCMA VF-80 Bolt';
+        ropeSpec = '10~12mm 저신율 섬유로프'; dimensions = '350 × 290 × 250 mm';
+        brakeSystem = '퀵 릴리즈 캠 잠금 역회전 방지';
+      } else if (isSpecialTruck) {
+        pullCap = p.pull || p.cap || '4,082 kg (9,000LB)';
+        const numKg = parseInt(String(pullCap).replace(/[^0-9]/g, ''), 10) || 4082;
+        doublePull = (numKg * 2).toLocaleString() + ' kg (활차 복선 2배)';
+        maxPull = doublePull;
+        engine = p.engine || 'DC 12V / 24V 차량 배터리 직결 직권 모터';
+        ropeSpec = p.rope || '고장력 아연도금 와이어로프 + 4-Way 롤러 페어리드';
+        brakeSystem = '외장형 기계식 콘 브레이크 (드럼 무발열 100% 홀딩)';
+      }
+
+      let heroImg = (p.images && p.images.mainClear) || defaultHeroImg || p.img || '';
+      if (typeof isBannedOrTextImage === 'function' && isBannedOrTextImage(heroImg)) {
+        heroImg = defaultHeroImg || '';
+      }
+
+      if (isPortableWinchCo) {
+        hwMacros = [
+          { url: 'ora_assets/macro_capstan.jpg', title: '거리 무제한 알루미늄 캡스턴 드럼', desc: '100m·300m를 감아도 드럼 반경이 커지지 않아 처음 1톤 힘 그대로 끝까지 당깁니다.' },
+          { url: 'ora_assets/macro_gearbox.jpg', title: '침탄 열처리 밀폐형 오일배스 기어박스', desc: '흙먼지와 수분 유입을 차단해 산악·현장 장시간 작업에도 기어 마모를 방지합니다.' }
+        ];
+        accCards = [
+          { url: 'ora_assets/pulley_hc_lf16.jpg', code: 'PCA-1274', name: '측면 개폐식 스윙 활차 도르래', desc: `로프 중간에 즉시 걸어 견인력 2배(${doublePull}) 증폭` },
+          { url: 'ora_assets/clean_rope_spool.jpg', code: 'PCA-1215M', name: '전용 저신율 더블브레이드 로프', desc: '늘어남·마찰열 손상 없는 캡스턴 전용 로프' },
+          { url: 'ora_assets/clean_carabiner.jpg', code: 'PCA-1276', name: '고인장 단조 스크류락 카라비너', desc: '진동에도 풀리지 않는 나사 잠금 안전 연결구' },
+          { url: 'ora_assets/clean_rope_bag.jpg', code: 'PCA-1255', name: '엉킴 방지 전용 로프 수납백', desc: '50~100m 로프를 현장에서 꼬임 없이 즉시 사출' }
+        ];
+      } else if (isElectric || isHoist) {
+        hwMacros = [
+          { url: 'ora_assets/duke_brake.jpg', title: '0.05초 마그네틱 + 기계식 듀얼 브레이크', desc: '스위치를 놓거나 갑작스러운 정전 시 즉시 디스크를 압착해 자재 밀림을 원천 차단합니다.' },
+          { url: 'ora_assets/duke_motor.jpg', title: '100% 전기동 순동선 & 알루미늄 방열 핀', desc: '저가 알루미늄 코일과 달리 연속 양중 작업에도 모터 과열 단선이 없습니다.' }
+        ];
+        accCards = [
+          { url: 'ora_assets/duke_cp_hook.jpg', code: '360° SWIVEL', name: '단조 스위블 안전 래치 후크', desc: '와이어 꼬임 방지 및 중량 자재 이탈 차단' },
+          { url: 'ora_assets/duke_switch.jpg', code: 'EMERGENCY', name: '비상정지 방우 펜던트 스위치', desc: '현장 위급 시 0.1초 즉시 전원 차단 비상 버튼' }
+        ];
+      } else if (isDocma) {
+        hwMacros = [
+          { url: 'ora_assets/docma_vf150_detail.jpg', title: 'DOCMA 특허 자동 왕복 와인딩 가이드', desc: '일반 드럼 윈치의 와이어 한쪽 쏠림·씹힘 없이 드럼 끝까지 촘촘히 정렬됩니다.' }
+        ];
+      }
+
+      const rawScenes = (p.images && Array.isArray(p.images.scenes)) ? p.images.scenes : [];
+      const cleanScenes = rawScenes
+        .filter(sc => sc && sc.url && (typeof isBannedOrTextImage !== 'function' || !isBannedOrTextImage(sc.url)))
+        .slice(0, 4);
+
+      if (cleanScenes.length === 0) {
+        if (isBattery) {
+          cleanScenes.push(
+            { url: 'ora_assets/site_single_telecom_cable.jpg', title: '지하 공동구·배전반 광케이블 무매연 포설', desc: '밀폐 공간 일산화탄소 걱정 없는 82V 배터리 직결 견인' },
+            { url: 'ora_assets/site_single_pole_line.jpg', title: '전신주·도심 야간공사 저소음 자재 인양', desc: '주택가 소음 민원 없이 정격 토크 그대로 작업 완료' }
+          );
+        } else if (isEngine || isDocma) {
+          cleanScenes.push(
+            { url: 'ora_assets/site_single_forestry_log.jpg', title: '산림청·임업 급경사 대경목 원목 집재', desc: '트랙터 진입 불가 경사면에서도 1인이 안전하게 원목 견인' },
+            { url: 'ora_assets/site_single_rigging_pulley.jpg', title: '스윙 도르래 복선(2:1) 고중량 리깅', desc: '활성 도르래 결합만으로 정격 하중을 정확히 2배로 증폭' }
+          );
+        } else if (isElectric || isHoist) {
+          cleanScenes.push(
+            { url: 'ora_assets/site_single_scaffold_pipe.jpg', title: '건설 비계·인테리어 옥상 자재 양중', desc: '일반 220V 전원 연결만으로 시멘트·타일·H빔 신속 인양' },
+            { url: 'ora_assets/site_single_mud_recovery.jpg', title: '공장·물류·설비 정밀 승강 및 거치', desc: '정전 브레이크 락으로 무거운 설비를 안전거리에서 제어' }
+          );
+        } else if (isSpecialTruck) {
+          cleanScenes.push(
+            { url: 'ora_assets/site_single_mud_recovery.jpg', title: '진흙·설원 차량 구난 및 농기계 자력 견인', desc: '강력한 직권 모터 토크로 험지 고립 차량 즉각 인양' },
+            { url: 'ora_assets/site_single_rock_hauling.jpg', title: '셀프로더 적재함 중량물·장애물 상하차', desc: '외장 기계식 콘 브레이크로 경사 적재 시 밀림 방지' }
+          );
         }
-      };
-      let copy = fallbackMap[presetType] || fallbackMap.HERO_POSTER;
-      let bgPhotoUrl = null;
+      }
 
+      const defaultProblems = isBattery ? [
+        '지하 맨홀·터널 내 엔진 매연 질식 위험 및 환기 작업 중단',
+        '도심·야간 공사 시 90dB 이상 내연기관 소음 민원',
+        '연료 혼합 번거로움 및 겨울철 리코일 시동 불량',
+        '와이어 감김에 따른 15m 거리 한계 및 견인력 반토막'
+      ] : ((isElectric || isHoist) ? [
+        '인력 자재 운반 중 추락·근골격계 중대재해 리스크',
+        '저가 알루미늄 코일 모터의 10분 과열 소손 현상',
+        '작업 중 정전·전원 차단 시 브레이크 밀림 및 낙하 사고',
+        '리미트 오작동으로 인한 와이어 과권취·드럼 파손'
+      ] : (isHydraulicOrManual ? [
+        '중량 파레트·금형 수동 취급 시 허리 부상·압착 위험',
+        '저가 유압 실린더 실(Seal) 불량으로 하중 서서히 침하',
+        '얇은 철판 프레임 휨 및 편하중 적재 시 비틀림',
+        '거친 공장 바닥에서 바퀴 파손 및 조향 불량'
+      ] : [
+        '산비탈에서 4~5명 맨몸 줄당김 시 연쇄 낙상·원목 충돌 위험',
+        '철사 와이어 드럼 윈치의 15m 거리 제한 및 겹침·씹힘 고장',
+        '와이어가 드럼에 쌓일수록 유효반경 증가로 힘 50% 반감',
+        '40kg 넘는 육중한 철드럼 무게로 차량 미진입 험지 투입 불가'
+      ]));
+
+      const defaultSolutions = isBattery ? [
+        `매연 0% · 초저소음: ${engine}로 밀폐 지하·실내·야간 100% 대응`,
+        `거리 무제한 연속 견인: 100m·300m 끝까지 정격 ${pullCap} 유지`,
+        `초경량 ${weight}: 배낭형/케이스 1인 휴대로 어디든 단독 투입`,
+        `도르래 복선 ${doublePull}: 스윙 활차 결합만으로 파워 정확히 2배`
+      ] : ((isElectric || isHoist) ? [
+        `100% 순동선 모터: 전압 강하 현장에서도 정격 ${pullCap} 고속 양중`,
+        `정전 0.05초 자동 잠금: 마그네틱+기계식 이중 브레이크 밀림 0mm`,
+        `상·하한 자동 리미트: 과권취 즉시 전원 차단해 모터·와이어 보호`,
+        `항공규격 ${ropeSpec}: 안전율 5배 설계 & 비상정지 펜던트 기본`
+      ] : (isHydraulicOrManual ? [
+        `고강도 단조 구조체: 정격 ${pullCap} 편하중에도 휨 없는 프레임`,
+        `무누유 정밀 유압: 과부하 바이패스 밸브로 실린더 파손 예방`,
+        `0.1mm 정밀 하강 밸브: 금형·설비 충격 없는 소프트 안착`,
+        `고하중 폴리우레탄 휠: 에폭시 바닥 손상 없는 정숙 주행`
+      ] : [
+        `로프 무제한 연속 권취: 100m든 300m든 ${pullCap} 동일 견인력`,
+        `혼다 순수 4행정 엔진: 오일 혼합 없는 무연휘발유 · 겨울 일발시동`,
+        `${weight} 1인 초경량 휴대: 차량 접근 불가 산악·절벽 즉시 투입`,
+        `스윙도르래 최대 ${maxPull}: 엔진 무리 없이 대경목·중장비 견인`
+      ]));
+
+      const packages = (Array.isArray(p.packages) && p.packages.length >= 3) ? p.packages : [
+        { badge: '실속형 STARTER', name: `1. [${code}] 본체 기본 스타터`, desc: (isEngine || isBattery) ? '본체 정품 + 2.5m 고하중 슬링벨트 + 국문 매뉴얼' : '장비 본체 + 기본 와이어/후크 + 유선 스위치 + 매뉴얼', extraPrice: '기본 판매가' },
+        { badge: 'BEST 현장 최다선택', name: `2. [${code}] 현장 즉시투입 PRO 세트`, desc: (isEngine || isBattery) ? '본체 + 2.5m 슬링 + 저신율 전용로프 50m + 수납백 + 카라비너' : '본체 + 거치 브라켓 + 360° 스위블 안전 후크 + 예비 안전핀', extraPrice: (isEngine || isBattery) ? '+ 350,000원' : '+ 150,000원' },
+        { badge: 'MASTER 풀패키지', name: `3. [${code}] 2배 배력 올인원 마스터`, desc: (isEngine || isBattery) ? '본체 + 저신율 로프 + 스윙도르래(PCA-1274) + 슬링2 + 카라비너2 + 수납케이스' : '본체 + 산업용 100m 무선 리모컨 세트 + 복선 도르래 블록 풀세트', extraPrice: (isEngine || isBattery) ? '+ 650,000원' : '+ 350,000원' }
+      ];
+
+      const comparisonRows = [
+        ['실측 정격 힘', '표기 톤수 절반 미만 · 부하 시 정지', `정격 ${pullCap} 보증 (도르래 복선 ${doublePull})`],
+        ['모터·엔진 내구성', '저가 알루미늄 코일/2T 매연 · 10분 과열', `${engine.split('(')[0].trim()} 연속 가동 설계`],
+        ['안전 제동 시스템', '제동력 약화 · 경사/정전 시 역회전 위험', brakeSystem],
+        ['A/S · 순정부품 수급', '해외 직구 일회용 · 고장 시 수리 불가', '청계천 본사 직영 정비실 · 부품 100% 상시 보유'],
+        ['B2B · 관공서 서류', '세금계산서·규격서 불가 / 영수증 누락', '당일 전자세금계산서 · G2B 비교견적 5분 발급']
+      ];
+
+      const fieldUses = (isEngine || isDocma) ? [
+        ['🌲 산림·임업 벌목 집재', '급경사 원목 직인 및 간벌 스키딩'],
+        ['⚡ 한전 송배전·광통신', '산악 철탑 자재 인양 · 지중 케이블 포설'],
+        ['🚒 119 산악·수난 구조', '계곡 응급 들것 인양 및 쓰러진 수목 제거'],
+        ['🚜 농기계·오프로드 구난', '진흙·눈길 고립 트럭/트랙터 자력 견인']
+      ] : (isBattery ? [
+        ['🚇 지하 공동구·밀폐 터널', '일산화탄소 배출 0% · 밀폐 관로 케이블 견인'],
+        ['🏙️ 도심·병원 야간공사', '엔진 굉음 민원 없는 초저소음 현장 투입'],
+        ['⚡ 전력·통신 관로 포설', '9.5kg 배낭 휴대로 맨홀·옥상 즉시 가동'],
+        ['🌲 친환경 국립공원 정비', '기름 유출·화재 스파크 없는 공원 데크 시공']
+      ] : [
+        ['🏗️ 비계·건축 고층 양중', '220V 콘센트 직결 타일·시멘트·파이프 인양'],
+        ['⚙️ 공장 금형·설비 거치', '사출 금형·모터 정밀 승강 및 위치 정렬'],
+        ['📦 복층 물류창고 하역', '지게차 미진입 중2층·지하 파레트 상하차'],
+        ['🚛 특장·화물 적재함', '고중량 설비·차량 상차 및 험지 견인']
+      ]);
+
+      const defaultFaq = (isPortableWinchCo) ? [
+        { q: 'Q1. 로프는 최대 몇 미터까지 연결할 수 있나요?', a: `캡스턴 방식은 로프가 드럼에 쌓이지 않아 50m·100m·300m 제한 없이 ${pullCap} 힘을 동일하게 유지합니다.` },
+        { q: 'Q2. 일반 나일론 줄이나 철사 와이어를 써도 되나요?', a: '절대 안 됩니다. 철 와이어는 드럼 손상, 일반 밧줄은 탄성 위험이 있어 반드시 전용 저신율 폴리에스터 로프를 사용하십시오.' },
+        { q: isBattery ? 'Q3. 배터리 1회 충전 시 몇 분 작업하나요?' : 'Q3. 연료는 오일을 섞어 넣어야 하나요?', a: isBattery ? '표준 작업 약 35~45분, 대용량 약 60~90분 연속 가동되며 예비 배터리 1초 교체로 종일 작업 가능합니다.' : '혼다 정품 4행정이므로 일반 자동차용 무연휘발유만 넣고 4행정 오일은 별도 주입구에 채우면 됩니다.' },
+        { q: 'Q4. 세금계산서 발행과 본사 A/S가 바로 되나요?', a: '(주)오라테크 본사 오후 3시 이전 당일 화물 상차, 전자세금계산서 즉시 발행 및 청계천 직영 정비실 A/S를 보증합니다.' }
+      ] : [
+        { q: `Q1. 일반 현장 전원으로 바로 작동하나요?`, a: `${engine.includes('220V') ? '일반 가정·현장 단상 220V 콘센트에 바로 꽂아 작동하며(연장선은 2.5sq 이상 권장)' : '사양에 맞는 전원/배터리 연결 즉시 가동되며'}, 현장 설치도 간편합니다.` },
+        { q: 'Q2. 작업 중 정전이나 전원 차단이 나면 짐이 떨어지나요?', a: '스위치를 놓거나 정전이 발생하면 0.05초 내에 전자식·기계식 브레이크가 즉시 잠겨 밀림 없이 고정됩니다.' },
+        { q: 'Q3. 표기 하중보다 무거울 때 두 배로 당길 수 있나요?', a: `동봉/옵션 도르래로 복선(2:1) 세팅하시면 부하가 절반씩 분산되어 ${doublePull}까지 안전하게 끌어올립니다.` },
+        { q: 'Q4. 관공서 비교견적서와 A/S 부품 수급이 가능한가요?', a: '전자세금계산서 당일 발행·나라장터 규격서 5분 발급 및 (주)오라테크 청계천 정비실 순정부품 A/S를 전담 지원합니다.' }
+      ];
+
+      const priceLabel = p.price ? Number(p.price).toLocaleString() + '원' : 'B2B 특가 상담 (1600-5157)';
+      const categoryBadge = isBattery ? 'ECO CORDLESS BATTERY WINCH'
+        : (isHoist ? 'INDUSTRIAL ELECTRIC HOIST'
+        : (isElectric ? '220V HEAVY-DUTY ELECTRIC WINCH'
+        : (isHydraulicOrManual ? 'PRECISION HYDRAULIC & RIGGING'
+        : (isDocma ? 'ITALY DOCMA FORESTRY WINCH' : 'CANADA PORTABLE CAPSTAN WINCH'))));
+
+      return {
+        p, code, name: p.name || code, origin: p.origin || '(주)오라테크 공식 수입 정품', priceLabel, categoryBadge,
+        isBattery, isHoist, isSpecialTruck, isHydraulicOrManual, isElectric, isEngine, isPortableWinchCo, isDocma,
+        heroImg, modelBasicKitImg, multiAngleImgs, cadImg, hwMacros, accCards, cleanScenes,
+        pullCap, doublePull, triplePull, maxPull, weight, speed, engine, ropeSpec, dimensions,
+        drumSpec, gearRatio, brakeSystem, certSpec, dutyCycle: p.dutyCycle || '산업용 안전 정격 연속 가동',
+        problems: (Array.isArray(p.problemList) && p.problemList.length >= 4) ? p.problemList.slice(0, 4) : defaultProblems,
+        solutions: (Array.isArray(p.solutionFeatures) && p.solutionFeatures.length >= 4) ? p.solutionFeatures.slice(0, 4) : defaultSolutions,
+        packages, comparisonRows, fieldUses, faqList: defaultFaq
+      };
+    }
+
+    function smartTrimCopy(text, maxLen) {
+      const s = String(text || '').replace(/\s+/g, ' ').trim();
+      if (s.length <= maxLen) return s;
+      const cut = s.slice(0, maxLen);
+      const minKeep = Math.floor(maxLen * 0.55);
+      const lastBreak = Math.max(cut.lastIndexOf(' '), cut.lastIndexOf('·'), cut.lastIndexOf(','));
+      return (lastBreak >= minKeep ? cut.slice(0, lastBreak) : cut).replace(/[\s,·(]+$/, '').trim();
+    }
+
+    async function fetchDirectorCopyAndScene(presetType, userPrompt, ctx, useImagenBg) {
+      const { code, pullCap, doublePull, maxPull, engine, weight, speed, isBattery, isElectric, isHoist, isHydraulicOrManual, isSpecialTruck, isDocma } = ctx;
+      const defaultCorePillars = [
+        { tag: '01 · 정격 파워트레인', title: engine.split('(')[0].trim(), desc: `허수 없는 정격 ${pullCap} 실측 출력으로 첫 가동부터 흔들림 없이 작업합니다.` },
+        { tag: '02 · 2배 배력 확장', title: `도르래 결합 ${doublePull}`, desc: `활차 리깅 시 로프 장력이 50:50 분산되어 최대 ${maxPull} 고중량까지 대응합니다.` },
+        { tag: '03 · 기동·속도 균형', title: `${weight} · ${speed}`, desc: `현장 이동·거치 부담은 줄이고 1시간 작업량을 압도적으로 끌어올립니다.` },
+        { tag: '04 · 무사고 안전 제동', title: '역회전·정전 즉각 락', desc: `${ctx.brakeSystem.split('(')[0].trim()} 적용으로 작업자 추락·낙하 리스크를 차단합니다.` }
+      ];
+
+      const cleanPrompt = String(userPrompt || '').trim();
+      const baseHeadline = ctx.p.tagline
+        ? smartTrimCopy(ctx.p.tagline, 36)
+        : smartTrimCopy(`[${code}] ${ctx.name}`, 36);
+      const baseSub = ctx.p.subTagline
+        ? smartTrimCopy(ctx.p.subTagline, 130)
+        : `저가 직구·모조품과 비교 불가한 실측 파워와 청계천 본사 직영 순정부품 A/S를 한 대에 담았습니다.`;
+
+      const fallbackCopy = {
+        kicker: `ORATECH OFFICIAL MASTERPIECE · ${code}`,
+        h1: baseHeadline,
+        h2: smartTrimCopy(`정격 ${pullCap} (배력 ${doublePull}) · ${engine.split('(')[0].trim()}`, 48),
+        sub: baseSub,
+        corePillars: defaultCorePillars,
+        sceneHeadline: `[${code}] 거친 실제 현장 투입 리얼 컷`,
+        sceneCopy: cleanPrompt ? smartTrimCopy(`${cleanPrompt} — ${code} 현장의 악조건에서도 멈추지 않는 정품 내구성`, 96) : `산림·전력·건설·특장 현장에서 실제로 검증된 ${code}의 실전 작업 퍼포먼스입니다.`,
+        buyingCheckpoint: `구매 전 꼭 확인하세요: ${code}는 오후 3시 이전 결제 시 당일 경동화물·택배 직발송되며, 관공서·기업 비교견적서 및 전자세금계산서를 5분 내 즉시 발행해 드립니다.`,
+        bullets: [`정격 ${pullCap}`, engine.split('(')[0].trim().slice(0, 20), `중량 ${weight}`],
+        cta: `(주)오라테크 본사 직영 출고 · 기술영업 직통 1600-5157`,
+        imagenScene: isBattery
+          ? `Photorealistic industrial editorial photograph of a clean modern underground concrete utility tunnel or quiet green forest work zone, heavy-duty steel rigging rope, dramatic crisp daylight, clean cinematic composition, no text, no watermarks`
+          : ((isElectric || isHoist)
+            ? `Photorealistic industrial architectural photograph of a modern construction scaffolding site and steel beam lifting crane zone under clear blue sky, crisp engineering lighting, no text, no logos`
+            : (isSpecialTruck || isHydraulicOrManual
+              ? `Photorealistic commercial photograph of a heavy industrial warehouse loading bay and rugged utility recovery vehicle flatbed rigging area, clean bright studio daylight, no text`
+              : `Photorealistic editorial photograph of a rugged misty Korean pine forest logging slope with heavy timber logs and crisp morning sunlight, high contrast commercial tone, no text, no watermarks`))
+      };
+
+      if (presetType === 'PULLEY_INFOGRAPHIC') {
+        fallbackCopy.h1 = `스윙 도르래 1개로 당김힘 2배 (${doublePull})`;
+        fallbackCopy.h2 = `1:1 단선 대비 기계 부하 50% 감소 · 안전율 극대화`;
+      } else if (presetType === 'SPEC_POSTER') {
+        fallbackCopy.h1 = `[${code}] 공식 엔지니어링 정밀 제원`;
+        fallbackCopy.h2 = `관공서·G2B·현장 발주 제출용 실측 스펙 데이터`;
+      } else if (presetType === 'TRUST_BANNER') {
+        fallbackCopy.h1 = `(주)오라테크 공식 수입 정품 출고 보증`;
+        fallbackCopy.h2 = `당일 오후 3시 화물 상차 · 전자세금계산서 · 직영 정비실`;
+      }
+
+      let copy = fallbackCopy;
+      let bgPhotoUrl = null;
       const apiKey = getGeminiKey();
       const canProxy = window.location.protocol.startsWith('http') && !isStaticWebHost();
 
-      if ((apiKey || canProxy) && userPrompt && userPrompt.trim().length > 3) {
+      if ((apiKey || canProxy) && (cleanPrompt.length > 3 || presetType === 'ALL_IN_ONE_LONG')) {
         try {
           const ctrl = new AbortController();
-          const tid = setTimeout(() => ctrl.abort(), 8000);
-          const gemPrompt = `제품 [${code}] (${p.name}), 정격하중 [${pull}], 동력원 [${eng}], 속도 [${p.speed || '-'}].
-사용자 이미지 디자인 지시: "${userPrompt}"
-프리셋 유형: ${presetType}.
-AI 슬롭/번역체/느낌표 없이 실제 대한민국 산업장비 카피라이터 톤으로 JSON만 응답하세요:
-{"kicker":"영문대문자+코드 28자이내","h1":"임팩트 메인헤드 16자이내","h2":"보조헤드 20자이내","sub":"현장 핵심설명 45자이내","bullets":["칩1(14자)","칩2(14자)","칩3(14자)"],"imagenScene":"English clean editorial photography scene without any text, logo or watermark"}`;
+          const tid = setTimeout(() => ctrl.abort(), 20000);
+          const promptDesc = cleanPrompt || `${ctx.name}의 현장 작업 신뢰감, 저가 중국산 모조품과의 압도적 차이, 도르래 배력 및 당일출고·세금계산서 장점을 극대화해줘`;
+          const gemPrompt = `제품 [${code}] (${ctx.name}), 정격 [${pullCap}], 배력 [${doublePull}], 동력 [${engine}], 속도 [${speed}], 중량 [${weight}].
+사장님 제작 지시: "${promptDesc}"
+프리셋 모드: ${presetType}.
+AI 슬롭/번역투('혁신적','최상의','극대화','솔루션') 및 느낌표 없이 대한민국 산업기계 B2B 카피라이터 실무 톤으로 아래 JSON만 출력하세요:
+{
+  "kicker": "영문+모델코드 30자이내",
+  "h1": "완전한 임팩트 메인헤드 24자내외(단어끊김금지)",
+  "h2": "핵심스펙 서브헤드 32자내외",
+  "sub": "구매결정 후킹 완결문장 65자내외",
+  "corePillars": [
+    {"tag":"01 · 키워드","title":"소제목 16자이내","desc":"실제스펙 근거 설명 42자내외"},
+    {"tag":"02 · 키워드","title":"소제목 16자이내","desc":"실제스펙 근거 설명 42자내외"},
+    {"tag":"03 · 키워드","title":"소제목 16자이내","desc":"실제스펙 근거 설명 42자내외"},
+    {"tag":"04 · 키워드","title":"소제목 16자이내","desc":"실제스펙 근거 설명 42자내외"}
+  ],
+  "sceneHeadline": "현장 투입 컷 제목 26자내외",
+  "sceneCopy": "현장 활용 완결문장 55자내외",
+  "buyingCheckpoint": "구매전 핵심 체크포인트 75자내외",
+  "imagenScene": "Photorealistic English scene tailored specifically to this exact winch/hoist category with zero text or logos"
+}`;
+          const chosenModel = document.getElementById('topAiModelSelector')?.value || 'gemini-4-carbon';
           const endpoint = canProxy
             ? '/api/generate'
-            : `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${encodeURIComponent(apiKey)}`;
+            : `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(chosenModel)}:generateContent?key=${encodeURIComponent(apiKey)}`;
           const r = await fetch(endpoint, {
             method: 'POST',
             signal: ctrl.signal,
             headers: { 'Content-Type': 'application/json' },
             body: canProxy
-              ? JSON.stringify({ model: document.getElementById('topAiModelSelector')?.value || 'gemini-4-carbon', apiKey, prompt: gemPrompt, refine: false })
+              ? JSON.stringify({ model: chosenModel, apiKey, prompt: gemPrompt, refine: false })
               : JSON.stringify({ contents: [{ parts: [{ text: gemPrompt }] }], generationConfig: { responseMimeType: 'application/json', temperature: 0.4 } })
           });
           clearTimeout(tid);
@@ -7085,30 +7420,32 @@ AI 슬롭/번역체/느낌표 없이 실제 대한민국 산업장비 카피라�
             const parsed = j.data || (j.candidates?.[0]?.content?.parts?.[0]?.text ? JSON.parse(j.candidates[0].content.parts[0].text) : null);
             if (parsed && parsed.h1) {
               copy = {
-                kicker: String(parsed.kicker || copy.kicker).slice(0, 36),
-                h1: String(parsed.h1 || copy.h1).slice(0, 24),
-                h2: String(parsed.h2 || copy.h2).slice(0, 28),
-                sub: String(parsed.sub || copy.sub).slice(0, 62),
-                bullets: Array.isArray(parsed.bullets) && parsed.bullets.length >= 3 ? parsed.bullets.slice(0, 3) : copy.bullets,
-                cta: copy.cta,
-                imagenScene: parsed.imagenScene || ''
+                ...fallbackCopy,
+                kicker: smartTrimCopy(parsed.kicker || fallbackCopy.kicker, 44),
+                h1: smartTrimCopy(parsed.h1 || fallbackCopy.h1, 36),
+                h2: smartTrimCopy(parsed.h2 || fallbackCopy.h2, 48),
+                sub: smartTrimCopy(parsed.sub || fallbackCopy.sub, 128),
+                corePillars: (Array.isArray(parsed.corePillars) && parsed.corePillars.length >= 4) ? parsed.corePillars.slice(0, 4) : fallbackCopy.corePillars,
+                sceneHeadline: smartTrimCopy(parsed.sceneHeadline || fallbackCopy.sceneHeadline, 42),
+                sceneCopy: smartTrimCopy(parsed.sceneCopy || fallbackCopy.sceneCopy, 115),
+                buyingCheckpoint: smartTrimCopy(parsed.buyingCheckpoint || fallbackCopy.buyingCheckpoint, 135),
+                imagenScene: parsed.imagenScene || fallbackCopy.imagenScene
               };
             }
           }
         } catch (_) {}
       }
 
-      if (useImagenBg && (presetType === 'SCENE_BANNER' || presetType === 'HERO_POSTER') && (apiKey || canProxy)) {
+      if (useImagenBg && (presetType === 'ALL_IN_ONE_LONG' || presetType === 'SCENE_BANNER' || presetType === 'HERO_POSTER') && (apiKey || canProxy)) {
         try {
           const ctrl = new AbortController();
-          const tid = setTimeout(() => ctrl.abort(), 12000);
-          const scenePrompt = copy.imagenScene || `Editorial commercial photography of rugged outdoor Korean forest logging slope or heavy industrial factory hoist rigging scene, crisp daylight atmosphere, shallow depth of field, clean open composition, zero text, zero watermarks`;
+          const tid = setTimeout(() => ctrl.abort(), 14000);
           if (canProxy) {
             const ir = await fetch('/api/imagen', {
               method: 'POST',
               signal: ctrl.signal,
               headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ prompt: scenePrompt, apiKey, aspectRatio: presetType === 'SCENE_BANNER' ? '16:9' : '4:3' })
+              body: JSON.stringify({ prompt: copy.imagenScene, apiKey, aspectRatio: '16:9' })
             });
             clearTimeout(tid);
             if (ir.ok) {
@@ -7123,257 +7460,619 @@ AI 슬롭/번역체/느낌표 없이 실제 대한민국 산업장비 카피라�
       return { copy, bgPhotoUrl };
     }
 
-    window.buildStudioPosterArt = async function(presetType, userPrompt, themeKey, useImagenBg) {
-      const p = curProduct || {};
-      const code = p.code || 'PCW-5000';
-      const pal = getPosterThemePalette(themeKey);
-      const { copy, bgPhotoUrl } = await fetchDirectorCopyAndScene(presetType, userPrompt, p, useImagenBg);
+    function loadSingleImg(src, tryCors = true) {
+      return new Promise(resolve => {
+        if (!src) return resolve(null);
+        const im = new Image();
+        if (tryCors && !src.startsWith('data:')) im.crossOrigin = 'anonymous';
+        const t = setTimeout(() => resolve(null), 4500);
+        im.onload = () => { clearTimeout(t); resolve(im); };
+        im.onerror = () => { clearTimeout(t); resolve(null); };
+        im.src = src;
+      });
+    }
 
-      const heightMap = {
-        HERO_POSTER: 1920,
-        SCENE_BANNER: 1400,
-        PULLEY_INFOGRAPHIC: 1500,
-        SPEC_POSTER: 1560,
-        TRUST_BANNER: 1240
-      };
-      const W = 1720;
-      const H = heightMap[presetType] || 1680;
-      const canvas = document.createElement('canvas');
-      canvas.width = W;
-      canvas.height = H;
-      const ctx = canvas.getContext('2d');
-
-      // 배경 그라데이션 & 미세 엔지니어링 격자
-      const bgGrad = ctx.createLinearGradient(0, 0, W, H);
-      bgGrad.addColorStop(0, pal.bg1);
-      bgGrad.addColorStop(1, pal.bg2);
-      ctx.fillStyle = bgGrad;
-      ctx.fillRect(0, 0, W, H);
-
-      ctx.save();
-      ctx.strokeStyle = themeKey === 'EDITORIAL_WHITE' ? 'rgba(29,78,216,0.06)' : 'rgba(147,197,253,0.07)';
-      ctx.lineWidth = 2;
-      for (let gx = 0; gx <= W; gx += 86) { ctx.beginPath(); ctx.moveTo(gx, 0); ctx.lineTo(gx, H); ctx.stroke(); }
-      for (let gy = 0; gy <= H; gy += 86) { ctx.beginPath(); ctx.moveTo(0, gy); ctx.lineTo(W, gy); ctx.stroke(); }
-      ctx.restore();
-
-      const prodSrc = (p.images && (p.images.mainClear || p.images.collection)) || '';
-      const sceneFallback = Array.isArray(p.scenes) && p.scenes[0]?.url ? p.scenes[0].url : prodSrc;
-      const [prodImg, bgImg] = await Promise.all([
-        loadCanvasImg(prodSrc),
-        loadCanvasImg(bgPhotoUrl || (presetType === 'SCENE_BANNER' ? sceneFallback : null))
-      ]);
-
-      // 씬 배너 배경 합성 (있는 경우)
-      if (bgImg && (presetType === 'SCENE_BANNER' || presetType === 'HERO_POSTER')) {
-        ctx.save();
-        ctx.globalAlpha = presetType === 'SCENE_BANNER' ? 0.44 : 0.20;
-        const sc = Math.max(W / bgImg.width, H / bgImg.height);
-        const bw = bgImg.width * sc, bh = bgImg.height * sc;
-        ctx.drawImage(bgImg, (W - bw) / 2, (H - bh) / 2, bw, bh);
-        ctx.restore();
-        const scrim = ctx.createLinearGradient(0, 0, 0, H);
-        scrim.addColorStop(0, themeKey === 'EDITORIAL_WHITE' ? 'rgba(248,250,255,0.88)' : 'rgba(7,34,90,0.86)');
-        scrim.addColorStop(0.55, themeKey === 'EDITORIAL_WHITE' ? 'rgba(248,250,255,0.68)' : 'rgba(7,34,90,0.55)');
-        scrim.addColorStop(1, themeKey === 'EDITORIAL_WHITE' ? 'rgba(255,255,255,0.96)' : 'rgba(7,34,90,0.95)');
-        ctx.fillStyle = scrim;
-        ctx.fillRect(0, 0, W, H);
+    async function toSafePosterImgDataUrl(origSrc) {
+      if (!origSrc) return '';
+      if (origSrc.startsWith('data:')) return origSrc;
+      const tryList = [origSrc];
+      if (!/^https?:\/\//i.test(origSrc) && location.protocol === 'file:') {
+        tryList.push('https://igan3w.github.io/studio/' + origSrc.replace(/^\/+/, ''));
       }
-
-      // 상단 액센트 바 & Kicker 배지
-      ctx.fillStyle = pal.accent;
-      ctx.fillRect(0, 0, W, 16);
-
-      roundRectBox(ctx, 96, 84, 720, 56, 28);
-      ctx.fillStyle = themeKey === 'EDITORIAL_WHITE' ? '#1D4ED8' : 'rgba(56,189,248,0.18)';
-      ctx.fill();
-      ctx.strokeStyle = pal.accent;
-      ctx.lineWidth = 2.5;
-      ctx.stroke();
-      ctx.fillStyle = themeKey === 'EDITORIAL_WHITE' ? '#FFFFFF' : '#7DD3FC';
-      ctx.font = '900 25px "Pretendard", "Malgun Gothic", sans-serif';
-      ctx.fillText(copy.kicker, 130, 121);
-
-      // 메인 헤드라인 2줄 + 서브카피
-      ctx.fillStyle = pal.titleColor;
-      ctx.font = '900 84px "Pretendard", "Malgun Gothic", sans-serif';
-      ctx.fillText(copy.h1, 96, 248);
-      ctx.fillStyle = pal.gold;
-      ctx.fillText(copy.h2, 96, 348);
-
-      ctx.fillStyle = pal.subColor;
-      ctx.font = '600 34px "Pretendard", "Malgun Gothic", sans-serif';
-      const nextY = drawWrappedKrText(ctx, copy.sub, 96, 424, W - 192, 50, 2);
-
-      // 프리셋별 핵심 중앙 비주얼 영역
-      if (presetType === 'PULLEY_INFOGRAPHIC') {
-        const y0 = nextY + 34;
-        // 좌측: 1:1 단선 카드
-        roundRectBox(ctx, 96, y0, 740, 760, 28);
-        ctx.fillStyle = '#FFFFFF';
-        ctx.fill();
-        ctx.strokeStyle = '#94A3B8';
-        ctx.lineWidth = 3;
-        ctx.stroke();
-
-        ctx.fillStyle = '#334155';
-        ctx.font = '900 34px "Pretendard", "Malgun Gothic", sans-serif';
-        ctx.fillText('CASE 01 · 1:1 단선 직결 (기본)', 142, y0 + 72);
-        // 단선 벡터 다이어그램
-        ctx.fillStyle = '#E2E8F0';
-        roundRectBox(ctx, 146, y0 + 120, 640, 360, 20);
-        ctx.fill();
-        ctx.strokeStyle = '#1E293B';
-        ctx.lineWidth = 10;
-        ctx.beginPath();
-        ctx.moveTo(230, y0 + 300);
-        ctx.lineTo(660, y0 + 300);
-        ctx.stroke();
-        ctx.fillStyle = '#0F3D99';
-        ctx.beginPath(); ctx.arc(230, y0 + 300, 44, 0, Math.PI * 2); ctx.fill();
-        ctx.fillStyle = '#FFFFFF'; ctx.font = '900 22px sans-serif'; ctx.fillText('윈치', 208, y0 + 308);
-        ctx.fillStyle = '#334155';
-        roundRectBox(ctx, 620, y0 + 245, 110, 110, 14); ctx.fill();
-        ctx.fillStyle = '#FFFFFF'; ctx.fillText('1X', 658, y0 + 308);
-        ctx.fillStyle = '#0F172A'; ctx.font = '900 44px "Pretendard", sans-serif';
-        ctx.fillText(String(p.pull || p.cap || '1,000 kg 정격'), 146, y0 + 575);
-        ctx.fillStyle = '#475569'; ctx.font = '700 28px "Pretendard", sans-serif';
-        ctx.fillText('최대 작업 속도 · 기본 로프 1줄 인장', 146, y0 + 635);
-
-        // 우측: 2:1 도르래 배력 카드
-        roundRectBox(ctx, 884, y0, 740, 760, 28);
-        ctx.fillStyle = '#FFFFFF';
-        ctx.fill();
-        ctx.strokeStyle = '#1D4ED8';
-        ctx.lineWidth = 5;
-        ctx.stroke();
-        roundRectBox(ctx, 920, y0 + 26, 230, 42, 21);
-        ctx.fillStyle = '#1D4ED8'; ctx.fill();
-        ctx.fillStyle = '#FFFFFF'; ctx.font = '900 22px "Pretendard", sans-serif';
-        ctx.fillText('POWER 200% UP', 944, y0 + 55);
-        ctx.fillStyle = '#07225A'; ctx.font = '900 34px "Pretendard", sans-serif';
-        ctx.fillText('CASE 02 · 스윙 도르래 복선 (2:1)', 930, y0 + 114);
-        ctx.fillStyle = '#EFF6FF';
-        roundRectBox(ctx, 930, y0 + 150, 648, 330, 20); ctx.fill();
-        ctx.strokeStyle = '#1D4ED8'; ctx.lineWidth = 10;
-        ctx.beginPath(); ctx.moveTo(1000, y0 + 275); ctx.lineTo(1480, y0 + 275); ctx.arc(1480, y0 + 315, 40, -Math.PI/2, Math.PI/2); ctx.lineTo(1000, y0 + 355); ctx.stroke();
-        ctx.fillStyle = '#F59E0B'; ctx.beginPath(); ctx.arc(1480, y0 + 315, 46, 0, Math.PI * 2); ctx.fill();
-        ctx.fillStyle = '#07225A'; ctx.font = '900 22px sans-serif'; ctx.fillText('도르래', 1448, y0 + 323);
-        ctx.fillStyle = '#1D4ED8'; ctx.font = '900 46px "Pretendard", sans-serif';
-        ctx.fillText('정격 견인력 정확히 2배 (2X)', 930, y0 + 575);
-        ctx.fillStyle = '#1E3A8A'; ctx.font = '700 28px "Pretendard", sans-serif';
-        ctx.fillText('엔진·모터 부하 50% 분산 · 안전율 극대화', 930, y0 + 635);
-      } else if (presetType === 'TRUST_BANNER') {
-        const y0 = nextY + 34;
-        const cards = [
-          ['오늘 15시 이전', '당일 경동화물·택배 직발송', '청계천 본사 실물 상시 재고 운영으로 현장 멈춤 없이 즉시 상차합니다.'],
-          ['전자세금계산서', '관공서 G2B·비교견적 5분', '국세청 전자세금계산서 100% 당일 발행 및 사업자·규격서 일체 즉시 지원.'],
-          ['본사 직영 정비실', '모터·브레이크 순정부품 완비', '직구 제품이 따라올 수 없는 1:1 정품 무상 보증과 부품 수급 책임.']
-        ];
-        cards.forEach((c, i) => {
-          const cx = 96 + i * 524;
-          roundRectBox(ctx, cx, y0, 492, 480, 26);
-          ctx.fillStyle = pal.card; ctx.fill();
-          ctx.strokeStyle = pal.accent; ctx.lineWidth = 3; ctx.stroke();
-          roundRectBox(ctx, cx + 32, y0 + 34, 130, 40, 20);
-          ctx.fillStyle = '#1D4ED8'; ctx.fill();
-          ctx.fillStyle = '#FFFFFF'; ctx.font = '900 21px "Pretendard", sans-serif';
-          ctx.fillText(`0${i + 1} · 신뢰`, cx + 52, y0 + 62);
-          ctx.fillStyle = '#07225A'; ctx.font = '900 36px "Pretendard", sans-serif';
-          ctx.fillText(c[0], cx + 32, y0 + 145);
-          ctx.fillStyle = '#1D4ED8'; ctx.font = '900 26px "Pretendard", sans-serif';
-          ctx.fillText(c[1], cx + 32, y0 + 202);
-          ctx.fillStyle = '#475569'; ctx.font = '600 26px "Pretendard", sans-serif';
-          drawWrappedKrText(ctx, c[2], cx + 32, y0 + 275, 428, 42, 4);
-        });
-      } else {
-        // HERO_POSTER, SCENE_BANNER, SPEC_POSTER: 중앙 좌/우 균형 스튜디오 쇼케이스
-        const y0 = nextY + 34;
-        const boxH = presetType === 'HERO_POSTER' ? 980 : 690;
-        // 우측/중앙 제품 쇼케이스 카드
-        const imgBoxW = presetType === 'HERO_POSTER' ? 860 : 700;
-        const imgBoxX = W - 96 - imgBoxW;
-        roundRectBox(ctx, imgBoxX, y0, imgBoxW, boxH, 32);
-        ctx.fillStyle = '#FFFFFF';
-        ctx.fill();
-        ctx.strokeStyle = pal.accent;
-        ctx.lineWidth = 4;
-        ctx.stroke();
-
-        if (prodImg) {
-          const pad = 64;
-          const sc = Math.min((imgBoxW - pad * 2) / prodImg.width, (boxH - 170) / prodImg.height);
-          const dw = prodImg.width * sc;
-          const dh = prodImg.height * sc;
-          ctx.save();
-          ctx.shadowColor = 'rgba(7,34,90,0.18)';
-          ctx.shadowBlur = 32;
-          ctx.shadowOffsetY = 16;
-          ctx.drawImage(prodImg, imgBoxX + (imgBoxW - dw) / 2, y0 + (boxH - 80 - dh) / 2, dw, dh);
-          ctx.restore();
+      for (const candidate of tryList) {
+        const im = await loadSingleImg(candidate, true);
+        if (!im || !im.naturalWidth) continue;
+        try {
+          const maxW = 1100;
+          const sc = im.naturalWidth > maxW ? (maxW / im.naturalWidth) : 1;
+          const cw = Math.max(1, Math.round(im.naturalWidth * sc));
+          const ch = Math.max(1, Math.round(im.naturalHeight * sc));
+          const c = document.createElement('canvas');
+          c.width = cw;
+          c.height = ch;
+          const x = c.getContext('2d');
+          x.drawImage(im, 0, 0, cw, ch);
+          const isPng = /\.png$/i.test(candidate);
+          return c.toDataURL(isPng ? 'image/png' : 'image/jpeg', 0.92);
+        } catch (_) {
+          // Canvas tainted — try next candidate
         }
-        roundRectBox(ctx, imgBoxX + 36, y0 + boxH - 88, imgBoxW - 72, 56, 16);
-        ctx.fillStyle = '#EFF6FF'; ctx.fill();
-        ctx.fillStyle = '#07225A'; ctx.font = '900 25px "Pretendard", sans-serif';
-        ctx.fillText(`MODEL: ${code} · 공식 정품 스튜디오 실물`, imgBoxX + 60, y0 + boxH - 51);
+      }
+      return '';
+    }
 
-        // 좌측 핵심 제원 & 3대 포인트 카드
-        const leftW = W - 192 - imgBoxW - 44;
-        const rows = presetType === 'SPEC_POSTER'
-          ? [
-              ['정격 견인/인양 하중', String(p.pull || p.cap || '정격 준수')],
-              ['핵심 동력/모터', String(p.engine || '고토크 정품 구동계').slice(0, 26)],
-              ['작업 속도 / 중량', `${p.speed || '-'} · ${p.weight || '-'}`],
-              ['안전 제동 시스템', '자동 마그네틱·기계식 역회전 차단']
-            ]
-          : [
-              ['POINT 01 · 핵심 성능', copy.bullets[0] || `정격 ${p.pull || p.cap || '규격 준수'}`],
-              ['POINT 02 · 구동 신뢰성', copy.bullets[1] || String(p.engine || '정품 동력').slice(0, 24)],
-              ['POINT 03 · 직영 서포트', copy.bullets[2] || '당일 출고 & 청계천 A/S']
-            ];
-        const cardGap = 24;
-        const perH = Math.floor((boxH - cardGap * (rows.length - 1)) / rows.length);
-        rows.forEach((r, idx) => {
-          const ry = y0 + idx * (perH + cardGap);
-          roundRectBox(ctx, 96, ry, leftW, perH, 24);
-          ctx.fillStyle = pal.card; ctx.fill();
-          ctx.strokeStyle = idx === 0 ? pal.accent : '#CBD5E1';
-          ctx.lineWidth = idx === 0 ? 4 : 2;
-          ctx.stroke();
-          ctx.fillStyle = '#1D4ED8';
-          ctx.font = '900 24px "Pretendard", sans-serif';
-          ctx.fillText(r[0], 132, ry + 56);
-          ctx.fillStyle = pal.cardText;
-          ctx.font = '900 34px "Pretendard", sans-serif';
-          drawWrappedKrText(ctx, r[1], 132, ry + 114, leftW - 68, 44, 2);
-        });
+    async function preloadPosterImagesToSafeDataUrls(urls) {
+      const uniq = Array.from(new Set((urls || []).filter(Boolean)));
+      const map = {};
+      await Promise.all(uniq.map(async u => {
+        map[u] = await toSafePosterImgDataUrl(u);
+      }));
+      return map;
+    }
+
+    function buildPosterPulleySvg(ctx, pal) {
+      return `
+      <svg viewBox="0 0 760 225" width="760" height="225" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:auto;background:#091534;border-radius:14px;border:1px solid #1E3A8A;">
+        <defs>
+          <linearGradient id="pGrad1" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#1E3A8A"/>
+            <stop offset="100%" stop-color="#0F172A"/>
+          </linearGradient>
+          <linearGradient id="pGrad2" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#064E3B"/>
+            <stop offset="100%" stop-color="#0F172A"/>
+          </linearGradient>
+        </defs>
+        <!-- Left Card: 1:1 Single Line -->
+        <rect x="18" y="18" width="350" height="189" rx="12" fill="url(#pGrad1)" stroke="#334155" stroke-width="1.5"/>
+        <rect x="32" y="30" width="136" height="24" rx="12" fill="#334155"/>
+        <text x="100" y="46" text-anchor="middle" font-size="11" font-weight="900" fill="#F8FAFC">CASE 01 · 1:1 단선 직결</text>
+        <line x1="72" y1="108" x2="292" y2="108" stroke="#93C5FD" stroke-width="5" stroke-linecap="round"/>
+        <polygon points="188,108 175,100 175,116" fill="#FBBF24"/>
+        <circle cx="72" cy="108" r="24" fill="#1D4ED8" stroke="#60A5FA" stroke-width="2.5"/>
+        <text x="72" y="112" text-anchor="middle" font-size="11" font-weight="900" fill="#FFFFFF">윈치 본체</text>
+        <rect x="268" y="84" width="66" height="48" rx="8" fill="#1E293B" stroke="#64748B" stroke-width="2"/>
+        <text x="301" y="106" text-anchor="middle" font-size="10" font-weight="700" fill="#CBD5E1">피견인물</text>
+        <text x="301" y="121" text-anchor="middle" font-size="12" font-weight="900" fill="#FFFFFF">1.0X</text>
+        <text x="34" y="166" font-size="17" font-weight="900" fill="#FFFFFF">정격 ${escPosterHtml(ctx.pullCap)}</text>
+        <text x="34" y="188" font-size="11.5" font-weight="600" fill="#94A3B8">기본 작업 속도 (${escPosterHtml(ctx.speed)}) · 단일 라인</text>
+
+        <!-- Right Card: 2:1 Double Pulley -->
+        <rect x="392" y="18" width="350" height="189" rx="12" fill="url(#pGrad2)" stroke="#38BDF8" stroke-width="2"/>
+        <rect x="406" y="30" width="160" height="24" rx="12" fill="#059669"/>
+        <text x="486" y="46" text-anchor="middle" font-size="11" font-weight="900" fill="#FFFFFF">CASE 02 · 2:1 도르래 배력</text>
+        <path d="M 446 92 L 664 92 A 16 16 0 0 1 664 124 L 446 124" fill="none" stroke="#34D399" stroke-width="5" stroke-linecap="round"/>
+        <polygon points="562,92 549,85 549,99" fill="#FDE047"/>
+        <polygon points="549,124 562,117 562,131" fill="#FDE047"/>
+        <circle cx="446" cy="92" r="20" fill="#1D4ED8" stroke="#7DD3FC" stroke-width="2"/>
+        <text x="446" y="96" text-anchor="middle" font-size="10" font-weight="900" fill="#FFFFFF">윈치</text>
+        <rect x="424" y="114" width="44" height="20" rx="5" fill="#0F172A" stroke="#34D399" stroke-width="1.5"/>
+        <text x="446" y="128" text-anchor="middle" font-size="9.5" font-weight="900" fill="#A7F3D0">고정앵커</text>
+        <circle cx="672" cy="108" r="24" fill="#F59E0B" stroke="#FEF08A" stroke-width="2.5"/>
+        <text x="672" y="112" text-anchor="middle" font-size="11" font-weight="900" fill="#0F172A">도르래</text>
+        <text x="408" y="166" font-size="17" font-weight="900" fill="#4ADE80">배력 ${escPosterHtml(ctx.doublePull)}</text>
+        <text x="408" y="188" font-size="11.5" font-weight="700" fill="#CBD5E1">라인 장력 50:50 분산 · 기계 부하 절반 감소</text>
+      </svg>`;
+    }
+
+    function buildPosterBlueprintSvg(ctx, pal) {
+      return `
+      <svg viewBox="0 0 760 190" width="760" height="190" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:auto;background:#081633;border-radius:14px;border:1px solid #1E40AF;">
+        <g stroke="rgba(148,163,184,0.14)" stroke-width="1">
+          <line x1="0" y1="38" x2="760" y2="38"/><line x1="0" y1="76" x2="760" y2="76"/>
+          <line x1="0" y1="114" x2="760" y2="114"/><line x1="0" y1="152" x2="760" y2="152"/>
+          <line x1="152" y1="0" x2="152" y2="190"/><line x1="304" y1="0" x2="304" y2="190"/>
+          <line x1="456" y1="0" x2="456" y2="190"/><line x1="608" y1="0" x2="608" y2="190"/>
+        </g>
+        <text x="24" y="30" font-size="11" font-weight="900" fill="#38BDF8" letter-spacing="1">CERTIFIED DIMENSIONAL BLUEPRINT · ${escPosterHtml(ctx.code)}</text>
+        <rect x="64" y="54" width="210" height="92" rx="10" fill="none" stroke="#60A5FA" stroke-width="2.5" stroke-dasharray="6 3"/>
+        <circle cx="122" cy="100" r="24" fill="rgba(56,189,248,0.15)" stroke="#38BDF8" stroke-width="2"/>
+        <circle cx="122" cy="100" r="9" fill="#FBBF24"/>
+        <rect x="172" y="72" width="84" height="56" rx="6" fill="rgba(255,255,255,0.06)" stroke="#93C5FD" stroke-width="1.5"/>
+        <line x1="64" y1="164" x2="274" y2="164" stroke="#FBBF24" stroke-width="1.5"/>
+        <text x="169" y="179" text-anchor="middle" font-size="11" font-weight="800" fill="#FBBF24">${escPosterHtml(ctx.dimensions)}</text>
+
+        <rect x="330" y="48" width="404" height="118" rx="10" fill="rgba(15,23,42,0.8)" stroke="#334155" stroke-width="1.5"/>
+        <text x="350" y="74" font-size="11" font-weight="800" fill="#94A3B8">외형 규격 (DIMENSIONS)</text>
+        <text x="350" y="94" font-size="14" font-weight="900" fill="#FFFFFF">${escPosterHtml(ctx.dimensions)}</text>
+        <text x="350" y="122" font-size="11" font-weight="800" fill="#94A3B8">본체 중량 / 로프·와이어</text>
+        <text x="350" y="144" font-size="13" font-weight="900" fill="#7DD3FC">${escPosterHtml(ctx.weight)} · ${escPosterHtml(ctx.ropeSpec.slice(0, 32))}</text>
+      </svg>`;
+    }
+
+    function buildAllInOnePosterHtml(ctx, copy, bgPhotoUrl, pal, safeMap, userPrompt) {
+      const heroUrl = safeMap[ctx.heroImg] || '';
+      const bgUrl = bgPhotoUrl || (ctx.cleanScenes[0] ? safeMap[ctx.cleanScenes[0].url] : '');
+      const basicKitUrl = safeMap[ctx.modelBasicKitImg] || '';
+      const pulleyImgUrl = ctx.isPortableWinchCo ? (safeMap['ora_assets/clean_diagram_pulley_4x.jpg'] || '') : '';
+      const cadUrl = safeMap[ctx.cadImg] || '';
+      const logoUrl = safeMap['ora_assets/ci_ora_logo.png'] || '';
+
+      const macroList = (ctx.hwMacros || []).filter(m => safeMap[m.url]);
+      const angleList = (ctx.multiAngleImgs || []).filter(a => safeMap[a.url]);
+      const sceneList = (ctx.cleanScenes || []).filter(s => safeMap[s.url]).slice(0, 4);
+      const accList = (ctx.accCards || []).filter(a => safeMap[a.url]);
+
+      const pillGridHtml = (copy.corePillars || []).map(c => `
+        <div style="background:#FFFFFF;border:1.5px solid #CBD5E1;border-top:4px solid ${pal.primary};border-radius:14px;padding:18px 20px;text-align:left;box-shadow:0 4px 14px rgba(15,23,42,0.04);">
+          <div style="font-size:11.5px;font-weight:900;color:${pal.primary};margin-bottom:5px;">${escPosterHtml(c.tag)}</div>
+          <div style="font-size:17px;font-weight:900;color:#0F172A;margin-bottom:6px;line-height:1.3;">${escPosterHtml(c.title)}</div>
+          <div style="font-size:13px;color:#475569;line-height:1.6;">${escPosterHtml(c.desc)}</div>
+        </div>
+      `).join('');
+
+      return `
+      <div style="width:860px;background:#FFFFFF;color:#0F172A;font-family:'Pretendard',-apple-system,BlinkMacSystemFont,'Malgun Gothic',sans-serif;box-sizing:border-box;border:1px solid #CBD5E1;overflow:hidden;word-break:keep-all;">
+        <!-- BAND 00: BRAND AUTHORITY TOPBAR -->
+        <div style="background:#051434;color:#FFFFFF;padding:14px 32px;display:flex;align-items:center;justify-content:space-between;border-bottom:3px solid ${pal.accent};">
+          <div style="display:flex;align-items:center;gap:12px;">
+            ${logoUrl ? `<img src="${logoUrl}" style="height:28px;background:#FFFFFF;padding:3px 7px;border-radius:6px;display:block;">` : `<span style="background:${pal.primary};color:#fff;padding:4px 10px;border-radius:6px;font-weight:900;font-size:12px;">ORATECH</span>`}
+            <span style="font-size:13.5px;font-weight:800;color:#E0F2FE;">${escPosterHtml(ctx.origin)}</span>
+          </div>
+          <div style="font-size:12.5px;font-weight:900;color:#FBBF24;">당일 15시 화물상차 · 세금계산서 · 1600-5157</div>
+        </div>
+
+        <!-- BAND 01: MAGAZINE HERO COVER + REAL PRODUCT CUTOUT -->
+        <div style="position:relative;background:linear-gradient(155deg,${pal.heroBg1} 0%,${pal.heroBg2} 100%);padding:46px 36px 40px 36px;color:#FFFFFF;overflow:hidden;">
+          ${bgUrl ? `<img src="${bgUrl}" style="position:absolute;top:0;left:0;width:860px;height:100%;object-fit:cover;opacity:0.20;">` : ''}
+          <div style="position:relative;z-index:2;text-align:center;">
+            <span style="display:inline-block;background:rgba(56,189,248,0.18);border:1.5px solid ${pal.accent};color:#BAE6FD;font-size:12px;font-weight:900;padding:6px 18px;border-radius:999px;letter-spacing:0.06em;margin-bottom:16px;">${escPosterHtml(copy.kicker)}</span>
+            <h1 style="margin:0 0 10px 0;font-size:38px;line-height:1.28;font-weight:900;color:#FFFFFF;letter-spacing:-0.03em;">${escPosterHtml(copy.h1)}</h1>
+            <div style="font-size:21px;font-weight:900;color:${pal.gold};margin:0 0 12px 0;">${escPosterHtml(copy.h2)}</div>
+            <p style="margin:0 auto 28px auto;max-width:720px;font-size:15px;line-height:1.65;color:#DBEAFE;font-weight:600;">${escPosterHtml(copy.sub)}</p>
+
+            <!-- 4 KPI METRICS -->
+            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:28px;">
+              <div style="background:rgba(255,255,255,0.96);border-radius:12px;padding:15px 10px;color:#0F172A;border-top:4px solid ${pal.primary};">
+                <div style="font-size:11px;font-weight:800;color:#64748B;margin-bottom:4px;">정격 견인 · 인양력</div>
+                <div style="font-size:21px;font-weight:900;color:${pal.primary};">${escPosterHtml(ctx.pullCap)}</div>
+              </div>
+              <div style="background:rgba(255,255,255,0.96);border-radius:12px;padding:15px 10px;color:#0F172A;border-top:4px solid #059669;">
+                <div style="font-size:11px;font-weight:800;color:#64748B;margin-bottom:4px;">도르래 복선(2:1)</div>
+                <div style="font-size:19px;font-weight:900;color:#059669;">${escPosterHtml(ctx.doublePull)}</div>
+              </div>
+              <div style="background:rgba(255,255,255,0.96);border-radius:12px;padding:15px 10px;color:#0F172A;border-top:4px solid #0284C7;">
+                <div style="font-size:11px;font-weight:800;color:#64748B;margin-bottom:4px;">동력 · 구동계</div>
+                <div style="font-size:14.5px;font-weight:900;color:#0F172A;line-height:1.3;">${escPosterHtml(ctx.engine.split('(')[0].trim())}</div>
+              </div>
+              <div style="background:rgba(255,255,255,0.96);border-radius:12px;padding:15px 10px;color:#0F172A;border-top:4px solid #D97706;">
+                <div style="font-size:11px;font-weight:800;color:#64748B;margin-bottom:4px;">본체 중량 · 속도</div>
+                <div style="font-size:15.5px;font-weight:900;color:#0F172A;">${escPosterHtml(ctx.weight)} · ${escPosterHtml(ctx.speed.split('(')[0].trim())}</div>
+              </div>
+            </div>
+
+            <!-- PRODUCT STUDIO SHOWCASE CARD -->
+            <div style="background:#FFFFFF;border-radius:18px;padding:22px;border:2px solid rgba(255,255,255,0.8);box-shadow:0 18px 42px rgba(0,0,0,0.35);">
+              ${heroUrl
+                ? `<img src="${heroUrl}" style="width:100%;max-height:460px;object-fit:contain;display:block;margin:0 auto 14px auto;">`
+                : `<div style="padding:52px 24px;background:#F1F5F9;border-radius:12px;color:#0F172A;font-size:20px;font-weight:900;margin-bottom:14px;">[${escPosterHtml(ctx.code)}] ${escPosterHtml(ctx.name)}</div>`}
+              <div style="display:flex;justify-content:space-between;align-items:center;background:#F8FAFC;border:1px solid #CBD5E1;border-radius:10px;padding:11px 16px;color:#0F172A;">
+                <span style="font-size:13.5px;font-weight:900;">■ 공식 모델: ${escPosterHtml(ctx.code)} (${escPosterHtml(ctx.name)})</span>
+                <span style="background:${pal.primary};color:#FFFFFF;font-size:11.5px;font-weight:900;padding:4px 12px;border-radius:999px;">(주)오라테크 정품 보증</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- BAND 02: PROBLEM VS SOLUTION -->
+        <div style="padding:44px 36px;background:#FFFFFF;border-bottom:1px solid #E2E8F0;">
+          <div style="text-align:center;margin-bottom:24px;">
+            <div style="font-size:12px;font-weight:900;color:${pal.primary};letter-spacing:0.06em;margin-bottom:6px;">CHAPTER 01 · PROBLEM &amp; SOLUTION</div>
+            <h2 style="margin:0;font-size:26px;font-weight:900;color:#0F172A;">왜 현장은 저가·구형 장비를 버리고 [${escPosterHtml(ctx.code)}]를 선택할까요?</h2>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+            <div style="background:#FEF2F2;border:1.5px solid #FECACA;border-radius:16px;padding:20px 18px;">
+              <div style="font-size:15.5px;font-weight:900;color:#991B1B;margin-bottom:12px;padding-bottom:8px;border-bottom:1.5px solid #FCA5A5;">❌ 기존 작업 · 저가 모방품의 한계</div>
+              <div style="display:flex;flex-direction:column;gap:8px;">
+                ${ctx.problems.map((pr, i) => `<div style="background:#FFFFFF;border:1px solid #FEE2E2;border-radius:10px;padding:10px 12px;font-size:12.5px;font-weight:700;color:#7F1D1D;line-height:1.5;">${i + 1}. ${escPosterHtml(pr)}</div>`).join('')}
+              </div>
+            </div>
+            <div style="background:${pal.soft};border:1.5px solid ${pal.border};border-radius:16px;padding:20px 18px;">
+              <div style="font-size:15.5px;font-weight:900;color:${pal.dark};margin-bottom:12px;padding-bottom:8px;border-bottom:1.5px solid ${pal.border};">✅ [${escPosterHtml(ctx.code)}] 도입 시 4대 즉시 해결</div>
+              <div style="display:flex;flex-direction:column;gap:8px;">
+                ${ctx.solutions.map(sl => `<div style="background:#FFFFFF;border:1px solid ${pal.border};border-radius:10px;padding:10px 12px;font-size:12.5px;font-weight:800;color:#0F172A;line-height:1.5;">✔ ${escPosterHtml(sl)}</div>`).join('')}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- BAND 03: CORE ENGINEERING PILLARS & HARDWARE MACROS -->
+        <div style="padding:44px 36px;background:#F8FAFC;border-bottom:1px solid #E2E8F0;">
+          <div style="text-align:center;margin-bottom:24px;">
+            <div style="font-size:12px;font-weight:900;color:${pal.primary};letter-spacing:0.06em;margin-bottom:6px;">CHAPTER 02 · CORE ENGINEERING ARCHITECTURE</div>
+            <h2 style="margin:0;font-size:26px;font-weight:900;color:#0F172A;">[${escPosterHtml(ctx.code)}] 현장 성능을 좌우하는 4대 핵심 설계</h2>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:${macroList.length || angleList.length ? '22px' : '0'};">
+            ${pillGridHtml}
+          </div>
+          ${macroList.length ? `
+          <div style="display:grid;grid-template-columns:repeat(${macroList.length > 1 ? 2 : 1},1fr);gap:14px;">
+            ${macroList.map(m => `
+            <div style="background:#FFFFFF;border:1px solid #CBD5E1;border-radius:14px;overflow:hidden;">
+              <img src="${safeMap[m.url]}" style="width:100%;height:205px;object-fit:cover;display:block;">
+              <div style="padding:14px 16px;">
+                <div style="font-size:14.5px;font-weight:900;color:#0F172A;margin-bottom:4px;">▲ ${escPosterHtml(m.title)}</div>
+                <div style="font-size:12.5px;color:#475569;line-height:1.55;">${escPosterHtml(m.desc)}</div>
+              </div>
+            </div>`).join('')}
+          </div>` : (angleList.length ? `
+          <div style="display:grid;grid-template-columns:repeat(${Math.min(3, angleList.length)},1fr);gap:12px;">
+            ${angleList.slice(0, 3).map(a => `
+            <div style="background:#FFFFFF;border:1px solid #CBD5E1;border-radius:12px;overflow:hidden;padding:10px;text-align:center;">
+              <img src="${safeMap[a.url]}" style="width:100%;height:170px;object-fit:contain;display:block;margin-bottom:8px;">
+              <div style="font-size:12px;font-weight:800;color:#0F172A;">${escPosterHtml(a.label)}</div>
+            </div>`).join('')}
+          </div>` : '')}
+        </div>
+
+        <!-- BAND 04: PROVEN FIELD APPLICATIONS & IMAGEN SCENE -->
+        <div style="padding:44px 36px;background:#FFFFFF;border-bottom:1px solid #E2E8F0;">
+          <div style="text-align:center;margin-bottom:24px;">
+            <div style="font-size:12px;font-weight:900;color:${pal.primary};letter-spacing:0.06em;margin-bottom:6px;">CHAPTER 03 · PROVEN FIELD APPLICATIONS</div>
+            <h2 style="margin:0 0 8px 0;font-size:26px;font-weight:900;color:#0F172A;">${escPosterHtml(copy.sceneHeadline)}</h2>
+            <p style="margin:0;font-size:14px;color:#475569;">${escPosterHtml(copy.sceneCopy)}</p>
+          </div>
+          ${bgPhotoUrl ? `
+          <div style="border-radius:16px;overflow:hidden;border:1.5px solid #CBD5E1;margin-bottom:18px;background:#0F172A;">
+            <img src="${bgPhotoUrl}" style="width:100%;height:260px;object-fit:cover;display:block;">
+            <div style="padding:10px 16px;color:#E0F2FE;font-size:12.5px;font-weight:800;">🌐 AI 현장 시뮬레이션 컷 · [${escPosterHtml(ctx.code)}] 실제 운용 환경</div>
+          </div>` : ''}
+          ${sceneList.length ? `
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:18px;">
+            ${sceneList.slice(0, 2).map(sc => `
+            <div style="background:#F8FAFC;border:1px solid #CBD5E1;border-radius:14px;overflow:hidden;">
+              <img src="${safeMap[sc.url]}" style="width:100%;height:210px;object-fit:cover;display:block;">
+              <div style="padding:12px 14px;">
+                <div style="font-size:14px;font-weight:900;color:#0F172A;margin-bottom:3px;">${escPosterHtml(sc.title)}</div>
+                <div style="font-size:12px;color:#475569;">${escPosterHtml(sc.desc)}</div>
+              </div>
+            </div>`).join('')}
+          </div>` : ''}
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;">
+            ${ctx.fieldUses.map(u => `
+            <div style="background:#EFF6FF;border:1px solid #BFDBFE;border-radius:12px;padding:14px 12px;">
+              <div style="font-size:13px;font-weight:900;color:#07225A;margin-bottom:4px;">${escPosterHtml(u[0])}</div>
+              <div style="font-size:11.5px;color:#334155;line-height:1.45;">${escPosterHtml(u[1])}</div>
+            </div>`).join('')}
+          </div>
+        </div>
+
+        <!-- BAND 05: PULLEY MECHANICAL ADVANTAGE & FAIL-SAFE SAFETY -->
+        <div style="padding:44px 36px;background:#F8FAFC;border-bottom:1px solid #E2E8F0;">
+          <div style="text-align:center;margin-bottom:22px;">
+            <div style="font-size:12px;font-weight:900;color:#059669;letter-spacing:0.06em;margin-bottom:6px;">CHAPTER 04 · 2X POWER RIGGING MECHANICS</div>
+            <h2 style="margin:0;font-size:25px;font-weight:900;color:#0F172A;">스윙 도르래 1개 결합으로 견인력 2배 (${escPosterHtml(ctx.doublePull)}) 증폭</h2>
+          </div>
+          <div style="margin-bottom:16px;">
+            ${pulleyImgUrl
+              ? `<div style="background:#FFFFFF;border:1px solid #CBD5E1;border-radius:14px;padding:16px;text-align:center;"><img src="${pulleyImgUrl}" style="width:100%;max-height:300px;object-fit:contain;display:block;margin:0 auto;"></div>`
+              : buildPosterPulleySvg(ctx, pal)}
+          </div>
+          <table style="width:100%;border-collapse:collapse;background:#FFFFFF;border:1.5px solid #CBD5E1;border-radius:12px;overflow:hidden;font-size:13px;text-align:center;">
+            <thead>
+              <tr style="background:#07225A;color:#FFFFFF;">
+                <th style="padding:12px;">리깅 세팅 방식</th><th style="padding:12px;">활차(도르래) 수량</th><th style="padding:12px;">물리 배력</th><th style="padding:12px;">최대 인양·견인 하중</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid #E2E8F0;"><td style="padding:11px;font-weight:800;">단선 (1:1 직결)</td><td style="padding:11px;">기본 직결</td><td style="padding:11px;">표준 속도 (${escPosterHtml(ctx.speed)})</td><td style="padding:11px;font-weight:900;color:${pal.primary};">${escPosterHtml(ctx.pullCap)}</td></tr>
+              <tr style="border-bottom:1px solid #E2E8F0;background:${pal.soft};"><td style="padding:11px;font-weight:900;color:${pal.dark};">복선 (2:1 도르래) ★추천</td><td style="padding:11px;font-weight:800;">스윙 도르래 1개</td><td style="padding:11px;font-weight:900;color:#059669;">하중 50% 분산</td><td style="padding:11px;font-weight:900;color:#059669;font-size:14.5px;">${escPosterHtml(ctx.doublePull)}</td></tr>
+              <tr><td style="padding:11px;font-weight:800;">다중 배력 리깅</td><td style="padding:11px;">더블 도르래 조합</td><td style="padding:11px;">3:1 ~ 4:1 증폭</td><td style="padding:11px;font-weight:900;color:#0F172A;">${escPosterHtml(ctx.maxPull)}</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- BAND 06: GENUINE VS CHEAP IMITATION -->
+        <div style="padding:44px 36px;background:#FFFFFF;border-bottom:1px solid #E2E8F0;">
+          <div style="text-align:center;margin-bottom:22px;">
+            <div style="font-size:12px;font-weight:900;color:#DC2626;letter-spacing:0.06em;margin-bottom:6px;">CHAPTER 05 · WHY ORATECH GENUINE</div>
+            <h2 style="margin:0;font-size:25px;font-weight:900;color:#0F172A;">저가 직구 · 무인증 모조품 vs (주)오라테크 [${escPosterHtml(ctx.code)}] 정품</h2>
+          </div>
+          <table style="width:100%;border-collapse:collapse;border:1.5px solid #CBD5E1;font-size:13px;text-align:center;">
+            <thead>
+              <tr style="background:#0F172A;color:#FFFFFF;">
+                <th style="width:22%;padding:12px;">비교 기준</th>
+                <th style="width:39%;padding:12px;color:#FCA5A5;">저가 중국 직구 · 무인증 모방품</th>
+                <th style="width:39%;padding:12px;background:${pal.primary};color:#FFFFFF;">(주)오라테크 [${escPosterHtml(ctx.code)}] 정품</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${ctx.comparisonRows.map(r => `
+              <tr style="border-bottom:1px solid #E2E8F0;">
+                <td style="padding:11px;font-weight:900;background:#F8FAFC;color:#0F172A;">${escPosterHtml(r[0])}</td>
+                <td style="padding:11px;color:#64748B;">${escPosterHtml(r[1])}</td>
+                <td style="padding:11px;font-weight:800;background:${pal.soft};color:#07225A;">✔ ${escPosterHtml(r[2])}</td>
+              </tr>`).join('')}
+            </tbody>
+          </table>
+        </div>
+
+        <!-- BAND 07: TECHNICAL SPECIFICATIONS & CAD DIMENSIONS -->
+        <div style="padding:44px 36px;background:#F8FAFC;border-bottom:1px solid #E2E8F0;">
+          <div style="text-align:center;margin-bottom:22px;">
+            <div style="font-size:12px;font-weight:900;color:${pal.primary};letter-spacing:0.06em;margin-bottom:6px;">CHAPTER 06 · OFFICIAL SPECIFICATIONS &amp; CAD</div>
+            <h2 style="margin:0;font-size:25px;font-weight:900;color:#0F172A;">[${escPosterHtml(ctx.code)}] 공식 엔지니어링 상세 제원표</h2>
+          </div>
+          <div style="margin-bottom:18px;">
+            ${cadUrl ? `<div style="background:#FFFFFF;border:1px solid #CBD5E1;border-radius:14px;padding:16px;text-align:center;"><img src="${cadUrl}" style="width:100%;max-height:320px;object-fit:contain;display:block;margin:0 auto;"></div>` : buildPosterBlueprintSvg(ctx, pal)}
+          </div>
+          <table style="width:100%;border-collapse:collapse;background:#FFFFFF;border:1.5px solid #CBD5E1;font-size:13px;text-align:left;">
+            <tbody>
+              <tr style="border-bottom:1px solid #E2E8F0;"><th style="width:28%;background:#F1F5F9;padding:11px 16px;font-weight:800;">모델명 · 정품코드</th><td style="padding:11px 16px;font-weight:900;color:${pal.primary};">${escPosterHtml(ctx.code)} (${escPosterHtml(ctx.name)})</td></tr>
+              <tr style="border-bottom:1px solid #E2E8F0;"><th style="background:#F1F5F9;padding:11px 16px;font-weight:800;">수입원 · 원산지</th><td style="padding:11px 16px;">${escPosterHtml(ctx.origin)}</td></tr>
+              <tr style="border-bottom:1px solid #E2E8F0;"><th style="background:#F1F5F9;padding:11px 16px;font-weight:800;">정격 견인 · 인양력</th><td style="padding:11px 16px;font-weight:900;">단선 ${escPosterHtml(ctx.pullCap)} / 도르래 복선 ${escPosterHtml(ctx.doublePull)} (최대 ${escPosterHtml(ctx.maxPull)})</td></tr>
+              <tr style="border-bottom:1px solid #E2E8F0;"><th style="background:#F1F5F9;padding:11px 16px;font-weight:800;">핵심 동력 유닛</th><td style="padding:11px 16px;font-weight:700;">${escPosterHtml(ctx.engine)}</td></tr>
+              <tr style="border-bottom:1px solid #E2E8F0;"><th style="background:#F1F5F9;padding:11px 16px;font-weight:800;">권취 · 승강 속도</th><td style="padding:11px 16px;">${escPosterHtml(ctx.speed)}</td></tr>
+              <tr style="border-bottom:1px solid #E2E8F0;"><th style="background:#F1F5F9;padding:11px 16px;font-weight:800;">로프 · 와이어 규격</th><td style="padding:11px 16px;">${escPosterHtml(ctx.ropeSpec)}</td></tr>
+              <tr style="border-bottom:1px solid #E2E8F0;"><th style="background:#F1F5F9;padding:11px 16px;font-weight:800;">드럼 · 감속 기어</th><td style="padding:11px 16px;">${escPosterHtml(ctx.drumSpec)} · ${escPosterHtml(ctx.gearRatio)}</td></tr>
+              <tr style="border-bottom:1px solid #E2E8F0;"><th style="background:#F1F5F9;padding:11px 16px;font-weight:800;">안전 제동 시스템</th><td style="padding:11px 16px;font-weight:800;color:#15803D;">${escPosterHtml(ctx.brakeSystem)}</td></tr>
+              <tr style="border-bottom:1px solid #E2E8F0;"><th style="background:#F1F5F9;padding:11px 16px;font-weight:800;">중량 · 외형 치수</th><td style="padding:11px 16px;">중량 ${escPosterHtml(ctx.weight)} · 치수 ${escPosterHtml(ctx.dimensions)}</td></tr>
+              <tr><th style="background:#F1F5F9;padding:11px 16px;font-weight:800;">인증 · 본사 보증</th><td style="padding:11px 16px;">${escPosterHtml(ctx.certSpec)} · 1년 무상 A/S</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- BAND 08: ACCESSORIES & 3-TIER PACKAGES -->
+        <div style="padding:44px 36px;background:#FFFFFF;border-bottom:1px solid #E2E8F0;">
+          <div style="text-align:center;margin-bottom:22px;">
+            <div style="font-size:12px;font-weight:900;color:${pal.primary};letter-spacing:0.06em;margin-bottom:6px;">CHAPTER 07 · GENUINE PACKAGES &amp; OPTIONS</div>
+            <h2 style="margin:0;font-size:25px;font-weight:900;color:#0F172A;">[${escPosterHtml(ctx.code)}] 정품 호환 부자재 &amp; 현장 추천 3단 세트</h2>
+          </div>
+          ${basicKitUrl ? `
+          <div style="background:#F8FAFC;border:1px solid #CBD5E1;border-radius:14px;padding:16px 20px;margin-bottom:16px;display:flex;align-items:center;justify-content:space-between;gap:16px;">
+            <div>
+              <span style="background:#0F172A;color:#fff;font-size:10.5px;font-weight:900;padding:3px 9px;border-radius:4px;">STANDARD IN-BOX</span>
+              <div style="font-size:15.5px;font-weight:900;margin-top:6px;">본체 기본 출고 구성품 풀세트</div>
+              <div style="font-size:12.5px;color:#475569;">${escPosterHtml(ctx.code)} 정품 본체 + 2.5m 고하중 슬링벨트 + 국문 매뉴얼</div>
+            </div>
+            <img src="${basicKitUrl}" style="width:260px;height:130px;object-fit:contain;background:#fff;border-radius:10px;border:1px solid #E2E8F0;padding:6px;">
+          </div>` : ''}
+          ${accList.length ? `
+          <div style="display:grid;grid-template-columns:repeat(${Math.min(4, accList.length)},1fr);gap:10px;margin-bottom:18px;">
+            ${accList.map(a => `
+            <div style="background:#F8FAFC;border:1px solid #CBD5E1;border-radius:12px;overflow:hidden;">
+              <img src="${safeMap[a.url]}" style="width:100%;height:125px;object-fit:contain;background:#FFFFFF;padding:8px;display:block;">
+              <div style="padding:10px 11px;border-top:1px solid #E2E8F0;">
+                <div style="font-size:10px;font-weight:900;color:${pal.primary};">${escPosterHtml(a.code)}</div>
+                <div style="font-size:12.5px;font-weight:900;color:#0F172A;margin:2px 0;">${escPosterHtml(a.name)}</div>
+                <div style="font-size:11px;color:#64748B;line-height:1.4;">${escPosterHtml(a.desc)}</div>
+              </div>
+            </div>`).join('')}
+          </div>` : ''}
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;">
+            ${ctx.packages.map((pkg, idx) => `
+            <div style="background:${idx === 1 ? pal.soft : '#FFFFFF'};border:${idx === 1 ? '2px solid ' + pal.primary : '1px solid #CBD5E1'};border-radius:14px;padding:18px 16px;display:flex;flex-direction:column;justify-content:space-between;">
+              <div>
+                <span style="display:inline-block;background:${idx === 1 ? pal.primary : '#0F172A'};color:#FFFFFF;font-size:10.5px;font-weight:900;padding:3px 9px;border-radius:999px;margin-bottom:8px;">${escPosterHtml(pkg.badge)}</span>
+                <div style="font-size:15px;font-weight:900;color:#0F172A;margin-bottom:6px;line-height:1.35;">${escPosterHtml(pkg.name)}</div>
+                <div style="font-size:12.5px;color:#475569;line-height:1.55;margin-bottom:14px;">${escPosterHtml(pkg.desc)}</div>
+              </div>
+              <div style="padding-top:10px;border-top:1px dashed #CBD5E1;display:flex;justify-content:space-between;align-items:center;">
+                <span style="font-size:11.5px;font-weight:700;color:#64748B;">옵션 구성가</span>
+                <span style="font-size:14.5px;font-weight:900;color:${idx === 1 ? pal.primary : '#0F172A'};">${escPosterHtml(pkg.extraPrice)}</span>
+              </div>
+            </div>`).join('')}
+          </div>
+        </div>
+
+        <!-- BAND 09: CHECKPOINT + FAQ + OFFICIAL WARRANTY FOOTER -->
+        <div style="padding:40px 36px 34px 36px;background:#F8FAFC;border-bottom:1px solid #E2E8F0;">
+          <div style="background:#EFF6FF;border:1.5px solid #93C5FD;border-left:5px solid ${pal.primary};border-radius:12px;padding:16px 20px;margin-bottom:24px;">
+            <div style="font-size:12px;font-weight:900;color:${pal.primary};margin-bottom:4px;">💡 구매 전 사장님 체크포인트</div>
+            <div style="font-size:13.5px;font-weight:800;color:#07225A;line-height:1.55;">${escPosterHtml(copy.buyingCheckpoint)}</div>
+          </div>
+          <div style="text-align:center;margin-bottom:18px;">
+            <div style="font-size:12px;font-weight:900;color:${pal.primary};margin-bottom:4px;">CHAPTER 08 · FIELD Q&amp;A TOP 4</div>
+            <h2 style="margin:0;font-size:23px;font-weight:900;color:#0F172A;">구매 전 현장 담당자님이 가장 많이 묻는 질문</h2>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+            ${ctx.faqList.map(f => `
+            <div style="background:#FFFFFF;border:1px solid #CBD5E1;border-radius:12px;padding:16px;">
+              <div style="font-size:13.5px;font-weight:900;color:#07225A;margin-bottom:6px;">${escPosterHtml(f.q)}</div>
+              <div style="font-size:12.5px;color:#334155;line-height:1.55;">${escPosterHtml(f.a)}</div>
+            </div>`).join('')}
+          </div>
+        </div>
+
+        <!-- OFFICIAL FOOTER -->
+        <div style="background:linear-gradient(120deg,#051434 0%,#0F3D99 100%);color:#FFFFFF;padding:30px 36px;display:flex;justify-content:space-between;align-items:center;gap:20px;">
+          <div>
+            <div style="font-size:11.5px;font-weight:900;color:#7DD3FC;margin-bottom:4px;">(주)오라테크 본사 직영 출고 · 청계천 전시장 및 직영 정비센터</div>
+            <div style="font-size:20px;font-weight:900;margin-bottom:4px;">평일 오후 3시 이전 결제 건 당일 경동화물·택배 직발송</div>
+            <div style="font-size:13px;color:#DBEAFE;">국세청 전자세금계산서 · 관공서/G2B 비교견적 5분 발급 · 순정부품 100% 보유</div>
+          </div>
+          <div style="background:rgba(15,23,42,0.75);border:1.5px solid #38BDF8;border-radius:14px;padding:14px 20px;text-align:right;flex-shrink:0;">
+            <div style="font-size:11px;color:#93C5FD;font-weight:800;">기술상담 · 대량견적 직통</div>
+            <div style="font-size:24px;font-weight:900;color:#FBBF24;">1600-5157</div>
+            <div style="font-size:12px;color:#FFFFFF;font-weight:700;">010-8931-7788</div>
+          </div>
+        </div>
+      </div>`;
+    }
+
+    function buildSinglePresetPosterHtml(presetType, ctx, copy, bgPhotoUrl, pal, safeMap) {
+      const heroUrl = safeMap[ctx.heroImg] || '';
+      const bgUrl = bgPhotoUrl || (ctx.cleanScenes[0] ? safeMap[ctx.cleanScenes[0].url] : '');
+      const cadUrl = safeMap[ctx.cadImg] || '';
+      const pulleyImgUrl = ctx.isPortableWinchCo ? (safeMap['ora_assets/clean_diagram_pulley_4x.jpg'] || '') : '';
+      const logoUrl = safeMap['ora_assets/ci_ora_logo.png'] || '';
+
+      let bodyBlock = '';
+      if (presetType === 'PULLEY_INFOGRAPHIC') {
+        bodyBlock = `
+          <div style="padding:32px 36px;background:#F8FAFC;">
+            <div style="margin-bottom:18px;">
+              ${pulleyImgUrl ? `<div style="background:#FFFFFF;border:1px solid #CBD5E1;border-radius:14px;padding:16px;"><img src="${pulleyImgUrl}" style="width:100%;max-height:320px;object-fit:contain;display:block;margin:0 auto;"></div>` : buildPosterPulleySvg(ctx, pal)}
+            </div>
+            <table style="width:100%;border-collapse:collapse;background:#FFFFFF;border:1.5px solid #CBD5E1;font-size:13.5px;text-align:center;">
+              <thead><tr style="background:#07225A;color:#fff;"><th style="padding:12px;">리깅 방식</th><th style="padding:12px;">도르래</th><th style="padding:12px;">배력 비율</th><th style="padding:12px;">최대 인양·견인 하중</th></tr></thead>
+              <tbody>
+                <tr style="border-bottom:1px solid #E2E8F0;"><td style="padding:11px;font-weight:800;">단선 직결</td><td style="padding:11px;">0개</td><td style="padding:11px;">1 : 1</td><td style="padding:11px;font-weight:900;color:${pal.primary};">${escPosterHtml(ctx.pullCap)}</td></tr>
+                <tr style="background:${pal.soft};border-bottom:1px solid #E2E8F0;"><td style="padding:11px;font-weight:900;">복선 도르래 (추천)</td><td style="padding:11px;font-weight:800;">스윙 도르래 1개</td><td style="padding:11px;font-weight:900;color:#059669;">2 : 1 (부하 반감)</td><td style="padding:11px;font-weight:900;color:#059669;font-size:15px;">${escPosterHtml(ctx.doublePull)}</td></tr>
+                <tr><td style="padding:11px;font-weight:800;">다중 복합 리깅</td><td style="padding:11px;">더블 도르래 2개</td><td style="padding:11px;">3 : 1 ~ 4 : 1</td><td style="padding:11px;font-weight:900;">${escPosterHtml(ctx.maxPull)}</td></tr>
+              </tbody>
+            </table>
+          </div>`;
+      } else if (presetType === 'SPEC_POSTER') {
+        bodyBlock = `
+          <div style="padding:32px 36px;background:#F8FAFC;">
+            <div style="margin-bottom:16px;">${cadUrl ? `<img src="${cadUrl}" style="width:100%;max-height:300px;object-fit:contain;background:#fff;border:1px solid #CBD5E1;border-radius:14px;padding:12px;">` : buildPosterBlueprintSvg(ctx, pal)}</div>
+            <table style="width:100%;border-collapse:collapse;background:#FFFFFF;border:1.5px solid #CBD5E1;font-size:13px;text-align:left;">
+              <tbody>
+                <tr style="border-bottom:1px solid #E2E8F0;"><th style="width:28%;background:#F1F5F9;padding:11px 16px;">모델명</th><td style="padding:11px 16px;font-weight:900;color:${pal.primary};">${escPosterHtml(ctx.code)} (${escPosterHtml(ctx.name)})</td></tr>
+                <tr style="border-bottom:1px solid #E2E8F0;"><th style="background:#F1F5F9;padding:11px 16px;">정격 / 복선 하중</th><td style="padding:11px 16px;font-weight:900;">단선 ${escPosterHtml(ctx.pullCap)} / 도르래 ${escPosterHtml(ctx.doublePull)}</td></tr>
+                <tr style="border-bottom:1px solid #E2E8F0;"><th style="background:#F1F5F9;padding:11px 16px;">핵심 동력원</th><td style="padding:11px 16px;font-weight:700;">${escPosterHtml(ctx.engine)}</td></tr>
+                <tr style="border-bottom:1px solid #E2E8F0;"><th style="background:#F1F5F9;padding:11px 16px;">권취·인양 속도 / 중량</th><td style="padding:11px 16px;">${escPosterHtml(ctx.speed)} · 중량 ${escPosterHtml(ctx.weight)}</td></tr>
+                <tr style="border-bottom:1px solid #E2E8F0;"><th style="background:#F1F5F9;padding:11px 16px;">로프 · 브레이크</th><td style="padding:11px 16px;">${escPosterHtml(ctx.ropeSpec)} · ${escPosterHtml(ctx.brakeSystem)}</td></tr>
+                <tr><th style="background:#F1F5F9;padding:11px 16px;">외형 치수 · 인증</th><td style="padding:11px 16px;">${escPosterHtml(ctx.dimensions)} · ${escPosterHtml(ctx.certSpec)}</td></tr>
+              </tbody>
+            </table>
+          </div>`;
+      } else if (presetType === 'TRUST_BANNER') {
+        bodyBlock = `
+          <div style="padding:36px;background:#F8FAFC;display:grid;grid-template-columns:repeat(3,1fr);gap:14px;">
+            <div style="background:#FFFFFF;border:1.5px solid ${pal.primary};border-radius:14px;padding:20px;">
+              <div style="font-size:11px;font-weight:900;color:${pal.primary};margin-bottom:6px;">01 · FAST DISPATCH</div>
+              <div style="font-size:18px;font-weight:900;color:#0F172A;margin-bottom:8px;">평일 15시 이전 당일 상차</div>
+              <div style="font-size:13px;color:#475569;line-height:1.55;">청계천 본사 실물 상시 재고 운영으로 경동화물·택배 당일 직발송합니다.</div>
+            </div>
+            <div style="background:#FFFFFF;border:1.5px solid #059669;border-radius:14px;padding:20px;">
+              <div style="font-size:11px;font-weight:900;color:#059669;margin-bottom:6px;">02 · B2B &amp; G2B DOCS</div>
+              <div style="font-size:18px;font-weight:900;color:#0F172A;margin-bottom:8px;">세금계산서 · 비교견적 5분</div>
+              <div style="font-size:13px;color:#475569;line-height:1.55;">국세청 전자세금계산서 당일 발행 및 관공서·기업 규격서 일체 즉시 지원.</div>
+            </div>
+            <div style="background:#FFFFFF;border:1.5px solid #D97706;border-radius:14px;padding:20px;">
+              <div style="font-size:11px;font-weight:900;color:#D97706;margin-bottom:6px;">03 · GENUINE SERVICE</div>
+              <div style="font-size:18px;font-weight:900;color:#0F172A;margin-bottom:8px;">본사 직영 정비실 1:1 A/S</div>
+              <div style="font-size:13px;color:#475569;line-height:1.55;">해외 직구 제품이 따라올 수 없는 순정 부품 상시 보유 및 1년 무상 보증.</div>
+            </div>
+          </div>`;
+      } else {
+        bodyBlock = `
+          <div style="padding:30px 36px;background:#F8FAFC;display:grid;grid-template-columns:1fr 1.05fr;gap:18px;align-items:center;">
+            <div style="display:flex;flex-direction:column;gap:10px;">
+              ${(copy.corePillars || []).slice(0, 3).map(c => `
+              <div style="background:#FFFFFF;border:1px solid #CBD5E1;border-left:4px solid ${pal.primary};border-radius:12px;padding:14px 16px;">
+                <div style="font-size:11px;font-weight:900;color:${pal.primary};margin-bottom:3px;">${escPosterHtml(c.tag)}</div>
+                <div style="font-size:15px;font-weight:900;color:#0F172A;margin-bottom:3px;">${escPosterHtml(c.title)}</div>
+                <div style="font-size:12.5px;color:#475569;">${escPosterHtml(c.desc)}</div>
+              </div>`).join('')}
+            </div>
+            <div style="background:#FFFFFF;border:1.5px solid #CBD5E1;border-radius:16px;padding:16px;text-align:center;">
+              ${heroUrl ? `<img src="${heroUrl}" style="width:100%;max-height:340px;object-fit:contain;display:block;margin:0 auto 10px auto;">` : `<div style="padding:80px 20px;font-weight:900;">${escPosterHtml(ctx.code)}</div>`}
+              <div style="background:#EFF6FF;border-radius:8px;padding:8px 12px;font-size:12.5px;font-weight:900;color:#07225A;">MODEL: ${escPosterHtml(ctx.code)} · ${escPosterHtml(ctx.pullCap)}</div>
+            </div>
+          </div>`;
       }
 
-      // 하단 브랜드 콜센터 배너
-      const footY = H - 180;
-      roundRectBox(ctx, 96, footY, W - 192, 114, 24);
-      ctx.fillStyle = '#061942';
-      ctx.fill();
-      ctx.strokeStyle = pal.accent;
-      ctx.lineWidth = 3;
-      ctx.stroke();
-      ctx.fillStyle = '#FFFFFF';
-      ctx.font = '900 30px "Pretendard", sans-serif';
-      ctx.fillText(copy.cta, 140, footY + 67);
-      ctx.fillStyle = '#FBBF24';
-      ctx.font = '900 30px "JetBrains Mono", "Pretendard", sans-serif';
-      ctx.fillText('ORATECH 1600-5157', W - 470, footY + 67);
+      return `
+      <div style="width:860px;background:#FFFFFF;color:#0F172A;font-family:'Pretendard',-apple-system,BlinkMacSystemFont,'Malgun Gothic',sans-serif;box-sizing:border-box;border:1px solid #CBD5E1;overflow:hidden;word-break:keep-all;">
+        <div style="position:relative;background:linear-gradient(155deg,${pal.heroBg1} 0%,${pal.heroBg2} 100%);padding:34px 36px;color:#FFFFFF;overflow:hidden;">
+          ${bgUrl && (presetType === 'HERO_POSTER' || presetType === 'SCENE_BANNER') ? `<img src="${bgUrl}" style="position:absolute;top:0;left:0;width:860px;height:100%;object-fit:cover;opacity:${presetType === 'SCENE_BANNER' ? '0.32' : '0.18'};">` : ''}
+          <div style="position:relative;z-index:2;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
+              <span style="display:inline-block;background:rgba(56,189,248,0.18);border:1px solid ${pal.accent};color:#BAE6FD;font-size:11.5px;font-weight:900;padding:4px 14px;border-radius:999px;">${escPosterHtml(copy.kicker)}</span>
+              ${logoUrl ? `<img src="${logoUrl}" style="height:26px;background:#fff;padding:2px 6px;border-radius:5px;">` : ''}
+            </div>
+            <h1 style="margin:0 0 8px 0;font-size:33px;font-weight:900;color:#FFFFFF;line-height:1.25;">${escPosterHtml(copy.h1)}</h1>
+            <div style="font-size:19px;font-weight:900;color:${pal.gold};margin-bottom:8px;">${escPosterHtml(copy.h2)}</div>
+            <p style="margin:0;font-size:14px;color:#DBEAFE;font-weight:600;line-height:1.55;">${escPosterHtml(copy.sub)}</p>
+          </div>
+        </div>
+        ${bodyBlock}
+        <div style="background:#051434;color:#FFFFFF;padding:16px 36px;display:flex;justify-content:space-between;align-items:center;">
+          <span style="font-size:13.5px;font-weight:800;">${escPosterHtml(copy.cta)}</span>
+          <span style="font-size:16px;font-weight:900;color:#FBBF24;">ORATECH 1600-5157</span>
+        </div>
+      </div>`;
+    }
 
-      const dataUrl = canvas.toDataURL('image/jpeg', 0.94);
+    async function capturePosterHtmlToDataUrl(htmlMarkup) {
+      if (typeof html2canvas === 'undefined') {
+        throw new Error('html2canvas 라이브러리가 아직 로드되지 않았습니다.');
+      }
+      const old = document.getElementById('oraPosterRenderStage');
+      if (old) old.remove();
+
+      const stage = document.createElement('div');
+      stage.id = 'oraPosterRenderStage';
+      stage.style.cssText = 'position:fixed;left:-99999px;top:0;width:860px;background:#ffffff;color:#0f172a;margin:0;padding:0;z-index:-1;';
+      stage.innerHTML = htmlMarkup;
+      document.body.appendChild(stage);
+
+      try {
+        if (document.fonts && document.fonts.ready) {
+          await document.fonts.ready;
+        }
+        const imgs = Array.from(stage.querySelectorAll('img'));
+        await Promise.all(imgs.map(im => im.complete ? Promise.resolve() : new Promise(res => {
+          const to = setTimeout(res, 2500);
+          im.onload = () => { clearTimeout(to); res(); };
+          im.onerror = () => { clearTimeout(to); res(); };
+        })));
+        await new Promise(r => setTimeout(r, 120));
+
+        const domH = Math.max(400, stage.scrollHeight);
+        // Keep output canvas safely under Chrome 16,384px limit while preserving ultra-crisp sharpness
+        const captureScale = domH > 7800 ? 1.5 : (domH > 5400 ? 1.75 : 2);
+        const canvas = await html2canvas(stage, {
+          scale: captureScale,
+          useCORS: true,
+          allowTaint: false,
+          backgroundColor: '#ffffff',
+          width: 860,
+          windowWidth: 860,
+          logging: false
+        });
+        const dataUrl = canvas.toDataURL('image/jpeg', 0.93);
+        return {
+          width: canvas.width,
+          height: canvas.height,
+          displayWidth: 860,
+          displayHeight: domH,
+          scale: captureScale,
+          dataUrl
+        };
+      } finally {
+        stage.remove();
+      }
+    }
+
+    window.buildStudioPosterArt = async function(presetType, userPrompt, themeKey, useImagenBg) {
+      const ctx = extractStudioProductContext(curProduct || {});
+      const pal = getPosterThemePalette(themeKey);
+      const { copy, bgPhotoUrl } = await fetchDirectorCopyAndScene(presetType, userPrompt, ctx, useImagenBg);
+
+      const urlPool = [
+        ctx.heroImg,
+        ctx.modelBasicKitImg,
+        ctx.cadImg,
+        'ora_assets/ci_ora_logo.png',
+        'ora_assets/clean_diagram_pulley_4x.jpg',
+        ...(ctx.hwMacros || []).map(x => x.url),
+        ...(ctx.multiAngleImgs || []).map(x => x.url),
+        ...(ctx.cleanScenes || []).map(x => x.url),
+        ...(ctx.accCards || []).map(x => x.url)
+      ];
+      const safeMap = await preloadPosterImagesToSafeDataUrls(urlPool);
+
+      const htmlMarkup = (presetType === 'ALL_IN_ONE_LONG')
+        ? buildAllInOnePosterHtml(ctx, copy, bgPhotoUrl, pal, safeMap, userPrompt)
+        : buildSinglePresetPosterHtml(presetType, ctx, copy, bgPhotoUrl, pal, safeMap);
+
+      const rendered = await capturePosterHtmlToDataUrl(htmlMarkup);
       return {
         id: 'poster_' + Date.now() + '_' + Math.random().toString(36).slice(2, 6),
-        code,
+        code: ctx.code,
         presetType,
         title: copy.h1 + ' ' + copy.h2,
-        width: W,
-        height: H,
+        width: rendered.width,
+        height: rendered.height,
+        displayWidth: rendered.displayWidth,
+        displayHeight: rendered.displayHeight,
+        scale: rendered.scale,
         usedImagen: Boolean(bgPhotoUrl),
-        dataUrl
+        dataUrl: rendered.dataUrl
       };
     };
 
@@ -7390,14 +8089,15 @@ AI 슬롭/번역체/느낌표 없이 실제 대한민국 산업장비 카피라�
       box.innerHTML = window.GENERATED_POSTERS.map((po, i) => `
         <div class="bg-slate-950 border border-slate-700 rounded-lg p-2 space-y-1.5">
           <div class="flex items-center justify-between text-[10px]">
-            <span class="font-black text-sky-300">#${i + 1} · ${po.presetType} (${Math.round(po.width/2)}×${Math.round(po.height/2)}px @2x)</span>
-            <span class="text-slate-400">${po.usedImagen ? '🌐 Imagen 배경' : '🎨 스튜디오 합성'}</span>
+            <span class="font-black text-sky-300">#${i + 1} · ${po.presetType === 'ALL_IN_ONE_LONG' ? '올인원 풀-상세 1장' : po.presetType} (860×${po.displayHeight || Math.round(po.height / 2)}px @${po.scale || 2}x)</span>
+            <span class="text-slate-400">${po.usedImagen ? '🌐 Imagen 융합' : '🎨 스튜디오 화보'}</span>
           </div>
-          <img src="${po.dataUrl}" class="w-full h-36 object-cover object-top rounded border border-slate-800 cursor-pointer" onclick="insertPosterToDetailPage('${po.id}')" title="클릭 시 상세페이지에 통이미지 섹션으로 삽입">
-          <div class="grid grid-cols-3 gap-1 text-[10px] font-bold">
-            <button type="button" onclick="insertPosterToDetailPage('${po.id}')" class="bg-emerald-600/30 hover:bg-emerald-600/50 border border-emerald-400/50 text-emerald-200 py-1 rounded">➕ 페이지 삽입</button>
-            <button type="button" onclick="setPosterAsMain('${po.id}')" class="bg-blue-600/30 hover:bg-blue-600/50 border border-blue-400/50 text-blue-200 py-1 rounded">⭐ 대표이미지</button>
-            <button type="button" onclick="downloadPosterImage('${po.id}')" class="bg-amber-600/30 hover:bg-amber-600/50 border border-amber-400/50 text-amber-200 py-1 rounded">💾 JPG 저장</button>
+          <img src="${po.dataUrl}" class="w-full h-40 object-cover object-top rounded border border-slate-800 cursor-pointer" onclick="insertPosterToDetailPage('${po.id}')" title="클릭 시 상세페이지에 통이미지 섹션으로 삽입">
+          <div class="grid grid-cols-4 gap-1 text-[10px] font-bold">
+            <button type="button" onclick="insertPosterToDetailPage('${po.id}')" class="bg-emerald-600/30 hover:bg-emerald-600/50 border border-emerald-400/50 text-emerald-200 py-1 rounded">➕ 삽입</button>
+            <button type="button" onclick="downloadPosterImage('${po.id}')" class="bg-amber-600/30 hover:bg-amber-600/50 border border-amber-400/50 text-amber-200 py-1 rounded">💾 통JPG</button>
+            <button type="button" onclick="downloadSlicedPosterParts('${po.id}')" class="bg-sky-600/30 hover:bg-sky-600/50 border border-sky-400/50 text-sky-200 py-1 rounded">✂️ 분할</button>
+            <button type="button" onclick="setPosterAsMain('${po.id}')" class="bg-blue-600/30 hover:bg-blue-600/50 border border-blue-400/50 text-blue-200 py-1 rounded">⭐ 대표</button>
           </div>
         </div>
       `).join('');
@@ -7413,8 +8113,8 @@ AI 슬롭/번역체/느낌표 없이 실제 대한민국 산업장비 카피라�
         imgUrl: po.dataUrl
       });
       renderMasterpieceHtml();
-      showToast(`✅ 상세페이지에 [${po.presetType}] 860px 통이미지 섹션이 삽입되었습니다!`);
-      appendChat('ai', `🖼️ <b>[${po.code}] 고해상도 860px 통이미지(${po.presetType})가 우측 상세페이지에 삽입되었습니다!</b>`);
+      showToast(`✅ 상세페이지에 [${po.code}] 860px 풀-통이미지 섹션이 삽입되었습니다!`);
+      appendChat('ai', `🖼️ <b>[${po.code}] 860px 고해상도 통이미지(${po.displayHeight || 860}px 세로)가 우측 상세페이지에 삽입되었습니다!</b>`);
     };
 
     window.insertAllGeneratedPosters = function() {
@@ -7445,6 +8145,32 @@ AI 슬롭/번역체/느낌표 없이 실제 대한민국 산업장비 카피라�
       document.body.removeChild(a);
     };
 
+    window.downloadSlicedPosterParts = async function(posterId) {
+      const po = window.GENERATED_POSTERS.find(x => x.id === posterId);
+      if (!po) return;
+      const img = await loadSingleImg(po.dataUrl, false);
+      if (!img) return;
+      const slicePx = Math.round(img.width * (2000 / 860));
+      const totalParts = Math.ceil(img.height / slicePx);
+      showToast(`✂️ 스마트스토어 규격 ${totalParts}개 파트(2,000px 단위) 분할 저장 시작...`);
+      for (let i = 0; i < totalParts; i++) {
+        const sy = i * slicePx;
+        const sh = Math.min(slicePx, img.height - sy);
+        const c = document.createElement('canvas');
+        c.width = img.width;
+        c.height = sh;
+        c.getContext('2d').drawImage(img, 0, sy, img.width, sh, 0, 0, img.width, sh);
+        const a = document.createElement('a');
+        a.download = `오라테크_${po.code}_스마트스토어_파트${String(i + 1).padStart(2, '0')}.jpg`;
+        a.href = c.toDataURL('image/jpeg', 0.94);
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        await new Promise(r => setTimeout(r, 240));
+      }
+      showToast(`✅ ${totalParts}장 분할 JPG 저장 완료!`);
+    };
+
     window.downloadAllGeneratedPosters = async function() {
       if (!window.GENERATED_POSTERS.length) return;
       for (const po of window.GENERATED_POSTERS) {
@@ -7461,30 +8187,51 @@ AI 슬롭/번역체/느낌표 없이 실제 대한민국 산업장비 카피라�
       const useImagen = Boolean(document.getElementById('chkUseImagenBg')?.checked);
       const userPrompt = (promptEl?.value || '').trim();
       const presets = mode === 'FULL_PACK'
-        ? ['HERO_POSTER', 'SCENE_BANNER', 'PULLEY_INFOGRAPHIC', 'TRUST_BANNER']
-        : [window.ACTIVE_POSTER_PRESET || 'HERO_POSTER'];
+        ? ['HERO_POSTER', 'SCENE_BANNER', 'PULLEY_INFOGRAPHIC', 'SPEC_POSTER', 'TRUST_BANNER']
+        : [window.ACTIVE_POSTER_PRESET || 'ALL_IN_ONE_LONG'];
 
       if (statusEl) {
         statusEl.classList.remove('hidden');
-        statusEl.innerHTML = `⏳ <b>[AI 통이미지 아트디렉터 가동 중]</b> ${presets.length}장(860px 2x 고해상도) 제작 중...`;
+        statusEl.innerHTML = `⏳ <b>[AI 올인원 통이미지 아트디렉터 가동 중]</b> 선택 상품 제원·실물·비교표·FAQ까지 고해상도 렌더링 중...`;
       }
       try {
         const created = [];
         for (let i = 0; i < presets.length; i++) {
-          if (statusEl) statusEl.innerHTML = `⏳ (${i + 1}/${presets.length}) <b>${presets[i]}</b> 카피·레이아웃·실사 합성 중...`;
+          if (statusEl) statusEl.innerHTML = `⏳ (${i + 1}/${presets.length}) <b>${presets[i] === 'ALL_IN_ONE_LONG' ? '올인원 9챕터 풀-상세페이지' : presets[i]}</b> 카피·실물사진·고해상도 합성 중...`;
           const po = await buildStudioPosterArt(presets[i], userPrompt, themeKey, useImagen);
           window.GENERATED_POSTERS.unshift(po);
           created.push(po);
         }
         renderGeneratedPostersGallery();
         if (statusEl) {
-          statusEl.innerHTML = `✅ <b>통이미지 ${created.length}장 제작 완료!</b> 아래 [➕ 페이지 삽입]을 누르면 즉시 상세페이지 통이미지 섹션으로 들어갑니다.`;
+          const last = created[0];
+          statusEl.innerHTML = `✅ <b>통이미지 ${created.length}장 제작 완료!</b> (${last.displayWidth}×${last.displayHeight}px · @${last.scale}x) 아래 [➕ 삽입] 또는 [💾 통JPG] / [✂️ 분할]을 바로 사용하세요.`;
         }
-        showToast(`🎨 860px 고해상도 통이미지 ${created.length}장 제작 완료!`);
+        showToast(`🎨 860px 풀-상세페이지 통이미지 ${created.length}장 완성!`);
       } catch (err) {
         if (statusEl) statusEl.innerHTML = `⚠️ 제작 오류: ${String(err.message || err).replace(/</g, '&lt;')}`;
       }
     };
+
+    // URL 브리지 (?code=PCW-3000LI&posterPrompt=...) 연동
+    setTimeout(() => {
+      try {
+        const qp = new URLSearchParams(window.location.search || '');
+        const qCode = qp.get('code');
+        const qPrompt = qp.get('posterPrompt');
+        if (qCode && typeof loadModel === 'function') {
+          const sel = document.getElementById('quickModelSel');
+          if (sel) sel.value = qCode;
+          loadModel(qCode);
+        }
+        if (qPrompt) {
+          openAiPosterDirector();
+          selectPosterPreset('ALL_IN_ONE_LONG');
+          const inp = document.getElementById('posterDirectorPrompt');
+          if (inp) inp.value = qPrompt;
+        }
+      } catch (_) {}
+    }, 650);
 
     function appendChat(role, msg) {
       const h = document.getElementById('chatHistory');
