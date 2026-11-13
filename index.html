@@ -36,61 +36,118 @@
       overflow-x: hidden;
       background: #ffffff;
       border-radius: 14px;
-      border: 1px solid #334155;
-      box-shadow: 0 15px 35px -5px rgba(0,0,0,0.4);
+      border: 1px solid #cbd5e1;
+      box-shadow: 0 20px 50px -12px rgba(7, 34, 90, 0.45);
+    }
+  </style>
+  <style id="oraStudio2026Theme">
+    body {
+      background: #07142e !important;
+    }
+    .ora-studio-ecosys {
+      background: linear-gradient(90deg, #050f24 0%, #091d47 50%, #050f24 100%);
+      border-bottom: 1px solid rgba(96, 165, 250, 0.24);
+    }
+    .ora-eco-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 800;
+      color: #cbd5e1;
+      border: 1px solid rgba(148, 163, 184, 0.22);
+      background: rgba(15, 23, 42, 0.65);
+      transition: all 0.16s ease;
+      text-decoration: none;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .ora-eco-pill:hover {
+      background: rgba(37, 99, 235, 0.35);
+      border-color: rgba(96, 165, 250, 0.6);
+      color: #ffffff;
+    }
+    .ora-eco-pill.active {
+      background: linear-gradient(135deg, #1d4ed8, #2563eb);
+      border-color: #60a5fa;
+      color: #ffffff;
+      box-shadow: 0 2px 10px rgba(37, 99, 235, 0.45);
+    }
+    .ora-studio-header {
+      background: linear-gradient(90deg, #092256 0%, #0f3685 55%, #092256 100%) !important;
+      border-bottom: 1px solid rgba(96, 165, 250, 0.28) !important;
+    }
+    .ora-lineup-bar {
+      background: #07183c !important;
+      border-bottom: 1px solid rgba(59, 130, 246, 0.25) !important;
+    }
+    aside {
+      background: #0b1c40 !important;
+      border-right-color: rgba(96, 165, 250, 0.22) !important;
+    }
+    main {
+      background: radial-gradient(circle at 50% 0%, rgba(29, 78, 216, 0.16), #061129 72%) !important;
     }
   </style>
 </head>
-<body class="bg-slate-950 text-slate-100 h-screen flex flex-col overflow-hidden">
+<body class="bg-[#07142e] text-slate-100 h-screen flex flex-col overflow-hidden">
 
-  <!-- ==================== 상단 탑바 (Top Bar) ==================== -->
-  <header class="bg-slate-900 border-b border-slate-800 px-3 py-1.5 flex items-center justify-between gap-2 shrink-0 shadow-md whitespace-nowrap overflow-x-auto overflow-y-hidden h-14 min-h-[56px] max-h-14 z-50">
-    <!-- 좌측 로고 및 브랜드 타이틀 -->
-    <div class="flex items-center gap-2 shrink-0 whitespace-nowrap">
-      <div class="flex items-center gap-1.5 shrink-0">
-        <img src="ora_assets/ora_logo.png" alt="ORATECH" class="h-6 object-contain bg-white rounded px-1.5 py-0.5 shadow-sm shrink-0">
-        <span class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-black px-2 py-0.5 rounded text-[11px] tracking-wide shrink-0">스마트스토어 AI</span>
-      </div>
-      <div class="flex items-center gap-2 shrink-0 whitespace-nowrap">
-        <h1 class="hidden 2xl:flex font-black text-xs tracking-tight text-white items-center gap-1.5 shrink-0 whitespace-nowrap">
-          마스터피스 스튜디오
-        </h1>
-        <!-- AI 엔진 선택기 (Gemini 4.0 Carbon / Argon 유료 프론티어) -->
-        <div class="flex items-center bg-slate-950 border border-amber-500/60 rounded-lg px-2 py-1 shadow-inner shrink-0 whitespace-nowrap">
-          <i class="fa-solid fa-microchip text-amber-400 text-xs mr-1.5 shrink-0"></i>
-          <select id="topAiModelSelector" class="bg-transparent text-amber-300 font-black text-xs outline-none cursor-pointer shrink-0 max-w-[165px] xl:max-w-[205px] truncate" onchange="syncAiModelSelection(this.value)">
-            <option value="gemini-4-carbon" selected>💎 Gemini 4.0 Carbon (최상위 플래그십 카본 / 딥 씽킹)</option>
-            <option value="gemini-4-argon">🚀 Gemini 4.0 Argon (최상위 유료 프론티어 / 딥 씽킹)</option>
-            <option value="gemini-3.8-flash">⚡ Gemini 3.8 Flash (최신 차세대 고속 에이전트)</option>
-            <option value="gemini-2.5-pro">🧠 Gemini 2.5 Pro (초정밀 B2B 심층 엔지니어링 분석)</option>
-            <option value="gemini-2.5-flash">⚡ Gemini 2.5 Flash (초고속 하이퍼 에이전트)</option>
-            <option value="gemini-2.0-flash">⚡ Gemini 2.0 Flash (경량 고속 생성)</option>
-            <option value="gemini-1.5-pro">💎 Gemini 1.5 Pro (산업용 B2B 카피라이터 표준)</option>
-            <option value="gemini-1.5-flash">⚡ Gemini 1.5 Flash (초경량 초고속)</option>
-            <option value="claude-3-7-sonnet">🎭 Claude 3.7 Sonnet (엔지니어링 씽킹 하이브리드)</option>
-            <option value="claude-3-5-sonnet">🎭 Claude 3.5 Sonnet (호환 카피라이팅 모드)</option>
-            <option value="gpt-4o">🔮 GPT-4o (OpenAI 옴니 B2B 모드)</option>
-          </select>
-        </div>
-      </div>
+  <!-- ==================== 5대 통합 플랫폼 에코시스템 & AI 엔진 바 ==================== -->
+  <div class="ora-studio-ecosys px-3 py-1 flex items-center justify-between gap-2 shrink-0 whitespace-nowrap overflow-x-auto">
+    <div class="flex items-center gap-1.5 shrink-0">
+      <span class="inline-flex items-center gap-1.5 text-[11px] font-black text-sky-300 pr-2 border-r border-blue-800/70 shrink-0">
+        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>ORATECH OS
+      </span>
+      <a href="https://www.orawinch.com" target="_blank" onclick="if(location.hostname==='localhost'||location.hostname==='127.0.0.1'){this.href='/orawinch';}" class="ora-eco-pill">🌐 공식 홈페이지</a>
+      <a id="btnNavKimDaeri" href="http://localhost:3080" onclick="return openKimDaeriWeb(event)" target="_blank" class="ora-eco-pill">📣 키워드·광고</a>
+      <span class="ora-eco-pill active">🎨 상세페이지 스튜디오</span>
+      <a href="https://igan3w.github.io/sourcing" target="_blank" class="ora-eco-pill">🌏 소싱 랩</a>
+      <a href="https://igan3w.github.io/erp" target="_blank" class="ora-eco-pill">🏭 통합 ERP</a>
     </div>
-
-    <!-- 중앙: Gemini API Key 및 윈치 모델 선택, 생성 버튼 -->
-    <div class="flex items-center gap-1.5 shrink-0 whitespace-nowrap">
-      <!-- Gemini API 키 입력칸 (직관적 노출) -->
-      <div class="flex items-center bg-slate-950 border border-slate-700 rounded-lg px-2 py-1 shrink-0">
-        <i class="fa-solid fa-key text-amber-400 text-xs mr-1 shrink-0"></i>
-        <input type="text" id="geminiApiKeyInput" value="" placeholder="Gemini 키 (AQ...)" class="bg-transparent text-white text-xs outline-none w-24 xl:w-28 font-mono shrink-0" oninput="syncApiKeyInputs(this.value)">
+    <div class="flex items-center gap-1.5 shrink-0">
+      <div class="flex items-center bg-slate-950/90 border border-amber-500/55 rounded-md px-2 py-0.5 shrink-0">
+        <i class="fa-solid fa-microchip text-amber-400 text-[11px] mr-1.5 shrink-0"></i>
+        <select id="topAiModelSelector" class="bg-transparent text-amber-300 font-black text-[11px] outline-none cursor-pointer shrink-0 max-w-[190px] truncate" onchange="syncAiModelSelection(this.value)">
+          <option value="gemini-4-carbon" selected>💎 Gemini 4.0 Carbon (플래그십)</option>
+          <option value="gemini-4-argon">🚀 Gemini 4.0 Argon (딥 씽킹)</option>
+          <option value="gemini-3.8-flash">⚡ Gemini 3.8 Flash (고속)</option>
+          <option value="gemini-2.5-pro">🧠 Gemini 2.5 Pro (정밀 분석)</option>
+          <option value="gemini-2.5-flash">⚡ Gemini 2.5 Flash (하이퍼)</option>
+          <option value="gemini-2.0-flash">⚡ Gemini 2.0 Flash (경량)</option>
+          <option value="gemini-1.5-pro">💎 Gemini 1.5 Pro (표준)</option>
+          <option value="gemini-1.5-flash">⚡ Gemini 1.5 Flash (초고속)</option>
+          <option value="claude-3-7-sonnet">🎭 Claude 3.7 Sonnet</option>
+          <option value="claude-3-5-sonnet">🎭 Claude 3.5 Sonnet</option>
+          <option value="gpt-4o">🔮 GPT-4o</option>
+        </select>
+      </div>
+      <div class="flex items-center bg-slate-950/90 border border-blue-700/60 rounded-md px-2 py-0.5 shrink-0">
+        <i class="fa-solid fa-key text-amber-400 text-[10px] mr-1 shrink-0"></i>
+        <input type="text" id="geminiApiKeyInput" value="" placeholder="Gemini 키 (AQ...)" class="bg-transparent text-white text-[11px] outline-none w-24 font-mono shrink-0" oninput="syncApiKeyInputs(this.value)">
         <span id="apiKeyStatusBadge" class="text-[10px] text-emerald-400 font-bold ml-1 shrink-0">연결됨</span>
       </div>
+      <button type="button" onclick="openWebDeployModal()" class="bg-sky-600 hover:bg-sky-500 text-white text-[11px] font-black px-2.5 py-1 rounded-md shadow flex items-center gap-1 transition shrink-0">
+        <i class="fa-solid fa-cloud-arrow-up"></i> 웹 배포
+      </button>
+    </div>
+  </div>
 
-      <!-- 모델 선택 -->
-      <button type="button" onclick="openErpCatalogModal()" class="bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold px-2 py-1.5 rounded-lg flex items-center gap-1 transition shrink-0 shadow-md shadow-indigo-950/40 whitespace-nowrap" title="오라테크 ERP 166종 품목 검색 및 연동">
+  <!-- ==================== 상단 스튜디오 액션 바 ==================== -->
+  <header class="ora-studio-header px-3 py-1.5 flex items-center justify-between gap-2 shrink-0 shadow-md whitespace-nowrap overflow-x-auto overflow-y-hidden h-12 z-50">
+    <!-- 좌측: 브랜드 · ERP 166종 · 모델 선택 · AI 생성 -->
+    <div class="flex items-center gap-1.5 shrink-0 whitespace-nowrap">
+      <img src="ora_assets/ora_logo.png" alt="ORATECH" class="h-6 object-contain bg-white rounded px-1.5 py-0.5 shadow-sm shrink-0">
+      <h1 class="hidden xl:flex font-black text-xs tracking-tight text-white items-center gap-1 shrink-0 whitespace-nowrap">
+        마스터피스 스튜디오
+      </h1>
+      <button type="button" onclick="openErpCatalogModal()" class="bg-blue-600 hover:bg-blue-500 border border-blue-400/50 text-white text-xs font-extrabold px-2.5 py-1 rounded-lg flex items-center gap-1 transition shrink-0 shadow whitespace-nowrap" title="오라테크 ERP 166종 품목 검색 및 연동">
         <i class="fa-solid fa-boxes-stacked text-amber-300"></i>
         <span>ERP 166종</span>
       </button>
 
-      <select id="quickModelSel" class="bg-slate-800 border border-slate-700 text-white text-xs rounded-lg px-2 py-1.5 focus:ring-2 focus:ring-amber-500 outline-none font-bold shrink-0 max-w-[180px] xl:max-w-[235px] truncate" onchange="onModelChange(this.value)">
+      <select id="quickModelSel" class="bg-slate-900/90 border border-blue-500/40 text-white text-xs rounded-lg px-2 py-1 focus:ring-2 focus:ring-amber-500 outline-none font-bold shrink-0 max-w-[190px] xl:max-w-[235px] truncate" onchange="onModelChange(this.value)">
         <option value="PCW-5000" selected>🌲 PCW-5000 (혼다 1톤 엔진윈치 - 대표작)</option>
         <option value="PCW-5000HS">⚡ PCW-5000HS (분당 18m 고속 엔진윈치)</option>
         <option value="PCW-4000">🔄 PCW-4000 (360도 전방향 작동 12kg)</option>
@@ -112,84 +169,71 @@
         <option value="SY-2.5T">🚜 SY-2.5T (고하중 유압 핸드 파레트 2.5톤)</option>
       </select>
 
-      <!-- Gemini AI 마스터피스 정밀 생성 버튼 -->
-      <button onclick="runGeminiMasterpieceGenerator()" id="btnGenerate" class="bg-gradient-to-r from-amber-500 via-amber-400 to-yellow-500 hover:brightness-110 text-slate-950 text-xs font-black px-3 py-1.5 rounded-lg flex items-center gap-1 transition shadow-lg shadow-amber-500/20 shrink-0 whitespace-nowrap">
+      <button onclick="runGeminiMasterpieceGenerator()" id="btnGenerate" class="bg-gradient-to-r from-amber-500 via-amber-400 to-yellow-400 hover:brightness-110 text-slate-950 text-xs font-black px-3 py-1 rounded-lg flex items-center gap-1 transition shadow-lg shadow-amber-500/25 shrink-0 whitespace-nowrap">
         <i class="fa-solid fa-wand-magic-sparkles shrink-0"></i>
         <span>AI 생성</span>
       </button>
     </div>
 
-    <!-- 우측 도구 모음 -->
+    <!-- 우측: 프리뷰 모드 & 내보내기 도구 -->
     <div class="flex items-center gap-1.5 shrink-0 whitespace-nowrap">
-      <!-- 뷰 모드 토글 -->
-      <div class="bg-slate-800 rounded-lg p-0.5 flex border border-slate-700 shrink-0 whitespace-nowrap">
-        <button id="btnViewMobile" onclick="setViewMode('mobile')" class="px-2 py-1 rounded text-xs font-bold text-white bg-amber-600 transition shrink-0 whitespace-nowrap">
+      <div class="bg-slate-900/90 rounded-lg p-0.5 flex border border-blue-700/50 shrink-0 whitespace-nowrap">
+        <button id="btnViewMobile" onclick="setViewMode('mobile')" class="px-2 py-0.5 rounded text-xs font-bold text-white bg-blue-600 transition shrink-0 whitespace-nowrap">
           <i class="fa-solid fa-mobile-screen"></i> 모바일
         </button>
-        <button id="btnViewPc" onclick="setViewMode('pc')" class="px-2 py-1 rounded text-xs font-bold text-slate-400 hover:text-white transition shrink-0 whitespace-nowrap">
+        <button id="btnViewPc" onclick="setViewMode('pc')" class="px-2 py-0.5 rounded text-xs font-bold text-slate-300 hover:text-white transition shrink-0 whitespace-nowrap">
           <i class="fa-solid fa-desktop"></i> PC
         </button>
       </div>
 
-      <!-- [기능 1] 1000x1000 대표 썸네일 저장 -->
-      <button onclick="downloadSquareThumbnail()" class="bg-gradient-to-r from-pink-600 to-rose-600 hover:from-pink-500 hover:to-rose-500 text-white text-xs font-black px-2.5 py-1.5 rounded-lg flex items-center gap-1 transition shadow-lg active:scale-95 shrink-0 whitespace-nowrap" title="네이버 스마트스토어 1000x1000 정방형 대표 썸네일 액자 생성">
+      <button onclick="switchLeftTab(4)" class="bg-gradient-to-r from-rose-600 to-orange-500 hover:brightness-110 text-white text-xs font-black px-2.5 py-1 rounded-lg shadow flex items-center gap-1 transition shrink-0 whitespace-nowrap">
+        <i class="fa-solid fa-bolt text-yellow-200 shrink-0"></i> 1분 견적·쇼츠
+      </button>
+
+      <button onclick="downloadSquareThumbnail()" class="bg-gradient-to-r from-pink-600 to-rose-600 hover:brightness-110 text-white text-xs font-black px-2.5 py-1 rounded-lg flex items-center gap-1 transition shadow shrink-0 whitespace-nowrap" title="네이버 스마트스토어 1000x1000 정방형 대표 썸네일 액자 생성">
         <i class="fa-solid fa-crop-simple shrink-0"></i> 썸네일
       </button>
 
-      <!-- [기능 2] 공식 견적서/규격서 출력 -->
-      <button onclick="openOfficialQuoteModal()" class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white text-xs font-black px-2.5 py-1.5 rounded-lg flex items-center gap-1 transition shadow-lg active:scale-95 shrink-0 whitespace-nowrap" title="관공서·나라장터·기업 제출용 공식 견적서 출력">
+      <button onclick="openOfficialQuoteModal()" class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:brightness-110 text-white text-xs font-black px-2.5 py-1 rounded-lg flex items-center gap-1 transition shadow shrink-0 whitespace-nowrap" title="관공서·나라장터·기업 제출용 공식 견적서 출력">
         <i class="fa-solid fa-file-invoice shrink-0"></i> 견적서
       </button>
 
-      <!-- 네이버 스마트스토어 860px 통이미지 다운로드 버튼 -->
-      <button id="btnDownloadImage" onclick="downloadDetailImage('jpg')" class="bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-white text-xs font-black px-2.5 py-1.5 rounded-lg flex items-center gap-1 transition shadow-lg shadow-emerald-950 active:scale-95 shrink-0 whitespace-nowrap">
+      <button id="btnDownloadImage" onclick="downloadDetailImage('jpg')" class="bg-gradient-to-r from-emerald-500 to-teal-600 hover:brightness-110 text-white text-xs font-black px-2.5 py-1 rounded-lg flex items-center gap-1 transition shadow shrink-0 whitespace-nowrap">
         <i class="fa-solid fa-file-image shrink-0"></i> 860px JPG
       </button>
 
-      <!-- 스마트에디터 ONE 복사 -->
-      <button onclick="copySmartEditorHtml()" class="bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white text-xs font-black px-2.5 py-1.5 rounded-lg flex items-center gap-1 transition shrink-0 whitespace-nowrap">
+      <button onclick="copySmartEditorHtml()" class="bg-slate-900 hover:bg-slate-800 border border-blue-500/40 text-white text-xs font-black px-2.5 py-1 rounded-lg flex items-center gap-1 transition shrink-0 whitespace-nowrap">
         <i class="fa-solid fa-copy text-emerald-400 shrink-0"></i> HTML 복사
       </button>
     </div>
   </header>
 
-  <!-- ==================== [v3.0 매출 10억 리부트] 5대 주력 라인업 원클릭 전환 & 아이템스카우트 직결 바 ==================== -->
-  <div class="bg-slate-950 border-b border-slate-800 px-3 py-1.5 flex items-center justify-between gap-2 shrink-0 overflow-x-auto whitespace-nowrap text-[11px]">
+  <!-- ==================== [v3.0 전략 라인업] 주력 카테고리 원클릭 전환 바 ==================== -->
+  <div class="ora-lineup-bar px-3 py-1 flex items-center justify-between gap-2 shrink-0 overflow-x-auto whitespace-nowrap text-[11px]">
     <div class="flex items-center gap-1.5 shrink-0">
-      <span class="bg-gradient-to-r from-amber-500 to-orange-500 text-slate-950 font-black px-2 py-0.5 rounded-md shadow-sm">🚀 v3.0 전략 라인업</span>
-      <button type="button" onclick="quickSelectStrategicCategory('engine')" class="bg-orange-600/25 hover:bg-orange-600/40 border border-orange-500/50 text-orange-200 font-extrabold px-2.5 py-1 rounded-lg transition">
-        🔥 요즘대세 혼다 엔진윈치 (PCW-5000)
+      <span class="bg-gradient-to-r from-blue-600 to-sky-500 text-white font-black px-2 py-0.5 rounded-md shadow-sm">⚡ 전략 라인업</span>
+      <button type="button" onclick="quickSelectStrategicCategory('engine')" title="요즘대세 혼다 엔진윈치 (PCW-5000)" class="bg-orange-600/20 hover:bg-orange-600/40 border border-orange-500/45 text-orange-200 font-extrabold px-2.5 py-0.5 rounded-md transition">
+        🔥 혼다 엔진윈치 (PCW-5000)
       </button>
-      <button type="button" onclick="quickSelectStrategicCategory('docma')" class="bg-emerald-600/20 hover:bg-emerald-600/35 border border-emerald-500/40 text-emerald-200 font-bold px-2.5 py-1 rounded-lg transition">
-        🌲 도크마 산림드럼 (VF-150)
+      <button type="button" onclick="quickSelectStrategicCategory('docma')" title="도크마 산림드럼 (VF-150)" class="bg-emerald-600/20 hover:bg-emerald-600/35 border border-emerald-500/40 text-emerald-200 font-bold px-2.5 py-0.5 rounded-md transition">
+        🌲 도크마 산림 (VF-150)
       </button>
-      <button type="button" onclick="quickSelectStrategicCategory('special_truck')" class="bg-amber-600/20 hover:bg-amber-600/35 border border-amber-500/40 text-amber-200 font-bold px-2.5 py-1 rounded-lg transition">
-        🚛 특장·셀프로더 12V/24V (DV-9000)
+      <button type="button" onclick="quickSelectStrategicCategory('special_truck')" title="특장·셀프로더 12V/24V (DV-9000)" class="bg-amber-600/20 hover:bg-amber-600/35 border border-amber-500/40 text-amber-200 font-bold px-2.5 py-0.5 rounded-md transition">
+        🚛 특장 12V/24V (DV-9000)
       </button>
-      <button type="button" onclick="quickSelectStrategicCategory('small_220v')" class="bg-blue-600/20 hover:bg-blue-600/35 border border-blue-500/40 text-blue-200 font-bold px-2.5 py-1 rounded-lg transition">
-        ⚡ 소형 220V 즉시결제 (DU-250)
+      <button type="button" onclick="quickSelectStrategicCategory('small_220v')" title="소형 220V 즉시결제 (DU-250)" class="bg-blue-600/25 hover:bg-blue-600/40 border border-blue-500/45 text-blue-200 font-bold px-2.5 py-0.5 rounded-md transition">
+        ⚡ 220V 소형 (DU-250)
       </button>
-      <button type="button" onclick="quickSelectStrategicCategory('heavy_380v')" class="bg-indigo-600/20 hover:bg-indigo-600/35 border border-indigo-500/40 text-indigo-200 font-bold px-2.5 py-1 rounded-lg transition">
-        🏗️ 대형 380V·호이스트 (CWG-1050)
+      <button type="button" onclick="quickSelectStrategicCategory('heavy_380v')" title="대형 380V·호이스트 (CWG-1050)" class="bg-indigo-600/20 hover:bg-indigo-600/35 border border-indigo-500/40 text-indigo-200 font-bold px-2.5 py-0.5 rounded-md transition">
+        🏗️ 380V·호이스트 (CWG-1050)
       </button>
-      <button type="button" onclick="quickSelectStrategicCategory('battery')" class="bg-cyan-600/20 hover:bg-cyan-600/35 border border-cyan-500/40 text-cyan-200 font-bold px-2.5 py-1 rounded-lg transition">
+      <button type="button" onclick="quickSelectStrategicCategory('battery')" title="무매연 배터리 (PCW-3000LI)" class="bg-cyan-600/20 hover:bg-cyan-600/35 border border-cyan-500/40 text-cyan-200 font-bold px-2.5 py-0.5 rounded-md transition">
         🔋 무매연 배터리 (PCW-3000LI)
       </button>
     </div>
-    <div class="flex items-center gap-1.5 shrink-0">
-      <button type="button" onclick="openWebDeployModal()" class="bg-gradient-to-r from-sky-600 to-indigo-600 hover:brightness-110 text-white font-black px-2.5 py-1 rounded-lg shadow flex items-center gap-1 transition">
-        <i class="fa-solid fa-globe text-cyan-200"></i> 웹 사이트 등록(배포)
-      </button>
-      <button type="button" onclick="switchLeftTab(4)" class="bg-gradient-to-r from-rose-600 to-orange-600 hover:brightness-110 text-white font-black px-2.5 py-1 rounded-lg shadow flex items-center gap-1 transition">
-        <i class="fa-solid fa-bolt text-yellow-200"></i> 1분 카톡견적 · 쇼츠콘티
-      </button>
-      <a id="btnNavKimDaeri" href="http://localhost:3080" onclick="return openKimDaeriWeb(event)" target="_blank" class="bg-slate-900 hover:bg-slate-800 border border-emerald-500/50 text-emerald-300 font-black px-2.5 py-1 rounded-lg flex items-center gap-1 transition">
-        <i class="fa-solid fa-satellite-dish text-emerald-400"></i> 김대리 아이템스카우트 PRO
-      </a>
-      <a href="https://igan3w.github.io/erp" target="_blank" class="bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-300 font-bold px-2 py-1 rounded-lg flex items-center gap-1 transition" title="오라테크 웹 ERP 열기">
-        <i class="fa-solid fa-warehouse text-amber-400"></i> 웹 ERP
-      </a>
-    </div>
+    <span class="hidden lg:inline-flex items-center gap-1 text-[10.5px] font-bold text-sky-300/90 shrink-0">
+      <i class="fa-solid fa-shield-check text-emerald-400"></i> AI 슬롭/번역체 자동 필터 ON
+    </span>
   </div>
 
   <!-- ==================== 메인 워크스페이스 ==================== -->
@@ -223,8 +267,8 @@
             <span class="font-black text-amber-400 flex items-center gap-1.5 text-xs">
               <i class="fa-solid fa-key"></i> Google Gemini API 키 & 엔진
             </span>
-            <span id="apiKeyStatusLabel" class="text-[10px] px-2 py-0.5 rounded-full font-bold bg-amber-500/20 text-amber-400 border border-amber-500/30">
-              미입력 (스마트 마스터피스 모드)
+            <span id="apiKeyStatusLabel" class="text-[10px] px-2 py-0.5 rounded-full font-bold bg-sky-500/20 text-sky-300 border border-sky-400/35">
+              서버 Carbon 자동연동 (개인키 선택)
             </span>
           </div>
 
@@ -4154,12 +4198,12 @@
 </style>
 
   <!-- SECTION 00: 공식 수입원 상단 인증 바 -->
-  <div class="ora-topbar" style="background:#0f172a; color:#f8fafc; padding:13px 28px; font-size:13px; font-weight:700; display:flex; justify-content:space-between; align-items:center; border-bottom:3px solid ${themePrimary};">
+  <div class="ora-topbar" style="background:linear-gradient(90deg, #07225A 0%, #0F3D99 100%); color:#f8fafc; padding:13px 28px; font-size:13px; font-weight:700; display:flex; justify-content:space-between; align-items:center; border-bottom:3px solid ${themePrimary};">
     <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
       <span style="background:${themePrimary}; color:#ffffff; font-size:10px; font-weight:900; padding:3px 9px; border-radius:4px; letter-spacing:0.06em; flex-shrink:0;">OFFICIAL GENUINE</span>
       <span>${p.origin || '대한민국 공식 수입원 (주)오라테크 정품 보증'}</span>
     </div>
-    <div style="color:#38bdf8; font-size:12.5px; font-weight:800;">기술상담 · 대량견적 1600-5157</div>
+    <div style="background:rgba(255,255,255,0.12); border:1px solid rgba(147,197,253,0.45); color:#e0f2fe; font-size:12.5px; font-weight:800; padding:4px 12px; border-radius:999px;">기술상담 · 대량견적 1600-5157</div>
   </div>
 
   ${typeof buildMotionBannerHtml === "function" ? buildMotionBannerHtml(code, pullCap, doublePull, speed, engine, themePrimary) : ""}
@@ -6868,8 +6912,8 @@ D. 담백한 명사형 종결 또는 짧은 존댓말 단문. 느낌표·이모�
       const label = document.getElementById('apiKeyStatusLabel');
       if (!key) {
         if (label) {
-          label.className = 'text-[10px] px-2 py-0.5 rounded-full font-bold bg-amber-500/20 text-amber-400 border border-amber-500/30';
-          label.innerText = '미입력 (스마트 마스터피스 모드)';
+          label.className = 'text-[10px] px-2 py-0.5 rounded-full font-bold bg-sky-500/20 text-sky-300 border border-sky-400/35';
+          label.innerText = '서버 Carbon 자동연동 (개인키 선택)';
         }
         showToast('API 키를 입력해 주세요.');
         return;
@@ -6938,8 +6982,8 @@ D. 담백한 명사형 종결 또는 짧은 존댓말 단문. 느낌표·이모�
       } else {
         if (b) b.classList.add('hidden');
         if (label) {
-          label.className = 'text-[10px] px-2 py-0.5 rounded-full font-bold bg-amber-500/20 text-amber-400 border border-amber-500/30';
-          label.innerText = '미입력 (스마트 마스터피스 모드)';
+          label.className = 'text-[10px] px-2 py-0.5 rounded-full font-bold bg-sky-500/20 text-sky-300 border border-sky-400/35';
+          label.innerText = '서버 Carbon 자동연동 (개인키 선택)';
         }
       }
     }
@@ -9169,7 +9213,7 @@ D. 담백한 명사형 종결 또는 짧은 존댓말 단문. 느낌표·이모�
       if (saved && saved.trim()) return saved.trim();
       const loc = window.location;
       // 통합 클라우드 서버(Railway/Render/로컬 3080)에서 /studio로 열린 경우 루트(/)가 곧 김대리!
-      if (loc.protocol.startsWith('http') && !isStaticWebHost() && loc.port !== '5050') {
+      if ((loc.protocol === 'http:' || loc.protocol === 'https:') && !isStaticWebHost()) {
         return loc.origin + '/';
       }
       return 'http://localhost:3080';
