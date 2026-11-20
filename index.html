@@ -3,24 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>(주)오라테크 ORA WINCH - 스마트스토어 AI 스튜디오 v3.0 (매출 10억 리부트 에디션)</title>
+  <title>(주)오라테크 ORA WINCH - 스마트스토어 상세페이지 AI 스튜디오 v5.0 (Agency Masterpiece)</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
   <script src="ora_latest_ai_result.js"></script>
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Montserrat:wght@700;800;900&display=swap">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;800;900&display=swap');
     * { font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif; letter-spacing: -0.3px; }
     ::-webkit-scrollbar { width: 6px; height: 6px; }
     ::-webkit-scrollbar-track { background: #0f172a; }
     ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
     ::-webkit-scrollbar-thumb:hover { background: #475569; }
     .mobile-frame {
-      width: 430px;
+      width: 390px;
       max-width: 100%;
       flex: 1;
       min-height: 0;
-      box-shadow: 0 25px 60px -15px rgba(0,0,0,0.6);
+      box-shadow: 0 25px 60px -15px rgba(0,0,0,0.65);
       border: 10px solid #0f172a;
       border-radius: 36px;
       overflow-y: auto;
@@ -30,6 +32,7 @@
     }
     .pc-frame {
       width: 100%;
+      max-width: 900px;
       flex: 1;
       min-height: 0;
       overflow-y: auto;
@@ -38,6 +41,119 @@
       border-radius: 14px;
       border: 1px solid #cbd5e1;
       box-shadow: 0 20px 50px -12px rgba(7, 34, 90, 0.45);
+    }
+    .split-stage {
+      width: 100%;
+      flex: 1;
+      min-height: 0;
+      display: flex;
+      justify-content: center;
+      align-items: stretch;
+      gap: 14px;
+      overflow: hidden;
+    }
+    .split-stage.is-split {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 390px;
+      gap: 14px;
+    }
+    .split-stage.is-split .pc-frame {
+      max-width: none;
+      height: 100%;
+    }
+    .mobile-mirror-frame {
+      display: none;
+      width: 390px;
+      height: 100%;
+      min-height: 0;
+      box-shadow: 0 20px 50px -12px rgba(0,0,0,0.65);
+      border: 8px solid #0f172a;
+      border-radius: 32px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      background: #ffffff;
+      position: relative;
+    }
+    .split-stage.is-split .mobile-mirror-frame {
+      display: block;
+    }
+    @media (max-width: 1280px) {
+      .split-stage.is-split { grid-template-columns: minmax(0, 1fr) 340px; }
+      .split-stage.is-split .mobile-mirror-frame { width: 340px; }
+    }
+    /* Interactive Visual Block Editor Styles (Never captured in exports) */
+    #previewContainer.ora-edit-mode .ora-editable-block {
+      position: relative !important;
+      transition: outline 0.14s ease, opacity 0.14s ease;
+    }
+    #previewContainer.ora-edit-mode .ora-editable-block:hover {
+      outline: 2px solid #38bdf8 !important;
+      outline-offset: -2px;
+    }
+    #previewContainer.ora-edit-mode .ora-editable-block[data-ora-hidden="true"] {
+      opacity: 0.34 !important;
+      filter: grayscale(0.9);
+      max-height: 76px !important;
+      overflow: hidden !important;
+      outline: 2px dashed #f59e0b !important;
+    }
+    .ora-sec-toolbar {
+      position: absolute;
+      top: 8px;
+      right: 10px;
+      z-index: 40;
+      display: none;
+      align-items: center;
+      gap: 4px;
+      background: rgba(15, 23, 42, 0.94);
+      border: 1px solid rgba(56, 189, 248, 0.65);
+      border-radius: 999px;
+      padding: 4px 8px;
+      box-shadow: 0 8px 24px rgba(2, 6, 23, 0.45);
+      backdrop-filter: blur(8px);
+      font-family: 'Pretendard', sans-serif !important;
+    }
+    #previewContainer.ora-edit-mode .ora-editable-block:hover > .ora-sec-toolbar,
+    #previewContainer.ora-edit-mode .ora-editable-block[data-ora-hidden="true"] > .ora-sec-toolbar {
+      display: flex;
+    }
+    .ora-sec-toolbar button {
+      border: none;
+      background: rgba(30, 41, 59, 0.95);
+      color: #e2e8f0;
+      font-size: 10.5px;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 999px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.14s ease;
+    }
+    .ora-sec-toolbar button:hover {
+      background: #2563eb;
+      color: #ffffff;
+    }
+    .ora-sec-toolbar button.ora-tb-carbon {
+      background: linear-gradient(90deg, #0284c7, #2563eb);
+      color: #ffffff;
+    }
+    .ora-sec-toolbar button.ora-tb-danger:hover {
+      background: #dc2626;
+      color: #ffffff;
+    }
+    #previewContainer.ora-edit-mode [contenteditable="true"] {
+      cursor: text;
+      border-radius: 4px;
+      transition: background 0.12s ease, outline 0.12s ease;
+    }
+    #previewContainer.ora-edit-mode [contenteditable="true"]:hover {
+      outline: 1px dashed rgba(56, 189, 248, 0.7);
+      outline-offset: 2px;
+    }
+    #previewContainer.ora-edit-mode [contenteditable="true"]:focus {
+      outline: 2px dashed #f59e0b !important;
+      outline-offset: 3px;
+      background: rgba(254, 243, 199, 0.22);
     }
   </style>
   <style id="oraStudio2026Theme">
@@ -94,34 +210,28 @@
 </head>
 <body class="bg-[#07142e] text-slate-100 h-screen flex flex-col overflow-hidden">
 
-  <!-- ==================== 5대 통합 플랫폼 에코시스템 & AI 엔진 바 ==================== -->
+  <!-- ==================== 7대 통합 플랫폼 에코시스템 & AI 엔진 바 ==================== -->
   <div class="ora-studio-ecosys px-3 py-1 flex items-center justify-between gap-2 shrink-0 whitespace-nowrap overflow-x-auto">
-    <div class="flex items-center gap-1.5 shrink-0">
+    <div class="flex items-center gap-1.5 shrink-0" id="oraEcoNavLinks">
       <span class="inline-flex items-center gap-1.5 text-[11px] font-black text-sky-300 pr-2 border-r border-blue-800/70 shrink-0">
-        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>ORATECH OS
+        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>ORATECH OS v5
       </span>
-      <a href="https://www.orawinch.com" target="_blank" onclick="if(location.hostname==='localhost'||location.hostname==='127.0.0.1'){this.href='/orawinch';}" class="ora-eco-pill">🌐 공식홈</a>
-      <a id="btnNavKimDaeri" href="https://naver-store-ai-manager-production.up.railway.app/" onclick="return openKimDaeriWeb(event)" target="_blank" class="ora-eco-pill">📣 김대리</a>
+      <a href="https://www.orawinch.com" data-local="/orawinch" target="_blank" class="ora-eco-pill">🌐 공식홈</a>
+      <a id="btnNavKimDaeri" href="https://naver-store-ai-manager-production.up.railway.app/" data-local="/" onclick="return openKimDaeriWeb(event)" target="_blank" class="ora-eco-pill">📣 김대리</a>
       <span class="ora-eco-pill active">🎨 상세 스튜디오</span>
-      <a href="https://igan3w.github.io/sourcing" onclick="if(location.hostname==='localhost'||location.hostname==='127.0.0.1'){this.href='/sourcing';}" target="_blank" class="ora-eco-pill">🌏 소싱랩</a>
-      <a href="https://igan3w.github.io/strategy" onclick="if(location.hostname==='localhost'||location.hostname==='127.0.0.1'){this.href='/strategy';}" target="_blank" class="ora-eco-pill">📈 시장전략</a>
-      <a href="https://igan3w.github.io/erp" target="_blank" class="ora-eco-pill">🏭 ERP</a>
+      <a href="https://igan3w.github.io/sourcing/" data-local="/sourcing" target="_blank" class="ora-eco-pill">🌏 소싱랩</a>
+      <a href="https://igan3w.github.io/strategy/" data-local="/strategy" target="_blank" class="ora-eco-pill">📈 시장전략</a>
+      <a href="https://igan3w.github.io/notes/" data-local="/notes" target="_blank" class="ora-eco-pill">📝 노션+</a>
+      <a href="https://igan3w.github.io/erp/" target="_blank" class="ora-eco-pill">🏭 ERP</a>
     </div>
     <div class="flex items-center gap-1.5 shrink-0">
       <div class="flex items-center bg-slate-950/90 border border-amber-500/55 rounded-md px-2 py-0.5 shrink-0">
         <i class="fa-solid fa-microchip text-amber-400 text-[11px] mr-1.5 shrink-0"></i>
-        <select id="topAiModelSelector" class="bg-transparent text-amber-300 font-black text-[11px] outline-none cursor-pointer shrink-0 max-w-[190px] truncate" onchange="syncAiModelSelection(this.value)">
+        <select id="topAiModelSelector" class="bg-transparent text-amber-300 font-black text-[11px] outline-none cursor-pointer shrink-0 max-w-[195px] truncate" onchange="syncAiModelSelection(this.value)">
           <option value="gemini-4-carbon" selected>💎 Gemini 4.0 Carbon (플래그십)</option>
-          <option value="gemini-4-argon">🚀 Gemini 4.0 Argon (딥 씽킹)</option>
-          <option value="gemini-3.8-flash">⚡ Gemini 3.8 Flash (고속)</option>
+          <option value="gemini-3.8-flash">⚡ Gemini 3.8 Flash (차세대 고속)</option>
           <option value="gemini-2.5-pro">🧠 Gemini 2.5 Pro (정밀 분석)</option>
-          <option value="gemini-2.5-flash">⚡ Gemini 2.5 Flash (하이퍼)</option>
-          <option value="gemini-2.0-flash">⚡ Gemini 2.0 Flash (경량)</option>
-          <option value="gemini-1.5-pro">💎 Gemini 1.5 Pro (표준)</option>
-          <option value="gemini-1.5-flash">⚡ Gemini 1.5 Flash (초고속)</option>
-          <option value="claude-3-7-sonnet">🎭 Claude 3.7 Sonnet</option>
-          <option value="claude-3-5-sonnet">🎭 Claude 3.5 Sonnet</option>
-          <option value="gpt-4o">🔮 GPT-4o</option>
+          <option value="gemini-2.5-flash">⚡ Gemini 2.5 Flash (고속 경량)</option>
         </select>
       </div>
       <div class="flex items-center bg-slate-950/90 border border-blue-700/60 rounded-md px-2 py-0.5 shrink-0">
@@ -137,15 +247,15 @@
 
   <!-- ==================== 상단 스튜디오 액션 바 ==================== -->
   <header class="ora-studio-header px-3 py-1.5 flex items-center justify-between gap-2 shrink-0 shadow-md whitespace-nowrap overflow-x-auto overflow-y-hidden h-12 z-50">
-    <!-- 좌측: 브랜드 · ERP 166종 · 모델 선택 · AI 생성 -->
+    <!-- 좌측: 브랜드 · ERP 169종 · 모델 선택 · AI 생성 -->
     <div class="flex items-center gap-1.5 shrink-0 whitespace-nowrap">
       <img src="ora_assets/ora_logo.png" alt="ORATECH" class="h-6 object-contain bg-white rounded px-1.5 py-0.5 shadow-sm shrink-0">
       <h1 class="hidden xl:flex font-black text-xs tracking-tight text-white items-center gap-1 shrink-0 whitespace-nowrap">
-        마스터피스 스튜디오
+        마스터피스 스튜디오 <span class="text-[10px] text-amber-300 font-black">v5.0</span>
       </h1>
-      <button type="button" onclick="openErpCatalogModal()" class="bg-blue-600 hover:bg-blue-500 border border-blue-400/50 text-white text-xs font-extrabold px-2.5 py-1 rounded-lg flex items-center gap-1 transition shrink-0 shadow whitespace-nowrap" title="오라테크 ERP 166종 품목 검색 및 연동">
+      <button type="button" onclick="openErpCatalogModal()" class="bg-blue-600 hover:bg-blue-500 border border-blue-400/50 text-white text-xs font-extrabold px-2.5 py-1 rounded-lg flex items-center gap-1 transition shrink-0 shadow whitespace-nowrap" title="오라테크 ERP 169종 품목 검색 및 연동">
         <i class="fa-solid fa-boxes-stacked text-amber-300"></i>
-        <span>ERP 166종</span>
+        <span>ERP 169종</span>
       </button>
 
       <select id="quickModelSel" class="bg-slate-900/90 border border-blue-500/40 text-white text-xs rounded-lg px-2 py-1 focus:ring-2 focus:ring-amber-500 outline-none font-bold shrink-0 max-w-[190px] xl:max-w-[235px] truncate" onchange="onModelChange(this.value)">
@@ -179,32 +289,39 @@
     <!-- 우측: 프리뷰 모드 & 내보내기 도구 -->
     <div class="flex items-center gap-1.5 shrink-0 whitespace-nowrap">
       <div class="bg-slate-900/90 rounded-lg p-0.5 flex border border-blue-700/50 shrink-0 whitespace-nowrap">
-        <button id="btnViewMobile" onclick="setViewMode('mobile')" class="px-2 py-0.5 rounded text-xs font-bold text-white bg-blue-600 transition shrink-0 whitespace-nowrap">
+        <button id="btnViewMobile" onclick="setViewMode('mobile')" class="px-2 py-0.5 rounded text-xs font-bold text-white bg-blue-600 transition shrink-0 whitespace-nowrap" title="모바일 390px 단독 보기">
           <i class="fa-solid fa-mobile-screen"></i> 모바일
         </button>
-        <button id="btnViewPc" onclick="setViewMode('pc')" class="px-2 py-0.5 rounded text-xs font-bold text-slate-300 hover:text-white transition shrink-0 whitespace-nowrap">
+        <button id="btnViewPc" onclick="setViewMode('pc')" class="px-2 py-0.5 rounded text-xs font-bold text-slate-300 hover:text-white transition shrink-0 whitespace-nowrap" title="PC 860px 단독 보기">
           <i class="fa-solid fa-desktop"></i> PC
+        </button>
+        <button id="btnViewSplit" onclick="setViewMode('split')" class="px-2 py-0.5 rounded text-xs font-bold text-slate-300 hover:text-white transition shrink-0 whitespace-nowrap" title="PC(860px) + 모바일(390px) 실시간 동시 비교">
+          ⚡ 동시비교
         </button>
       </div>
 
-      <button onclick="switchLeftTab(4)" class="bg-gradient-to-r from-rose-600 to-orange-500 hover:brightness-110 text-white text-xs font-black px-2.5 py-1 rounded-lg shadow flex items-center gap-1 transition shrink-0 whitespace-nowrap">
-        <i class="fa-solid fa-bolt text-yellow-200 shrink-0"></i> 1분 견적·쇼츠
+      <button onclick="switchLeftTab(4)" class="bg-gradient-to-r from-rose-600 to-orange-500 hover:brightness-110 text-white text-xs font-black px-2 py-1 rounded-lg shadow flex items-center gap-1 transition shrink-0 whitespace-nowrap">
+        <i class="fa-solid fa-bolt text-yellow-200 shrink-0"></i> 견적·쇼츠
       </button>
 
-      <button onclick="downloadSquareThumbnail()" class="bg-gradient-to-r from-pink-600 to-rose-600 hover:brightness-110 text-white text-xs font-black px-2.5 py-1 rounded-lg flex items-center gap-1 transition shadow shrink-0 whitespace-nowrap" title="네이버 스마트스토어 1000x1000 정방형 대표 썸네일 액자 생성">
+      <button onclick="downloadSquareThumbnail()" class="bg-gradient-to-r from-pink-600 to-rose-600 hover:brightness-110 text-white text-xs font-black px-2 py-1 rounded-lg flex items-center gap-1 transition shadow shrink-0 whitespace-nowrap" title="네이버 스마트스토어 1000x1000 정방형 대표 썸네일 액자 생성">
         <i class="fa-solid fa-crop-simple shrink-0"></i> 썸네일
       </button>
 
-      <button onclick="openOfficialQuoteModal()" class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:brightness-110 text-white text-xs font-black px-2.5 py-1 rounded-lg flex items-center gap-1 transition shadow shrink-0 whitespace-nowrap" title="관공서·나라장터·기업 제출용 공식 견적서 출력">
+      <button onclick="openOfficialQuoteModal()" class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:brightness-110 text-white text-xs font-black px-2 py-1 rounded-lg flex items-center gap-1 transition shadow shrink-0 whitespace-nowrap" title="관공서·나라장터·기업 제출용 공식 견적서 출력">
         <i class="fa-solid fa-file-invoice shrink-0"></i> 견적서
       </button>
 
-      <button id="btnDownloadImage" onclick="downloadDetailImage('jpg')" class="bg-gradient-to-r from-emerald-500 to-teal-600 hover:brightness-110 text-white text-xs font-black px-2.5 py-1 rounded-lg flex items-center gap-1 transition shadow shrink-0 whitespace-nowrap">
+      <button id="btnDownloadZip" onclick="downloadSmartStoreZipBundle()" class="bg-gradient-to-r from-amber-500 to-orange-500 hover:brightness-110 text-slate-950 text-xs font-black px-2.5 py-1 rounded-lg flex items-center gap-1 transition shadow shrink-0 whitespace-nowrap" title="DOM 섹션 경계 기준 860px Retina 분할 JPG + 1000x1000 대표썸네일 1클릭 ZIP 패키지">
+        <i class="fa-solid fa-file-zipper shrink-0"></i> 분할 ZIP
+      </button>
+
+      <button id="btnDownloadImage" onclick="downloadDetailImage('jpg')" class="bg-gradient-to-r from-emerald-500 to-teal-600 hover:brightness-110 text-white text-xs font-black px-2 py-1 rounded-lg flex items-center gap-1 transition shadow shrink-0 whitespace-nowrap">
         <i class="fa-solid fa-file-image shrink-0"></i> 860px JPG
       </button>
 
-      <button onclick="copySmartEditorHtml()" class="bg-slate-900 hover:bg-slate-800 border border-blue-500/40 text-white text-xs font-black px-2.5 py-1 rounded-lg flex items-center gap-1 transition shrink-0 whitespace-nowrap">
-        <i class="fa-solid fa-copy text-emerald-400 shrink-0"></i> HTML 복사
+      <button onclick="copySmartEditorHtml()" class="bg-slate-900 hover:bg-slate-800 border border-blue-500/40 text-white text-xs font-black px-2 py-1 rounded-lg flex items-center gap-1 transition shrink-0 whitespace-nowrap">
+        <i class="fa-solid fa-copy text-emerald-400 shrink-0"></i> HTML
       </button>
     </div>
   </header>
@@ -277,17 +394,10 @@
           <div class="flex items-center bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1.5">
             <span class="text-slate-400 text-[11px] mr-2 shrink-0 font-bold">인공지능 모델:</span>
             <select id="sidebarAiModelSelector" class="w-full bg-transparent text-amber-300 text-xs font-black outline-none cursor-pointer" onchange="syncAiModelSelection(this.value)">
-              <option value="gemini-4-carbon" selected>💎 Gemini 4.0 Carbon (최상위 플래그십 카본 / 딥 씽킹)</option>
-              <option value="gemini-4-argon">🚀 Gemini 4.0 Argon (최상위 유료 프론티어 / 딥 씽킹)</option>
-            <option value="gemini-3.8-flash">⚡ Gemini 3.8 Flash (최신 차세대 고속 에이전트)</option>
-            <option value="gemini-2.5-pro">🧠 Gemini 2.5 Pro (초정밀 B2B 심층 엔지니어링 분석)</option>
-            <option value="gemini-2.5-flash">⚡ Gemini 2.5 Flash (초고속 하이퍼 에이전트)</option>
-            <option value="gemini-2.0-flash">⚡ Gemini 2.0 Flash (경량 고속 생성)</option>
-            <option value="gemini-1.5-pro">💎 Gemini 1.5 Pro (산업용 B2B 카피라이터 표준)</option>
-            <option value="gemini-1.5-flash">⚡ Gemini 1.5 Flash (초경량 초고속)</option>
-            <option value="claude-3-7-sonnet">🎭 Claude 3.7 Sonnet (엔지니어링 씽킹 하이브리드)</option>
-            <option value="claude-3-5-sonnet">🎭 Claude 3.5 Sonnet (호환 카피라이팅 모드)</option>
-            <option value="gpt-4o">🔮 GPT-4o (OpenAI 옴니 B2B 모드)</option>
+              <option value="gemini-4-carbon" selected>💎 Gemini 4.0 Carbon (최상위 플래그십 카본 / 비전·딥씽킹)</option>
+              <option value="gemini-3.8-flash">⚡ Gemini 3.8 Flash (최신 차세대 고속 에이전트)</option>
+              <option value="gemini-2.5-pro">🧠 Gemini 2.5 Pro (초정밀 B2B 심층 엔지니어링 분석)</option>
+              <option value="gemini-2.5-flash">⚡ Gemini 2.5 Flash (초고속 하이퍼 에이전트)</option>
             </select>
           </div>
 
@@ -481,11 +591,11 @@
           </div>
         </div>
         
-        <!-- 메인 이미지 변경 & AI 생성 & PC 업로드 카드 -->
+        <!-- [v5.0 UPGRADED] 메인 대표 사진 & Imagen 4 아트디렉터 프롬프트 스튜디오 -->
         <div class="bg-slate-950 border border-slate-800 rounded-xl p-3.5 space-y-3 shadow-md">
           <div class="flex items-center justify-between">
             <label class="font-black text-amber-400 text-xs flex items-center gap-1.5">
-              <i class="fa-solid fa-camera"></i> 메인 대표 상품 사진
+              <i class="fa-solid fa-camera"></i> 메인 대표 사진 · Imagen 4 아트디렉터
             </label>
             <span id="imgSourceBadge" class="text-[10px] bg-blue-500/20 text-blue-400 px-2 py-0.5 rounded font-bold">
               공식 정품 누끼컷
@@ -498,16 +608,65 @@
             <!-- 로딩 오버레이 -->
             <div id="aiImageLoadingOverlay" class="absolute inset-0 bg-slate-950/80 backdrop-blur-sm hidden flex flex-col items-center justify-center gap-2">
               <i class="fa-solid fa-wand-magic-sparkles text-amber-400 text-xl animate-spin"></i>
-              <span class="text-amber-300 font-bold text-xs">AI 실물 이미지 생성 중...</span>
+              <span class="text-amber-300 font-bold text-xs">Imagen 4 고해상도 실사 생성 중...</span>
+            </div>
+          </div>
+
+          <!-- Imagen 4 아트디렉터 4대 제어 셀렉터 -->
+          <div class="bg-slate-900/90 border border-purple-500/30 rounded-lg p-2.5 space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="text-[10.5px] font-black text-purple-300">🎬 Imagen 4 아트디렉터 촬영 세팅</span>
+              <button type="button" onclick="refreshArtDirectorPromptPreview(true)" class="text-[10px] text-sky-300 hover:underline font-bold">프롬프트 자동조립</button>
+            </div>
+            <div class="grid grid-cols-2 gap-1.5 text-[10.5px]">
+              <div>
+                <label class="text-[10px] text-slate-400 block mb-0.5">현장/배경 씬</label>
+                <select id="artScenePreset" onchange="refreshArtDirectorPromptPreview(true)" class="w-full bg-slate-950 border border-slate-700 rounded px-1.5 py-1 text-white font-bold outline-none focus:border-purple-400">
+                  <option value="WHITE_STUDIO">화이트 스튜디오 누끼</option>
+                  <option value="FOREST_SLOPE">산림 급경사 현장</option>
+                  <option value="SCAFFOLD_LIFT">건설 비계 양중</option>
+                  <option value="HBEAM_FACTORY">공장 H빔 라인</option>
+                  <option value="DARK_SHOWROOM">다크 럭셔리 쇼룸</option>
+                </select>
+              </div>
+              <div>
+                <label class="text-[10px] text-slate-400 block mb-0.5">조명 스타일</label>
+                <select id="artLightingPreset" onchange="refreshArtDirectorPromptPreview(true)" class="w-full bg-slate-950 border border-slate-700 rounded px-1.5 py-1 text-amber-200 font-bold outline-none focus:border-purple-400">
+                  <option value="STUDIO_RIM">스튜디오 림라이트</option>
+                  <option value="GOLDEN_HOUR">골든아워 자연광</option>
+                  <option value="CRISP_DAYLIGHT">선명한 주광</option>
+                </select>
+              </div>
+              <div>
+                <label class="text-[10px] text-slate-400 block mb-0.5">카메라 앵글</label>
+                <select id="artCameraPreset" onchange="refreshArtDirectorPromptPreview(true)" class="w-full bg-slate-950 border border-slate-700 rounded px-1.5 py-1 text-sky-200 font-bold outline-none focus:border-purple-400">
+                  <option value="HERO_34">3/4 히어로 샷</option>
+                  <option value="MACRO_DRUM">로프/드럼 초접사</option>
+                  <option value="WIDE_ACTION">와이드 현장 액션</option>
+                </select>
+              </div>
+              <div>
+                <label class="text-[10px] text-slate-400 block mb-0.5">화면 비율</label>
+                <select id="artAspectRatio" class="w-full bg-slate-950 border border-slate-700 rounded px-1.5 py-1 text-emerald-300 font-bold outline-none focus:border-purple-400">
+                  <option value="1:1" selected>1:1 (정방형 대표컷)</option>
+                  <option value="16:9">16:9 (와이드 배너)</option>
+                  <option value="4:3">4:3 (표준 상세컷)</option>
+                  <option value="3:4">3:4 (모바일 세로컷)</option>
+                </select>
+              </div>
+            </div>
+            <div>
+              <label class="text-[10px] text-slate-400 block mb-0.5">Imagen 4 영문 프롬프트 프리뷰 (직접 편집 가능):</label>
+              <textarea id="artDirectorPromptPreview" rows="2" class="w-full bg-slate-950 border border-slate-700 rounded px-2 py-1.5 text-[10.5px] text-slate-200 font-mono leading-snug outline-none focus:border-purple-400 resize-none"></textarea>
             </div>
           </div>
 
           <!-- 원클릭 조작 버튼 2종 세트 -->
           <div class="grid grid-cols-2 gap-2">
-            <!-- 1. AI로 새 이미지 생성 버튼 -->
-            <button onclick="generateAiProductImage()" class="bg-gradient-to-r from-purple-600 to-indigo-600 hover:brightness-110 text-white font-bold py-2 px-2.5 rounded-lg flex items-center justify-center gap-1.5 text-xs transition shadow">
+            <!-- 1. Imagen 4 실사 생성 버튼 -->
+            <button onclick="generateAiProductImage()" class="bg-gradient-to-r from-purple-600 to-indigo-600 hover:brightness-110 text-white font-black py-2 px-2.5 rounded-lg flex items-center justify-center gap-1.5 text-xs transition shadow">
               <i class="fa-solid fa-wand-magic-sparkles text-yellow-300"></i>
-              <span>AI 이미지 새로 생성</span>
+              <span>Imagen 4 실사 생성</span>
             </button>
 
             <!-- 2. 내 컴퓨터에서 직접 사진 올리기 -->
@@ -620,20 +779,84 @@
           </div>
         </div>
 
-        <!-- [기능 18] 상세페이지 전체 컬러 테마 5종 원클릭 스킨 체인저 -->
+        <!-- [v5.0 NEW] 실시간 제품 제원 & 메인 태그라인 직접 편집기 -->
+        <div class="bg-slate-950 border border-sky-500/40 rounded-xl p-3.5 space-y-2.5 shadow-md">
+          <div class="flex items-center justify-between">
+            <span class="font-black text-sky-300 flex items-center gap-1.5">
+              <i class="fa-solid fa-wrench text-amber-400"></i> 실시간 제품 제원 · 헤드라인 에디터
+            </span>
+            <span class="text-[10px] text-emerald-400 font-bold">입력 즉시 프리뷰 반영</span>
+          </div>
+          <div>
+            <label class="text-[10px] text-slate-400 block mb-0.5">메인 태그라인 (H1 헤드라인)</label>
+            <input type="text" id="specEditTagline" class="w-full bg-slate-900 border border-slate-700 rounded px-2 py-1.5 text-[11px] text-white font-bold outline-none focus:border-sky-400" oninput="applyLiveSpecEdit('tagline', this.value)">
+          </div>
+          <div class="grid grid-cols-2 gap-2">
+            <div>
+              <label class="text-[10px] text-slate-400 block mb-0.5">정격 견인/인양력</label>
+              <input type="text" id="specEditPull" class="w-full bg-slate-900 border border-slate-700 rounded px-2 py-1 text-[11px] text-amber-300 font-bold outline-none focus:border-sky-400" oninput="applyLiveSpecEdit('pull', this.value)">
+            </div>
+            <div>
+              <label class="text-[10px] text-slate-400 block mb-0.5">복선 2배 출력</label>
+              <input type="text" id="specEditDoublePull" class="w-full bg-slate-900 border border-slate-700 rounded px-2 py-1 text-[11px] text-emerald-300 font-bold outline-none focus:border-sky-400" oninput="applyLiveSpecEdit('doublePull', this.value)">
+            </div>
+            <div>
+              <label class="text-[10px] text-slate-400 block mb-0.5">자체 중량</label>
+              <input type="text" id="specEditWeight" class="w-full bg-slate-900 border border-slate-700 rounded px-2 py-1 text-[11px] text-white font-bold outline-none focus:border-sky-400" oninput="applyLiveSpecEdit('weight', this.value)">
+            </div>
+            <div>
+              <label class="text-[10px] text-slate-400 block mb-0.5">권상 속도</label>
+              <input type="text" id="specEditSpeed" class="w-full bg-slate-900 border border-slate-700 rounded px-2 py-1 text-[11px] text-white font-bold outline-none focus:border-sky-400" oninput="applyLiveSpecEdit('speed', this.value)">
+            </div>
+            <div class="col-span-2">
+              <label class="text-[10px] text-slate-400 block mb-0.5">동력원 / 엔진</label>
+              <input type="text" id="specEditEngine" class="w-full bg-slate-900 border border-slate-700 rounded px-2 py-1 text-[11px] text-white outline-none focus:border-sky-400" oninput="applyLiveSpecEdit('engine', this.value)">
+            </div>
+            <div>
+              <label class="text-[10px] text-slate-400 block mb-0.5">로프 / 와이어</label>
+              <input type="text" id="specEditRope" class="w-full bg-slate-900 border border-slate-700 rounded px-2 py-1 text-[11px] text-slate-200 outline-none focus:border-sky-400" oninput="applyLiveSpecEdit('rope', this.value)">
+            </div>
+            <div>
+              <label class="text-[10px] text-slate-400 block mb-0.5">제품 규격 (외형치수)</label>
+              <input type="text" id="specEditSize" class="w-full bg-slate-900 border border-slate-700 rounded px-2 py-1 text-[11px] text-slate-200 outline-none focus:border-sky-400" oninput="applyLiveSpecEdit('size', this.value)">
+            </div>
+          </div>
+        </div>
+
+        <!-- [v5.0 UPGRADED] 에이전시 디자인 아키타입 5종 & 포인트 컬러 체인저 -->
         <div class="bg-slate-950 border border-purple-500/40 rounded-xl p-3.5 space-y-2.5">
           <div class="flex items-center justify-between">
-            <span class="font-black text-purple-300">🎨 [기능 18] 상세페이지 & 썸네일 5종 컬러 테마 스킨</span>
+            <span class="font-black text-purple-300">🎨 에이전시 디자인 아키타입 5종 (레이아웃·무드 전환)</span>
             <button onclick="setMasterpieceTheme('auto')" data-theme-btn="auto" class="text-[10px] bg-slate-800 hover:bg-slate-700 text-amber-300 px-2 py-0.5 rounded font-bold border border-slate-600 ring-2 ring-white">
-              자동 맞춤(Auto)
+              자동 포인트(Auto)
             </button>
           </div>
-          <div class="grid grid-cols-5 gap-1.5 text-[10px] font-black text-white">
-            <button onclick="setMasterpieceTheme('orange')" data-theme-btn="orange" class="bg-orange-600 hover:bg-orange-500 py-1.5 rounded-lg text-center transition shadow">오렌지</button>
-            <button onclick="setMasterpieceTheme('red')" data-theme-btn="red" class="bg-red-600 hover:bg-red-500 py-1.5 rounded-lg text-center transition shadow">포터블레드</button>
-            <button onclick="setMasterpieceTheme('green')" data-theme-btn="green" class="bg-green-600 hover:bg-green-500 py-1.5 rounded-lg text-center transition shadow">도크마그린</button>
-            <button onclick="setMasterpieceTheme('blue')" data-theme-btn="blue" class="bg-blue-600 hover:bg-blue-500 py-1.5 rounded-lg text-center transition shadow">스틸블루</button>
-            <button onclick="setMasterpieceTheme('gold')" data-theme-btn="gold" class="bg-amber-600 hover:bg-amber-500 py-1.5 rounded-lg text-center transition shadow">다크골드</button>
+          <div class="grid grid-cols-2 gap-1.5 text-[10.5px] font-black">
+            <button type="button" onclick="setAgencySkin('editorial')" data-skin-btn="editorial" class="bg-slate-900 border-2 border-amber-400 text-white py-2 px-2 rounded-lg text-left transition">
+              📰 에디토리얼 매거진 <span class="block text-[9.5px] font-medium text-slate-400">네이비 풀블리드 히어로</span>
+            </button>
+            <button type="button" onclick="setAgencySkin('titanium')" data-skin-btn="titanium" class="bg-slate-900 border border-slate-700 hover:border-amber-400 text-slate-200 py-2 px-2 rounded-lg text-left transition">
+              ⚙️ 티타늄 다크테크 <span class="block text-[9.5px] font-medium text-slate-400">밀워키·다크카본 앰버</span>
+            </button>
+            <button type="button" onclick="setAgencySkin('g2b')" data-skin-btn="g2b" class="bg-slate-900 border border-slate-700 hover:border-sky-400 text-slate-200 py-2 px-2 rounded-lg text-left transition">
+              🏛️ 관공서·G2B 신뢰형 <span class="block text-[9.5px] font-medium text-slate-400">로열네이비 규격서 포맷</span>
+            </button>
+            <button type="button" onclick="setAgencySkin('commerce')" data-skin-btn="commerce" class="bg-slate-900 border border-slate-700 hover:border-orange-400 text-slate-200 py-2 px-2 rounded-lg text-left transition">
+              🔥 고전환 커머스 <span class="block text-[9.5px] font-medium text-slate-400">스마트스토어 1위 임팩트</span>
+            </button>
+            <button type="button" onclick="setAgencySkin('minimal')" data-skin-btn="minimal" class="col-span-2 bg-slate-900 border border-slate-700 hover:border-white text-slate-200 py-1.5 px-2 rounded-lg text-center transition">
+              ✨ 미니멀 스튜디오 (애플·다이슨 갤러리 여백 중심)
+            </button>
+          </div>
+          <div class="pt-1 border-t border-slate-800">
+            <div class="text-[10px] text-slate-400 mb-1.5 font-bold">보조 포인트 컬러 5종:</div>
+            <div class="grid grid-cols-5 gap-1.5 text-[10px] font-black text-white">
+              <button onclick="setMasterpieceTheme('orange')" data-theme-btn="orange" class="bg-orange-600 hover:bg-orange-500 py-1.5 rounded-lg text-center transition shadow">오렌지</button>
+              <button onclick="setMasterpieceTheme('red')" data-theme-btn="red" class="bg-red-600 hover:bg-red-500 py-1.5 rounded-lg text-center transition shadow">포터블레드</button>
+              <button onclick="setMasterpieceTheme('green')" data-theme-btn="green" class="bg-green-600 hover:bg-green-500 py-1.5 rounded-lg text-center transition shadow">도크마그린</button>
+              <button onclick="setMasterpieceTheme('blue')" data-theme-btn="blue" class="bg-blue-600 hover:bg-blue-500 py-1.5 rounded-lg text-center transition shadow">스틸블루</button>
+              <button onclick="setMasterpieceTheme('gold')" data-theme-btn="gold" class="bg-amber-600 hover:bg-amber-500 py-1.5 rounded-lg text-center transition shadow">다크골드</button>
+            </div>
           </div>
         </div>
 
@@ -767,8 +990,12 @@
               <i class="fa-solid fa-print"></i>
             </button>
             <button onclick="exportSmartStoreBulkCsv()" class="w-full bg-teal-600/20 hover:bg-teal-600/30 border border-teal-500/40 text-teal-300 font-bold py-2 px-3 rounded-lg flex items-center justify-between transition">
-              <span>📦 <b>[기능 6]</b> 스마트스토어 166종 일괄등록 엑셀(CSV) 다운로드</span>
+              <span>📦 <b>[기능 6]</b> 스마트스토어 169종 일괄등록 엑셀(CSV) 다운로드</span>
               <i class="fa-solid fa-file-csv"></i>
+            </button>
+            <button onclick="downloadSmartStoreZipBundle()" class="w-full bg-orange-600/25 hover:bg-orange-600/40 border border-orange-500/50 text-orange-200 font-black py-2 px-3 rounded-lg flex items-center justify-between transition">
+              <span>📦 <b>[v5.0]</b> 860px DOM경계 Retina 분할 ZIP + 대표썸네일</span>
+              <i class="fa-solid fa-file-zipper"></i>
             </button>
             <button onclick="downloadSectionSlices()" class="w-full bg-amber-600/20 hover:bg-amber-600/30 border border-amber-500/40 text-amber-300 font-bold py-2 px-3 rounded-lg flex items-center justify-between transition">
               <span>🖼️ 섹션별 개별 카드뉴스 JPG 분할 다운로드</span>
@@ -1005,38 +1232,67 @@
     <main class="flex-1 bg-black flex flex-col items-center justify-center p-3 overflow-hidden relative">
       
       <!-- 프리뷰 상단 정보 바 (세로 깨짐 완벽 방지: flex-wrap + shrink-0 + whitespace-nowrap) -->
-      <div class="w-full max-w-4xl flex flex-wrap items-center justify-between gap-x-2 gap-y-1.5 pb-2 text-xs font-semibold text-slate-400 shrink-0">
-        <span class="flex items-center gap-1.5 shrink-0 whitespace-nowrap">
+      <div class="w-full max-w-6xl flex flex-wrap items-center justify-between gap-x-2 gap-y-1.5 pb-2 text-xs font-semibold text-slate-400 shrink-0 relative">
+        <span class="flex items-center gap-1.5 flex-wrap">
           <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0"></span>
-          <span class="text-white font-black text-[11.5px] shrink-0 whitespace-nowrap">스마트스토어 프리뷰</span>
+          <span class="text-white font-black text-[11.5px] shrink-0 whitespace-nowrap">프리뷰</span>
           <span id="previewBadge" class="bg-gradient-to-r from-amber-400 to-yellow-500 text-slate-950 font-black px-2 py-0.5 rounded text-[10px] shrink-0 whitespace-nowrap">[PCW-5000] 프리뷰</span>
+          <button type="button" id="btnToggleVisualEdit" onclick="toggleVisualEditMode()" class="bg-slate-800 hover:bg-sky-600 border border-sky-500/50 text-sky-200 hover:text-white font-black px-2 py-0.5 rounded text-[10px] shadow flex items-center gap-1 transition cursor-pointer shrink-0 whitespace-nowrap" title="프리뷰 섹션 순서 이동·삭제·텍스트 직접 수정 및 섹션별 Carbon AI 재작성">
+            ✏️ 직접 편집
+          </button>
+          <button type="button" id="btnUndoEdit" onclick="undoVisualEdit()" disabled class="bg-slate-900 border border-slate-700 text-slate-400 hover:text-white disabled:opacity-40 font-bold px-2 py-0.5 rounded text-[10px] transition shrink-0 whitespace-nowrap" title="실행 취소 (Ctrl+Z)">
+            ↩️ 실행취소
+          </button>
+          <button type="button" id="btnResetBlocks" onclick="resetVisualBlockOverrides()" class="bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-300 font-bold px-2 py-0.5 rounded text-[10px] transition shrink-0 whitespace-nowrap" title="직접 편집·삭제한 블록 초기화">
+            🔄 블록초기화
+          </button>
           <button onclick="runRecursiveSelfRefine(true)" class="bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-extrabold px-2 py-0.5 rounded text-[10px] shadow flex items-center gap-1 transition cursor-pointer shrink-0 whitespace-nowrap">
             <i class="fa-solid fa-wand-magic-sparkles text-cyan-200"></i> 재귀 교정
           </button>
-          <span id="auditScoreBadge" class="bg-emerald-950/80 border border-emerald-500/40 text-emerald-400 font-bold px-2 py-0.5 rounded text-[10px] shrink-0 whitespace-nowrap">
-            ✓ 무결점 100점
-          </span>
+          <button type="button" id="auditScoreBadge" onclick="toggleAuditDiagnosticPopover()" class="bg-emerald-950/80 hover:bg-emerald-900 border border-emerald-500/50 text-emerald-300 font-black px-2 py-0.5 rounded text-[10px] shrink-0 whitespace-nowrap cursor-pointer transition" title="클릭하여 100점 스마트스토어 전환 진단 리포트 열기">
+            ✓ 전환진단 --점 ▾
+          </button>
         </span>
+
+        <!-- [v5.0] 100점 스마트스토어 전환 진단 팝오버 -->
+        <div id="auditDiagnosticPopover" class="hidden absolute left-0 top-9 z-50 w-[410px] max-w-[92vw] bg-slate-950 border border-sky-500/55 rounded-2xl shadow-2xl p-3.5 text-left space-y-2.5">
+          <div class="flex items-center justify-between border-b border-slate-800 pb-2">
+            <span class="font-black text-white text-xs flex items-center gap-1.5">
+              <i class="fa-solid fa-stethoscope text-emerald-400"></i> 스마트스토어 5대 전환 품질 정밀 진단 (100점 만점)
+            </span>
+            <button type="button" onclick="toggleAuditDiagnosticPopover(false)" class="text-slate-400 hover:text-white text-xs px-1.5">✕</button>
+          </div>
+          <div id="auditDiagnosticBody" class="space-y-2 text-[11px] text-slate-200"></div>
+          <div class="grid grid-cols-2 gap-1.5 pt-1 border-t border-slate-800 text-[10.5px] font-black">
+            <button type="button" onclick="scrubAllSlopAndTranslationese(true); runRealConversionAudit(true);" class="bg-emerald-600/25 hover:bg-emerald-600/45 border border-emerald-500/40 text-emerald-300 py-1.5 rounded-lg">🧹 슬롭 1클릭 정화</button>
+            <button type="button" onclick="runLegalAndSeoComplianceScanner(); runRealConversionAudit(true);" class="bg-cyan-600/25 hover:bg-cyan-600/45 border border-cyan-500/40 text-cyan-300 py-1.5 rounded-lg">⚖️ 표시광고법 교정</button>
+          </div>
+        </div>
+
         <span class="flex items-center gap-1 shrink-0 whitespace-nowrap">
-          <span class="text-[10px] text-slate-400 mr-0.5 shrink-0 whitespace-nowrap">📝 분량:</span>
+          <span class="text-[10px] text-slate-400 mr-0.5 shrink-0 whitespace-nowrap">분량:</span>
           <button onclick="setMasterpieceDensity('compact')" data-density-btn="compact" title="글 60% 다이어트 · 사진·핵심수치 중심 (권장)" class="px-1.5 py-0.5 rounded text-[10px] font-black border transition bg-amber-500 text-slate-950 border-amber-400 shrink-0 whitespace-nowrap">⚡슬림</button>
           <button onclick="setMasterpieceDensity('standard')" data-density-btn="standard" title="표준 밸런스형 (경사각·정품비교 포함)" class="px-1.5 py-0.5 rounded text-[10px] font-black border transition bg-slate-800 text-slate-300 border-slate-700 hover:border-amber-400 shrink-0 whitespace-nowrap">⚖️표준</button>
           <button onclick="setMasterpieceDensity('full')" data-density-btn="full" title="관공서·풀스펙 상세형 (전 섹션 포함)" class="px-1.5 py-0.5 rounded text-[10px] font-black border transition bg-slate-800 text-slate-300 border-slate-700 hover:border-amber-400 mr-1 shrink-0 whitespace-nowrap">📚풀스펙</button>
-          <span class="text-[10px] text-slate-400 mr-0.5 shrink-0 whitespace-nowrap">🎨 스킨:</span>
-          <button onclick="setMasterpieceTheme('auto')" title="모델별 자동 컬러" class="px-1.5 py-0.5 rounded bg-slate-800 text-amber-300 text-[10px] font-black border border-slate-700 hover:border-white shrink-0 whitespace-nowrap">Auto</button>
-          <button onclick="setMasterpieceTheme('orange')" title="오라테크 오렌지" class="w-3.5 h-3.5 rounded-full bg-orange-600 border border-white/60 hover:scale-110 transition shrink-0"></button>
-          <button onclick="setMasterpieceTheme('red')" title="캐나다 포터블 레드" class="w-3.5 h-3.5 rounded-full bg-red-600 border border-white/60 hover:scale-110 transition shrink-0"></button>
-          <button onclick="setMasterpieceTheme('green')" title="이탈리아 도크마 그린" class="w-3.5 h-3.5 rounded-full bg-green-600 border border-white/60 hover:scale-110 transition shrink-0"></button>
-          <button onclick="setMasterpieceTheme('blue')" title="스틸 블루" class="w-3.5 h-3.5 rounded-full bg-blue-600 border border-white/60 hover:scale-110 transition shrink-0"></button>
-          <button onclick="setMasterpieceTheme('gold')" title="다크 골드" class="w-3.5 h-3.5 rounded-full bg-amber-500 border border-white/60 hover:scale-110 transition shrink-0"></button>
+          <span class="text-[10px] text-slate-400 mr-0.5 shrink-0 whitespace-nowrap">테마:</span>
+          <button onclick="setAgencySkin('editorial')" data-skin-chip="editorial" title="에디토리얼 매거진 (네이비 풀블리드 히어로)" class="px-1.5 py-0.5 rounded text-[10px] font-black border transition bg-sky-600 text-white border-sky-400 shrink-0 whitespace-nowrap">매거진</button>
+          <button onclick="setAgencySkin('titanium')" data-skin-chip="titanium" title="티타늄 다크테크 (밀워키·다크카본)" class="px-1.5 py-0.5 rounded text-[10px] font-black border transition bg-slate-800 text-slate-300 border-slate-700 hover:border-amber-400 shrink-0 whitespace-nowrap">다크테크</button>
+          <button onclick="setAgencySkin('g2b')" data-skin-chip="g2b" title="관공서·G2B 신뢰형" class="px-1.5 py-0.5 rounded text-[10px] font-black border transition bg-slate-800 text-slate-300 border-slate-700 hover:border-blue-400 shrink-0 whitespace-nowrap">G2B</button>
+          <button onclick="setAgencySkin('commerce')" data-skin-chip="commerce" title="고전환 스마트스토어 커머스" class="px-1.5 py-0.5 rounded text-[10px] font-black border transition bg-slate-800 text-slate-300 border-slate-700 hover:border-orange-400 shrink-0 whitespace-nowrap">커머스</button>
+          <button onclick="setAgencySkin('minimal')" data-skin-chip="minimal" title="미니멀 스튜디오 (여백·갤러리)" class="px-1.5 py-0.5 rounded text-[10px] font-black border transition bg-slate-800 text-slate-300 border-slate-700 hover:border-white shrink-0 whitespace-nowrap">미니멀</button>
           <button onclick="exportCustomPresetJson()" title="[기능 20] 현재 커스텀 상세페이지 프리셋 JSON 저장" class="ml-1 bg-indigo-950 hover:bg-indigo-900 border border-indigo-500/40 text-indigo-300 px-2 py-0.5 rounded text-[10px] font-bold shrink-0 whitespace-nowrap">💾 저장</button>
         </span>
       </div>
 
-      <!-- 렌더링 프레임 -->
-      <div id="previewFrame" class="mobile-frame">
-        <div id="previewContainer">
-          <!-- 마스터피스 상세페이지 HTML 주입 -->
+      <!-- 렌더링 프레임 (모바일 / PC / ⚡ 동시비교 Split) -->
+      <div id="splitStage" class="split-stage">
+        <div id="previewFrame" class="mobile-frame">
+          <div id="previewContainer">
+            <!-- 마스터피스 상세페이지 HTML 주입 -->
+          </div>
+        </div>
+        <div id="mobileMirrorFrame" class="mobile-mirror-frame mobile-frame" aria-label="실시간 모바일(390px) 미러 프리뷰">
+          <div id="previewMobileMirror"></div>
         </div>
       </div>
 
@@ -1066,7 +1322,7 @@
           <i class="fa-solid fa-bolt"></i> 즉시 해결 방법 (1초 해결)
         </div>
         <p class="text-[11px] text-slate-300">
-          바탕화면에 생성해 드린 <b>[오라테크_스마트스토어_AI스튜디오_실행.bat]</b> 파일을 더블클릭하여 실행하시면, 브라우저 보안 제한이 해제되어 <b>Gemini 4.0 Argon 및 유료 크레딧 차감이 100% 정상 작동</b>합니다!
+          바탕화면에 생성해 드린 <b>[오라테크_스마트스토어_AI스튜디오_실행.bat]</b> 파일을 더블클릭하여 실행하시면, 브라우저 보안 제한이 해제되어 <b>Gemini 4.0 Carbon 서버 자동연동이 100% 정상 작동</b>합니다!
         </p>
       </div>
       <div class="flex gap-2 pt-1">
@@ -1127,21 +1383,23 @@
       updateActiveModelBadge(val);
     }
 
-        function updateActiveModelBadge(val) {
+    function updateActiveModelBadge(val) {
       const disp = document.getElementById('activeModelDisplay');
       if (disp) {
-        const isFrontier = ['gemini-4-carbon', 'gemini-4-argon', 'gemini-2.5-pro', 'gemini-1.5-pro', 'claude-3-7-sonnet', 'gpt-4o'].includes(val);
-        const badge = isFrontier ? '<span class="text-amber-400 font-black">🚀 최상위 유료 프론티어 (딥 씽킹)</span>' : '<span class="text-emerald-400 font-bold">⚡ 초고속 실시간 에이전트</span>';
+        const isFrontier = ['gemini-4-carbon', 'gemini-2.5-pro'].includes(val);
+        const badge = isFrontier ? '<span class="text-amber-400 font-black">💎 플래그십 비전·딥씽킹</span>' : '<span class="text-emerald-400 font-bold">⚡ 초고속 실시간 에이전트</span>';
         disp.innerHTML = `<i class="fa-solid fa-microchip text-amber-400 mr-1"></i>선택 엔진: <b>${val}</b> (${badge})`;
       }
     }
 
     function getSelectedAiModel() {
+      const allowed = ['gemini-4-carbon', 'gemini-3.8-flash', 'gemini-2.5-pro', 'gemini-2.5-flash'];
       const topSel = document.getElementById('topAiModelSelector');
-      if (topSel && topSel.value) return topSel.value;
+      if (topSel && allowed.includes(topSel.value)) return topSel.value;
       const sideSel = document.getElementById('sidebarAiModelSelector');
-      if (sideSel && sideSel.value) return sideSel.value;
-      return safeStorage.getItem('ora_selected_model') || 'gemini-4-carbon';
+      if (sideSel && allowed.includes(sideSel.value)) return sideSel.value;
+      const saved = safeStorage.getItem('ora_selected_model');
+      return allowed.includes(saved) ? saved : 'gemini-4-carbon';
     }
 
     // 오라테크 & 캐나다 Portable Winch & 대만 DUKE 공식 고화질 에셋 정밀 매핑 DB
@@ -3244,7 +3502,8 @@
       currentErpFilterCat = cat;
       const tabs = document.querySelectorAll('#erpCategoryTabs .erp-cat-tab');
       tabs.forEach(btn => {
-        if (btn.innerText.includes(cat) || (cat === 'ALL' && btn.innerText.includes('전체'))) {
+        const btnCat = btn.getAttribute('data-cat') || '';
+        if (btnCat === cat) {
           btn.className = 'erp-cat-tab active px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap transition bg-indigo-600 text-white';
         } else {
           btn.className = 'erp-cat-tab px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap transition bg-slate-800 text-slate-300 hover:bg-slate-700';
@@ -3343,16 +3602,17 @@
     }
 
     async function syncLiveErpData() {
+      const cnt = (window.ORA_ERP_CATALOG || []).length || 169;
       showToast('igan3w.github.io/erp 동기화 확인 중...', 'fa-rotate text-blue-400');
       try {
         const res = await fetch('https://igan3w.github.io/erp/', { cache: 'no-store' });
         if (res.ok) {
-          showToast('igan3w.github.io/erp 166개 품목 최신 동기화 완료!', 'fa-circle-check text-emerald-400');
+          showToast(`igan3w.github.io/erp ${cnt}개 품목 최신 동기화 완료!`, 'fa-circle-check text-emerald-400');
         } else {
-          showToast('ERP 166개 품목 로컬 DB 최신 유지 완료!', 'fa-circle-check text-emerald-400');
+          showToast(`ERP ${cnt}개 품목 로컬 DB 최신 유지 완료!`, 'fa-circle-check text-emerald-400');
         }
       } catch (e) {
-        showToast('로컬 내장 166개 정품 DB 연동 완료!', 'fa-circle-check text-emerald-400');
+        showToast(`로컬 내장 ${cnt}개 정품 DB 연동 완료!`, 'fa-circle-check text-emerald-400');
       }
     }
 
@@ -3727,6 +3987,9 @@
 
     window.addEventListener('DOMContentLoaded', () => {
       try {
+        if (typeof initEcoNavLinks === 'function') initEcoNavLinks();
+      } catch (e) {}
+      try {
         loadSavedConfig();
       } catch (e) {}
       try {
@@ -3735,8 +3998,9 @@
         console.warn('loadSavedConfig bypassed:', e);
       }
       try {
+        const allowedModels = ['gemini-4-carbon', 'gemini-3.8-flash', 'gemini-2.5-pro', 'gemini-2.5-flash'];
         const savedModel = safeStorage.getItem('ora_selected_model');
-        const targetModel = (!savedModel || savedModel === 'gemini-4-argon') ? 'gemini-4-carbon' : savedModel;
+        const targetModel = allowedModels.includes(savedModel) ? savedModel : 'gemini-4-carbon';
         syncAiModelSelection(targetModel);
       } catch (e) {}
       try {
@@ -3744,6 +4008,11 @@
       } catch (e) {
         console.error('loadModel error:', e);
       }
+      try {
+        if (typeof resolveUrlHandoffParams === 'function') {
+          resolveUrlHandoffParams(window.location && window.location.search ? window.location.search : '');
+        }
+      } catch (e) {}
 
       // 직통 생성기(ora_direct_ai.ps1) 최신 생성 결과 자동 연동
       try {
@@ -3763,7 +4032,7 @@
           appendChat('ai', `🚀 <b>[${aiResult.code}] Google ${aiResult.model} 유료 카피라이팅 적용 완료!</b><br>
 • 총 소비 토큰: <b>${(aiResult.tokens || 0).toLocaleString()} tokens</b> (<span class="text-amber-400 font-bold">Google Cloud 유료 크레딧 정상 차감 완료</span>)<br>
 • 생성 시각: ${aiResult.timestamp}<br>
-상단 <b>[📸 860px 통이미지 저장]</b> 버튼을 눌러 스마트스토어 규격 이미지를 즉시 내려받으세요!`);
+상단 <b>[📦 분할 ZIP]</b> 또는 <b>[860px JPG]</b> 버튼을 눌러 스마트스토어 규격 이미지를 즉시 내려받으세요!`);
         }
       } catch (e) {
         console.warn('ORA_LATEST_AI_RESULT error:', e);
@@ -4052,6 +4321,16 @@
         brakeSystem = code.startsWith('HV-') ? '유압 카운터밸런스 브레이크 밸브 + 다판 디스크 락' : '외장형 기계식 콘(Cone) 브레이크 (드럼 무발열 100% 하중 홀딩)';
       }
 
+      // [v5.0] Tab 3 실시간 제원 에디터 오버라이드 최우선 반영
+      const ov = p._specOverrides || {};
+      if (ov.pull) pullCap = ov.pull;
+      if (ov.doublePull) doublePull = ov.doublePull;
+      if (ov.weight) weight = ov.weight;
+      if (ov.speed) speed = ov.speed;
+      if (ov.engine) engine = ov.engine;
+      if (ov.rope) ropeSpec = ov.rope;
+      if (ov.size) dimensions = ov.size;
+
       // 사용자가 직접 선택한 메인 이미지가 있고, 차단 대상(띠배너/텍스트캡처)이 아니면 최우선 반영
       let heroImg = p.images?.mainClear || defaultHeroImg;
       if (isBannedOrTextImage(heroImg)) {
@@ -4274,11 +4553,148 @@
 .ora-mp-root .ora-card-table td:first-child::before { content: none !important; display: none !important; }
 .ora-mp-root .ora-card-table td::before { content: attr(data-label); font-weight: 700; color: #64748b; font-size: 11.5px; flex-shrink: 0; text-align: left; }`;
       const mobileFrameCss = mobileCssRules.replace(/\.ora-mp-root/g, '.mobile-frame .ora-mp-root');
+      const agencySkin = window.oraAgencySkin || 'editorial';
+      const agencyArchetypeCss = `
+.ora-mp-root .ora-kpi-val, .ora-mp-root .ora-num-tab { font-variant-numeric: tabular-nums; }
+.ora-mp-root .ora-kicker { font-family: 'Montserrat', 'Pretendard', sans-serif !important; letter-spacing: 0.14em !important; text-transform: uppercase; font-weight: 900; }
+.ora-mp-root .ora-proof-pills { display:flex; flex-wrap:wrap; justify-content:center; gap:6px; margin-top:10px; }
+.ora-mp-root .ora-proof-pill { font-size:11px; font-weight:800; padding:4px 10px; border-radius:999px; font-variant-numeric:tabular-nums; }
+
+/* 1. 에디토리얼 매거진 (Editorial — Dark Slate-Navy Full-Bleed Hero & Architectural Hairlines) */
+.ora-mp-root.ora-skin-editorial { background: #ffffff !important; border-color: #cbd5e1 !important; }
+.ora-mp-root.ora-skin-editorial .ora-topbar { background: #050d1f !important; border-bottom: 2px solid #f59e0b !important; }
+.ora-mp-root.ora-skin-editorial .ora-hero {
+  background: linear-gradient(155deg, #071329 0%, #0f244c 56%, #08152e 100%) !important;
+  color: #f8fafc !important;
+  border-bottom: 3px solid #f59e0b !important;
+}
+.ora-mp-root.ora-skin-editorial .ora-hero .ora-badge {
+  background: rgba(245, 158, 11, 0.14) !important;
+  color: #fde68a !important;
+  border: 1px solid rgba(251, 191, 36, 0.45) !important;
+}
+.ora-mp-root.ora-skin-editorial .ora-hero .ora-h1 { color: #ffffff !important; letter-spacing: -0.035em !important; }
+.ora-mp-root.ora-skin-editorial .ora-hero .ora-sub { color: #cbd5e1 !important; }
+.ora-mp-root.ora-skin-editorial .ora-hero .ora-hero-showcase {
+  background: #ffffff !important;
+  border: 1px solid rgba(255,255,255,0.22) !important;
+  box-shadow: 0 24px 60px rgba(2, 8, 24, 0.48) !important;
+}
+.ora-mp-root.ora-skin-editorial .ora-hero .ora-kpi-card {
+  background: rgba(15, 23, 42, 0.72) !important;
+  border: 1px solid rgba(148, 163, 184, 0.25) !important;
+  box-shadow: none !important;
+}
+.ora-mp-root.ora-skin-editorial .ora-hero .ora-kpi-card .ora-kpi-label { color: #94a3b8 !important; }
+.ora-mp-root.ora-skin-editorial .ora-hero .ora-kpi-card .ora-kpi-val { color: #fbbf24 !important; }
+.ora-mp-root.ora-skin-editorial .ora-hero .ora-kpi-card .ora-kpi-sub { color: #e2e8f0 !important; }
+.ora-mp-root.ora-skin-editorial .ora-sec:nth-of-type(even) { background: #f6f8fb !important; }
+
+/* 2. 티타늄 다크테크 (Titanium — Industrial Carbon #0B1120 + Amber Technical Callouts) */
+.ora-mp-root.ora-skin-titanium { background: #0b1120 !important; color: #e2e8f0 !important; border-color: #1e293b !important; }
+.ora-mp-root.ora-skin-titanium .ora-topbar { background: #050811 !important; border-bottom: 3px solid #f59e0b !important; }
+.ora-mp-root.ora-skin-titanium .ora-hero {
+  background: radial-gradient(circle at 50% 0%, #1e293b 0%, #0b1120 74%) !important;
+  color: #f8fafc !important;
+  border-bottom: 2px solid #f59e0b !important;
+}
+.ora-mp-root.ora-skin-titanium .ora-hero .ora-badge {
+  background: rgba(245, 158, 11, 0.16) !important;
+  color: #fbbf24 !important;
+  border: 1px solid rgba(245, 158, 11, 0.5) !important;
+}
+.ora-mp-root.ora-skin-titanium .ora-hero .ora-h1,
+.ora-mp-root.ora-skin-titanium .ora-h2,
+.ora-mp-root.ora-skin-titanium .ora-h3 { color: #f8fafc !important; }
+.ora-mp-root.ora-skin-titanium .ora-sub,
+.ora-mp-root.ora-skin-titanium .ora-sec-desc { color: #94a3b8 !important; }
+.ora-mp-root.ora-skin-titanium .ora-sec { background: #0f172a !important; border-bottom: 1px solid #1e293b !important; color: #e2e8f0 !important; }
+.ora-mp-root.ora-skin-titanium .ora-sec:nth-of-type(odd) { background: #0b1120 !important; }
+.ora-mp-root.ora-skin-titanium .ora-kpi-card {
+  background: linear-gradient(180deg, #162033 0%, #0f172a 100%) !important;
+  border: 1px solid rgba(245, 158, 11, 0.35) !important;
+  box-shadow: 0 0 22px rgba(245, 158, 11, 0.08) !important;
+}
+.ora-mp-root.ora-skin-titanium .ora-kpi-card .ora-kpi-label { color: #94a3b8 !important; }
+.ora-mp-root.ora-skin-titanium .ora-kpi-card .ora-kpi-val { color: #f59e0b !important; }
+.ora-mp-root.ora-skin-titanium .ora-kpi-card .ora-kpi-sub { color: #cbd5e1 !important; }
+.ora-mp-root.ora-skin-titanium .ora-hero-showcase { background: #ffffff !important; border: 2px solid #f59e0b !important; box-shadow: 0 0 36px rgba(245, 158, 11, 0.18) !important; }
+.ora-mp-root.ora-skin-titanium .ora-box-pad { background: #162033 !important; border-color: #334155 !important; color: #e2e8f0 !important; }
+.ora-mp-root.ora-skin-titanium .ora-box-pad * { color: inherit; }
+.ora-mp-root.ora-skin-titanium .ora-hero-showcase, .ora-mp-root.ora-skin-titanium .ora-hero-showcase * { color: #0f172a !important; }
+.ora-mp-root.ora-skin-titanium .ora-spec-table th { background: #1e293b !important; color: #fbbf24 !important; border-color: #334155 !important; }
+.ora-mp-root.ora-skin-titanium .ora-spec-table td { background: #0f172a !important; color: #f1f5f9 !important; border-color: #334155 !important; }
+
+/* 3. 관공서·G2B 신뢰형 (G2B — Authoritative Royal Navy #0F2D6B & Institutional Grid) */
+.ora-mp-root.ora-skin-g2b { background: #ffffff !important; border: 2px solid #0f2d6b !important; }
+.ora-mp-root.ora-skin-g2b .ora-topbar { background: #0f2d6b !important; border-bottom: 4px solid #1d4ed8 !important; }
+.ora-mp-root.ora-skin-g2b .ora-hero {
+  background-color: #f4f7fc !important;
+  background-image: linear-gradient(rgba(15,45,107,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(15,45,107,0.05) 1px, transparent 1px) !important;
+  background-size: 24px 24px !important;
+  border-bottom: 3px solid #0f2d6b !important;
+}
+.ora-mp-root.ora-skin-g2b .ora-hero .ora-badge {
+  background: #0f2d6b !important;
+  color: #ffffff !important;
+  border-radius: 4px !important;
+  border: none !important;
+}
+.ora-mp-root.ora-skin-g2b .ora-hero-showcase,
+.ora-mp-root.ora-skin-g2b .ora-kpi-card,
+.ora-mp-root.ora-skin-g2b .ora-box-pad { border-radius: 6px !important; border-color: #cbd5e1 !important; }
+.ora-mp-root.ora-skin-g2b .ora-kpi-card { border-top: 3px solid #0f2d6b !important; }
+.ora-mp-root.ora-skin-g2b .ora-kpi-val { color: #0f2d6b !important; }
+.ora-mp-root.ora-skin-g2b .ora-h2 { color: #0f2d6b !important; }
+
+/* 4. 고전환 커머스 (Commerce — SmartStore #1 High-Impact Conversion & Bold Proof Strips) */
+.ora-mp-root.ora-skin-commerce .ora-topbar { background: linear-gradient(90deg, #111827 0%, #c2410c 100%) !important; border-bottom: 3px solid #facc15 !important; }
+.ora-mp-root.ora-skin-commerce .ora-hero {
+  background: linear-gradient(180deg, #fff7ed 0%, #ffffff 72%) !important;
+  border-bottom: 3px solid #ea580c !important;
+}
+.ora-mp-root.ora-skin-commerce .ora-hero .ora-badge {
+  background: #ea580c !important;
+  color: #ffffff !important;
+  border: none !important;
+  box-shadow: 0 6px 18px rgba(234, 88, 12, 0.3) !important;
+}
+.ora-mp-root.ora-skin-commerce .ora-hero .ora-h1 { color: #111827 !important; font-size: 33px !important; }
+.ora-mp-root.ora-skin-commerce .ora-kpi-card {
+  background: #fffbeb !important;
+  border: 2px solid #fdba74 !important;
+  box-shadow: 0 6px 16px rgba(234, 88, 12, 0.1) !important;
+}
+.ora-mp-root.ora-skin-commerce .ora-kpi-val { color: #dc2626 !important; }
+
+/* 5. 미니멀 스튜디오 (Minimal — Apple/Dyson Inspired Gallery Whitespace & Hairlines) */
+.ora-mp-root.ora-skin-minimal { background: #ffffff !important; border-color: #e5e7eb !important; }
+.ora-mp-root.ora-skin-minimal .ora-topbar { background: #111827 !important; border-bottom: 1px solid #374151 !important; }
+.ora-mp-root.ora-skin-minimal .ora-hero { background: #ffffff !important; border-bottom: 1px solid #e5e7eb !important; padding-top: 56px !important; }
+.ora-mp-root.ora-skin-minimal .ora-hero .ora-badge {
+  background: #f9fafb !important;
+  color: #111827 !important;
+  border: 1px solid #d1d5db !important;
+  box-shadow: none !important;
+}
+.ora-mp-root.ora-skin-minimal .ora-hero-showcase {
+  border: 1px solid #e5e7eb !important;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.05) !important;
+}
+.ora-mp-root.ora-skin-minimal .ora-kpi-card {
+  background: #fafafa !important;
+  border: 1px solid #e5e7eb !important;
+  box-shadow: none !important;
+}
+.ora-mp-root.ora-skin-minimal .ora-kpi-val { color: #111827 !important; }
+.ora-mp-root.ora-skin-minimal .ora-sec { background: #ffffff !important; border-bottom: 1px solid #f1f5f9 !important; }
+`;
 
       curHtml = `<!-- ==================== (주)오라테크 스마트스토어 공식 마스터피스 [${code}] ==================== -->
-<div class="ora-mp-root" style="font-family:'Pretendard', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; line-height:1.7; color:#1e293b; max-width:860px; margin:0 auto; background-color:#ffffff; word-break:keep-all; overflow-wrap:break-word; letter-spacing:-0.02em; border:1px solid #e2e8f0; container-type:inline-size; container-name:oramp; box-sizing:border-box;">
+<div class="ora-mp-root ora-skin-${agencySkin}" data-agency-skin="${agencySkin}" style="font-family:'Pretendard', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; line-height:1.7; color:#1e293b; max-width:860px; margin:0 auto; background-color:#ffffff; word-break:keep-all; overflow-wrap:break-word; letter-spacing:-0.02em; border:1px solid #e2e8f0; container-type:inline-size; container-name:oramp; box-sizing:border-box;">
 <style>
   .ora-mp-root *, .ora-mp-root *::before, .ora-mp-root *::after { box-sizing: border-box; }
+  ${agencyArchetypeCss}
   ${mobileFrameCss}
   @container oramp (max-width: 640px) { ${mobileCssRules} }
   @media only screen and (max-width: 680px) { ${mobileCssRules} }
@@ -4287,68 +4703,71 @@
   <!-- SECTION 00: 공식 수입원 상단 인증 바 -->
   <div class="ora-topbar" style="background:linear-gradient(90deg, #07225A 0%, #0F3D99 100%); color:#f8fafc; padding:13px 28px; font-size:13px; font-weight:700; display:flex; justify-content:space-between; align-items:center; border-bottom:3px solid ${themePrimary};">
     <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
-      <span style="background:${themePrimary}; color:#ffffff; font-size:10px; font-weight:900; padding:3px 9px; border-radius:4px; letter-spacing:0.06em; flex-shrink:0;">OFFICIAL GENUINE</span>
+      <span class="ora-kicker" style="background:${themePrimary}; color:#ffffff; font-size:10px; font-weight:900; padding:3px 9px; border-radius:4px; flex-shrink:0;">OFFICIAL GENUINE</span>
       <span>${p.origin || '대한민국 공식 수입원 (주)오라테크 정품 보증'}</span>
     </div>
-    <div style="background:rgba(255,255,255,0.12); border:1px solid rgba(147,197,253,0.45); color:#e0f2fe; font-size:12.5px; font-weight:800; padding:4px 12px; border-radius:999px;">기술상담 · 대량견적 1600-5157</div>
+    <div class="ora-num-tab" style="background:rgba(255,255,255,0.12); border:1px solid rgba(147,197,253,0.45); color:#e0f2fe; font-size:12.5px; font-weight:800; padding:4px 12px; border-radius:999px;">기술상담 · 대량견적 1600-5157</div>
   </div>
 
   ${typeof buildMotionBannerHtml === "function" ? buildMotionBannerHtml(code, pullCap, doublePull, speed, engine, themePrimary) : ""}
 
-  <!-- SECTION 01: HERO 마스터피스 타이틀 & 4대 핵심 지표 & 단독 메인 실사 -->
-  <div class="ora-hero" style="padding:52px 32px 44px 32px; background:linear-gradient(180deg, ${themeLightBg} 0%, #ffffff 100%); text-align:center; border-bottom:1px solid #e2e8f0;">
-    <div class="ora-badge" style="display:inline-block; background:#ffffff; color:${themeDark}; font-size:12px; font-weight:900; padding:6px 18px; border-radius:9999px; margin-bottom:18px; border:1px solid ${themeBorder}; box-shadow:0 2px 6px rgba(0,0,0,0.03); letter-spacing:0.04em;">
+  <!-- SECTION 01: [v5.0 Product-First Above-the-Fold] 에이전시 히어로 · 메인 실사 최우선 배치 · 하단 KPI 스트립 -->
+  <div class="ora-hero" style="padding:44px 32px 40px 32px; background:linear-gradient(180deg, ${themeLightBg} 0%, #ffffff 100%); text-align:center; border-bottom:1px solid #e2e8f0;">
+    <div class="ora-badge ora-kicker" style="display:inline-block; background:#ffffff; color:${themeDark}; font-size:11px; font-weight:900; padding:5px 16px; border-radius:9999px; margin-bottom:14px; border:1px solid ${themeBorder}; box-shadow:0 2px 6px rgba(0,0,0,0.03);">
       ${code} · ${categoryBadgeText}
     </div>
-    <h1 class="ora-h1" style="font-size:31px; line-height:1.35; font-weight:900; color:#0f172a; margin:0 0 16px 0; letter-spacing:-0.03em;">
+    <h1 class="ora-h1" style="font-size:31px; line-height:1.3; font-weight:900; color:#0f172a; margin:0 0 12px 0; letter-spacing:-0.035em;">
       ${displayTagline}
     </h1>
-    <p class="ora-sub" style="font-size:15.5px; line-height:1.75; color:#475569; max-width:760px; margin:0 auto 34px auto; font-weight:500;">
+    <p class="ora-sub" style="font-size:15px; line-height:1.68; color:#475569; max-width:740px; margin:0 auto 24px auto; font-weight:500;">
       ${displaySubTagline}
     </p>
 
-    <!-- 4대 핵심 엔지니어링 지표 카드 -->
-    <div class="ora-kpi-grid" style="display:grid; grid-template-columns:repeat(4, 1fr); gap:12px; max-width:800px; margin:0 auto 36px auto;">
-      <div class="ora-kpi-card" style="background:#ffffff; padding:18px 12px; border-radius:14px; border:1px solid #e2e8f0; box-shadow:0 4px 12px rgba(15,23,42,0.04);">
-        <div style="font-size:11px; font-weight:800; color:#64748b; margin-bottom:4px;">정격 견인/인양력</div>
-        <div class="ora-kpi-val" style="font-size:22px; font-weight:900; color:${themePrimary};">${pullCap}</div>
-        <div style="font-size:11px; color:#16a34a; font-weight:800; margin-top:3px;">(${doublePull})</div>
-      </div>
-      <div class="ora-kpi-card" style="background:#ffffff; padding:18px 12px; border-radius:14px; border:1px solid #e2e8f0; box-shadow:0 4px 12px rgba(15,23,42,0.04);">
-        <div style="font-size:11px; font-weight:800; color:#64748b; margin-bottom:4px;">핵심 동력원</div>
-        <div class="ora-kpi-val" style="font-size:16px; font-weight:900; color:#0f172a; line-height:1.3;">${isBattery ? (code === 'APW-6000' ? '36V 브러시리스' : '82V 브러시리스') : (isDocma ? '이탈리아 DOCMA' : (isEngine ? 'HONDA 4행정' : (isHydraulicOrManual ? '정밀 유압/기어' : '100% 순동선 모터')))}</div>
-        <div style="font-size:11px; color:#475569; font-weight:700; margin-top:4px;">${engine.split('(')[0].trim()}</div>
-      </div>
-      <div class="ora-kpi-card" style="background:#ffffff; padding:18px 12px; border-radius:14px; border:1px solid #e2e8f0; box-shadow:0 4px 12px rgba(15,23,42,0.04);">
-        <div style="font-size:11px; font-weight:800; color:#64748b; margin-bottom:4px;">자체 중량 · 기동성</div>
-        <div class="ora-kpi-val" style="font-size:21px; font-weight:900; color:#0284c7;">${weight}</div>
-        <div style="font-size:11px; color:#0284c7; font-weight:800; margin-top:3px;">${isEngine || isBattery ? '1인 휴대 현장 투입' : '고강도 콤팩트 설계'}</div>
-      </div>
-      <div class="ora-kpi-card" style="background:#ffffff; padding:18px 12px; border-radius:14px; border:1px solid #e2e8f0; box-shadow:0 4px 12px rgba(15,23,42,0.04);">
-        <div style="font-size:11px; font-weight:800; color:#64748b; margin-bottom:4px;">${isEngine || isBattery ? '유효 작업 거리' : '안전 제동 시스템'}</div>
-        <div class="ora-kpi-val" style="font-size:19px; font-weight:900; color:#16a34a;">${isPortableWinchCo ? '무제한 (∞)' : '자동 안전 락'}</div>
-        <div style="font-size:11px; color:#16a34a; font-weight:800; margin-top:3px;">${isPortableWinchCo ? '로프 길이 무제한 권취' : (isDocma ? '특허 자동 와인딩·제동' : '정전 시 100% 자동 잠금')}</div>
-      </div>
-    </div>
-
     ${hasValidHeroImg ? `
-    <!-- 고해상도 단독 메인 실사 (텍스트 띠배너·타제품 사진 절대 배제) -->
-    <div class="ora-box-pad" style="position:relative; max-width:800px; margin:0 auto; border-radius:18px; overflow:hidden; box-shadow:0 14px 36px rgba(15,23,42,0.10); border:1px solid #cbd5e1; background:#ffffff; padding:16px;">
-      <img class="ora-hero-img" src="${heroImg}" alt="${code} 공식 정품 메인 실사" style="width:100%; display:block; object-fit:contain; max-height:540px; margin:0 auto;">
-      <div class="ora-flex-between" style="margin-top:12px; display:flex; justify-content:space-between; align-items:center; background:#f8fafc; padding:10px 14px; border-radius:10px; border:1px solid #e2e8f0;">
-        <span style="font-size:12px; font-weight:800; color:#0f172a;">■ 모델명: ${code} (${p.name})</span>
-        <span style="background:#0f172a; color:#ffffff; font-size:11px; font-weight:800; padding:4px 12px; border-radius:9999px;">(주)오라테크 공식 인증 정품</span>
+    <!-- Product-First Above-the-Fold 고해상도 단독 메인 실사 -->
+    <div class="ora-box-pad ora-hero-showcase" style="position:relative; max-width:800px; margin:0 auto 22px auto; border-radius:18px; overflow:hidden; box-shadow:0 14px 36px rgba(15,23,42,0.12); border:1px solid #cbd5e1; background:#ffffff; padding:16px;">
+      <img class="ora-hero-img" src="${heroImg}" alt="${code} 공식 정품 메인 실사" style="width:100%; display:block; object-fit:contain; max-height:460px; margin:0 auto;">
+      <div class="ora-flex-between" style="margin-top:12px; display:flex; justify-content:space-between; align-items:center; gap:8px; background:#f8fafc; padding:10px 14px; border-radius:10px; border:1px solid #e2e8f0;">
+        <span style="font-size:12px; font-weight:900; color:#0f172a;">MODEL ${code} · ${p.name}</span>
+        <div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap;">
+          <span class="ora-num-tab" style="background:${themeLightBg}; color:${themeDark}; border:1px solid ${themeBorder}; font-size:11px; font-weight:900; padding:3px 9px; border-radius:9999px;">정격 ${pullCap}</span>
+          <span class="ora-num-tab" style="background:#0f172a; color:#ffffff; font-size:11px; font-weight:800; padding:3px 10px; border-radius:9999px;">(주)오라테크 정품 보증</span>
+        </div>
       </div>
     </div>` : `
-    <!-- 전용 실사가 없는 특수 규격 품목: 억지 타제품 사진 대신 정밀 엔지니어링 스펙 배너 카드 표출 -->
-    <div class="ora-box-pad" style="max-width:800px; margin:0 auto; border-radius:18px; background:linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color:#ffffff; padding:36px 32px; text-align:left; border:1px solid #334155;">
-      <div class="ora-flex-between" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
-        <span style="background:${themePrimary}; color:#ffffff; font-size:11px; font-weight:900; padding:4px 12px; border-radius:6px;">INDUSTRIAL SPECIFICATION VERIFIED</span>
-        <span style="color:#94a3b8; font-size:12px; font-weight:700;">MODEL CODE: ${code}</span>
+    <!-- 전용 실사가 없는 특수 규격 품목: 정밀 엔지니어링 스펙 배너 카드 표출 -->
+    <div class="ora-box-pad" style="max-width:800px; margin:0 auto 22px auto; border-radius:18px; background:linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color:#ffffff; padding:32px 28px; text-align:left; border:1px solid #334155;">
+      <div class="ora-flex-between" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
+        <span class="ora-kicker" style="background:${themePrimary}; color:#ffffff; font-size:10.5px; font-weight:900; padding:4px 12px; border-radius:6px;">INDUSTRIAL SPECIFICATION VERIFIED</span>
+        <span class="ora-num-tab" style="color:#94a3b8; font-size:12px; font-weight:700;">MODEL CODE: ${code}</span>
       </div>
       <div style="font-size:20px; font-weight:900; margin-bottom:8px;">${p.name}</div>
       <div style="font-size:13.5px; color:#cbd5e1; line-height:1.7;">정격 용량 <b>${pullCap}</b> · 동력/사양 <b>${engine}</b> · 로프/체인 <b>${ropeSpec}</b> 규격의 산업용 정품 장비입니다.</div>
     </div>`}
+
+    <!-- 4대 핵심 엔지니어링 KPI 스트립 (Product-First 배치 하단 · tabular-nums 정렬) -->
+    <div class="ora-kpi-grid" style="display:grid; grid-template-columns:repeat(4, 1fr); gap:10px; max-width:800px; margin:0 auto;">
+      <div class="ora-kpi-card" style="background:#ffffff; padding:14px 12px; border-radius:12px; border:1px solid #e2e8f0; box-shadow:0 4px 12px rgba(15,23,42,0.04);">
+        <div class="ora-kpi-label" style="font-size:10.5px; font-weight:800; color:#64748b; margin-bottom:3px;">정격 견인/인양력</div>
+        <div class="ora-kpi-val" style="font-size:21px; font-weight:900; color:${themePrimary};">${pullCap}</div>
+        <div class="ora-kpi-sub ora-num-tab" style="font-size:10.5px; color:#16a34a; font-weight:800; margin-top:2px;">복선 ${doublePull}</div>
+      </div>
+      <div class="ora-kpi-card" style="background:#ffffff; padding:14px 12px; border-radius:12px; border:1px solid #e2e8f0; box-shadow:0 4px 12px rgba(15,23,42,0.04);">
+        <div class="ora-kpi-label" style="font-size:10.5px; font-weight:800; color:#64748b; margin-bottom:3px;">핵심 동력원</div>
+        <div class="ora-kpi-val" style="font-size:15.5px; font-weight:900; color:#0f172a; line-height:1.3;">${isBattery ? (code === 'APW-6000' ? '36V 브러시리스' : '82V 브러시리스') : (isDocma ? '이탈리아 DOCMA' : (isEngine ? 'HONDA 4행정' : (isHydraulicOrManual ? '정밀 유압/기어' : '100% 순동선 모터')))}</div>
+        <div class="ora-kpi-sub" style="font-size:10.5px; color:#475569; font-weight:700; margin-top:3px;">${engine.split('(')[0].trim()}</div>
+      </div>
+      <div class="ora-kpi-card" style="background:#ffffff; padding:14px 12px; border-radius:12px; border:1px solid #e2e8f0; box-shadow:0 4px 12px rgba(15,23,42,0.04);">
+        <div class="ora-kpi-label" style="font-size:10.5px; font-weight:800; color:#64748b; margin-bottom:3px;">자체 중량 · 기동성</div>
+        <div class="ora-kpi-val" style="font-size:20px; font-weight:900; color:#0284c7;">${weight}</div>
+        <div class="ora-kpi-sub" style="font-size:10.5px; color:#0284c7; font-weight:800; margin-top:2px;">${isEngine || isBattery ? '1인 휴대 현장 투입' : '고강도 콤팩트 설계'}</div>
+      </div>
+      <div class="ora-kpi-card" style="background:#ffffff; padding:14px 12px; border-radius:12px; border:1px solid #e2e8f0; box-shadow:0 4px 12px rgba(15,23,42,0.04);">
+        <div class="ora-kpi-label" style="font-size:10.5px; font-weight:800; color:#64748b; margin-bottom:3px;">${isEngine || isBattery ? '유효 작업 거리' : '안전 제동 시스템'}</div>
+        <div class="ora-kpi-val" style="font-size:18.5px; font-weight:900; color:#16a34a;">${isPortableWinchCo ? '무제한 (∞)' : '자동 안전 락'}</div>
+        <div class="ora-kpi-sub" style="font-size:10.5px; color:#16a34a; font-weight:800; margin-top:2px;">${isPortableWinchCo ? '로프 길이 무제한 권취' : (isDocma ? '특허 자동 와인딩·제동' : '정전 시 100% 자동 잠금')}</div>
+      </div>
+    </div>
   </div>
 
   ${typeof buildTwoTrackFunnelHtml === "function" ? buildTwoTrackFunnelHtml(code, p, pullCap, doublePull, engine, themePrimary, themeDark, themeLightBg, isEngine, isDocma, isSpecialTruck, isElectric, isHoist, isBattery) : ""}
@@ -4356,7 +4775,7 @@
   <!-- SECTION 02: 현장 문제(Problem) vs 오라테크 핵심 해법(Solution) -->
   <div class="ora-sec" style="padding:44px 32px; background:#ffffff; border-bottom:1px solid #e2e8f0;">
     <div class="ora-sec-head" style="text-align:center; margin-bottom:26px;">
-      <div style="color:${themePrimary}; font-size:12px; font-weight:900; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:6px;">
+      <div class="ora-kicker" style="color:${themePrimary}; font-size:11.5px; margin-bottom:6px;">
         PROBLEM & SOLUTION
       </div>
       <h2 class="ora-h2" style="font-size:24px; font-weight:900; color:#0f172a; margin:0; line-height:1.35;">
@@ -4365,28 +4784,30 @@
     </div>
 
     <div class="ora-grid-2" style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
-      <div class="ora-box-pad" style="background:#fef2f2; border:1px solid #fecaca; border-radius:16px; padding:20px 18px; text-align:left;">
+      <div class="ora-box-pad" style="background:#fef2f2; border:1px solid #fecaca; border-radius:14px; padding:20px 18px; text-align:left;">
         <div style="display:flex; align-items:center; gap:8px; margin-bottom:12px; padding-bottom:10px; border-bottom:1px solid #fca5a5;">
-          <span style="background:#dc2626; color:#ffffff; font-size:11px; font-weight:900; padding:2px 8px; border-radius:4px; flex-shrink:0;">기존 한계</span>
+          <span class="ora-kicker" style="background:#dc2626; color:#ffffff; font-size:10px; font-weight:900; padding:2px 8px; border-radius:4px; flex-shrink:0;">BEFORE</span>
           <span style="font-size:15px; font-weight:900; color:#991b1b;">인력·저가 장비의 문제점</span>
         </div>
         <div style="display:flex; flex-direction:column; gap:8px;">
-          ${problemList.map(item => `
-          <div style="background:#ffffff; border:1px solid #fee2e2; border-radius:10px; padding:10px 12px; font-size:12.5px; color:#7f1d1d; line-height:1.5; font-weight:700; text-align:left;">
-            ❌ ${item}
+          ${problemList.map((item, idx) => `
+          <div style="background:#ffffff; border:1px solid #fee2e2; border-left:3px solid #dc2626; border-radius:8px; padding:10px 12px; font-size:12.5px; color:#7f1d1d; line-height:1.5; font-weight:700; text-align:left; display:flex; align-items:flex-start; gap:8px;">
+            <span class="ora-num-tab" style="background:#fee2e2; color:#b91c1c; font-size:10px; font-weight:900; padding:1px 6px; border-radius:4px; flex-shrink:0; margin-top:2px;">0${idx + 1}</span>
+            <span>${item}</span>
           </div>`).join('')}
         </div>
       </div>
 
-      <div class="ora-box-pad" style="background:${themeLightBg}; border:1px solid ${themeBorder}; border-radius:16px; padding:20px 18px; text-align:left;">
+      <div class="ora-box-pad" style="background:${themeLightBg}; border:1px solid ${themeBorder}; border-radius:14px; padding:20px 18px; text-align:left;">
         <div style="display:flex; align-items:center; gap:8px; margin-bottom:12px; padding-bottom:10px; border-bottom:1px solid ${themeBorder};">
-          <span style="background:${themePrimary}; color:#ffffff; font-size:11px; font-weight:900; padding:2px 8px; border-radius:4px; flex-shrink:0;">해결책</span>
+          <span class="ora-kicker" style="background:${themePrimary}; color:#ffffff; font-size:10px; font-weight:900; padding:2px 8px; border-radius:4px; flex-shrink:0;">AFTER</span>
           <span style="font-size:15px; font-weight:900; color:#0f172a;">${solutionTitle}</span>
         </div>
         <div style="display:flex; flex-direction:column; gap:8px;">
-          ${solutionFeatures.map(feat => `
-          <div style="background:#ffffff; border:1px solid ${themeBorder}; border-radius:10px; padding:10px 12px; font-size:12.5px; color:#0f172a; line-height:1.5; font-weight:800; text-align:left;">
-            ✅ ${feat}
+          ${solutionFeatures.map((feat, idx) => `
+          <div style="background:#ffffff; border:1px solid ${themeBorder}; border-left:3px solid ${themePrimary}; border-radius:8px; padding:10px 12px; font-size:12.5px; color:#0f172a; line-height:1.5; font-weight:800; text-align:left; display:flex; align-items:flex-start; gap:8px;">
+            <span class="ora-num-tab" style="background:${themePrimary}; color:#ffffff; font-size:10px; font-weight:900; padding:1px 6px; border-radius:4px; flex-shrink:0; margin-top:2px;">0${idx + 1}</span>
+            <span>${feat}</span>
           </div>`).join('')}
         </div>
       </div>
@@ -4513,7 +4934,7 @@
         <p style="font-size:12.5px; color:#475569; margin:0; line-height:1.7;">정격 용량(${pullCap})을 초과하는 과적 화물이 적재될 경우 유압 라인의 압력을 자동으로 바이패스시켜 구조물 휨과 실린더 파열 사고를 원천 차단합니다.</p>
       </div>
       <div class="ora-box-pad" style="background:#ffffff; border-radius:14px; padding:24px; border:1px solid #e2e8f0;">
-        <div style="font-size:15px; font-weight:900; color:#0f172a; margin-bottom:8px;">③ 비틀림 강성 극대화 중량급 강철 프레임</div>
+        <div style="font-size:15px; font-weight:900; color:#0f172a; margin-bottom:8px;">③ 비틀림 강성 강화 중량급 강철 프레임</div>
         <p style="font-size:12.5px; color:#475569; margin:0; line-height:1.7;">하중이 집중되는 응력 포인트에 보강 리브(Rib)와 두꺼운 고장력 강판을 로봇 용접하여 편하중 발생 시에도 프레임 변형 없이 안정적인 수평을 유지합니다.</p>
       </div>
       <div class="ora-box-pad" style="background:#ffffff; border-radius:14px; padding:24px; border:1px solid #e2e8f0;">
@@ -5355,6 +5776,12 @@
       runRecursiveSelfRefine(false);
       // 교정된 최종 HTML을 curHtml에 동기화하여 HTML 복사 시에도 100% 무결점 보장
       curHtml = document.getElementById('previewContainer').innerHTML;
+      // [v5.0] 실시간 100점 전환 진단 + Split 모바일 미러 동기화 + 비주얼 편집 모드 유지
+      if (typeof runRealConversionAudit === 'function') runRealConversionAudit(false);
+      if (typeof syncMobileMirrorPreview === 'function') syncMobileMirrorPreview();
+      if (window.oraVisualEditMode && typeof attachVisualBlockEditor === 'function') {
+        attachVisualBlockEditor();
+      }
     }
 
 
@@ -5594,26 +6021,216 @@
         if (fixedInThisPass === 0) break;
       }
 
-      // 최종 감사 점수 배지 업데이트
+      // 최종 감사 점수 배지 업데이트 (v5.0 실제 5대 전환 품질 정밀 진단 엔진 연동)
       const visibleImgs = Array.from(container.querySelectorAll('img')).filter(im => im.offsetParent !== null || im.closest('div')?.style.display !== 'none');
-      const auditBadge = document.getElementById('auditScoreBadge');
-      if (auditBadge) {
-        auditBadge.title = `[${code}] 전용 실사 ${visibleImgs.length}컷 검증 · 타제품 사진 혼입 0건 · 스펙 정합 100%`;
-        auditBadge.innerHTML = `<span class="text-emerald-400 font-bold">✓ 무결점 100점</span> <span class="text-slate-300 text-[10px]">(${visibleImgs.length}컷·혼입0)</span>`;
-      }
+      const auditReport = (typeof runRealConversionAudit === 'function') ? runRealConversionAudit(false) : { total: 100 };
 
       if (showFeedback) {
-        showToast(`[${code}] 5단계 자체 재귀 정밀 교정 완료! (타제품 이미지 0건)`, 'fa-wand-magic-sparkles text-cyan-400');
+        showToast(`[${code}] 5단계 자체 재귀 교정 완료! (전환진단 ${auditReport.total}점 · 혼입 0건)`, 'fa-wand-magic-sparkles text-cyan-400');
         let specSummary = `${p.engine || ''} / ${p.weight || ''} / 정격 ${p.pull || p.cap || ''}`;
         const fixLogHtml = issuesFound.length > 0
           ? `<br>• <b>자동 적발 및 격리 내역 (${issuesFound.length}건):</b><br>` + issuesFound.map(x => `&nbsp;&nbsp;- ${x}`).join('<br>')
           : `<br>• <b>무결점 검증 완료:</b> [${code}] 고유 실사 외에 타 모델(PCW-5000 등) 사진이나 쪼개진 사진이 단 1장도 혼입되지 않았음을 확인했습니다.`;
 
-        appendChat('ai', `⚡ <b>오라테크 5단계 자체 재귀 교정 엔진 (Zero Cross-Product Verifier) 리포트:</b><br>
+        appendChat('ai', `⚡ <b>오라테크 5단계 자체 재귀 교정 & 100점 전환 진단 리포트:</b><br>
 • <b>실행 패스:</b> 총 ${passCount}회 다단계 재귀 감사 완결 (검증된 [${code}] 전용 실사 <b>${visibleImgs.length}컷</b>)<br>
-• <b>타제품 이미지 차단:</b> 100% 화이트리스트 검증 완료 (모델 고유 사진이 없을 경우 억지 타제품 사진을 절대 넣지 않고 정밀 벡터 인포그래픽으로 대체)<br>
-• <b>콘텐츠 무결성:</b> AI 과장 어휘(슬롭) 0건 / [${code}] 제원(${specSummary}) 100% 일치${fixLogHtml}<br>
-👉 <b>최종 품질 등급: 100 / 100</b>`);
+• <b>타제품 이미지 차단:</b> 100% 화이트리스트 검증 완료<br>
+• <b>콘텐츠 무결성:</b> AI 과장 어휘(슬롭) 정화 / [${code}] 제원(${specSummary}) 일치${fixLogHtml}<br>
+👉 <b>실측 전환 진단 점수: ${auditReport.total} / 100점</b> (상단 진단 배지를 눌러 5대 항목 세부 점수를 확인하세요)`);
+      }
+    };
+
+    // ==================== [v5.0 NEW] 실제 100점 스마트스토어 전환 품질 진단 엔진 (5대 지표 × 20점) ====================
+    window.runRealConversionAudit = function(openPopover = false) {
+      const container = document.getElementById('previewContainer');
+      const p = curProduct || {};
+      const code = p.code || 'PCW-5000';
+      const rawHtml = (container && container.innerHTML) ? container.innerHTML : (curHtml || '');
+      const cleanHtml = (typeof getCleanExportHtml === 'function') ? getCleanExportHtml(rawHtml) : rawHtml;
+      const plainText = cleanHtml
+        .replace(/<style[\s\S]*?<\/style>/gi, ' ')
+        .replace(/<script[\s\S]*?<\/script>/gi, ' ')
+        .replace(/<[^>]+>/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim();
+
+      // 1) 대표 실사 무결성 & 타제품 혼입 0건 (20점)
+      const imgSrcs = [...cleanHtml.matchAll(/<img[^>]+src="([^"]+)"[^>]*>/gi)].map(m => m[1]);
+      let p1 = 20;
+      const p1Notes = [];
+      const badImgs = imgSrcs.filter(src => typeof isImageAllowedForModel === 'function' && !isImageAllowedForModel(src, code));
+      if (badImgs.length > 0) {
+        p1 -= 10;
+        p1Notes.push(`타제품/차단 이미지 ${badImgs.length}건 감지 (-10)`);
+      }
+      const hasMainImg = imgSrcs.length > 0;
+      if (!hasMainImg) {
+        p1 -= 4;
+        p1Notes.push('전용 실사 미등록 — 스펙 배너 대체 중 (-4)');
+      }
+      const dupCount = imgSrcs.length - new Set(imgSrcs).size;
+      if (dupCount > 0) {
+        p1 -= 4;
+        p1Notes.push(`중복 이미지 URL ${dupCount}건 (-4)`);
+      }
+      if (!p1Notes.length) p1Notes.push(`전용 실사 ${imgSrcs.length}컷 검증 · 타제품 혼입 0건`);
+
+      // 2) 헤드라인·카피 스캔성 & AI 슬롭 0건 (20점)
+      let p2 = 20;
+      const p2Notes = [];
+      const slopTokens = ['혁신적인', '최상의', '탁월한 퍼포먼스', '극대화', '솔루션을 제공', '경험해보세요', '선사합니다', '자랑합니다', '메인터넌스', '다양한 니즈', '기적의', '마법 같은'];
+      const slopHits = slopTokens.filter(tok => plainText.includes(tok));
+      if (slopHits.length > 0) {
+        const pen = Math.min(12, slopHits.length * 4);
+        p2 -= pen;
+        p2Notes.push(`AI 슬롭·번역투 ${slopHits.length}건(${slopHits.slice(0, 3).join(', ')}) (-${pen})`);
+      }
+      const h1Text = String(p.tagline || '').replace(/<[^>]+>/g, '').trim();
+      if (!h1Text || h1Text.length > 52) {
+        p2 -= 4;
+        p2Notes.push(`메인 헤드라인 길이 ${h1Text.length}자 — 모바일 1초 스캔 권장 48자 이내 (-4)`);
+      }
+      const bangCount = (h1Text + ' ' + String(p.subTagline || '')).split('!').length - 1;
+      if (bangCount >= 4) {
+        p2 -= 4;
+        p2Notes.push(`상단 카피 느낌표 과다(${bangCount}회) (-4)`);
+      }
+      if (!p2Notes.length) p2Notes.push('헤드라인 스캔성 최적 · AI 슬롭 0건');
+
+      // 3) 모바일 가독성 & 슬라이스 적정 길이 (20점)
+      let p3 = 20;
+      const p3Notes = [];
+      if (!cleanHtml.includes('@container') && !cleanHtml.includes('.mobile-frame')) {
+        p3 -= 5;
+        p3Notes.push('모바일 반응형 CSS 미적용 (-5)');
+      }
+      if (plainText.length > 6200) {
+        p3 -= 4;
+        p3Notes.push(`본문 텍스트 과밀(${plainText.length.toLocaleString()}자) — 슬림 모드 권장 (-4)`);
+      }
+      const imgsNoAlt = [...cleanHtml.matchAll(/<img(?![^>]*\balt="[^"]+")[^>]*>/gi)].length;
+      if (imgsNoAlt > 0) {
+        p3 -= 3;
+        p3Notes.push(`대체텍스트(alt) 누락 이미지 ${imgsNoAlt}건 (-3)`);
+      }
+      const domH = (container && container.scrollHeight) ? container.scrollHeight : 0;
+      if (domH > 13500) {
+        p3 -= 4;
+        p3Notes.push(`전체 세로 높이 ${domH.toLocaleString()}px — 분할 ZIP 내보내기 권장 (-4)`);
+      }
+      if (!p3Notes.length) p3Notes.push(`모바일 반응형 완벽 · 본문 ${plainText.length.toLocaleString()}자 적정 밀도`);
+
+      // 4) B2B 전환 요소 (제원표·FAQ·도르래역학·세금계산서/보증) (20점)
+      let p4 = 0;
+      const p4Notes = [];
+      if (cleanHtml.includes('ora-spec-table') || plainText.includes('제원') || plainText.includes('정격')) {
+        p4 += 5;
+      } else {
+        p4Notes.push('정밀 제원표 누락 (-5)');
+      }
+      if (plainText.includes('Q1.') || plainText.includes('FAQ')) {
+        p4 += 5;
+      } else {
+        p4Notes.push('FAQ 자주묻는질문 누락 (-5)');
+      }
+      if (plainText.includes('도르래') || plainText.includes('배력') || plainText.includes('복선') || plainText.includes('안전율')) {
+        p4 += 5;
+      } else {
+        p4Notes.push('도르래 배력·안전율 근거 누락 (-5)');
+      }
+      if (plainText.includes('세금계산서') && (plainText.includes('1600-5157') || plainText.includes('보증'))) {
+        p4 += 5;
+      } else {
+        p4Notes.push('전자세금계산서·보증·직통번호 누락 (-5)');
+      }
+      if (!p4Notes.length) p4Notes.push('제원표·FAQ·도르래역학·세금계산서/보증 4종 완비');
+
+      // 5) 표시광고법·네이버 금칙어·내부문구 준수 (20점)
+      let p5 = 20;
+      const p5Notes = [];
+      const legalChecks = [
+        { re: /세계\s*최고/, label: '세계 최고(절대 최상급)' },
+        { re: /국내\s*유일/, label: '국내 유일(배타 표현)' },
+        { re: /100%\s*무고장/, label: '100% 무고장(과장 보증)' },
+        { re: /절대\s*끊어지지/, label: '절대 끊어지지 않는' },
+        { re: /영구적인?\s*수명/, label: '영구적 수명' },
+        { re: /무조건\s*최저가/, label: '무조건 최저가' },
+        { re: /폭탄\s*세일|땡처리/, label: '어뷰징 할인어' },
+        { re: /본\s*화면\s*상단\s*\[/, label: '내부 스튜디오 버튼 문구 노출' }
+      ];
+      legalChecks.forEach(c => {
+        if (c.re.test(plainText)) {
+          p5 -= 5;
+          p5Notes.push(`${c.label} 감지 (-5)`);
+        }
+      });
+      if (!p5Notes.length) p5Notes.push('표시광고법·네이버 금칙어·내부문구 누출 0건');
+
+      const pillars = [
+        { name: '1. 대표 실사 무결성 & 타제품 혼입 0건', score: Math.max(0, p1), max: 20, notes: p1Notes },
+        { name: '2. 헤드라인 스캔성 & AI 슬롭 0건', score: Math.max(0, p2), max: 20, notes: p2Notes },
+        { name: '3. 모바일 가독성 & 슬라이스 적정 길이', score: Math.max(0, p3), max: 20, notes: p3Notes },
+        { name: '4. B2B 전환 요소 (제원·FAQ·배력·세금계산서)', score: Math.max(0, p4), max: 20, notes: p4Notes },
+        { name: '5. 표시광고법 · 네이버 금칙어 준수', score: Math.max(0, p5), max: 20, notes: p5Notes }
+      ];
+      const total = pillars.reduce((s, x) => s + x.score, 0);
+      const report = { code, total, imgCount: imgSrcs.length, textLength: plainText.length, pillars };
+      window.oraLastAuditReport = report;
+
+      const badge = document.getElementById('auditScoreBadge');
+      if (badge) {
+        const toneCls = total >= 95
+          ? 'bg-emerald-950/85 hover:bg-emerald-900 border-emerald-500/50 text-emerald-300'
+          : (total >= 80
+            ? 'bg-amber-950/85 hover:bg-amber-900 border-amber-500/50 text-amber-300'
+            : 'bg-rose-950/85 hover:bg-rose-900 border-rose-500/50 text-rose-300');
+        badge.className = `border font-black px-2 py-0.5 rounded text-[10px] shrink-0 whitespace-nowrap cursor-pointer transition ${toneCls}`;
+        badge.title = `[${code}] 실측 전환진단 ${total}/100점 (실사 ${imgSrcs.length}컷 · 클릭하여 상세 리포트 보기)`;
+        badge.innerHTML = `${total >= 95 ? '✓' : '⚠'} 전환진단 ${total}점 <span class="opacity-75 font-bold">(${imgSrcs.length}컷) ▾</span>`;
+      }
+
+      const body = document.getElementById('auditDiagnosticBody');
+      if (body) {
+        body.innerHTML = `
+          <div class="flex items-center justify-between bg-slate-900 border border-slate-800 rounded-xl px-3 py-2">
+            <div>
+              <div class="text-[10px] text-slate-400 font-bold">MODEL ${code} 종합 전환 점수</div>
+              <div class="text-lg font-black ${total >= 95 ? 'text-emerald-400' : (total >= 80 ? 'text-amber-300' : 'text-rose-400')}">${total} <span class="text-xs text-slate-400">/ 100점</span></div>
+            </div>
+            <div class="text-right text-[10px] text-slate-400">
+              <div>검증 실사: <b class="text-white">${imgSrcs.length}컷</b></div>
+              <div>본문 분량: <b class="text-white">${plainText.length.toLocaleString()}자</b></div>
+            </div>
+          </div>
+          ${pillars.map(pl => {
+            const pct = Math.round((pl.score / pl.max) * 100);
+            const barColor = pl.score === pl.max ? 'bg-emerald-500' : (pl.score >= 15 ? 'bg-amber-400' : 'bg-rose-500');
+            return `<div class="bg-slate-900/80 border border-slate-800 rounded-lg p-2 space-y-1">
+              <div class="flex items-center justify-between text-[11px] font-bold">
+                <span class="text-slate-200">${pl.name}</span>
+                <span class="${pl.score === pl.max ? 'text-emerald-400' : 'text-amber-300'} font-black">${pl.score}/${pl.max}</span>
+              </div>
+              <div class="w-full h-1.5 bg-slate-800 rounded-full overflow-hidden"><div class="${barColor} h-full" style="width:${pct}%"></div></div>
+              <div class="text-[10px] text-slate-400">${pl.notes.join(' · ')}</div>
+            </div>`;
+          }).join('')}
+        `;
+      }
+
+      if (openPopover) toggleAuditDiagnosticPopover(true);
+      return report;
+    };
+
+    window.toggleAuditDiagnosticPopover = function(forceState) {
+      const pop = document.getElementById('auditDiagnosticPopover');
+      if (!pop) return;
+      if (typeof forceState === 'boolean') {
+        pop.classList.toggle('hidden', !forceState);
+      } else {
+        pop.classList.toggle('hidden');
+      }
+      if (!pop.classList.contains('hidden')) {
+        runRealConversionAudit(false);
       }
     };
 
@@ -5663,8 +6280,47 @@
         }
       }
 
-      document.getElementById('calcPrice').value = p.price || 2600000;
+      const calcPriceEl = document.getElementById('calcPrice');
+      if (calcPriceEl) calcPriceEl.value = p.price || 2600000;
       recalcMargin();
+      if (typeof syncSpecEditorFromProduct === 'function') syncSpecEditorFromProduct();
+      if (typeof refreshArtDirectorPromptPreview === 'function') refreshArtDirectorPromptPreview(false);
+    }
+
+    // [v5.0] Tab 3 실시간 제품 제원 & 태그라인 에디터 연동
+    function syncSpecEditorFromProduct() {
+      const p = curProduct;
+      if (!p) return;
+      const ss = (window.oraLastSpecSheet && window.oraLastSpecSheet.code === p.code) ? window.oraLastSpecSheet : {};
+      const map = {
+        specEditTagline: p.tagline || '',
+        specEditPull: ss.pullCap || p.pull || p.cap || '',
+        specEditDoublePull: ss.doublePull || p.doublePull || '',
+        specEditWeight: ss.weight || p.weight || '',
+        specEditSpeed: ss.speed || p.speed || '',
+        specEditEngine: ss.engine || p.engine || '',
+        specEditRope: ss.ropeSpec || p.rope || '',
+        specEditSize: ss.dimensions || p.size || ''
+      };
+      Object.keys(map).forEach(id => {
+        const el = document.getElementById(id);
+        if (el && document.activeElement !== el) {
+          el.value = map[id];
+        }
+      });
+    }
+
+    function applyLiveSpecEdit(field, value) {
+      if (!curProduct) return;
+      if (!curProduct._specOverrides) curProduct._specOverrides = {};
+      if (field === 'tagline') {
+        curProduct.tagline = value;
+      } else {
+        curProduct[field] = value;
+        curProduct._specOverrides[field] = value;
+        if (field === 'pull') curProduct.cap = value;
+      }
+      renderMasterpieceHtml();
     }
 
     function selectPresetImage(url, badgeText) {
@@ -5684,7 +6340,46 @@
       showToast('메인 이미지가 교체되었습니다!');
     }
 
-    // ==================== 실물 기반 정밀 사진 생성 & 스튜디오 교체 엔진 ====================
+    // ==================== [v5.0] Imagen 4 아트디렉터 프롬프트 조립 & 실사 생성 엔진 ====================
+    function buildArtDirectorPrompt(p) {
+      const prod = p || curProduct || { name: 'Industrial Winch', code: 'PCW-5000' };
+      const sceneKey = document.getElementById('artScenePreset')?.value || 'WHITE_STUDIO';
+      const lightKey = document.getElementById('artLightingPreset')?.value || 'STUDIO_RIM';
+      const camKey = document.getElementById('artCameraPreset')?.value || 'HERO_34';
+
+      const sceneMap = {
+        WHITE_STUDIO: 'pure white seamless cyclorama commercial catalog studio background, clean subtle contact shadow',
+        FOREST_SLOPE: 'steep misty Korean pine forest logging slope with heavy timber logs and rugged mountain earth',
+        SCAFFOLD_LIFT: 'modern commercial construction scaffolding site and steel beam lifting crane zone under clear sky',
+        HBEAM_FACTORY: 'clean precision industrial manufacturing plant H-beam overhead hoisting bay with metallic floor',
+        DARK_SHOWROOM: 'dramatic obsidian dark architectural hardware showroom with brushed steel pedestal'
+      };
+      const lightMap = {
+        STUDIO_RIM: 'precision commercial studio softbox lighting with sharp metallic rim highlights',
+        GOLDEN_HOUR: 'warm golden hour natural directional sunlight with crisp realistic shadows',
+        CRISP_DAYLIGHT: 'crisp bright natural daylight with true-to-life industrial metallic colors'
+      };
+      const camMap = {
+        HERO_34: '3/4 heroic eye-level commercial catalog shot, ultra sharp focus across full machine body',
+        MACRO_DRUM: 'engineering macro close-up focusing on precision machined drum, alloy gear housing, and steel rigging texture',
+        WIDE_ACTION: 'wide environmental editorial industrial field photography showing scale and rugged capability'
+      };
+
+      const specHint = (window.oraLastSpecSheet && window.oraLastSpecSheet.code === prod.code)
+        ? `${window.oraLastSpecSheet.pullCap || ''}, ${window.oraLastSpecSheet.engine || ''}`
+        : `${prod.pull || prod.cap || ''}`;
+      return `Photorealistic commercial industrial photography of ${prod.name} (${prod.code}, ${specHint}), ${sceneMap[sceneKey] || sceneMap.WHITE_STUDIO}, ${lightMap[lightKey] || lightMap.STUDIO_RIM}, ${camMap[camKey] || camMap.HERO_34}, 8k authentic camera texture, sharp precision machinery details, zero text, zero letters, zero watermark, zero logo overlay`;
+    }
+
+    function refreshArtDirectorPromptPreview(forceOverwrite = false) {
+      const box = document.getElementById('artDirectorPromptPreview');
+      if (!box) return;
+      if (forceOverwrite || !box.value.trim() || box.dataset.lastCode !== (curProduct && curProduct.code)) {
+        box.value = buildArtDirectorPrompt(curProduct);
+        box.dataset.lastCode = (curProduct && curProduct.code) || '';
+      }
+    }
+
     async function generateAiProductImage() {
       const overlay = document.getElementById('aiImageLoadingOverlay');
       if (overlay) overlay.classList.remove('hidden');
@@ -5692,18 +6387,19 @@
       const p = curProduct;
       const apiKey = getGeminiKey();
       const canUseServerProxy = window.location.protocol.startsWith('http') && !isStaticWebHost();
+      const aspectRatio = document.getElementById('artAspectRatio')?.value || '1:1';
+      const customPrompt = (document.getElementById('artDirectorPromptPreview')?.value || '').trim();
+      const promptText = customPrompt || buildArtDirectorPrompt(p);
 
       if (apiKey || canUseServerProxy) {
         try {
-          const promptText = `Industrial commercial studio product photography of ${p.name} (${p.code}), high-end precision machinery, crisp metallic textures, sharp focus, 8k resolution, award-winning industrial catalog photography, pure white seamless cyclorama background, realistic studio lighting, no text, no watermark, no CGI look`;
-
           let b64 = null;
           let imagenModel = 'imagen-4.0-generate-001';
           if (canUseServerProxy) {
             const resp = await fetch('/api/imagen', {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ prompt: promptText, apiKey: apiKey, aspectRatio: '1:1' })
+              body: JSON.stringify({ prompt: promptText, apiKey: apiKey, aspectRatio })
             });
             if (resp.ok) {
               const resJson = await resp.json();
@@ -5711,20 +6407,28 @@
               if (resJson.model) imagenModel = resJson.model;
             } else {
               const errJson = await resp.json().catch(() => ({}));
-              if (errJson.error) appendChat('ai', `⚠️ <b>이미지 생성 실패 원인:</b> ${String(errJson.error).replace(/</g, '&lt;').slice(0, 300)}`);
+              if (errJson.error) appendChat('ai', `⚠️ <b>Imagen 생성 실패 원인:</b> ${String(errJson.error).replace(/</g, '&lt;').slice(0, 300)}`);
             }
           }
 
           if (!b64 && apiKey) {
-            const imagenUrl = `https://generativelanguage.googleapis.com/v1beta/models/imagen-3.0-generate-002:predict?key=${encodeURIComponent(apiKey)}`;
-            const response = await fetch(imagenUrl, {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ instances: [{ prompt: promptText }], parameters: { sampleCount: 1, aspectRatio: "1:1" } })
-            });
-            if (response.ok) {
-              const result = await response.json();
-              b64 = result.predictions && result.predictions[0]?.bytesBase64Encoded;
+            for (const m of ['imagen-4.0-generate-001', 'imagen-3.0-generate-002']) {
+              try {
+                const imagenUrl = `https://generativelanguage.googleapis.com/v1beta/models/${m}:predict`;
+                const response = await fetch(imagenUrl, {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json', 'x-goog-api-key': apiKey },
+                  body: JSON.stringify({ instances: [{ prompt: promptText }], parameters: { sampleCount: 1, aspectRatio } })
+                });
+                if (response.ok) {
+                  const result = await response.json();
+                  b64 = result.predictions && result.predictions[0]?.bytesBase64Encoded;
+                  if (b64) {
+                    imagenModel = m;
+                    break;
+                  }
+                }
+              } catch (_) {}
             }
           }
 
@@ -5735,14 +6439,14 @@
             const b = document.getElementById('imgSourceBadge');
             if (b) {
               b.className = 'text-[10px] bg-amber-500/20 text-amber-300 border border-amber-500/30 px-2 py-0.5 rounded font-black';
-              b.innerText = 'AI 생성 이미지 (' + imagenModel + ')';
+              b.innerText = `Imagen (${imagenModel.replace('-generate-001', '')} · ${aspectRatio})`;
             }
-            showToast(`[${p.code}] AI 이미지 생성 완료 (${imagenModel})`, 'fa-wand-magic-sparkles text-amber-400');
-            appendChat('ai', `🎨 <b>[${p.code}] Google Imagen 3 초고화질 스튜디오 실사 렌더링 완료!</b><br>• 적용 모델: <b>${imagenModel}</b><br>• 주의: AI 이미지는 실제 [${p.code}]와 형태·로고가 다를 수 있습니다. 스마트스토어 등록 전 실물과 비교해 주시고, 다르면 '공식 실물 컷'으로 되돌려 주세요.`);
+            showToast(`[${p.code}] Imagen 4 실사 생성 완료 (${aspectRatio})`, 'fa-wand-magic-sparkles text-amber-400');
+            appendChat('ai', `🎨 <b>[${p.code}] Google Imagen 아트디렉터 실사 렌더링 완료!</b><br>• 적용 모델: <b>${imagenModel}</b> (비율: ${aspectRatio})<br>• 안내: AI 생성 컷은 실제 [${p.code}]와 외관이 다를 수 있으므로 스마트스토어 등록 전 실물과 대조하고, 필요 시 [공식 정품 메인] 버튼으로 즉시 복원하세요.`);
             return;
           }
         } catch (e) {
-          console.warn('Imagen 3 generation fallback:', e);
+          console.warn('Imagen generation fallback:', e);
         }
       }
 
@@ -6160,121 +6864,79 @@
     }
 
 
-    // ==================== Gemini API 정밀 연동 & 모델별 맞춤 호출 ====================
-    async function callGeminiApi(prompt, apiKey, forcedModel) {
+    // ==================== Gemini API 정밀 연동 & 비전 멀티모달 모델별 맞춤 호출 ====================
+    async function callGeminiApi(prompt, apiKey, forcedModel, imageObj = null) {
       apiKey = (apiKey || '').trim().replace(/^["']|["']$/g, '');
       if (!apiKey) throw new Error('API 키가 입력되지 않았습니다.');
 
       const chosenModel = forcedModel || getSelectedAiModel();
-      // 선택한 모델을 이름 그대로 먼저 시도하고, 없거나 실패하면 4-carbon -> 4-argon -> 2.5 계열로 내려갑니다. (실제 응답 모델명을 그대로 표시)
-      const callQueue = [];
-      [chosenModel, 'gemini-4-carbon', 'gemini-4-argon', 'gemini-2.5-pro', 'gemini-2.5-flash', 'gemini-2.0-flash']
-        .filter((m, i, arr) => m && arr.indexOf(m) === i)
-        .forEach(m => callQueue.push({ type: 'generateContent', model: m, ver: 'v1beta', isPaid: m !== 'gemini-2.0-flash' }));
+      const callQueue = [chosenModel, 'gemini-4-carbon', 'gemini-3.8-flash', 'gemini-2.5-pro', 'gemini-2.5-flash']
+        .filter((m, i, arr) => m && !m.startsWith('gemini-1.5') && m !== 'gemini-4-argon' && arr.indexOf(m) === i)
+        .map(m => ({ model: m, ver: 'v1beta', isPaid: ['gemini-4-carbon', 'gemini-2.5-pro', 'gemini-3.8-flash'].includes(m) }));
 
       let lastError = null;
+      const reqParts = [{ text: prompt }];
+      if (imageObj && imageObj.base64) {
+        reqParts.push({
+          inlineData: {
+            mimeType: imageObj.mimeType || 'image/jpeg',
+            data: String(imageObj.base64).replace(/^data:[^;]+;base64,/, '')
+          }
+        });
+      }
 
       for (const item of callQueue) {
         try {
-          if (item.type === 'interactions') {
-            const url = `https://generativelanguage.googleapis.com/v1beta/interactions?key=${encodeURIComponent(apiKey)}`;
-            const response = await fetch(url, {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-                'x-goog-api-key': apiKey
-              },
-              body: JSON.stringify({
-                model: item.model,
-                input: prompt,
-                response_format: {
-                  type: "text",
-                  mime_type: "application/json"
-                }
-              })
-            });
+          const url = `https://generativelanguage.googleapis.com/${item.ver}/models/${encodeURIComponent(item.model)}:generateContent`;
+          const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'x-goog-api-key': apiKey
+            },
+            body: JSON.stringify({
+              contents: [{ parts: reqParts }],
+              generationConfig: {
+                responseMimeType: "application/json",
+                temperature: 0.5
+              }
+            })
+          });
 
-            if (response.ok) {
-              const result = await response.json();
-              let text = '';
-              if (result.outputs && result.outputs[0]?.text) {
-                text = result.outputs[0].text;
-              } else if (result.output_text) {
-                text = result.output_text;
-              }
-              const totalTokens = result.usage?.total_tokens || 
-                                 ((result.usage?.total_input_tokens || 0) + (result.usage?.total_output_tokens || 0)) || 0;
-
-              if (text) {
-                const clean = text.trim().replace(/^```json\s*/i, '').replace(/```\s*$/i, '').trim();
-                const parsed = JSON.parse(clean);
-                return {
-                  data: parsed,
-                  usedModel: item.displayModel || item.model,
-                  tokens: totalTokens,
-                  isPaid: item.isPaid,
-                  apiType: 'Interactions API'
-                };
-              }
-            } else {
-              const errJson = await response.json().catch(() => ({}));
-              const errMsg = errJson.error?.message || `HTTP ${response.status}`;
-              lastError = new Error(`[${item.model} Interactions] ${errMsg}`);
-              if (errMsg.includes('API key not valid') || errMsg.includes('API_KEY_INVALID')) {
-                throw lastError;
-              }
+          if (response.ok) {
+            const result = await response.json();
+            let totalTokens = result.usageMetadata?.totalTokenCount || 0;
+            if (!totalTokens && result.usageMetadata) {
+              totalTokens = (result.usageMetadata.promptTokenCount || 0) + (result.usageMetadata.candidatesTokenCount || 0);
             }
+
+            let rawText = '';
+            if (result.candidates && result.candidates[0]?.content?.parts) {
+              rawText = result.candidates[0].content.parts.filter(p => !p.thought).map(p => p.text || '').join('').trim();
+            }
+            rawText = rawText.replace(/^```json\s*/i, '').replace(/```\s*$/i, '').trim();
+            let parsed;
+            try {
+              parsed = JSON.parse(rawText);
+            } catch (parseErr) {
+              const s = rawText.indexOf('{'), e = rawText.lastIndexOf('}');
+              if (s === -1 || e <= s) throw new Error(`[${item.model}] JSON 파싱 실패`);
+              parsed = JSON.parse(rawText.slice(s, e + 1));
+            }
+
+            return {
+              data: parsed,
+              usedModel: item.model,
+              tokens: totalTokens,
+              isPaid: item.isPaid,
+              apiType: 'generateContent API'
+            };
           } else {
-            const url = `https://generativelanguage.googleapis.com/${item.ver}/models/${item.model}:generateContent?key=${encodeURIComponent(apiKey)}`;
-            const response = await fetch(url, {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json'
-              },
-              body: JSON.stringify({
-                contents: [{ parts: [{ text: prompt }] }],
-                generationConfig: {
-                  responseMimeType: "application/json",
-                  temperature: 0.5
-                }
-              })
-            });
-
-            if (response.ok) {
-              const result = await response.json();
-              let totalTokens = result.usageMetadata?.totalTokenCount || 0;
-              if (!totalTokens && result.usageMetadata) {
-                totalTokens = (result.usageMetadata.promptTokenCount || 0) + (result.usageMetadata.candidatesTokenCount || 0);
-              }
-
-              let rawText = '';
-              if (result.candidates && result.candidates[0]?.content?.parts) {
-                rawText = result.candidates[0].content.parts.filter(p => !p.thought).map(p => p.text || '').join('').trim();
-              }
-              rawText = rawText.replace(/^```json\s*/i, '').replace(/```\s*$/i, '').trim();
-              let parsed;
-              try {
-                parsed = JSON.parse(rawText);
-              } catch (parseErr) {
-                const s = rawText.indexOf('{'), e = rawText.lastIndexOf('}');
-                if (s === -1 || e <= s) throw new Error(`[${item.model}] JSON 파싱 실패`);
-                parsed = JSON.parse(rawText.slice(s, e + 1));
-              }
-
-              return { 
-                data: parsed, 
-                usedModel: item.model, 
-                tokens: totalTokens, 
-                isPaid: item.isPaid,
-                apiType: 'generateContent API'
-              };
-            } else {
-              const errJson = await response.json().catch(() => ({}));
-              const errMsg = errJson.error?.message || `HTTP ${response.status}`;
-              lastError = new Error(`[${item.model} generateContent] ${errMsg}`);
-              if (errMsg.includes('API key not valid') || errMsg.includes('API_KEY_INVALID')) {
-                throw lastError;
-              }
+            const errJson = await response.json().catch(() => ({}));
+            const errMsg = errJson.error?.message || `HTTP ${response.status}`;
+            lastError = new Error(`[${item.model} generateContent] ${errMsg}`);
+            if (errMsg.includes('API key not valid') || errMsg.includes('API_KEY_INVALID')) {
+              throw lastError;
             }
           }
         } catch (err) {
@@ -6291,7 +6953,7 @@
       throw lastError || new Error('모든 인공지능 모델 호출에 실패했습니다.');
     }
 
-    // ==================== 상세페이지 AI 마스터피스 생성기 ====================
+    // ==================== 상세페이지 AI 마스터피스 생성기 (v5.0 Vision-Grounded Carbon) ====================
     async function runGeminiMasterpieceGenerator() {
       const pBox = document.getElementById('generationProgressBox');
       const btn = document.getElementById('btnGenerate');
@@ -6302,9 +6964,9 @@
       btn.classList.add('opacity-50');
 
       const chosenModel = getSelectedAiModel();
-      const isPaidModel = ['gemini-4-carbon', 'gemini-4-argon', 'gemini-3.8-flash', 'gemini-2.5-pro', 'gemini-1.5-pro'].includes(chosenModel);
+      const isPaidModel = ['gemini-4-carbon', 'gemini-3.8-flash', 'gemini-2.5-pro'].includes(chosenModel);
 
-      updateProgress(15, `1단계: [${chosenModel}] 신경망 엔진 연결 및 [${curProduct.code}] 기계역학 제원 로드...`);
+      updateProgress(15, `1단계: [${chosenModel}] 신경망 엔진 연결 및 [${curProduct.code}] 실물 사진 비전 인코딩...`);
 
       const apiKey = getGeminiKey();
       let aiData = null;
@@ -6312,10 +6974,23 @@
       let tokenCount = 0;
       let isActuallyPaid = isPaidModel;
 
+      // [v5.0 Vision-Grounded] 실제 대표 상품 사진을 base64로 인코딩하여 Gemini 4 Carbon에 함께 전달
+      let visionImageObj = null;
+      try {
+        const mainUrl = curProduct && curProduct.images && curProduct.images.mainClear;
+        if (mainUrl && typeof toSafePosterImgDataUrl === 'function') {
+          const safeDataUrl = await toSafePosterImgDataUrl(mainUrl);
+          const m = safeDataUrl && safeDataUrl.match(/^data:(image\/[a-zA-Z0-9.+-]+);base64,(.+)$/);
+          if (m) {
+            visionImageObj = { mimeType: m[1], base64: m[2] };
+          }
+        }
+      } catch (_) {}
+
       const isElectric = curProduct.category?.includes('전동') || curProduct.category?.includes('호이스트') || ['DU-200', 'DU-250', 'KD-100'].includes(curProduct.code);
 
       if (apiKey || (window.location.protocol.startsWith('http') && !isStaticWebHost())) {
-        updateProgress(40, `2단계: [${chosenModel}] ${isPaidModel ? '유료 프론티어 딥 씽킹' : '고속'} 신경망 호출 중...`);
+        updateProgress(40, `2단계: [${chosenModel}] ${visionImageObj ? '👁️ 제품 실물 비전 분석 + ' : ''}${isPaidModel ? '플래그십 딥씽킹' : '고속'} 호출 중...`);
         try {
           const isDocmaModel = curProduct.code && curProduct.code.startsWith('VF-');
           const isPcwModel = curProduct.code && (curProduct.code.startsWith('PCW-') || curProduct.code.startsWith('PCH-'));
@@ -6442,6 +7117,8 @@ D. 담백한 명사형 종결 또는 짧은 존댓말 단문. 느낌표·이모�
                   model: chosenModel,
                   apiKey: apiKey,
                   prompt: prompt,
+                  imageBase64: visionImageObj ? visionImageObj.base64 : undefined,
+                  imageMimeType: visionImageObj ? visionImageObj.mimeType : undefined,
                   refine: true
                 })
               });
@@ -6452,6 +7129,7 @@ D. 담백한 명사형 종결 또는 짧은 존댓말 단문. 느낌표·이모�
                   usedModel: proxyData.model || chosenModel,
                   tokens: proxyData.tokens,
                   passes: proxyData.passes || 1,
+                  pass2Warning: proxyData.pass2Warning || null,
                   fallbackErrors: proxyData.fallbackErrors || [],
                   isPaid: true
                 };
@@ -6465,7 +7143,7 @@ D. 담백한 명사형 종결 또는 짧은 존댓말 단문. 느낌표·이모�
           }
 
           if (!res && apiKey) {
-            res = await callGeminiApi(prompt, apiKey, chosenModel);
+            res = await callGeminiApi(prompt, apiKey, chosenModel, visionImageObj);
           }
 
           if (res && res.data) {
@@ -6473,13 +7151,13 @@ D. 담백한 명사형 종결 또는 짧은 존댓말 단문. 느낌표·이모�
             usedModelName = res.usedModel;
             tokenCount = res.tokens || 0;
             isActuallyPaid = res.isPaid;
-            window.oraLastGenMeta = { requested: chosenModel, used: res.usedModel, passes: res.passes || 1, fallbackErrors: res.fallbackErrors || [] };
+            window.oraLastGenMeta = { requested: chosenModel, used: res.usedModel, passes: res.passes || 1, pass2Warning: res.pass2Warning || null, visionUsed: Boolean(visionImageObj), fallbackErrors: res.fallbackErrors || [] };
           }
         } catch (err) {
           console.error('Gemini API Error:', err);
           if (err.message && err.message.includes('CORS_BLOCKED')) {
             showCorsModal();
-            appendChat('ai', `🚨 <b>브라우저 보안(CORS) 차단 감지:</b><br>바탕화면의 <b>[오라테크_스마트스토어_AI스튜디오_실행.bat]</b>으로 접속하시면 보안 제한이 즉시 해제되어 <b>Gemini 4.0 Argon</b> 직통 호출이 100% 작동합니다. 작업이 중단되지 않도록 오라테크 엔지니어링 마스터피스 엔진으로 즉시 완성했습니다.`);
+            appendChat('ai', `🚨 <b>브라우저 보안(CORS) 차단 감지:</b><br>바탕화면의 <b>[오라테크_스마트스토어_AI스튜디오_실행.bat]</b>으로 접속하시면 보안 제한이 즉시 해제되어 <b>Gemini 4.0 Carbon</b> 직통 호출이 100% 작동합니다. 작업이 중단되지 않도록 오라테크 엔지니어링 마스터피스 엔진으로 즉시 완성했습니다.`);
             aiData = getFallbackMasterpiece(curProduct);
           } else {
             appendChat('ai', `⚠️ <b>Google API 호출 안내 (${err.message}):</b><br>오라테크 [${curProduct.code}] 엔지니어링 마스터피스 엔진으로 상세페이지를 즉시 완성했습니다.`);
@@ -6523,9 +7201,9 @@ D. 담백한 명사형 종결 또는 짧은 존댓말 단문. 느낌표·이모�
           }
           appendChat('ai', `🚀 <b>[${usedModelName}] 상세페이지 마스터피스 생성 & 재귀 검수 완료!</b><br>
 • 총 토큰 소비: <b>${tokenCount.toLocaleString()} tokens</b> (${isActuallyPaid ? '<span class="text-amber-400 font-bold">Google Cloud 유료 크레딧 정상 차감</span>' : '<span class="text-emerald-400 font-bold">정상 처리</span>'})<br>
-• 제품: <b>[${curProduct.code}] ${curProduct.name}</b><br>
+• 제품: <b>[${curProduct.code}] ${curProduct.name}</b>${(window.oraLastGenMeta && window.oraLastGenMeta.visionUsed) ? ' <span class="text-sky-300 font-bold">(👁️ 실물 사진 비전 분석 반영)</span>' : ''}<br>
 • 실제 응답 모델: <b>${usedModelName}</b>${(window.oraLastGenMeta && window.oraLastGenMeta.used !== chosenModel) ? ` <span class="text-amber-400">(선택한 ${chosenModel}은(는) 응답하지 않아 대체됨)</span>` : ''}<br>
-• 생성 방식: ${(window.oraLastGenMeta && window.oraLastGenMeta.passes === 2) ? '초안 작성 → 검수 패스(제원 대조·과장 제거·중복 정리) 2단계' : '1단계 생성'}<br>
+• 생성 방식: ${(window.oraLastGenMeta && window.oraLastGenMeta.passes === 2) ? '초안 작성 → 검수 패스(제원 대조·과장 제거·중복 정리) 2단계' : '1단계 생성'}${(window.oraLastGenMeta && window.oraLastGenMeta.pass2Warning) ? ` <span class="text-amber-300">(${String(window.oraLastGenMeta.pass2Warning).replace(/</g, '&lt;')})</span>` : ''}<br>
 • 반영 항목: 헤드라인·서브카피, 문제점 4·솔루션 4, 도르래 배력 설명, 3단 패키지, FAQ, B2B 안내 문구`);
         } else {
           appendChat('ai', `🎉 <b>[${curProduct.code}] 16개 섹션 풀스펙 마스터피스 상세페이지 완성!</b><br>공식 엔지니어링 카탈로그 기반의 최고 사양 상세페이지가 우측 화면에 즉시 렌더링되었습니다.`);
@@ -6574,11 +7252,12 @@ D. 담백한 명사형 종결 또는 짧은 존댓말 단문. 느낌표·이모�
       input.value = '';
 
       const apiKey = getGeminiKey();
+      const canUseServerProxy = window.location.protocol.startsWith('http') && !isStaticWebHost();
       let applied = false;
 
       if (!curProduct.customSections) curProduct.customSections = [];
 
-      if (apiKey) {
+      if (apiKey || canUseServerProxy) {
         appendChat('ai', `Gemini [${getSelectedAiModel()}] AI가 요청사항을 분석하여 상세페이지 섹션을 정밀 리터칭 중입니다...`);
         try {
           const prompt = `당신은 (주)오라테크 스마트스토어 상세페이지 수석 엔지니어입니다.
@@ -6588,7 +7267,7 @@ D. 담백한 명사형 종결 또는 짧은 존댓말 단문. 느낌표·이모�
 
 사용자의 수정/추가 지시사항: "${text}"
 
-지시사항을 반영하여 아래 JSON 형식으로 응답하세요. 글이 길어지지 않도록 각 항목은 핵심 수치 중심의 간결한 단문(메인카피 30자 이내, 서브카피 55자 이내, 추가 박스는 불릿 2~3줄 이내)으로 작성하고 타 브랜드 용어를 절대 섞지 마세요:
+지시사항을 반영하여 아래 JSON 형식으로 응답하세요. 글이 길어지지 않도록 각 항목은 핵심 수치 중심의 간결한 단문(메인카피 30자 이내, 서브카피 55자 이내, 추가 박스는 불릿 2~3줄 이내)으로 작성하고 타 브랜드 용어 및 AI 슬롭('극대화','혁신적','솔루션')을 절대 섞지 마세요:
 {
   "tagline": "유지 또는 수정된 메인 카피",
   "subTagline": "유지 또는 수정된 서브 카피",
@@ -6599,7 +7278,7 @@ D. 담백한 명사형 종결 또는 짧은 존댓말 단문. 느낌표·이모�
   }
 }`;
           let res = null;
-          if (window.location.protocol.startsWith('http') && !isStaticWebHost()) {
+          if (canUseServerProxy) {
             try {
               const proxyResp = await fetch('/api/generate', {
                 method: 'POST',
@@ -6617,7 +7296,7 @@ D. 담백한 명사형 종결 또는 짧은 존댓말 단문. 느낌표·이모�
               }
             } catch (e) {}
           }
-          if (!res) {
+          if (!res && apiKey) {
             res = await callGeminiApi(prompt, apiKey);
           }
 
@@ -7363,7 +8042,7 @@ D. 담백한 명사형 종결 또는 짧은 존댓말 단문. 느낌표·이모�
 
       if (presetType === 'PULLEY_INFOGRAPHIC') {
         fallbackCopy.h1 = `스윙 도르래 1개로 당김힘 2배 (${doublePull})`;
-        fallbackCopy.h2 = `1:1 단선 대비 기계 부하 50% 감소 · 안전율 극대화`;
+        fallbackCopy.h2 = `1:1 단선 대비 기계 부하 50% 감소 · 안전율 2배 확보`;
       } else if (presetType === 'SPEC_POSTER') {
         fallbackCopy.h1 = `[${code}] 공식 엔지니어링 정밀 제원`;
         fallbackCopy.h2 = `관공서·G2B·현장 발주 제출용 실측 스펙 데이터`;
@@ -7380,8 +8059,8 @@ D. 담백한 명사형 종결 또는 짧은 존댓말 단문. 느낌표·이모�
       if ((apiKey || canProxy) && (cleanPrompt.length > 3 || presetType === 'ALL_IN_ONE_LONG')) {
         try {
           const ctrl = new AbortController();
-          const tid = setTimeout(() => ctrl.abort(), 20000);
-          const promptDesc = cleanPrompt || `${ctx.name}의 현장 작업 신뢰감, 저가 중국산 모조품과의 압도적 차이, 도르래 배력 및 당일출고·세금계산서 장점을 극대화해줘`;
+          const tid = setTimeout(() => ctrl.abort(), 65000);
+          const promptDesc = cleanPrompt || `${ctx.name}의 현장 작업 신뢰감, 저가 중국산 모조품과의 압도적 차이, 도르래 배력 및 당일출고·세금계산서 장점을 명확히 강조해줘`;
           const gemPrompt = `제품 [${code}] (${ctx.name}), 정격 [${pullCap}], 배력 [${doublePull}], 동력 [${engine}], 속도 [${speed}], 중량 [${weight}].
 사장님 제작 지시: "${promptDesc}"
 프리셋 모드: ${presetType}.
@@ -7402,14 +8081,16 @@ AI 슬롭/번역투('혁신적','최상의','극대화','솔루션') 및 느낌�
   "buyingCheckpoint": "구매전 핵심 체크포인트 75자내외",
   "imagenScene": "Photorealistic English scene tailored specifically to this exact winch/hoist category with zero text or logos"
 }`;
-          const chosenModel = document.getElementById('topAiModelSelector')?.value || 'gemini-4-carbon';
+          const chosenModel = getSelectedAiModel();
           const endpoint = canProxy
             ? '/api/generate'
-            : `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(chosenModel)}:generateContent?key=${encodeURIComponent(apiKey)}`;
+            : `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(chosenModel)}:generateContent`;
+          const headers = { 'Content-Type': 'application/json' };
+          if (!canProxy && apiKey) headers['x-goog-api-key'] = apiKey;
           const r = await fetch(endpoint, {
             method: 'POST',
             signal: ctrl.signal,
-            headers: { 'Content-Type': 'application/json' },
+            headers,
             body: canProxy
               ? JSON.stringify({ model: chosenModel, apiKey, prompt: gemPrompt, refine: false })
               : JSON.stringify({ contents: [{ parts: [{ text: gemPrompt }] }], generationConfig: { responseMimeType: 'application/json', temperature: 0.4 } })
@@ -7417,7 +8098,18 @@ AI 슬롭/번역투('혁신적','최상의','극대화','솔루션') 및 느낌�
           clearTimeout(tid);
           if (r.ok) {
             const j = await r.json();
-            const parsed = j.data || (j.candidates?.[0]?.content?.parts?.[0]?.text ? JSON.parse(j.candidates[0].content.parts[0].text) : null);
+            let parsed = j.data || null;
+            if (!parsed && j.candidates?.[0]?.content?.parts) {
+              const rawText = j.candidates[0].content.parts
+                .filter(pt => !pt.thought)
+                .map(pt => pt.text || '')
+                .join('')
+                .trim()
+                .replace(/^```(?:json)?\s*/i, '')
+                .replace(/\s*```$/, '');
+              const s = rawText.indexOf('{'), e = rawText.lastIndexOf('}');
+              if (s !== -1 && e > s) parsed = JSON.parse(rawText.slice(s, e + 1));
+            }
             if (parsed && parsed.h1) {
               copy = {
                 ...fallbackCopy,
@@ -7439,7 +8131,7 @@ AI 슬롭/번역투('혁신적','최상의','극대화','솔루션') 및 느낌�
       if (useImagenBg && (presetType === 'ALL_IN_ONE_LONG' || presetType === 'SCENE_BANNER' || presetType === 'HERO_POSTER') && (apiKey || canProxy)) {
         try {
           const ctrl = new AbortController();
-          const tid = setTimeout(() => ctrl.abort(), 14000);
+          const tid = setTimeout(() => ctrl.abort(), 45000);
           if (canProxy) {
             const ir = await fetch('/api/imagen', {
               method: 'POST',
@@ -7453,6 +8145,26 @@ AI 슬롭/번역투('혁신적','최상의','극대화','솔루션') 및 느낌�
               const b64 = ij.predictions?.[0]?.bytesBase64Encoded;
               if (b64) bgPhotoUrl = `data:image/jpeg;base64,${b64}`;
             }
+          } else if (apiKey) {
+            for (const m of ['imagen-4.0-generate-001', 'imagen-3.0-generate-002']) {
+              try {
+                const ir = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${m}:predict`, {
+                  method: 'POST',
+                  signal: ctrl.signal,
+                  headers: { 'Content-Type': 'application/json', 'x-goog-api-key': apiKey },
+                  body: JSON.stringify({ instances: [{ prompt: copy.imagenScene }], parameters: { sampleCount: 1, aspectRatio: '16:9' } })
+                });
+                if (ir.ok) {
+                  const ij = await ir.json();
+                  const b64 = ij.predictions?.[0]?.bytesBase64Encoded;
+                  if (b64) {
+                    bgPhotoUrl = `data:image/jpeg;base64,${b64}`;
+                    break;
+                  }
+                }
+              } catch (_) {}
+            }
+            clearTimeout(tid);
           }
         } catch (_) {}
       }
@@ -8150,25 +8862,80 @@ AI 슬롭/번역투('혁신적','최상의','극대화','솔루션') 및 느낌�
       if (!po) return;
       const img = await loadSingleImg(po.dataUrl, false);
       if (!img) return;
-      const slicePx = Math.round(img.width * (2000 / 860));
-      const totalParts = Math.ceil(img.height / slicePx);
-      showToast(`✂️ 스마트스토어 규격 ${totalParts}개 파트(2,000px 단위) 분할 저장 시작...`);
+      const targetSlice = Math.round(img.width * (2000 / 860));
+
+      // 글자 한가운데를 자르지 않도록 각 2,000px 경계 ±160px 범위에서 수평 픽셀 분산이 가장 낮은 여백 행 탐색
+      const probeCanvas = document.createElement('canvas');
+      probeCanvas.width = img.width;
+      probeCanvas.height = img.height;
+      const probeCtx = probeCanvas.getContext('2d');
+      probeCtx.drawImage(img, 0, 0);
+
+      const cuts = [0];
+      let cursor = 0;
+      while (cursor + targetSlice < img.height - 120) {
+        const ideal = cursor + targetSlice;
+        let bestY = ideal;
+        let bestVar = Infinity;
+        const yMin = Math.max(cursor + 400, ideal - 160);
+        const yMax = Math.min(img.height - 80, ideal + 160);
+        try {
+          const strip = probeCtx.getImageData(0, yMin, img.width, Math.max(1, yMax - yMin)).data;
+          for (let ry = 0; ry < yMax - yMin; ry += 2) {
+            let diffSum = 0;
+            const rowOff = ry * img.width * 4;
+            for (let rx = 16; rx < img.width - 16; rx += 8) {
+              const p1 = rowOff + rx * 4;
+              const p2 = p1 + 32;
+              diffSum += Math.abs(strip[p1] - strip[p2]) + Math.abs(strip[p1 + 1] - strip[p2 + 1]) + Math.abs(strip[p1 + 2] - strip[p2 + 2]);
+            }
+            if (diffSum < bestVar) {
+              bestVar = diffSum;
+              bestY = yMin + ry;
+            }
+          }
+        } catch (_) {}
+        cuts.push(bestY);
+        cursor = bestY;
+      }
+      cuts.push(img.height);
+
+      const totalParts = cuts.length - 1;
+      const useZip = typeof JSZip !== 'undefined' && totalParts > 1;
+      const zip = useZip ? new JSZip() : null;
+      showToast(`✂️ 글자 잘림 방지 여백 탐지 ${totalParts}개 파트 분할 저장 시작...`);
       for (let i = 0; i < totalParts; i++) {
-        const sy = i * slicePx;
-        const sh = Math.min(slicePx, img.height - sy);
+        const sy = cuts[i];
+        const sh = Math.max(1, cuts[i + 1] - sy);
         const c = document.createElement('canvas');
         c.width = img.width;
         c.height = sh;
         c.getContext('2d').drawImage(img, 0, sy, img.width, sh, 0, 0, img.width, sh);
+        const dataUrl = c.toDataURL('image/jpeg', 0.94);
+        const fileName = `오라테크_${po.code}_통이미지_파트${String(i + 1).padStart(2, '0')}.jpg`;
+        if (zip) {
+          zip.file(fileName, dataUrl.split(',')[1], { base64: true });
+        } else {
+          const a = document.createElement('a');
+          a.download = fileName;
+          a.href = dataUrl;
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          await new Promise(r => setTimeout(r, 220));
+        }
+      }
+      if (zip) {
+        const blob = await zip.generateAsync({ type: 'blob' });
         const a = document.createElement('a');
-        a.download = `오라테크_${po.code}_스마트스토어_파트${String(i + 1).padStart(2, '0')}.jpg`;
-        a.href = c.toDataURL('image/jpeg', 0.94);
+        a.download = `오라테크_${po.code}_통이미지_${totalParts}분할_스마트스토어.zip`;
+        a.href = URL.createObjectURL(blob);
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
-        await new Promise(r => setTimeout(r, 240));
+        setTimeout(() => URL.revokeObjectURL(a.href), 5000);
       }
-      showToast(`✅ ${totalParts}장 분할 JPG 저장 완료!`);
+      showToast(`✅ 여백 경계 기준 ${totalParts}장 분할 ${zip ? 'ZIP' : 'JPG'} 저장 완료!`);
     };
 
     window.downloadAllGeneratedPosters = async function() {
@@ -8213,25 +8980,52 @@ AI 슬롭/번역투('혁신적','최상의','극대화','솔루션') 및 느낌�
       }
     };
 
-    // URL 브리지 (?code=PCW-3000LI&posterPrompt=...) 연동
-    setTimeout(() => {
+    // [v5.0 UPGRADED] URL 브리지 (?code=...&seoTitle=...&tags=...&posterPrompt=...) 연동 (김대리·소싱랩·시장전략 핸드오프)
+    window.resolveUrlHandoffParams = function(searchStr) {
+      const result = { code: '', seoTitle: '', tags: [], posterPrompt: '' };
       try {
-        const qp = new URLSearchParams(window.location.search || '');
-        const qCode = qp.get('code');
-        const qPrompt = qp.get('posterPrompt');
+        const qp = new URLSearchParams(typeof searchStr === 'string' ? searchStr : (window.location && window.location.search) || '');
+        const qCode = (qp.get('code') || '').trim();
+        const qSeoTitle = (qp.get('seoTitle') || '').trim();
+        const qTagsRaw = (qp.get('tags') || '').trim();
+        const qPrompt = (qp.get('posterPrompt') || '').trim();
+
         if (qCode && typeof loadModel === 'function') {
           const sel = document.getElementById('quickModelSel');
           if (sel) sel.value = qCode;
           loadModel(qCode);
+          result.code = qCode;
+        }
+        if (qSeoTitle || qTagsRaw) {
+          const tagArr = qTagsRaw ? qTagsRaw.split(/[,#|]+/).map(s => s.trim()).filter(Boolean) : [];
+          result.seoTitle = qSeoTitle;
+          result.tags = tagArr;
+          if (curProduct) {
+            curProduct.handoffSeo = { title: qSeoTitle, tags: tagArr };
+          }
+          const seoBox = document.getElementById('seoResultBox');
+          if (seoBox) {
+            const esc = s => String(s || '').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+            seoBox.innerHTML = `
+              <div class="bg-emerald-950/60 border border-emerald-500/45 rounded-lg p-2.5 space-y-1.5 text-[11px]">
+                <div class="font-black text-emerald-300">🔗 외부 앱(김대리·소싱랩·전략실) SEO 핸드오프 수신 완료</div>
+                ${qSeoTitle ? `<div class="text-white"><b>추천 상품명:</b> <span class="text-amber-300">${esc(qSeoTitle)}</span></div>` : ''}
+                ${tagArr.length ? `<div class="flex flex-wrap gap-1 pt-0.5">${tagArr.map(t => `<span class="bg-slate-900 border border-emerald-500/35 text-emerald-200 px-1.5 py-0.5 rounded text-[10px]">#${esc(t)}</span>`).join('')}</div>` : ''}
+              </div>`;
+          }
+          showToast(`🔗 SEO 핸드오프 반영: ${qSeoTitle ? qSeoTitle.slice(0, 26) : (tagArr.length + '개 태그')}`);
+          appendChat('ai', `🔗 <b>외부 플랫폼 SEO 핸드오프 수신 완료!</b><br>${qSeoTitle ? `• <b>SEO 상품명:</b> ${qSeoTitle.replace(/</g, '&lt;')}<br>` : ''}${tagArr.length ? `• <b>검색 태그 (${tagArr.length}개):</b> ${tagArr.map(t => '#' + t.replace(/</g, '&lt;')).join(' ')}` : ''}`);
         }
         if (qPrompt) {
-          openAiPosterDirector();
-          selectPosterPreset('ALL_IN_ONE_LONG');
+          result.posterPrompt = qPrompt;
+          if (typeof openAiPosterDirector === 'function') openAiPosterDirector();
+          if (typeof selectPosterPreset === 'function') selectPosterPreset('ALL_IN_ONE_LONG');
           const inp = document.getElementById('posterDirectorPrompt');
           if (inp) inp.value = qPrompt;
         }
       } catch (_) {}
-    }, 650);
+      return result;
+    };
 
     function appendChat(role, msg) {
       const h = document.getElementById('chatHistory');
@@ -8262,6 +9056,7 @@ AI 슬롭/번역투('혁신적','최상의','극대화','솔루션') 및 느낌�
       try {
         const k = (key || '').trim().replace(/^["']|["']$/g, '');
         safeStorage.setItem('ora_gemini_key', k);
+        safeStorage.setItem('ora_gemini_api_key', k);
         updateKeyBadge(k);
       } catch (e) {
         console.warn(e);
@@ -8272,7 +9067,7 @@ AI 슬롭/번역투('혁신적','최상의','극대화','솔루션') 및 느낌�
 
     function getGeminiKey() {
       try {
-        const saved = (safeStorage.getItem('ora_gemini_key') || '').trim().replace(/^["']|["']$/g, '');
+        const saved = (safeStorage.getItem('ora_gemini_key') || safeStorage.getItem('ora_gemini_api_key') || '').trim().replace(/^["']|["']$/g, '');
         if (saved) return saved;
         const elSide = document.getElementById('geminiApiKeySidebarInput');
         if (elSide && elSide.value.trim()) return elSide.value.trim().replace(/^["']|["']$/g, '');
@@ -8287,6 +9082,7 @@ AI 슬롭/번역투('혁신적','최상의','극대화','솔루션') 및 느낌�
         const k = getGeminiKey();
         if (k) {
           safeStorage.setItem('ora_gemini_key', k);
+          safeStorage.setItem('ora_gemini_api_key', k);
           const elTop = document.getElementById('geminiApiKeyInput');
           if (elTop) elTop.value = k;
           const elSide = document.getElementById('geminiApiKeySidebarInput');
@@ -8301,14 +9097,32 @@ AI 슬롭/번역투('혁신적','최상의','극대화','솔루션') 및 느낌�
     async function testAndSaveApiKey() {
       const key = getGeminiKey();
       const label = document.getElementById('apiKeyStatusLabel');
+      const canUseServerProxy = window.location.protocol.startsWith('http') && !isStaticWebHost();
+
       if (!key) {
+        if (canUseServerProxy) {
+          try {
+            const hRes = await fetch('/api/health');
+            if (hRes.ok) {
+              if (label) {
+                label.className = 'text-[10px] px-2 py-0.5 rounded-full font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/35';
+                label.innerText = '🟢 서버 Carbon 프록시 연결됨';
+              }
+              showToast('서버 내장 Gemini 4.0 Carbon 프록시가 정상 작동 중입니다!');
+              appendChat('ai', `🟢 <b>서버 내장 Gemini 4.0 Carbon 프록시 연결 확인!</b> 개인 API 키를 입력하지 않아도 바로 AI 상세페이지·포스터·블록 재작성을 사용하실 수 있습니다.`);
+              return;
+            }
+          } catch (e) {}
+        }
         if (label) {
           label.className = 'text-[10px] px-2 py-0.5 rounded-full font-bold bg-sky-500/20 text-sky-300 border border-sky-400/35';
           label.innerText = '서버 Carbon 자동연동 (개인키 선택)';
         }
-        showToast('API 키를 입력해 주세요.');
+        showToast('개인 API 키를 입력해 주세요. (웹 통합서버에서는 키 없이 자동 연동)');
         return;
       }
+
+      saveGeminiKey(key);
 
       if (label) {
         label.className = 'text-[10px] px-2 py-0.5 rounded-full font-bold bg-blue-500/20 text-blue-400 border border-blue-500/30';
@@ -8316,7 +9130,7 @@ AI 슬롭/번역투('혁신적','최상의','극대화','솔루션') 및 느낌�
       }
 
       try {
-        const listRes = await fetch(`https://generativelanguage.googleapis.com/v1beta/models?key=${encodeURIComponent(key)}`, {
+        const listRes = await fetch('https://generativelanguage.googleapis.com/v1beta/models', {
           headers: {
             'Content-Type': 'application/json',
             'x-goog-api-key': key
@@ -8379,21 +9193,305 @@ AI 슬롭/번역투('혁신적','최상의','극대화','솔루션') 및 느낌�
       }
     }
 
+    let currentViewMode = 'mobile';
+
+    function syncMobileMirrorPreview() {
+      const mirror = document.getElementById('previewMobileMirror');
+      const container = document.getElementById('previewContainer');
+      if (!mirror || !container) return;
+      if (currentViewMode !== 'split') return;
+      mirror.innerHTML = getCleanExportHtml(container.innerHTML, { rewriteAssets: false });
+    }
+
     function setViewMode(mode) {
+      currentViewMode = mode || 'mobile';
+      const stage = document.getElementById('splitStage');
       const frame = document.getElementById('previewFrame');
       const bMob = document.getElementById('btnViewMobile');
       const bPc = document.getElementById('btnViewPc');
-      if (mode === 'mobile') {
-        frame.className = 'mobile-frame';
-        bMob.className = 'px-2 py-1 rounded text-xs font-bold text-white bg-amber-600 transition shrink-0 whitespace-nowrap';
-        bPc.className = 'px-2 py-1 rounded text-xs font-bold text-slate-400 hover:text-white transition shrink-0 whitespace-nowrap';
+      const bSplit = document.getElementById('btnViewSplit');
+
+      const activeCls = 'px-2 py-0.5 rounded text-xs font-bold text-white bg-blue-600 transition shrink-0 whitespace-nowrap';
+      const idleCls = 'px-2 py-0.5 rounded text-xs font-bold text-slate-300 hover:text-white transition shrink-0 whitespace-nowrap';
+
+      if (bMob) bMob.className = currentViewMode === 'mobile' ? activeCls : idleCls;
+      if (bPc) bPc.className = currentViewMode === 'pc' ? activeCls : idleCls;
+      if (bSplit) bSplit.className = currentViewMode === 'split' ? activeCls : idleCls;
+
+      if (currentViewMode === 'mobile') {
+        if (stage) stage.classList.remove('is-split');
+        if (frame) frame.className = 'mobile-frame';
         isViewMobile = true;
+      } else if (currentViewMode === 'split') {
+        if (stage) stage.classList.add('is-split');
+        if (frame) frame.className = 'pc-frame';
+        isViewMobile = false;
+        syncMobileMirrorPreview();
       } else {
-        frame.className = 'pc-frame';
-        bPc.className = 'px-2 py-1 rounded text-xs font-bold text-white bg-amber-600 transition shrink-0 whitespace-nowrap';
-        bMob.className = 'px-2 py-1 rounded text-xs font-bold text-slate-400 hover:text-white transition shrink-0 whitespace-nowrap';
+        if (stage) stage.classList.remove('is-split');
+        if (frame) frame.className = 'pc-frame';
         isViewMobile = false;
       }
+    }
+
+    // ==================== [v5.0 NEW] 인터랙티브 비주얼 블록 에디터 + 인라인 편집 + Undo 스택 ====================
+    window.oraVisualEditMode = false;
+    window.oraUndoStack = [];
+    let oraInlineSaveTimer = null;
+
+    function updateUndoButtonUi() {
+      const btn = document.getElementById('btnUndoEdit');
+      if (!btn) return;
+      const cnt = window.oraUndoStack.length;
+      btn.disabled = cnt === 0;
+      btn.innerText = cnt > 0 ? `↩️ 실행취소 (${cnt})` : '↩️ 실행취소';
+    }
+
+    function pushUndoSnapshot() {
+      const container = document.getElementById('previewContainer');
+      if (!container) return;
+      const cleanSnap = getCleanExportHtml(container.innerHTML, { rewriteAssets: false });
+      const last = window.oraUndoStack[window.oraUndoStack.length - 1];
+      if (last && last.html === cleanSnap) return;
+      window.oraUndoStack.push({
+        html: cleanSnap,
+        code: curProduct ? curProduct.code : 'PCW-5000'
+      });
+      if (window.oraUndoStack.length > 25) window.oraUndoStack.shift();
+      updateUndoButtonUi();
+    }
+
+    function syncCurHtmlFromDom() {
+      const container = document.getElementById('previewContainer');
+      if (!container) return;
+      curHtml = getCleanExportHtml(container.innerHTML, { rewriteAssets: false });
+      if (curProduct) curProduct._editedHtml = curHtml;
+      syncMobileMirrorPreview();
+      if (typeof runRealConversionAudit === 'function') runRealConversionAudit(false);
+    }
+
+    function toggleVisualEditMode(forceState) {
+      window.oraVisualEditMode = (typeof forceState === 'boolean') ? forceState : !window.oraVisualEditMode;
+      const btn = document.getElementById('btnToggleVisualEdit');
+      const container = document.getElementById('previewContainer');
+      if (btn) {
+        if (window.oraVisualEditMode) {
+          btn.className = 'bg-amber-500 hover:bg-amber-400 border border-amber-300 text-slate-950 font-black px-2 py-0.5 rounded text-[10px] shadow flex items-center gap-1 transition cursor-pointer shrink-0 whitespace-nowrap';
+          btn.innerHTML = '✏️ 편집중 (완료)';
+        } else {
+          btn.className = 'bg-slate-800 hover:bg-sky-600 border border-sky-500/50 text-sky-200 hover:text-white font-black px-2 py-0.5 rounded text-[10px] shadow flex items-center gap-1 transition cursor-pointer shrink-0 whitespace-nowrap';
+          btn.innerHTML = '✏️ 직접 편집';
+        }
+      }
+      if (!container) return;
+      if (window.oraVisualEditMode) {
+        container.classList.add('ora-edit-mode');
+        attachVisualBlockEditor();
+        showToast('✏️ 직접 편집 ON — 섹션에 마우스를 올려 이동·숨김·Carbon 재작성하거나 글자를 바로 수정하세요! (Ctrl+Z 실행취소)');
+      } else {
+        detachVisualBlockEditor();
+        container.classList.remove('ora-edit-mode');
+        syncCurHtmlFromDom();
+        showToast('✅ 직접 편집 저장 완료!');
+      }
+    }
+
+    function detachVisualBlockEditor() {
+      const container = document.getElementById('previewContainer');
+      if (!container) return;
+      container.querySelectorAll('.ora-sec-toolbar').forEach(tb => tb.remove());
+      container.querySelectorAll('.ora-editable-block').forEach(el => el.classList.remove('ora-editable-block'));
+      container.querySelectorAll('[contenteditable="true"]').forEach(el => {
+        el.removeAttribute('contenteditable');
+        el.removeAttribute('spellcheck');
+      });
+    }
+
+    function attachVisualBlockEditor() {
+      const container = document.getElementById('previewContainer');
+      if (!container) return;
+      detachVisualBlockEditor();
+      const root = container.querySelector('.ora-mp-root') || container;
+      const blocks = Array.from(root.children).filter(el => el.tagName === 'DIV');
+
+      blocks.forEach((blk) => {
+        blk.classList.add('ora-editable-block');
+        const tb = document.createElement('div');
+        tb.className = 'ora-sec-toolbar';
+        tb.setAttribute('data-html2canvas-ignore', 'true');
+        tb.setAttribute('contenteditable', 'false');
+
+        const isHidden = blk.getAttribute('data-ora-hidden') === 'true';
+        tb.innerHTML = `
+          <button type="button" data-act="up" title="이 섹션을 위로 이동">↑ 위로</button>
+          <button type="button" data-act="down" title="이 섹션을 아래로 이동">↓ 아래로</button>
+          <button type="button" data-act="rewrite" class="ora-tb-carbon" title="Gemini 4 Carbon으로 이 섹션 카피만 새로 작성">✨ Carbon 재작성</button>
+          <button type="button" data-act="hide" title="내보내기에서 이 섹션 숨기기/복원">${isHidden ? '👁 보이기' : '👁 숨기기'}</button>
+          <button type="button" data-act="del" class="ora-tb-danger" title="이 섹션 삭제">🗑 삭제</button>
+        `;
+        tb.addEventListener('click', (ev) => {
+          const b = ev.target.closest('button[data-act]');
+          if (!b) return;
+          ev.stopPropagation();
+          const act = b.getAttribute('data-act');
+          if (act === 'up') moveSectionBlock(blk, -1);
+          else if (act === 'down') moveSectionBlock(blk, 1);
+          else if (act === 'hide') toggleSectionVisibility(blk);
+          else if (act === 'del') deleteSectionBlock(blk);
+          else if (act === 'rewrite') rewriteSectionWithCarbon(blk, b);
+        });
+        blk.insertBefore(tb, blk.firstChild);
+
+        // 인라인 텍스트 편집 가능 요소 바인딩
+        const editTargets = blk.querySelectorAll('h1, h2, h3, p, td, .ora-kpi-val, .ora-kpi-sub');
+        editTargets.forEach(node => {
+          if (node.closest('.ora-sec-toolbar') || node.querySelector('table, img, svg')) return;
+          node.setAttribute('contenteditable', 'true');
+          node.setAttribute('spellcheck', 'false');
+          node.addEventListener('focus', () => pushUndoSnapshot());
+          node.addEventListener('input', () => {
+            clearTimeout(oraInlineSaveTimer);
+            oraInlineSaveTimer = setTimeout(syncCurHtmlFromDom, 350);
+          });
+          node.addEventListener('blur', syncCurHtmlFromDom);
+        });
+      });
+    }
+
+    function moveSectionBlock(blk, dir) {
+      if (!blk || !blk.parentNode) return;
+      const siblings = Array.from(blk.parentNode.children).filter(el => el.tagName === 'DIV');
+      const idx = siblings.indexOf(blk);
+      const targetIdx = idx + dir;
+      if (targetIdx < 0 || targetIdx >= siblings.length) return;
+      pushUndoSnapshot();
+      if (dir < 0) {
+        blk.parentNode.insertBefore(blk, siblings[targetIdx]);
+      } else {
+        blk.parentNode.insertBefore(blk, siblings[targetIdx].nextSibling);
+      }
+      syncCurHtmlFromDom();
+      showToast(dir < 0 ? '↑ 섹션을 위로 이동했습니다.' : '↓ 섹션을 아래로 이동했습니다.');
+    }
+
+    function toggleSectionVisibility(blk) {
+      if (!blk) return;
+      pushUndoSnapshot();
+      const nowHidden = blk.getAttribute('data-ora-hidden') !== 'true';
+      if (nowHidden) {
+        blk.setAttribute('data-ora-hidden', 'true');
+      } else {
+        blk.removeAttribute('data-ora-hidden');
+      }
+      const btn = blk.querySelector('.ora-sec-toolbar button[data-act="hide"]');
+      if (btn) btn.innerText = nowHidden ? '👁 보이기' : '👁 숨기기';
+      syncCurHtmlFromDom();
+      showToast(nowHidden ? '👁 이 섹션을 숨김 처리했습니다 (내보내기에서 제외됨).' : '👁 숨긴 섹션을 다시 표시했습니다.');
+    }
+
+    function deleteSectionBlock(blk) {
+      if (!blk) return;
+      pushUndoSnapshot();
+      blk.remove();
+      syncCurHtmlFromDom();
+      showToast('🗑 섹션을 삭제했습니다. 되돌리려면 [↩️ 실행취소]를 누르세요.');
+    }
+
+    async function rewriteSectionWithCarbon(blk, btnEl) {
+      if (!blk) return;
+      const apiKey = getGeminiKey();
+      const canProxy = window.location.protocol.startsWith('http') && !isStaticWebHost();
+      const headNode = blk.querySelector('h1, h2, h3');
+      const bodyNodes = Array.from(blk.querySelectorAll('p')).slice(0, 3);
+      const currentHead = headNode ? headNode.innerText.trim() : '';
+      const currentBody = bodyNodes.map(n => n.innerText.trim()).filter(Boolean).join('\n');
+
+      if (!currentHead && !currentBody) {
+        showToast('이 섹션은 텍스트 재작성 대상이 없습니다.', 'fa-circle-info text-amber-400');
+        return;
+      }
+      if (!apiKey && !canProxy) {
+        showToast('Gemini API 키를 입력하거나 로컬/클라우드 서버에서 이용해 주세요.', 'fa-triangle-exclamation text-amber-400');
+        return;
+      }
+
+      const prevText = btnEl ? btnEl.innerText : '';
+      if (btnEl) { btnEl.disabled = true; btnEl.innerText = '⏳ 작성중...'; }
+      try {
+        const prompt = `당신은 (주)오라테크 산업기계 상세페이지 수석 카피라이터입니다.
+제품: [${curProduct?.code}] ${curProduct?.name} (정격: ${curProduct?.pull || curProduct?.cap}, 동력: ${curProduct?.engine})
+아래 1개 섹션의 제목과 본문을 AI 슬롭/번역체('극대화','혁신적','솔루션','경험해보세요') 없이 훨씬 직관적이고 설득력 있는 한국어 B2B 실무 단문으로 재작성하세요.
+기존 제목: ${currentHead}
+기존 본문: ${currentBody}
+반드시 순수 JSON으로만 응답하세요:
+{ "headline": "재작성된 임팩트 제목 (34자 이내)", "paragraphs": ["재작성 본문 1 (60자 이내)", "재작성 본문 2 (선택)"] }`;
+
+        let parsed = null;
+        if (canProxy) {
+          const r = await fetch('/api/generate', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ model: getSelectedAiModel(), apiKey, prompt, refine: false })
+          });
+          if (r.ok) {
+            const j = await r.json();
+            if (j.success && j.data) parsed = j.data;
+          }
+        }
+        if (!parsed && apiKey) {
+          const direct = await callGeminiApi(prompt, apiKey);
+          parsed = direct && direct.data;
+        }
+        if (parsed) {
+          pushUndoSnapshot();
+          if (headNode && parsed.headline) headNode.innerText = parsed.headline;
+          if (Array.isArray(parsed.paragraphs)) {
+            bodyNodes.forEach((n, i) => {
+              if (parsed.paragraphs[i]) n.innerText = parsed.paragraphs[i];
+            });
+          }
+          syncCurHtmlFromDom();
+          showToast('✨ Gemini 4 Carbon이 이 섹션 카피를 새롭게 업그레이드했습니다!');
+        }
+      } catch (err) {
+        showToast('섹션 재작성 오류: ' + (err.message || err), 'fa-circle-xmark text-rose-400');
+      } finally {
+        if (btnEl) { btnEl.disabled = false; btnEl.innerText = prevText || '✨ Carbon 재작성'; }
+      }
+    }
+
+    function undoVisualEdit() {
+      if (!window.oraUndoStack.length) return;
+      const snap = window.oraUndoStack.pop();
+      updateUndoButtonUi();
+      const container = document.getElementById('previewContainer');
+      if (container && snap && snap.html) {
+        container.innerHTML = snap.html;
+        curHtml = snap.html;
+        if (window.oraVisualEditMode) attachVisualBlockEditor();
+        syncMobileMirrorPreview();
+        if (typeof runRealConversionAudit === 'function') runRealConversionAudit(false);
+        showToast('↩️ 직전 편집 상태로 되돌렸습니다.');
+      }
+    }
+
+    function resetVisualBlockOverrides() {
+      pushUndoSnapshot();
+      if (curProduct) delete curProduct._editedHtml;
+      renderMasterpieceHtml();
+      showToast('🔄 모든 섹션 순서·숨김·직접 편집 내용을 기본 템플릿으로 초기화했습니다.');
+    }
+
+    if (typeof window !== 'undefined' && window.addEventListener) {
+      window.addEventListener('keydown', (e) => {
+        if ((e.ctrlKey || e.metaKey) && e.key && e.key.toLowerCase() === 'z' && !e.shiftKey && window.oraVisualEditMode) {
+          const tag = document.activeElement && document.activeElement.tagName;
+          if (tag !== 'INPUT' && tag !== 'TEXTAREA' && window.oraUndoStack.length > 0) {
+            e.preventDefault();
+            undoVisualEdit();
+          }
+        }
+      });
     }
 
     function switchLeftTab(idx) {
@@ -8414,136 +9512,335 @@ AI 슬롭/번역투('혁신적','최상의','극대화','솔루션') 및 느낌�
       }
     }
 
+    // [v5.0 UPGRADED] 네이버 스마트에디터 ONE용 클린 HTML 정화기 (편집 툴바/숨김노드 제거 + 절대 이미지 URL 치환)
+    window.getCleanExportHtml = function(sourceHtml, opts = {}) {
+      const rewriteAssets = opts.rewriteAssets !== false;
+      let html = String(sourceHtml || (document.getElementById('previewContainer')?.innerHTML) || curHtml || '');
+
+      // DOM API가 가능하면 정확히 편집 툴바·숨김 블록·display:none 노드 제거
+      try {
+        if (typeof document !== 'undefined' && document.createElement) {
+          const tmp = document.createElement('div');
+          tmp.innerHTML = html;
+          if (typeof tmp.querySelectorAll === 'function') {
+            tmp.querySelectorAll('.ora-sec-toolbar, [data-html2canvas-ignore="true"], [data-ora-hidden="true"]').forEach(n => n.remove());
+            tmp.querySelectorAll('[style]').forEach(n => {
+              const st = (n.getAttribute('style') || '').replace(/\s+/g, '').toLowerCase();
+              if (st.includes('display:none')) n.remove();
+            });
+            tmp.querySelectorAll('[contenteditable]').forEach(n => {
+              n.removeAttribute('contenteditable');
+              n.removeAttribute('spellcheck');
+            });
+            tmp.querySelectorAll('.ora-editable-block').forEach(n => n.classList.remove('ora-editable-block'));
+            if (tmp.innerHTML) html = tmp.innerHTML;
+          }
+        }
+      } catch (_) {}
+
+      // 문자열 레벨 방어 정화 (Node/headless 환경에서도 동일 동작 보장)
+      html = html
+        .replace(/<div[^>]*class="[^"]*ora-sec-toolbar[^"]*"[^>]*>[\s\S]*?<\/div>/gi, '')
+        .replace(/<[^>]+data-html2canvas-ignore="true"[^>]*>[\s\S]*?<\/div>/gi, '')
+        .replace(/\s+contenteditable="[^"]*"/gi, '')
+        .replace(/\s+spellcheck="[^"]*"/gi, '')
+        .replace(/\bora-editable-block\b/g, '');
+
+      if (rewriteAssets) {
+        const CDN_BASE = 'https://igan3w.github.io/studio/ora_assets/';
+        html = html
+          .replace(/(src|href)=(["'])(?:\.\/|\/)?ora_assets\//gi, `$1=$2${CDN_BASE}`)
+          .replace(/url\((["']?)(?:\.\/|\/)?ora_assets\//gi, `url($1${CDN_BASE}`);
+      }
+      return html.trim();
+    };
+
     function copySmartEditorHtml() {
-      if (!curHtml) return;
-      navigator.clipboard.writeText(curHtml).then(() => {
-        showToast('스마트에디터 ONE HTML 복사 완료! (스마트스토어 본문에 붙여넣기)');
+      const cleanHtml = getCleanExportHtml(null, { rewriteAssets: true });
+      if (!cleanHtml) return;
+      navigator.clipboard.writeText(cleanHtml).then(() => {
+        showToast('스마트에디터 ONE 클린 HTML 복사 완료! (절대 이미지 URL 자동 변환)');
       }).catch(err => {
         const ta = document.createElement('textarea');
-        ta.value = curHtml;
+        ta.value = cleanHtml;
         document.body.appendChild(ta);
         ta.select();
         document.execCommand('copy');
         document.body.removeChild(ta);
-        showToast('HTML 복사 완료!');
+        showToast('클린 HTML 복사 완료!');
       });
     }
 
-    // ==================== 네이버 스마트스토어 860px 통이미지 즉시 다운로드 (순백색 배경) ====================
-    async function downloadDetailImage(format = 'jpg') {
+    // ==================== [v5.0 UPGRADED] 오프스크린 정확 860px 클린 스테이지 & file:/// 캔버스 테인트 0% ====================
+    async function prepareCleanOffscreenExportRoot() {
       const container = document.getElementById('previewContainer');
-      if (!container) return;
+      if (!container) throw new Error('프리뷰 컨테이너를 찾을 수 없습니다.');
 
-      showToast('860px 스마트스토어 통이미지 렌더링 중... (잠시만 기다려주세요)', 'fa-spinner fa-spin text-amber-400');
+      const cleanMarkup = getCleanExportHtml(container.innerHTML, { rewriteAssets: false });
+      const stage = document.createElement('div');
+      stage.style.cssText = 'position:fixed; left:-14000px; top:0; width:860px; max-width:860px; background:#ffffff; z-index:-1; pointer-events:none; margin:0; padding:0;';
+      stage.innerHTML = cleanMarkup;
+      document.body.appendChild(stage);
+
+      // 모든 로컬/상대 ora_assets 이미지를 Data URL로 선변환하여 file:/// Canvas Taint 원천 차단
+      const imgs = Array.from(stage.querySelectorAll('img'));
+      const urlList = imgs.map(im => im.getAttribute('src') || '').filter(u => u && !u.startsWith('data:'));
+      const safeMap = await preloadPosterImagesToSafeDataUrls(urlList);
+      imgs.forEach(im => {
+        const orig = im.getAttribute('src') || '';
+        if (safeMap[orig]) {
+          im.src = safeMap[orig];
+        }
+      });
+
+      if (document.fonts && document.fonts.ready) {
+        await document.fonts.ready;
+      }
+      await Promise.all(imgs.map(im => im.complete ? Promise.resolve() : new Promise(res => {
+        const to = setTimeout(res, 2500);
+        im.onload = () => { clearTimeout(to); res(); };
+        im.onerror = () => { clearTimeout(to); res(); };
+      })));
+      await new Promise(r => setTimeout(r, 120));
+      return stage;
+    }
+
+    // ==================== 네이버 스마트스토어 860px 통이미지 즉시 다운로드 (오프스크린 정확 860px) ====================
+    async function downloadDetailImage(format = 'jpg') {
+      showToast('860px 스마트스토어 고화질 통이미지 렌더링 중... (잠시만 기다려주세요)', 'fa-spinner fa-spin text-amber-400');
       const btn = document.getElementById('btnDownloadImage');
       if (btn) { btn.disabled = true; btn.classList.add('opacity-50'); }
 
-      const frame = document.getElementById('previewFrame');
-      const wasMobile = Boolean(frame && frame.classList.contains('mobile-frame'));
-
+      let stage = null;
       try {
         if (typeof html2canvas === 'undefined') {
           throw new Error('html2canvas 라이브러리가 로드되지 않았습니다.');
         }
 
-        if (wasMobile && frame) {
-          frame.className = 'pc-frame';
-          frame.style.width = '860px';
-          await new Promise(r => setTimeout(r, 120));
-        }
+        stage = await prepareCleanOffscreenExportRoot();
+        const domH = Math.max(400, stage.scrollHeight);
+        // Chromium 16,384px 캔버스 한계 안전 회피 + 4,500px 초과 시 스마트 분할 ZIP 안내
+        const captureScale = domH > 7800 ? 1.5 : (domH > 5400 ? 1.75 : 2);
 
-        const canvas = await html2canvas(container, {
-          scale: 2,
+        const canvas = await html2canvas(stage, {
+          scale: captureScale,
           useCORS: true,
           allowTaint: false,
           backgroundColor: '#ffffff',
+          width: 860,
+          windowWidth: 860,
           logging: false
         });
 
         const mime = format === 'png' ? 'image/png' : 'image/jpeg';
         const ext = format === 'png' ? 'png' : 'jpg';
-        const quality = format === 'png' ? 1.0 : 0.96;
+        const quality = format === 'png' ? 1.0 : 0.94;
 
         const dataUrl = canvas.toDataURL(mime, quality);
         const link = document.createElement('a');
-        link.download = `오라테크_${curProduct.code}_스마트스토어_860px_마스터피스_상세이미지.${ext}`;
+        link.download = `오라테크_${curProduct.code}_스마트스토어_860px_상세이미지.${ext}`;
         link.href = dataUrl;
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
 
-        showToast(`860px 고화질 상세이미지(${ext.toUpperCase()}) 다운로드 완료!`, 'fa-circle-check text-emerald-400');
-        appendChat('ai', `📸 <b>[${curProduct.code}] 네이버 스마트스토어 규격 860px 통이미지 다운로드 성공!</b><br>내려받은 <b>${link.download}</b> 파일을 스마트스토어 상품등록 > 상세설명에 업로드하시면 즉시 게시됩니다.`);
+        if (domH > 4500) {
+          showToast(`860px 통이미지 저장 완료! (높이 ${domH}px — 네이버 화질 저하 방지를 위해 [📦 분할 ZIP]도 추천합니다)`, 'fa-circle-check text-amber-400');
+          appendChat('ai', `📸 <b>[${curProduct.code}] 860px 통이미지(${canvas.width}×${canvas.height}px) 다운로드 완료!</b><br>💡 <b>스마트스토어 프로 팁:</b> 전체 세로 길이가 <b>${domH.toLocaleString()}px</b>로 긴 편입니다. 상단 <b>[📦 분할 ZIP]</b>을 누르시면 DOM 섹션 경계 기준으로 2,000px 이하 초선명 Retina(@2x) JPG + 1000×1000 대표썸네일을 한 번에 ZIP으로 받으실 수 있습니다!`);
+        } else {
+          showToast(`860px 고화질 상세이미지(${ext.toUpperCase()}) 다운로드 완료!`, 'fa-circle-check text-emerald-400');
+          appendChat('ai', `📸 <b>[${curProduct.code}] 네이버 스마트스토어 규격 860px 통이미지 다운로드 성공!</b><br>내려받은 <b>${link.download}</b> 파일을 스마트스토어 상품등록 > 상세설명에 업로드하시면 즉시 게시됩니다.`);
+        }
       } catch (err) {
         console.error('Image capture error:', err);
         showToast('이미지 변환 실패: ' + err.message, 'fa-circle-xmark text-rose-400');
       } finally {
-        if (wasMobile && frame) {
-          frame.style.width = '';
-          frame.className = 'mobile-frame';
+        if (stage) stage.remove();
+        if (btn) { btn.disabled = false; btn.classList.remove('opacity-50'); }
+      }
+    }
+
+    // ==================== [v5.0 NEW] 860px DOM-Boundary 자동 분할 Retina ZIP 패키지 내보내기 ====================
+    async function downloadSmartStoreZipBundle() {
+      const btn = document.getElementById('btnDownloadZip');
+      if (btn) { btn.disabled = true; btn.classList.add('opacity-50'); }
+      showToast('📦 860px DOM 섹션 경계 기준 초선명 Retina 분할 ZIP 패키징 시작...', 'fa-spinner fa-spin text-amber-400');
+
+      let stage = null;
+      try {
+        if (typeof html2canvas === 'undefined') {
+          throw new Error('html2canvas 라이브러리가 로드되지 않았습니다.');
         }
+        stage = await prepareCleanOffscreenExportRoot();
+        const root = stage.querySelector('.ora-mp-root') || stage.firstElementChild || stage;
+        const styleEl = root.querySelector('style');
+        const styleHtml = styleEl ? styleEl.outerHTML : '';
+        const rootClass = root.className || 'ora-mp-root';
+        const rootStyle = root.getAttribute('style') || 'max-width:860px;margin:0 auto;background:#ffffff;';
+        const blocks = Array.from(root.children).filter(el => el.tagName === 'DIV' && el.offsetHeight > 4);
+
+        if (!blocks.length) {
+          throw new Error('분할할 상세페이지 섹션 블록을 찾지 못했습니다.');
+        }
+
+        // 연속 DOM 블록을 세로 2,000px 이하 청크로 지능형 그룹핑 (글자·표 한가운데 절단 0%!)
+        const MAX_CHUNK_DOM_H = 2000;
+        const chunks = [];
+        let curGroup = [];
+        let curH = 0;
+
+        blocks.forEach(blk => {
+          const bh = blk.offsetHeight || 400;
+          if (curGroup.length > 0 && (curH + bh) > MAX_CHUNK_DOM_H) {
+            chunks.push(curGroup);
+            curGroup = [blk];
+            curH = bh;
+          } else {
+            curGroup.push(blk);
+            curH += bh;
+          }
+        });
+        if (curGroup.length) chunks.push(curGroup);
+
+        const useZip = typeof JSZip !== 'undefined';
+        const zip = useZip ? new JSZip() : null;
+        const code = (curProduct && curProduct.code) || 'PCW-5000';
+        const fileManifest = [];
+
+        // 00_1000x1000_대표썸네일.jpg 생성 포함
+        if (typeof renderSquareThumbnailDataUrl === 'function') {
+          const thumbDataUrl = await renderSquareThumbnailDataUrl();
+          if (thumbDataUrl) {
+            const thumbName = `00_1000x1000_대표썸네일_${code}.jpg`;
+            fileManifest.push(thumbName);
+            if (zip) zip.file(thumbName, thumbDataUrl.split(',')[1], { base64: true });
+          }
+        }
+
+        // 각 DOM 경계 청크를 860px × scale:2 (1720px Retina)로 선명하게 캡처
+        for (let i = 0; i < chunks.length; i++) {
+          showToast(`📦 Retina 분할 렌더링 중... (${i + 1} / ${chunks.length} 파트)`, 'fa-spinner fa-spin text-amber-400');
+          const chunkHost = document.createElement('div');
+          chunkHost.style.cssText = 'position:fixed; left:-14000px; top:0; width:860px; background:#ffffff; z-index:-1;';
+          const chunkRoot = document.createElement('div');
+          chunkRoot.className = rootClass;
+          chunkRoot.setAttribute('style', rootStyle);
+          chunkRoot.innerHTML = styleHtml;
+          chunks[i].forEach(node => chunkRoot.appendChild(node.cloneNode(true)));
+          chunkHost.appendChild(chunkRoot);
+          document.body.appendChild(chunkHost);
+
+          try {
+            await new Promise(r => setTimeout(r, 60));
+            const cDomH = Math.max(200, chunkHost.scrollHeight);
+            const safeScale = cDomH > 7200 ? 1.5 : 2;
+            const canvas = await html2canvas(chunkHost, {
+              scale: safeScale,
+              useCORS: true,
+              allowTaint: false,
+              backgroundColor: '#ffffff',
+              width: 860,
+              windowWidth: 860,
+              logging: false
+            });
+            const dataUrl = canvas.toDataURL('image/jpeg', 0.94);
+            const partName = `${String(i + 1).padStart(2, '0')}_상세페이지_${code}_860px_파트${String(i + 1).padStart(2, '0')}.jpg`;
+            fileManifest.push(`${partName} (${canvas.width}x${canvas.height}px)`);
+            if (zip) {
+              zip.file(partName, dataUrl.split(',')[1], { base64: true });
+            } else {
+              const a = document.createElement('a');
+              a.download = partName;
+              a.href = dataUrl;
+              document.body.appendChild(a);
+              a.click();
+              document.body.removeChild(a);
+              await new Promise(r => setTimeout(r, 240));
+            }
+          } finally {
+            chunkHost.remove();
+          }
+        }
+
+        if (zip) {
+          zip.file(
+            'README_스마트스토어_업로드순서.txt',
+            `[(주)오라테크 스마트스토어 업로드 패키지 — ${code}]\n\n` +
+            `1. 00_1000x1000_대표썸네일_${code}.jpg : 상품 등록 > 대표 이미지\n` +
+            `2. 01~${String(chunks.length).padStart(2, '0')}번 상세페이지 파트 JPG : 스마트에디터 ONE 본문에 순서대로 드래그 & 드롭\n` +
+            `   (모든 파트가 DOM 섹션 경계 기준 ≤2,000px @2x Retina로 분할되어 글자 잘림 및 네이버 리사이즈 화질 저하 0%)\n\n` +
+            `포함 파일 목록:\n- ` + fileManifest.join('\n- ')
+          );
+          const blob = await zip.generateAsync({ type: 'blob' });
+          const zipName = `오라테크_${code}_스마트스토어_패키지.zip`;
+          const a = document.createElement('a');
+          a.download = zipName;
+          a.href = URL.createObjectURL(blob);
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          setTimeout(() => URL.revokeObjectURL(a.href), 5000);
+          showToast(`🎉 ${zipName} 저장 완료! (대표썸네일 + ${chunks.length}파트 Retina 분할)`, 'fa-circle-check text-emerald-400');
+          appendChat('ai', `📦 <b>[${code}] 네이버 스마트스토어 완벽 업로드 ZIP 패키지 생성 완료!</b><br>• 파일명: <b>${zipName}</b><br>• 구성: 1000×1000 대표썸네일 1장 + 860px DOM 섹션 경계 Retina(@2x) 분할 JPG <b>${chunks.length}장</b><br>• 특징: 글자/표 중간 절단 0% · 네이버 강제 축소 화질 저하 0%`);
+        } else {
+          showToast(`✅ ${chunks.length}개 파트 분할 JPG 저장 완료!`, 'fa-circle-check text-emerald-400');
+        }
+      } catch (err) {
+        console.error('ZIP bundle export error:', err);
+        showToast('분할 ZIP 생성 오류: ' + err.message, 'fa-circle-xmark text-rose-400');
+      } finally {
+        if (stage) stage.remove();
         if (btn) { btn.disabled = false; btn.classList.remove('opacity-50'); }
       }
     }
 
     // ==================== 섹션별 분할 카드뉴스 이미지 다운로드 ====================
     async function downloadSectionSlices() {
-      const container = document.getElementById('previewContainer');
-      if (!container) return;
-
-      const innerDiv = container.querySelector('.ora-mp-root') || container.querySelector('div');
-      const sections = innerDiv ? Array.from(innerDiv.children).filter(el => el.tagName === 'DIV') : [];
-      if (!sections || sections.length === 0) {
-        downloadDetailImage('jpg');
-        return;
-      }
-
-      showToast(`총 ${sections.length}개 섹션별 상세이미지 분할 렌더링 시작...`, 'fa-spinner fa-spin text-amber-400');
-
-      const frame = document.getElementById('previewFrame');
-      const wasMobile = Boolean(frame && frame.classList.contains('mobile-frame'));
-      if (wasMobile && frame) {
-        frame.className = 'pc-frame';
-        frame.style.width = '860px';
-        await new Promise(r => setTimeout(r, 120));
-      }
-
-      let successCount = 0;
+      let stage = null;
       try {
-      for (let i = 0; i < sections.length; i++) {
-        const sec = sections[i];
-        try {
-          const canvas = await html2canvas(sec, {
-            scale: 2,
-            useCORS: true,
-            allowTaint: false,
-            backgroundColor: '#ffffff',
-            logging: false
-          });
-          const dataUrl = canvas.toDataURL('image/jpeg', 0.96);
-          const link = document.createElement('a');
-          const secNum = String(i + 1).padStart(2, '0');
-          link.download = `오라테크_${curProduct.code}_섹션${secNum}_상세이미지.jpg`;
-          link.href = dataUrl;
-          document.body.appendChild(link);
-          link.click();
-          document.body.removeChild(link);
-          successCount++;
-          await new Promise(r => setTimeout(r, 280));
-        } catch (e) {
-          console.warn(`Section ${i+1} capture failed:`, e);
+        stage = await prepareCleanOffscreenExportRoot();
+        const innerDiv = stage.querySelector('.ora-mp-root') || stage.querySelector('div');
+        const sections = innerDiv ? Array.from(innerDiv.children).filter(el => el.tagName === 'DIV' && el.offsetHeight > 4) : [];
+        if (!sections || sections.length === 0) {
+          stage.remove();
+          stage = null;
+          downloadDetailImage('jpg');
+          return;
         }
-      }
 
+        showToast(`총 ${sections.length}개 섹션별 상세이미지 분할 렌더링 시작...`, 'fa-spinner fa-spin text-amber-400');
+        let successCount = 0;
+        for (let i = 0; i < sections.length; i++) {
+          const sec = sections[i];
+          try {
+            const canvas = await html2canvas(sec, {
+              scale: 2,
+              useCORS: true,
+              allowTaint: false,
+              backgroundColor: '#ffffff',
+              width: 860,
+              windowWidth: 860,
+              logging: false
+            });
+            const dataUrl = canvas.toDataURL('image/jpeg', 0.95);
+            const link = document.createElement('a');
+            const secNum = String(i + 1).padStart(2, '0');
+            link.download = `오라테크_${curProduct.code}_섹션${secNum}_상세이미지.jpg`;
+            link.href = dataUrl;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            successCount++;
+            await new Promise(r => setTimeout(r, 240));
+          } catch (e) {
+            console.warn(`Section ${i+1} capture failed:`, e);
+          }
+        }
+        showToast(`섹션별 상세이미지 ${successCount}장 다운로드 완료!`, 'fa-circle-check text-emerald-400');
+        appendChat('ai', `🖼️ <b>[${curProduct.code}] 섹션별 분할 상세이미지 ${successCount}장 일괄 다운로드 완료!</b><br>각 섹션 이미지를 스마트스토어 에디터에 순서대로 첨부하실 수 있습니다.`);
       } finally {
-        if (wasMobile && frame) {
-          frame.style.width = '';
-          frame.className = 'mobile-frame';
-        }
+        if (stage) stage.remove();
       }
-
-      showToast(`섹션별 상세이미지 ${successCount}장 다운로드 완료!`, 'fa-circle-check text-emerald-400');
-      appendChat('ai', `🖼️ <b>[${curProduct.code}] 섹션별 분할 상세이미지 ${successCount}장 일괄 다운로드 완료!</b><br>각 섹션 이미지를 스마트스토어 에디터에 순서대로 첨부하실 수 있습니다.`);
     }
 
 
@@ -8657,6 +9954,50 @@ AI 슬롭/번역투('혁신적','최상의','극대화','솔루션') 및 느낌�
       showToast(`${names[key] || key} 섹션이 ${checked ? '켜졌습니다 (ON)' : '숨김 처리되었습니다 (OFF)'}`);
     }
 
+    // [v5.0 에이전시 에디토리얼 디자인 스킨 5종 엔진]
+    window.oraAgencySkin = safeStorage.getItem('ora_agency_skin') || 'editorial';
+    if (!['editorial', 'titanium', 'g2b', 'commerce', 'minimal'].includes(window.oraAgencySkin)) {
+      window.oraAgencySkin = 'editorial';
+    }
+
+    function syncAgencySkinUi() {
+      const active = window.oraAgencySkin || 'editorial';
+      document.querySelectorAll('[data-skin-btn]').forEach(btn => {
+        const isMatch = btn.getAttribute('data-skin-btn') === active;
+        btn.classList.toggle('border-2', isMatch);
+        btn.classList.toggle('border-amber-400', isMatch);
+        btn.classList.toggle('ring-1', isMatch);
+        btn.classList.toggle('ring-amber-400/50', isMatch);
+        btn.classList.toggle('border-slate-700', !isMatch);
+      });
+      document.querySelectorAll('[data-skin-chip]').forEach(chip => {
+        const isMatch = chip.getAttribute('data-skin-chip') === active;
+        if (isMatch) {
+          chip.classList.add('bg-amber-500/20', 'text-amber-300', 'border-amber-400/50');
+          chip.classList.remove('bg-slate-800', 'text-slate-300', 'border-slate-700');
+        } else {
+          chip.classList.remove('bg-amber-500/20', 'text-amber-300', 'border-amber-400/50');
+          chip.classList.add('bg-slate-800', 'text-slate-300', 'border-slate-700');
+        }
+      });
+    }
+
+    function setAgencySkin(skin) {
+      const valid = ['editorial', 'titanium', 'g2b', 'commerce', 'minimal'];
+      window.oraAgencySkin = valid.includes(skin) ? skin : 'editorial';
+      safeStorage.setItem('ora_agency_skin', window.oraAgencySkin);
+      syncAgencySkinUi();
+      renderMasterpieceHtml();
+      const skinLabels = {
+        editorial: '에디토리얼 매거진 (네이비 풀블리드 히어로)',
+        titanium: '티타늄 다크테크 (밀워키·다크카본)',
+        g2b: '관공서·G2B 신뢰형 (네이비·각진 도면 프레임)',
+        commerce: '고전환 스마트스토어 커머스 (임팩트 세일즈)',
+        minimal: '미니멀 스튜디오 (초여백·갤러리)'
+      };
+      showToast(`✨ 에이전시 디자인 아키타입: [${skinLabels[window.oraAgencySkin]}] 적용 완료!`);
+    }
+
     // [기능 18] 상세페이지 전체 컬러 테마 5종 (+자동) 원클릭 스킨 체인저
     function getResolvedThemePalette(isBattery, isElectric, isHoist, isHydraulicOrManual, isDocma) {
       const skin = window.oraCustomTheme || 'auto';
@@ -8676,6 +10017,10 @@ AI 슬롭/번역투('혁신적','최상의','극대화','솔루션') 및 느낌�
     }
 
     function setMasterpieceTheme(skin) {
+      if (['editorial', 'titanium', 'g2b', 'commerce', 'minimal'].includes(skin)) {
+        setAgencySkin(skin);
+        return;
+      }
       window.oraCustomTheme = skin || 'auto';
       document.querySelectorAll('[data-theme-btn]').forEach(btn => {
         if (btn.getAttribute('data-theme-btn') === window.oraCustomTheme) {
@@ -8693,7 +10038,7 @@ AI 슬롭/번역투('혁신적','최상의','극대화','솔루션') 및 느낌�
         blue: '인더스트리얼 스틸 블루',
         gold: '다크 골드 프리미엄'
       };
-      showToast(`🎨 상세페이지 전체 스킨이 [${labelMap[window.oraCustomTheme] || skin}] 테마로 즉시 교체되었습니다!`);
+      showToast(`🎨 상세페이지 포인트 컬러가 [${labelMap[window.oraCustomTheme] || skin}] 테마로 즉시 교체되었습니다!`);
     }
 
     // [기능 4] 내 PC/핸드폰 사진 드래그 앤 드롭 & 파일 선택 즉시 반영
@@ -8733,11 +10078,11 @@ AI 슬롭/번역투('혁신적','최상의','극대화','솔루션') 및 느낌�
       showToast(`현장 사진 ${Math.min(files.length, 4)}장이 상세페이지 갤러리에 즉시 추가되었습니다!`);
     }
 
-    // [기능 1] 네이버 스마트스토어 1000x1000 초고시인성 대표 썸네일(메인 액자) 생성기 (불필요한 글씨 대폭 축소 & 제품·핵심수치 초대형 확대)
-    async function downloadSquareThumbnail() {
-      const p = curProduct;
-      if (!p) return;
-      showToast('1000×1000 초고시인성 대표 썸네일 렌더링 중...', 'fa-spinner fa-spin text-amber-400');
+    // [기능 1] 네이버 스마트스토어 1000x1000 초고시인성 대표 썸네일(메인 액자) 공용 렌더러 (file:/// Canvas Taint 0%)
+    async function renderSquareThumbnailDataUrl(targetProduct) {
+      const p = targetProduct || curProduct;
+      if (!p) return null;
+      const ov = (p._specOverrides && typeof p._specOverrides === 'object') ? p._specOverrides : {};
 
       const canvas = document.createElement('canvas');
       canvas.width = 1000;
@@ -8758,7 +10103,7 @@ AI 슬롭/번역투('혁신적','최상의','극대화','솔루션') 및 느낌�
       ctx.lineWidth = 26;
       ctx.strokeRect(13, 13, 974, 974);
 
-      // 2) 좌측 상단 심플 정품 리본 배지 (불필요한 긴 설명 완전 제거)
+      // 2) 좌측 상단 심플 정품 리본 배지
       ctx.fillStyle = '#0f172a';
       ctx.fillRect(26, 26, 330, 68);
       ctx.fillStyle = '#fbbf24';
@@ -8766,16 +10111,21 @@ AI 슬롭/번역투('혁신적','최상의','극대화','솔루션') 및 느낌�
       ctx.textAlign = 'center';
       ctx.fillText('오라테크 공식정품', 191, 71);
 
-      // 3) 중앙 제품 실사 초대형 확대 렌더링 (기존 660x540 -> 840x680으로 1.4배 이상 확대!)
-      const imgUrl = p.images?.mainClear || p.img || '';
-      if (imgUrl) {
+      // 3) 중앙 제품 실사 초대형 확대 렌더링 (toSafePosterImgDataUrl 사전 변환으로 file:/// taint 완전 차단)
+      const rawImgUrl = p.images?.mainClear || p.img || '';
+      if (rawImgUrl) {
         try {
+          let safeImgSrc = rawImgUrl;
+          if (typeof toSafePosterImgDataUrl === 'function' && !rawImgUrl.startsWith('data:')) {
+            const converted = await toSafePosterImgDataUrl(rawImgUrl).catch(() => null);
+            if (converted) safeImgSrc = converted;
+          }
           const imgObj = await new Promise((resolve, reject) => {
             const im = new Image();
             im.crossOrigin = 'anonymous';
             im.onload = () => resolve(im);
             im.onerror = reject;
-            im.src = imgUrl;
+            im.src = safeImgSrc;
           });
           const maxW = 840, maxH = 680;
           const ratio = Math.min(maxW / imgObj.width, maxH / imgObj.height);
@@ -8794,8 +10144,8 @@ AI 슬롭/번역투('혁신적','최상의','극대화','솔루션') 및 느낌�
         ctx.fillText(p.code, 500, 460);
       }
 
-      // 4) 우측 상단 초대형 임팩트 파워 엠블럼 (모바일 썸네일에서도 한눈에 보이도록 반경 132px로 확대!)
-      const rawCap = (p.pull || p.cap || '1,000kg').split('(')[0].trim();
+      // 4) 우측 상단 초대형 임팩트 파워 엠블럼
+      const rawCap = (ov.pull || p.pull || p.cap || '1,000kg').split('(')[0].trim();
       ctx.save();
       ctx.shadowColor = 'rgba(15, 23, 42, 0.28)';
       ctx.shadowBlur = 24;
@@ -8816,11 +10166,10 @@ AI 슬롭/번역투('혁신적','최상의','극대화','솔루션') 및 느낌�
       ctx.font = '900 54px Pretendard, Malgun Gothic, sans-serif';
       ctx.fillText(rawCap, 815, 212);
 
-      // 5) 하단 초대형 2단 핵심 바 (자잘한 칩 3개 제거 -> 모델명 + 핵심 키워드 딱 1줄만 굵고 거대하게!)
+      // 5) 하단 초대형 2단 핵심 바
       ctx.fillStyle = '#0f172a';
       ctx.fillRect(26, 780, 948, 194);
 
-      // 모델명 (초대형 76px 노란색) + 핵심 카테고리명 (흰색 52px)
       let shortType = '산업용 정품 윈치';
       if (isDoc) shortType = '이탈리아 산림윈치';
       else if (isBat) shortType = '무선 배터리 윈치';
@@ -8838,7 +10187,19 @@ AI 슬롭/번역투('혁신적','최상의','극대화','솔루션') 및 느낌�
       ctx.font = '900 44px Pretendard, Malgun Gothic, sans-serif';
       ctx.fillText(`${shortType} · 당일발송`, 500, 938);
 
-      const dataUrl = canvas.toDataURL('image/jpeg', 0.96);
+      return canvas.toDataURL('image/jpeg', 0.96);
+    }
+
+    async function downloadSquareThumbnail() {
+      const p = curProduct;
+      if (!p) return;
+      showToast('1000×1000 초고시인성 대표 썸네일 렌더링 중...', 'fa-spinner fa-spin text-amber-400');
+
+      const dataUrl = await renderSquareThumbnailDataUrl(p);
+      if (!dataUrl) return;
+      const ov = (p._specOverrides && typeof p._specOverrides === 'object') ? p._specOverrides : {};
+      const rawCap = (ov.pull || p.pull || p.cap || '1,000kg').split('(')[0].trim();
+
       const link = document.createElement('a');
       link.download = `오라테크_${p.code}_스마트스토어_1000x1000_대표썸네일.jpg`;
       link.href = dataUrl;
@@ -8847,7 +10208,7 @@ AI 슬롭/번역투('혁신적','최상의','극대화','솔루션') 및 느낌�
       document.body.removeChild(link);
 
       showToast(`[${p.code}] 초고시인성 1000×1000 대표 썸네일 저장 완료!`, 'fa-circle-check text-emerald-400');
-      appendChat('ai', `🎯 <b>[기능 1 업그레이드] [${p.code}] 모바일 가독성 극대화 1000×1000px 대표 썸네일 저장 완료!</b><br>불필요한 잔글씨를 모두 덜어내고 제품 실사와 <b>[${p.code} / ${rawCap}]</b> 핵심 글씨만 초대형으로 키웠습니다.`);
+      appendChat('ai', `🎯 <b>[기능 1 업그레이드] [${p.code}] 모바일 초고시인성 1000×1000px 대표 썸네일 저장 완료!</b><br>불필요한 잔글씨를 모두 덜어내고 제품 실사와 <b>[${p.code} / ${rawCap}]</b> 핵심 정보만 대형 배치했습니다.`);
     }
 
     // [기능 7] 최상단 스크롤 이탈 방지 후킹 애니메이션 (3종 모드 선택 지원: 1. 인력 5명 vs 1인 시뮬레이터 / 2. 정품 출고 라이브 티커 / 3. 도르래 2배 증폭 모션)
@@ -9136,7 +10497,7 @@ AI 슬롭/번역투('혁신적','최상의','극대화','솔루션') 및 느낌�
       <div class="ora-box-pad" style="background:#f8fafc; border-left:4px solid ${themePrimary}; border-radius:0 12px 12px 0; padding:18px; border-top:1px solid #e2e8f0; border-right:1px solid #e2e8f0; border-bottom:1px solid #e2e8f0; text-align:left;">
         <div style="font-size:13px; font-weight:900; color:#dc2626; margin-bottom:6px;">💬 의구심 4. "관공서/법인 회계 처리용 서류가 당일 바로 나오나요?"</div>
         <div style="font-size:12.5px; color:#1e293b; line-height:1.65;">
-          <b>✔ 팩트체크:</b> 국세청 전자세금계산서 당일 즉시 발행은 기본이며, 나라장터(G2B)·수의계약용 <b>정식 견적서·비교견적서·규격서</b>를 본 화면 상단 <b>[📄 공식 견적서 출력]</b> 버튼에서 1초 만에 뽑으실 수 있습니다.
+          <b>✔ 팩트체크:</b> 국세청 전자세금계산서 당일 즉시 발행은 기본이며, 나라장터(G2B)·수의계약용 <b>정식 직인 견적서·비교견적서·규격서</b>를 직통번호 <b>1600-5157</b>(문자 <b>010-8931-7788</b>) 또는 네이버 톡톡으로 요청하시면 10분 내 즉시 발송해 드립니다.
         </div>
       </div>
     </div>
@@ -9710,7 +11071,7 @@ AI 슬롭/번역투('혁신적','최상의','극대화','솔루션') 및 느낌�
     // ==================== [기능 20] 내 커스텀 상세페이지 [프리셋 저장 & 불러오기 (JSON 파일 백업/복원 + 브라우저 즉시 슬롯)] ====================
     function buildCurrentPresetPayload() {
       return {
-        oraPresetVersion: '2.0',
+        oraPresetVersion: '3.0',
         savedAt: new Date().toISOString(),
         code: curProduct ? curProduct.code : 'PCW-5000',
         product: JSON.parse(JSON.stringify(curProduct || {})),
@@ -9718,41 +11079,54 @@ AI 슬롭/번역투('혁신적','최상의','극대화','솔루션') 및 느낌�
         copyDensity: window.oraCopyDensity || 'compact',
         topMotionMode: window.oraTopMotionMode || 'roi_battle',
         customTheme: window.oraCustomTheme || 'auto',
+        agencySkin: window.oraAgencySkin || 'editorial',
         customVideoUrl: window.oraCustomVideoUrl || ''
       };
     }
 
     function applyPresetPayload(payload) {
       if (!payload || !payload.product) return false;
-      curProduct = payload.product;
+      curProduct = JSON.parse(JSON.stringify(payload.product));
       const code = curProduct.code;
-      if (code && productDB) {
-        productDB[code] = curProduct;
+      if (code && typeof OFFICIAL_ASSETS === 'object' && OFFICIAL_ASSETS) {
+        OFFICIAL_ASSETS[code] = curProduct;
       }
       if (payload.copyDensity) {
         window.oraCopyDensity = payload.copyDensity;
       }
       if (payload.toggles) {
-        window.oraSectionToggles = Object.assign(window.oraSectionToggles, payload.toggles);
+        window.oraSectionToggles = Object.assign(window.oraSectionToggles || {}, payload.toggles);
       }
-      syncSectionToggleCheckboxes();
+      if (typeof syncSectionToggleCheckboxes === 'function') syncSectionToggleCheckboxes();
       if (payload.topMotionMode) {
         window.oraTopMotionMode = payload.topMotionMode;
       }
       if (payload.customTheme) {
         window.oraCustomTheme = payload.customTheme;
       }
+      if (payload.agencySkin) {
+        window.oraAgencySkin = payload.agencySkin;
+      }
       if (typeof payload.customVideoUrl === 'string') {
         window.oraCustomVideoUrl = payload.customVideoUrl;
       }
 
       // UI 입력창 및 체크박스 동기화
-      const sel = document.getElementById('productSelector');
-      if (sel && code) sel.value = code;
+      const sel = document.getElementById('quickModelSel');
+      if (sel && code) {
+        if (!Array.from(sel.options).some(o => o.value === code)) {
+          const opt = document.createElement('option');
+          opt.value = code;
+          opt.textContent = `${code} - ${curProduct.name || code}`;
+          sel.appendChild(opt);
+        }
+        sel.value = code;
+      }
       const vidInput = document.getElementById('videoStoryboardUrlInput');
       if (vidInput) vidInput.value = window.oraCustomVideoUrl || '';
 
-      updateFormFields();
+      if (typeof updateFormFields === 'function') updateFormFields();
+      if (typeof syncLiveSpecEditorInputs === 'function') syncLiveSpecEditorInputs();
       renderMasterpieceHtml();
       return true;
     }
@@ -10777,7 +12151,7 @@ AI 슬롭/번역투('혁신적','최상의','극대화','솔루션') 및 느낌�
       setTimeout(() => { t.classList.add('hidden', 'translate-y-4'); }, 3000);
     }
   </script>
-<!-- ==================== 오라테크 ERP 166종 품목 실시간 검색 & 연동 모달 ==================== -->
+<!-- ==================== 오라테크 ERP 169종 품목 실시간 검색 & 연동 모달 ==================== -->
 <div id="erpCatalogModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
   <div class="bg-slate-900 border border-slate-700 rounded-2xl w-full max-w-5xl max-h-[90vh] flex flex-col shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-200">
     <!-- Modal Header -->
@@ -10823,14 +12197,14 @@ AI 슬롭/번역투('혁신적','최상의','극대화','솔루션') 및 느낌�
 
       <!-- Category Filter Tabs -->
       <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-1" id="erpCategoryTabs">
-        <button type="button" onclick="filterErpCategory('ALL')" class="erp-cat-tab active px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap transition bg-indigo-600 text-white">전체 (169)</button>
-        <button type="button" onclick="filterErpCategory('엔진윈치')" class="erp-cat-tab px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap transition bg-slate-800 text-slate-300 hover:bg-slate-700">🌲 엔진/배터리 (12)</button>
-        <button type="button" onclick="filterErpCategory('미니/특수윈치')" class="erp-cat-tab px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap transition bg-slate-800 text-slate-300 hover:bg-slate-700">⚡ 미니/특수윈치 (41)</button>
-        <button type="button" onclick="filterErpCategory('전동윈치')" class="erp-cat-tab px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap transition bg-slate-800 text-slate-300 hover:bg-slate-700">🏗️ 전동윈치 (46)</button>
-        <button type="button" onclick="filterErpCategory('호이스트')" class="erp-cat-tab px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap transition bg-slate-800 text-slate-300 hover:bg-slate-700">🪝 호이스트 (8)</button>
-        <button type="button" onclick="filterErpCategory('수동/DC/유압윈치')" class="erp-cat-tab px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap transition bg-slate-800 text-slate-300 hover:bg-slate-700">🚛 특장/수동/DC (24)</button>
-        <button type="button" onclick="filterErpCategory('수동하역제품')" class="erp-cat-tab px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap transition bg-slate-800 text-slate-300 hover:bg-slate-700">📦 수동하역 (20)</button>
-        <button type="button" onclick="filterErpCategory('운반하역유압')" class="erp-cat-tab px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap transition bg-slate-800 text-slate-300 hover:bg-slate-700">🚜 운반하역유압 (18)</button>
+        <button type="button" data-cat="ALL" onclick="filterErpCategory('ALL')" class="erp-cat-tab active px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap transition bg-indigo-600 text-white">전체 (169)</button>
+        <button type="button" data-cat="엔진윈치" onclick="filterErpCategory('엔진윈치')" class="erp-cat-tab px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap transition bg-slate-800 text-slate-300 hover:bg-slate-700">🌲 엔진/배터리 (12)</button>
+        <button type="button" data-cat="미니/특수윈치" onclick="filterErpCategory('미니/특수윈치')" class="erp-cat-tab px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap transition bg-slate-800 text-slate-300 hover:bg-slate-700">⚡ 미니/특수윈치 (41)</button>
+        <button type="button" data-cat="전동윈치" onclick="filterErpCategory('전동윈치')" class="erp-cat-tab px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap transition bg-slate-800 text-slate-300 hover:bg-slate-700">🏗️ 전동윈치 (46)</button>
+        <button type="button" data-cat="호이스트" onclick="filterErpCategory('호이스트')" class="erp-cat-tab px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap transition bg-slate-800 text-slate-300 hover:bg-slate-700">🪝 호이스트 (8)</button>
+        <button type="button" data-cat="수동/DC/유압윈치" onclick="filterErpCategory('수동/DC/유압윈치')" class="erp-cat-tab px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap transition bg-slate-800 text-slate-300 hover:bg-slate-700">🚛 특장/수동/DC (24)</button>
+        <button type="button" data-cat="수동하역제품" onclick="filterErpCategory('수동하역제품')" class="erp-cat-tab px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap transition bg-slate-800 text-slate-300 hover:bg-slate-700">📦 수동하역 (20)</button>
+        <button type="button" data-cat="운반하역유압" onclick="filterErpCategory('운반하역유압')" class="erp-cat-tab px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap transition bg-slate-800 text-slate-300 hover:bg-slate-700">🚜 운반하역유압 (18)</button>
       </div>
     </div>
 
