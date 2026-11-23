@@ -478,7 +478,7 @@
               <option value="TRUCK_BUILDER">🚛 특장차·셀프로더 제작소 (방수·와이어정렬·납품단가)</option>
             </select>
             <select id="carbonToneSelect" class="bg-slate-950 border border-slate-700 rounded-lg px-2 py-1.5 text-[11px] text-amber-300 font-bold outline-none focus:border-cyan-400">
-              <option value="FIELD_EXPERT">🔧 25년차 청계천·현장 수석 엔지니어 톤</option>
+              <option value="FIELD_EXPERT">🔧 25년차 산업기계 현장 수석 엔지니어 톤</option>
               <option value="SPEC_DOC">📋 관공서 품의·시방서 직결 팩트 톤</option>
               <option value="URGENT_B2B">⚡ 당일출고·문제해결 직격 고전환 톤</option>
             </select>
@@ -498,13 +498,13 @@
               <i class="fa-solid fa-wand-magic-sparkles text-yellow-300"></i>
               <span>🎨 AI 제품 사진 새로 합성</span>
             </button>
-            <button onclick="sendQuickCommand('본사 정품 1년 무상보증 워런티와 순정 부품 상시 보유를 상단에 간결하게 강조해줘')" class="bg-slate-800 border border-slate-700 hover:border-amber-400 text-slate-300 hover:text-white px-2.5 py-1 rounded-full text-[11px] transition">
+            <button onclick="sendQuickCommand('오라테크 정품 1년 무상보증과 순정 부품 상시 보유를 상단에 간결하게 강조해줘')" class="bg-slate-800 border border-slate-700 hover:border-amber-400 text-slate-300 hover:text-white px-2.5 py-1 rounded-full text-[11px] transition">
               🛡️ 정품 1년 무상보증 강화
             </button>
             <button onclick="sendQuickCommand('산림 벌목 시 스윙 활차(도르래) 1개를 결합해 견인력을 2톤으로 증폭시키는 물리 법칙 인포그래픽을 추가해줘')" class="bg-slate-800 border border-slate-700 hover:border-amber-400 text-slate-300 hover:text-white px-2.5 py-1 rounded-full text-[11px] transition">
               🌲 도르래 2배 증폭 역학 추가
             </button>
-            <button onclick="sendQuickCommand('경동화물 3중 완충 파레트 안전 배송과 청계천 오라테크 매장 실물 보유를 강력히 강조해줘')" class="bg-slate-800 border border-slate-700 hover:border-amber-400 text-slate-300 hover:text-white px-2.5 py-1 rounded-full text-[11px] transition">
+            <button onclick="sendQuickCommand('경동화물 3중 완충 파레트 안전 배송과 오라테크 매장 실물 재고 보유를 강력히 강조해줘')" class="bg-slate-800 border border-slate-700 hover:border-amber-400 text-slate-300 hover:text-white px-2.5 py-1 rounded-full text-[11px] transition">
               🚚 당일 화물 직발송 배너 강화
             </button>
             <button onclick="sendQuickCommand('국세청 전자세금계산서 100% 당일 발행 및 관공서 견적서 상담 직통 전화를 크게 넣어줘')" class="bg-slate-800 border border-slate-700 hover:border-amber-400 text-slate-300 hover:text-white px-2.5 py-1 rounded-full text-[11px] transition">
@@ -516,7 +516,7 @@
         <!-- 대화 내역 히스토리 -->
         <div id="chatHistory" class="flex-1 bg-slate-950 border border-slate-800 rounded-xl p-3 overflow-y-auto space-y-2 text-xs">
           <div class="bg-slate-800/80 rounded-lg p-2.5 text-slate-300">
-            👋 <b>Gemini 수석 디렉터:</b> 오라테크 공식 카탈로그와 캐나다 본사 스펙을 기반으로 최고 수준의 상세페이지를 준비했습니다. 수정하거나 보강하고 싶은 포인트를 말씀해 주세요!
+            👋 <b>Gemini 수석 디렉터:</b> 오라테크 공식 카탈로그와 제조사 공식 스펙을 기반으로 현장 맞춤형 상세페이지를 준비했습니다. 수정하거나 보강하고 싶은 포인트를 말씀해 주세요!
           </div>
         </div>
 
@@ -4500,7 +4500,7 @@
         { q: 'Q1. 로프 길이는 최대 몇 미터까지 쓸 수 있나요?', a: `캡스턴 방식은 로프가 드럼에 쌓이지 않고 통과하므로 50m·100m·300m 거리 제한 없이 ${pullCap} 힘을 동일하게 유지합니다.` },
         { q: 'Q2. 일반 나일론 밧줄이나 철사 와이어를 써도 되나요?', a: '안 됩니다. 철 와이어는 드럼을 손상시키고 일반 밧줄은 늘어나 위험하므로 반드시 전용 저신율 폴리에스터 로프를 사용하십시오.' },
         { q: isBattery ? 'Q3. 배터리 1회 충전 시 얼마나 쓰나요?' : 'Q3. 연료는 오일을 섞어야 하나요?', a: isBattery ? '표준 배터리 약 30~45분, 대용량 배터리 약 60~90분 연속 가동되며 여분 배터리로 1초 원터치 교체가 가능합니다.' : '오일을 섞지 않는 순수 4행정 혼다 엔진입니다. 자동차용 무연휘발유만 넣고 4행정 오일(10W-30)은 별도 주입구에 넣으십시오.' },
-        { q: 'Q4. 세금계산서 발행과 정품 A/S는 어떻게 되나요?', a: '공식 수입원 (주)오라테크에서 전자세금계산서 당일 발행 및 본사 직영 순정 부품 A/S를 100% 보증합니다.' },
+        { q: 'Q4. 세금계산서 발행과 정품 A/S는 어떻게 되나요?', a: '공식 수입원 (주)오라테크에서 전자세금계산서 당일 발행 및 자체 정비실 순정 부품 A/S를 100% 보증합니다.' },
         { q: 'Q5. 표기 하중보다 무거운 물체도 당길 수 있나요?', a: `스윙 도르래(PCA-1274) 1개 결합 시 ${doublePull}(2배), 더블 도르래 세팅 시 최대 ${maxPull}까지 안전하게 견인합니다.` },
         { q: 'Q6. 캡스턴 드럼에는 로프를 몇 바퀴 감나요?', a: '드럼 안쪽부터 겹치지 않게 3~4바퀴 감은 뒤 상단 가이드를 통과시켜 끝단을 가볍게 당기면 작동합니다.' },
         { q: 'Q7. 비탈길에서 손을 놓으면 뒤로 밀리지 않나요?', a: code === 'PCW-4000' || code === 'PCW-4500' ? `${code}은 원심클러치와 안티 리버스 브레이크가 기본 탑재되어 손을 놓는 즉시 로프가 자동 잠깁니다.` : '셀프 락킹 도르래(PCA-1271/1272) 옵션을 추가하시면 손을 놓아도 하중이 그 자리에 안전하게 고정됩니다.' },
@@ -4509,7 +4509,7 @@
         { q: 'Q1. 일반 220V 콘센트에 바로 꽂아도 되나요?', a: `단상 220V 모델은 별도 전기 공사 없이 즉시 사용 가능합니다. 연장 릴선은 전압강하 방지를 위해 2.5sq 이상을 끝까지 풀어서 쓰십시오.` },
         { q: 'Q2. 작업 중 정전이 되면 짐이 떨어지지 않나요?', a: '전원 차단 즉시 0.05초 내에 전자식 마그네틱 브레이크가 100% 자동 잠금되어 공중에서 밀림 없이 고정됩니다.' },
         { q: 'Q3. 단선(1줄)과 복선(2줄)은 힘이 얼마나 차이 나나요?', a: `단선은 ${pullCap}(${speed}) 고속 인양이며, 도르래 후크로 복선(2줄) 세팅 시 인양 하중이 ${doublePull}로 2배 증폭됩니다.` },
-        { q: 'Q4. 세금계산서 발행과 사후 A/S가 보장되나요?', a: '(주)오라테크에서 국세청 전자세금계산서 당일 발행 및 본사 직영 정비팀 순정 부품 A/S를 보증합니다.' },
+        { q: 'Q4. 세금계산서 발행과 사후 A/S가 보장되나요?', a: '(주)오라테크에서 국세청 전자세금계산서 당일 발행 및 자체 정비실 순정 부품 A/S를 보증합니다.' },
         { q: 'Q5. 비계 파이프나 H빔 설치가 간편한가요?', a: '일체형 브라켓/후크 구조로 단관 비계 파이프, 스윙암 크레인, H빔 트롤리에 몇 분 만에 거치됩니다.' },
         { q: 'Q6. 무선 리모컨으로도 조작할 수 있나요?', a: '기본 유선 스위치 외에 산업용 무선 리모컨 옵션을 추가하시면 최대 60~100m 거리에서 원격 조작이 가능합니다.' },
         { q: 'Q7. 와이어가 끝까지 감기면 모터가 타지 않나요?', a: '상한 리미트 차단 레버가 후크 도달 즉시 전원을 자동 차단하여 과권취 파손을 예방합니다.' },
@@ -5378,7 +5378,7 @@
           </tr>
           <tr>
             <th style="background:#f8fafc; padding:13px 18px; font-weight:800; color:#0f172a; border-right:1px solid #e2e8f0;">인증 · A/S 보증</th>
-            <td style="padding:13px 18px; color:#334155;">${certSpec} · (주)오라테크 본사 1년 무상보증 및 평생 기술지원</td>
+            <td style="padding:13px 18px; color:#334155;">${certSpec} · (주)오라테크 1년 무상보증 및 평생 기술지원</td>
           </tr>
         </tbody>
       </table>
@@ -5519,7 +5519,7 @@
         <tbody>
           <tr style="border-bottom:1px solid #e2e8f0;"><td data-label="비교 항목" style="padding:10px; font-weight:800; background:#f8fafc;">실측 출력</td><td data-label="저가 모조품" style="padding:10px; color:#64748b;">표기치 절반 미만·과열 정지</td><td data-label="오라테크 정품" style="padding:10px; font-weight:900; background:${themeLightBg}; color:${themePrimary};">정격 ${pullCap} (배력 ${doublePull})</td></tr>
           <tr style="border-bottom:1px solid #e2e8f0;"><td data-label="비교 항목" style="padding:10px; font-weight:800; background:#f8fafc;">안전 제동</td><td data-label="저가 모조품" style="padding:10px; color:#64748b;">제동력 부족·역회전 위험</td><td data-label="오라테크 정품" style="padding:10px; font-weight:800; color:#15803d; background:${themeLightBg};">${brakeSystem}</td></tr>
-          <tr><td data-label="비교 항목" style="padding:10px; font-weight:800; background:#f8fafc;">A/S · 서류</td><td data-label="저가 모조품" style="padding:10px; color:#64748b;">국내 부품 전무·수리 불가</td><td data-label="오라테크 정품" style="padding:10px; font-weight:800; background:${themeLightBg}; color:#0f172a;">본사 직영 A/S · 세금계산서·G2B</td></tr>
+          <tr><td data-label="비교 항목" style="padding:10px; font-weight:800; background:#f8fafc;">A/S · 서류</td><td data-label="저가 모조품" style="padding:10px; color:#64748b;">국내 부품 전무·수리 불가</td><td data-label="오라테크 정품" style="padding:10px; font-weight:800; background:${themeLightBg}; color:#0f172a;">직영 정비실 A/S · 세금계산서·G2B</td></tr>
         </tbody>
       </table>
     </div>
@@ -5527,7 +5527,7 @@
   <div class="ora-topbar" style="background:#0f172a; color:#ffffff; padding:16px 28px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; border-bottom:1px solid #1e293b;">
     <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
       <span style="background:#22c55e; color:#052e16; font-size:11px; font-weight:900; padding:3px 9px; border-radius:4px; flex-shrink:0;">출고 전 부하 검수필</span>
-      <span style="font-size:13px; font-weight:800;">[${code}] 본사 엔지니어 부하 시운전 · 브레이크 잠금 · 시리얼 검수 완료 후 출고</span>
+      <span style="font-size:13px; font-weight:800;">[${code}] 오라테크 엔지니어 부하 시운전 · 브레이크 잠금 · 시리얼 검수 완료 후 출고</span>
     </div>
     <span style="font-size:12px; color:#fbbf24; font-weight:800;">1년 무상 A/S · 순정 부품 상시 보유</span>
   </div>`}
@@ -5660,7 +5660,7 @@
           <tr style="border-bottom:1px solid #e2e8f0;">
             <td data-label="비교 항목" style="padding:12px; font-weight:800; background:#f8fafc; color:#0f172a;">사후 A/S 및 부품</td>
             <td data-label="저가 모조품" style="padding:12px; color:#64748b;">부품 수급 불가 (고장 시 장비 전체 폐기 처분)</td>
-            <td data-label="오라테크 정품" style="padding:12px; font-weight:800; color:#0f172a; background:${themeLightBg};">본사 직영 정비팀 & 순정 부품 상시 보유</td>
+            <td data-label="오라테크 정품" style="padding:12px; font-weight:800; color:#0f172a; background:${themeLightBg};">자체 직영 정비실 & 순정 부품 상시 보유</td>
           </tr>
           <tr>
             <td data-label="비교 항목" style="padding:12px; font-weight:800; background:#f8fafc; color:#0f172a;">관공서·법인 서류</td>
@@ -5672,13 +5672,13 @@
     </div>
   </div>
 
-  <!-- SECTION 13-C: (주)오라테크 본사 출고 전 정밀 검수표 -->
+  <!-- SECTION 13-C: (주)오라테크 출고 전 정밀 검수표 -->
   <div class="ora-sec" style="padding:48px 32px; background:#f8fafc; border-bottom:1px solid #e2e8f0;">
     <div style="max-width:796px; margin:0 auto; background:#ffffff; border:2px solid #0f172a; border-radius:16px; overflow:hidden; box-shadow:0 8px 24px rgba(15,23,42,0.06);">
       <div class="ora-topbar" style="background:#0f172a; color:#ffffff; padding:16px 24px; display:flex; justify-content:space-between; align-items:center;">
         <div>
           <span style="background:#22c55e; color:#052e16; font-size:10.5px; font-weight:900; padding:3px 8px; border-radius:4px; margin-right:8px;">출고 전 검수 완료</span>
-          <span style="font-size:14.5px; font-weight:900;">(주)오라테크 청계천 본사 정비팀 출고 전 정밀 검수표</span>
+          <span style="font-size:14.5px; font-weight:900;">(주)오라테크 자체 정비팀 출고 전 정밀 검수표</span>
         </div>
         <span style="font-size:12px; color:#38bdf8; font-weight:800;">검수 대상: [${code}]</span>
       </div>
@@ -5762,7 +5762,7 @@
           <div style="font-size:11.5px; color:#64748b;">전자세금계산서 당일 발행 · 나라장터(G2B)·견적서 완비</div>
         </div>
         <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:12px 14px;">
-          <div style="font-size:13px; font-weight:900; color:#0f172a; margin-bottom:3px;">🔧 본사 직영 A/S 센터</div>
+          <div style="font-size:13px; font-weight:900; color:#0f172a; margin-bottom:3px;">🔧 자체 직영 A/S 정비실</div>
           <div style="font-size:11.5px; color:#64748b;">정품 시리얼 등록 · 100% 순정 부품 상시 보유</div>
         </div>
         <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:12px 14px;">
@@ -5773,7 +5773,7 @@
 
       <div class="ora-flex-between" style="background:#0f172a; color:#ffffff; border-radius:12px; padding:16px 20px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
         <div style="text-align:left;">
-          <div style="font-size:11px; color:#94a3b8; font-weight:700;">(주)오라테크 본사 기술영업부 & A/S 센터</div>
+          <div style="font-size:11px; color:#94a3b8; font-weight:700;">(주)오라테크 기술영업부 & 자체 정비실</div>
           <div style="font-size:17px; font-weight:900; color:#38bdf8; margin-top:2px;">대표전화: 1600-5157 / 031-434-5157</div>
         </div>
         <div style="text-align:right;">
@@ -7062,12 +7062,12 @@
           const toneKey = document.getElementById('carbonToneSelect')?.value || 'FIELD_EXPERT';
           const personaMap = {
             FIELD_BOSS: '현장 소장·벌목/포설 작업반장 (4~5명 인건비 절감, 브레이크 밀림 사고 원천 차단, 1인 운반 기동성, 도르래 2배 배력 중시)',
-            GOV_PROCURE: '관공서·산림조합·한전 구매/공무팀 (정격 제원 일치, 안전인증·시방서 규격 충족, 비교견적서·전자세금계산서 즉시 발행, 본사 정품 A/S 중시)',
+            GOV_PROCURE: '관공서·산림조합·한전 구매/공무팀 (정격 제원 일치, 안전인증·시방서 규격 충족, 비교견적서·전자세금계산서 즉시 발행, 자체 정비 A/S 중시)',
             PLANT_ENG: '공장 공무팀·설비보전 엔지니어 (100% 순동 권선 모터/정품 엔진 내구성, 릴선 전압강하 방지, 기계식 브레이크 제동력, 마그네틱·기어 부품 수급 중시)',
             TRUCK_BUILDER: '특장차·셀프로더·선박 제작소 (방수·방진 내구성, 와이어 편심 감김 방지, 브라켓 볼트 규격 호환성, 당일 화물 출고 중시)'
           };
           const toneMap = {
-            FIELD_EXPERT: '25년 경력 청계천·산업현장 수석 기계 엔지니어의 담백하고 단호한 실무 한국어',
+            FIELD_EXPERT: '25년 경력 산업기계 현장 수석 기계 엔지니어의 담백하고 단호한 실무 한국어',
             SPEC_DOC: '관공서 품의서·시방서에 바로 복사해 넣을 수 있는 수치·팩트 중심 공문서 톤',
             URGENT_B2B: '현장 작업 중단 손실을 즉시 해결하고 당일 화물 직송을 강조하는 B2B 해결사 톤'
           };
@@ -7087,12 +7087,12 @@ ${specLines}
 [원고 품질 & 분량 다이어트 규칙 - 가장 중요]
 A. 위 제원에 없는 수치(하중·속도·무게·시간·퍼센트·인증명·연도·판매량)를 새로 지어내지 마십시오. 근거 수치가 없으면 수치 없이 원리와 사용 상황으로 설명합니다.
 B. 장황한 줄글(3~4줄 문단)을 전면 금지합니다! 모바일·PC 구매자가 1초 만에 핵심만 읽을 수 있도록 짧은 단문과 '핵심키워드 — 수치·효과 요약' 형식으로 압축하십시오.
-C. 문제점 4개, 핵심 개선점 4개, FAQ 8개는 서로 다른 구매 판단 근거(브레이크 제동 안전·인건비 절감·설치/전압 조건·운반 기동성·유지보수·소모품·세금계산서/비교견적 서류·본사 직영 A/S)를 다루고, 같은 문장을 반복하지 않습니다.
+C. 문제점 4개, 핵심 개선점 4개, FAQ 8개는 서로 다른 구매 판단 근거(브레이크 제동 안전·인건비 절감·설치/전압 조건·운반 기동성·유지보수·소모품·세금계산서/비교견적 서류·자체 정비실 A/S)를 다루고, 같은 문장을 반복하지 않습니다.
 D. 담백한 명사형 종결 또는 짧은 존댓말 단문. 느낌표·이모지·'최고/최초/유일/완벽/혁명/압도적' 표현 금지. HTML은 <b>, <br>만 사용.
 
 [절대 준수 원칙 - AI 슬롭(AI Slop) & 영어 번역투 0% 박멸 5대 법칙]:
 1. 번역투 형용사·동사·외래어 남발 전면 금지: '혁신적인', '최상의', '탁월한', '압도적인', '완벽한/완벽히', '극대화', '솔루션', '경험해보세요', '선사합니다', '자랑합니다', '최적화', '인터록', '리깅', '턴키', '아키텍처', '메커니즘', '프로토콜', '레퍼런스', '플래그십', '마스터피스', '마스터 세트', '원스톱', '올인원', '기적의', '마법 같은'을 단 한 글자도 쓰지 마십시오.
-2. 어색한 외래어 대신 청계천 공구상가·현장 실무 용어 사용: '니즈', '퍼포먼스', '메인터넌스', '컴팩트', '유저', '리깅' 대신 '현장 작업 조건', '연속 정격 출력', '순정부품 정비', '소형 경량 본체', '작업자', '줄걸이·도르래 배력 걸기', '방열 구조', '정기 점검표', '현장 적용 사례', '주력 모델', '일괄 시공'을 쓰십시오.
+2. 어색한 외래어 대신 산업현장·기계유통 실무 용어 사용: '니즈', '퍼포먼스', '메인터넌스', '컴팩트', '유저', '리깅' 대신 '현장 작업 조건', '연속 정격 출력', '순정부품 정비', '소형 경량 본체', '작업자', '줄걸이·도르래 배력 걸기', '방열 구조', '정기 점검표', '현장 적용 사례', '주력 모델', '일괄 시공'을 쓰십시오.
 3. 절대 다른 브랜드나 다른 구동 방식의 용어를 섞지 마십시오!
    - ${isDocmaModel ? `이 제품은 이탈리아 DOCMA사의 산림용 엔진윈치([${curProduct.code}])입니다. 절대 캐나다 포터블윈치(PCW), 혼다 엔진(VF-155 제외), 캡스턴(VF-80 제외, VF-150은 자동정렬 와이어 드럼 윈치임), 오일러 방정식, PCA-* 부자재 번호를 언급하지 마십시오!` : (isPcwModel ? `이 제품은 캐나다 Portable Winch사의 캡스턴 윈치([${curProduct.code}])입니다.` : `이 제품은 [${curProduct.code}] (${curProduct.category}) 장비입니다. 절대 가솔린 엔진이나 캡스턴 드럼, 혼다 엔진을 언급하지 마십시오!`)}
 4. 관공서, 산림조합, 한전 시공사, 119 구조대, 건설 현장소장이 즉각 품의를 올릴 수 있도록 정격하중(${curProduct.pull || curProduct.cap}), 속도(${curProduct.speed}), 동력원(${curProduct.engine}), 자체중량(${curProduct.weight}) 수치를 간결하고 명확하게 제시하십시오.
@@ -7141,7 +7141,7 @@ D. 담백한 명사형 종결 또는 짧은 존댓말 단문. 느낌표·이모�
     { "q": "Q1. [${curProduct.code}] 실제 정격 용량과 도르래 최대 용량은?", "a": "핵심 수치 포함 1~2문장 즉답 (50~60자 이내)" },
     { "q": "Q2. 작업 중 멈췄을 때 하중이 밀리지 않는 안전장치가 있나요?", "a": "제동 방식 핵심 1~2문장 즉답 (50~60자 이내)" },
     { "q": "Q3. 동력원 관리 및 연속 사용 시 주의할 점은?", "a": "동력원(${curProduct.engine}) 운용 핵심 1~2문장 즉답 (50~60자 이내)" },
-    { "q": "Q4. 세금계산서 발행과 A/S 부품 수급은 어떻게 되나요?", "a": "(주)오라테크 본사 직영 A/S·순정부품 보유·당일 전자세금계산서 안내 (50~60자 이내)" },
+    { "q": "Q4. 세금계산서 발행과 A/S 부품 수급은 어떻게 되나요?", "a": "(주)오라테크 직접 A/S·순정부품 보유·당일 전자세금계산서 안내 (50~60자 이내)" },
     { "q": "Q5. 현장 설치·고정은 어디에 어떻게 하나요?", "a": "고정 방식과 소요 시간 1~2문장 즉답 (50~60자 이내)" },
     { "q": "Q6. 소모품 점검 주기는 어떻게 되나요?", "a": "핵심 소모품 점검 기준 1~2문장 즉답 (50~60자 이내)" },
     { "q": "Q7. 현장에서 가장 주의해야 할 사용 수칙은?", "a": "안전 수칙 핵심 1~2문장 즉답 (50~60자 이내)" },
@@ -7370,8 +7370,8 @@ D. 담백한 명사형 종결 또는 짧은 존댓말 단문. 느낌표·이모�
         if (text.includes('혼다') || text.includes('엔진') || text.includes('워런티') || text.includes('보증')) {
           curProduct.tagline = `[정품 1년 무상보증] ` + curProduct.tagline.replace(/\[정품 1년 무상보증\]\s*/g, '');
           curProduct.customSections.push({
-            title: '🛡️ (주)오라테크 본사 공식 1년 무상 워런티 & 순정 부품 보증',
-            body: `• <b>공식 시리얼 정품 등록:</b> [${curProduct.code}] 출고 시 본사 정품 시리얼 넘버가 부여되며 1년간 제조 결함 무상 수리를 보증합니다.<br>• <b>100% 순정 부품 상시 보유:</b> 병행수입이나 모조품과 달리 오라테크 본사 정비센터에서 모든 소모품과 기어·엔진·모터 부품을 즉시 공급받을 수 있습니다.`
+            title: '🛡️ (주)오라테크 공식 1년 무상 워런티 & 순정 부품 보증',
+            body: `• <b>공식 시리얼 정품 등록:</b> [${curProduct.code}] 출고 시 정품 시리얼 넘버가 부여되며 1년간 제조 결함 무상 수리를 보증합니다.<br>• <b>100% 순정 부품 상시 보유:</b> 병행수입이나 모조품과 달리 오라테크 자체 정비실에서 모든 소모품과 기어·엔진·모터 부품을 즉시 공급받을 수 있습니다.`
           });
         } else if (text.includes('벌목') || text.includes('도르래') || text.includes('활차') || text.includes('역학') || text.includes('수식')) {
           curProduct.customSections.push({
@@ -7509,7 +7509,7 @@ D. 담백한 명사형 종결 또는 짧은 존댓말 단문. 느낌표·이모�
           '1단계 [현장 공포 직격]: 4~5명 인력 줄당김 산재 위험 및 브레이크 밀림 사고 경고',
           '2단계 [물리 스펙 증명]: ' + (curProduct.pull || curProduct.cap || '정격 하중') + ' 직인 출력 & ' + (curProduct.engine || '정품 동력') + ' 연속 가동',
           '3단계 [배력·설치 실전]: 활차 도르래 1개 결합 시 2배 배력 증폭 및 3분 현장 고정',
-          '4단계 [직영 A/S 보증]: 청계천·본사 직영 정비센터 순정부품 상시 보유로 작업 중단 0일',
+          '4단계 [직영 A/S 보증]: 자체 직영 정비실 순정부품 상시 보유로 작업 중단 0일',
           '5단계 [당일 발주 클로징]: 오후 3시 이전 주문 시 경동화물/택배 당일 직송'
         ],
         GOV_PROCURE: [
@@ -7530,7 +7530,7 @@ D. 담백한 명사형 종결 또는 짧은 존댓말 단문. 느낌표·이모�
           '1단계 [특장 현장 문제]: 야외 진흙·우천 시 방수 불량 및 드럼 와이어 편심 씹힘 해결',
           '2단계 [정격 견인 스펙]: ' + (curProduct.pull || curProduct.cap) + ' 실하중 견인 및 고토크 감속 기어 설계',
           '3단계 [장착 호환성]: 셀프로더·특장 적재함 표준 타공 브라켓 및 무선/유선 리모컨 연동',
-          '4단계 [부품·워런티]: 본사 순정 부품 상시 재고 및 특장 제작소 전용 기술 지원',
+          '4단계 [부품·워런티]: 오라테크 순정 부품 상시 재고 및 특장 제작소 전용 기술 지원',
           '5단계 [납기 보장]: 오후 3시 당일 화물 출고 및 복수 대수 B2B 단가 협의 직통 안내'
         ]
       };
@@ -7637,7 +7637,7 @@ D. 담백한 명사형 종결 또는 짧은 존댓말 단문. 느낌표·이모�
               ['전자세금계산서·서류', '국세청 전자세금계산서 100% 당일 즉시 발행'],
               ['관공서·법인 품의 지원', '비교견적서·사업자등록증·통장사본 5분 내 발송'],
               ['출고 및 물류 시스템', '오후 3시 이전 발주 시 경동화물/택배 당일 출고'],
-              ['직영 A/S & 순정부품', '청계천·본사 직영 정비실 모든 순정부품 상시 보유']
+              ['직영 A/S & 순정부품', '자체 직영 정비실 모든 순정부품 상시 보유']
             ]
           : [
               ['정격 견인 / 인양 하중', String(p.pull || p.cap || '카탈로그 정격 준수')],
@@ -8020,7 +8020,7 @@ D. 담백한 명사형 종결 또는 짧은 존댓말 단문. 느낌표·이모�
         ['실측 정격 힘', '표기 톤수 절반 미만 · 부하 시 정지', `정격 ${pullCap} 보증 (도르래 복선 ${doublePull})`],
         ['모터·엔진 내구성', '저가 알루미늄 코일/2T 매연 · 10분 과열', `${engine.split('(')[0].trim()} 연속 가동 설계`],
         ['안전 제동 시스템', '제동력 약화 · 경사/정전 시 역회전 위험', brakeSystem],
-        ['A/S · 순정부품 수급', '해외 직구 일회용 · 고장 시 수리 불가', '청계천 본사 직영 정비실 · 부품 100% 상시 보유'],
+        ['A/S · 순정부품 수급', '해외 직구 일회용 · 고장 시 수리 불가', '오라테크 자체 직영 정비실 · 부품 100% 상시 보유'],
         ['B2B · 관공서 서류', '세금계산서·규격서 불가 / 영수증 누락', '당일 전자세금계산서 · G2B 비교견적 5분 발급']
       ];
 
@@ -8045,12 +8045,12 @@ D. 담백한 명사형 종결 또는 짧은 존댓말 단문. 느낌표·이모�
         { q: 'Q1. 로프는 최대 몇 미터까지 연결할 수 있나요?', a: `캡스턴 방식은 로프가 드럼에 쌓이지 않아 50m·100m·300m 제한 없이 ${pullCap} 힘을 동일하게 유지합니다.` },
         { q: 'Q2. 일반 나일론 줄이나 철사 와이어를 써도 되나요?', a: '절대 안 됩니다. 철 와이어는 드럼 손상, 일반 밧줄은 탄성 위험이 있어 반드시 전용 저신율 폴리에스터 로프를 사용하십시오.' },
         { q: isBattery ? 'Q3. 배터리 1회 충전 시 몇 분 작업하나요?' : 'Q3. 연료는 오일을 섞어 넣어야 하나요?', a: isBattery ? '표준 작업 약 35~45분, 대용량 약 60~90분 연속 가동되며 예비 배터리 1초 교체로 종일 작업 가능합니다.' : '혼다 정품 4행정이므로 일반 자동차용 무연휘발유만 넣고 4행정 오일은 별도 주입구에 채우면 됩니다.' },
-        { q: 'Q4. 세금계산서 발행과 본사 A/S가 바로 되나요?', a: '(주)오라테크 본사 오후 3시 이전 당일 화물 상차, 전자세금계산서 즉시 발행 및 청계천 직영 정비실 A/S를 보증합니다.' }
+        { q: 'Q4. 세금계산서 발행과 직접 A/S가 바로 되나요?', a: '(주)오라테크는 오후 3시 이전 당일 화물 상차, 전자세금계산서 즉시 발행 및 자체 직영 정비실 A/S를 보증합니다.' }
       ] : [
         { q: `Q1. 일반 현장 전원으로 바로 작동하나요?`, a: `${engine.includes('220V') ? '일반 가정·현장 단상 220V 콘센트에 바로 꽂아 작동하며(연장선은 2.5sq 이상 권장)' : '사양에 맞는 전원/배터리 연결 즉시 가동되며'}, 현장 설치도 간편합니다.` },
         { q: 'Q2. 작업 중 정전이나 전원 차단이 나면 짐이 떨어지나요?', a: '스위치를 놓거나 정전이 발생하면 0.05초 내에 전자식·기계식 브레이크가 즉시 잠겨 밀림 없이 고정됩니다.' },
         { q: 'Q3. 표기 하중보다 무거울 때 두 배로 당길 수 있나요?', a: `동봉/옵션 도르래로 복선(2:1) 세팅하시면 부하가 절반씩 분산되어 ${doublePull}까지 안전하게 끌어올립니다.` },
-        { q: 'Q4. 관공서 비교견적서와 A/S 부품 수급이 가능한가요?', a: '전자세금계산서 당일 발행·나라장터 규격서 5분 발급 및 (주)오라테크 청계천 정비실 순정부품 A/S를 전담 지원합니다.' }
+        { q: 'Q4. 관공서 비교견적서와 A/S 부품 수급이 가능한가요?', a: '전자세금계산서 당일 발행·나라장터 규격서 5분 발급 및 (주)오라테크 자체 정비실 순정부품 A/S를 전담 지원합니다.' }
       ];
 
       const priceLabel = p.price ? Number(p.price).toLocaleString() + '원' : 'B2B 특가 상담 (1600-5157)';
@@ -8096,7 +8096,7 @@ D. 담백한 명사형 종결 또는 짧은 존댓말 단문. 느낌표·이모�
         : smartTrimCopy(`[${code}] ${ctx.name}`, 36);
       const baseSub = ctx.p.subTagline
         ? smartTrimCopy(ctx.p.subTagline, 130)
-        : `저가 직구·모조품과 비교되는 실측 출력과 청계천 본사 직영 순정부품 A/S를 한 대에 담았습니다.`;
+        : `저가 직구·모조품과 비교되는 실측 출력과 오라테크 직영 순정부품 A/S를 한 대에 담았습니다.`;
 
       const fallbackCopy = {
         kicker: `(주)오라테크 공식 정품 · ${code}`,
@@ -8108,7 +8108,7 @@ D. 담백한 명사형 종결 또는 짧은 존댓말 단문. 느낌표·이모�
         sceneCopy: cleanPrompt ? smartTrimCopy(`${cleanPrompt} — ${code} 현장의 악조건에서도 멈추지 않는 정품 내구성`, 96) : `산림·전력·건설·특장 현장에서 운용되는 ${code}의 실제 작업 모습입니다.`,
         buyingCheckpoint: `구매 전 꼭 확인하세요: ${code}는 오후 3시 이전 결제 시 당일 경동화물·택배 직발송되며, 관공서·기업 비교견적서 및 전자세금계산서를 5분 내 즉시 발행해 드립니다.`,
         bullets: [`정격 ${pullCap}`, engine.split('(')[0].trim().slice(0, 20), `중량 ${weight}`],
-        cta: `(주)오라테크 본사 직영 출고 · 기술영업 직통 1600-5157`,
+        cta: `(주)오라테크 직영 출고 · 기술영업 직통 1600-5157`,
         imagenScene: isBattery
           ? `Photorealistic industrial editorial photograph of a clean modern underground concrete utility tunnel or quiet green forest work zone, heavy-duty steel rigging rope, dramatic crisp daylight, clean cinematic composition, no text, no watermarks`
           : ((isElectric || isHoist)
@@ -8142,7 +8142,7 @@ D. 담백한 명사형 종결 또는 짧은 존댓말 단문. 느낌표·이모�
           const gemPrompt = `제품 [${code}] (${ctx.name}), 정격 [${pullCap}], 배력 [${doublePull}], 동력 [${engine}], 속도 [${speed}], 중량 [${weight}].
 사장님 제작 지시: "${promptDesc}"
 프리셋 모드: ${presetType}.
-AI 상투어·번역체('혁신적','최상의','극대화','솔루션','아키텍처','메커니즘','프로토콜','레퍼런스','퍼포먼스','리깅','턴키','인터록','압도적','완벽') 및 느낌표 없이 대한민국 청계천 공구상가·현장 B2B 실무 어조로 아래 JSON만 출력하세요:
+AI 상투어·번역체('혁신적','최상의','극대화','솔루션','아키텍처','메커니즘','프로토콜','레퍼런스','퍼포먼스','리깅','턴키','인터록','압도적','완벽') 및 느낌표 없이 대한민국 산업현장·기계유통 B2B 실무 어조로 아래 JSON만 출력하세요:
 {
   "kicker": "한국어 소제목+모델코드 30자이내",
   "h1": "완전한 임팩트 메인헤드 24자내외(단어끊김금지)",
@@ -8597,7 +8597,7 @@ AI 상투어·번역체('혁신적','최상의','극대화','솔루션','아키�
               <tr style="border-bottom:1px solid #E2E8F0;"><th style="background:#F1F5F9;padding:11px 16px;font-weight:800;">드럼 · 감속 기어</th><td style="padding:11px 16px;">${escPosterHtml(ctx.drumSpec)} · ${escPosterHtml(ctx.gearRatio)}</td></tr>
               <tr style="border-bottom:1px solid #E2E8F0;"><th style="background:#F1F5F9;padding:11px 16px;font-weight:800;">안전 제동 장치</th><td style="padding:11px 16px;font-weight:800;color:#15803D;">${escPosterHtml(ctx.brakeSystem)}</td></tr>
               <tr style="border-bottom:1px solid #E2E8F0;"><th style="background:#F1F5F9;padding:11px 16px;font-weight:800;">중량 · 외형 치수</th><td style="padding:11px 16px;">중량 ${escPosterHtml(ctx.weight)} · 치수 ${escPosterHtml(ctx.dimensions)}</td></tr>
-              <tr><th style="background:#F1F5F9;padding:11px 16px;font-weight:800;">인증 · 본사 보증</th><td style="padding:11px 16px;">${escPosterHtml(ctx.certSpec)} · 1년 무상 A/S</td></tr>
+              <tr><th style="background:#F1F5F9;padding:11px 16px;font-weight:800;">인증 · 공식 보증</th><td style="padding:11px 16px;">${escPosterHtml(ctx.certSpec)} · 1년 무상 A/S</td></tr>
             </tbody>
           </table>
         </div>
@@ -8667,7 +8667,7 @@ AI 상투어·번역체('혁신적','최상의','극대화','솔루션','아키�
         <!-- OFFICIAL FOOTER -->
         <div style="background:linear-gradient(120deg,#051434 0%,#0F3D99 100%);color:#FFFFFF;padding:30px 36px;display:flex;justify-content:space-between;align-items:center;gap:20px;">
           <div>
-            <div style="font-size:11.5px;font-weight:900;color:#7DD3FC;margin-bottom:4px;">(주)오라테크 본사 직영 출고 · 청계천 전시장 및 직영 정비센터</div>
+            <div style="font-size:11.5px;font-weight:900;color:#7DD3FC;margin-bottom:4px;">(주)오라테크 직영 출고 · 서울 전시장 및 자체 정비실</div>
             <div style="font-size:20px;font-weight:900;margin-bottom:4px;">평일 오후 3시 이전 결제 건 당일 경동화물·택배 직발송</div>
             <div style="font-size:13px;color:#DBEAFE;">국세청 전자세금계산서 · 관공서/G2B 비교견적 5분 발급 · 순정부품 100% 보유</div>
           </div>
@@ -8724,7 +8724,7 @@ AI 상투어·번역체('혁신적','최상의','극대화','솔루션','아키�
             <div style="background:#FFFFFF;border:1.5px solid ${pal.primary};border-radius:14px;padding:20px;">
               <div style="font-size:11px;font-weight:900;color:${pal.primary};margin-bottom:6px;">01 · FAST DISPATCH</div>
               <div style="font-size:18px;font-weight:900;color:#0F172A;margin-bottom:8px;">평일 15시 이전 당일 상차</div>
-              <div style="font-size:13px;color:#475569;line-height:1.55;">청계천 본사 실물 상시 재고 운영으로 경동화물·택배 당일 직발송합니다.</div>
+              <div style="font-size:13px;color:#475569;line-height:1.55;">오라테크 실물 상시 재고 운영으로 경동화물·택배 당일 직발송합니다.</div>
             </div>
             <div style="background:#FFFFFF;border:1.5px solid #059669;border-radius:14px;padding:20px;">
               <div style="font-size:11px;font-weight:900;color:#059669;margin-bottom:6px;">02 · B2B &amp; G2B DOCS</div>
@@ -8733,7 +8733,7 @@ AI 상투어·번역체('혁신적','최상의','극대화','솔루션','아키�
             </div>
             <div style="background:#FFFFFF;border:1.5px solid #D97706;border-radius:14px;padding:20px;">
               <div style="font-size:11px;font-weight:900;color:#D97706;margin-bottom:6px;">03 · GENUINE SERVICE</div>
-              <div style="font-size:18px;font-weight:900;color:#0F172A;margin-bottom:8px;">본사 직영 정비실 1:1 A/S</div>
+              <div style="font-size:18px;font-weight:900;color:#0F172A;margin-bottom:8px;">자체 직영 정비실 1:1 A/S</div>
               <div style="font-size:13px;color:#475569;line-height:1.55;">해외 직구 제품이 따라올 수 없는 순정 부품 상시 보유 및 1년 무상 보증.</div>
             </div>
           </div>`;
@@ -10355,7 +10355,7 @@ AI 상투어·번역체('혁신적','최상의','극대화','솔루션','아키�
         </div>
         <div>
           <div class="ora-motion-val" style="font-size:18px; font-weight:900; color:#ffffff; line-height:1.35;">
-            [${code}] 본사 정품 재고 확보 완료 · <span style="color:#fbbf24;">오후 3시 이전 주문 시 당일 발송!</span>
+            [${code}] 오라테크 정품 재고 확보 완료 · <span style="color:#fbbf24;">오후 3시 이전 주문 시 당일 발송!</span>
           </div>
           <div style="font-size:12px; color:#cbd5e1; margin-top:3px; line-height:1.45;">
             엔지니어 7대 부하 시운전 합격품 출고 · 국세청 전자세금계산서 100% 당일 즉시 발행 (직통: 1600-5157)
@@ -10363,7 +10363,7 @@ AI 상투어·번역체('혁신적','최상의','극대화','솔루션','아키�
         </div>
       </div>
       <div style="background:#ffffff; color:#0f172a; padding:8px 14px; border-radius:10px; font-weight:900; font-size:12.5px; border:2px solid #fbbf24; flex-shrink:0;">
-        🛡️ 본사 1년 무상 A/S 보증
+        🛡️ 공식 1년 무상 A/S 보증
       </div>
     </div>
   </div>`;
@@ -10563,7 +10563,7 @@ AI 상투어·번역체('혁신적','최상의','극대화','솔루션','아키�
       <div class="ora-box-pad" style="background:#f8fafc; border-left:4px solid ${themePrimary}; border-radius:0 12px 12px 0; padding:18px; border-top:1px solid #e2e8f0; border-right:1px solid #e2e8f0; border-bottom:1px solid #e2e8f0; text-align:left;">
         <div style="font-size:13px; font-weight:900; color:#dc2626; margin-bottom:6px;">💬 질문 2. "인터넷 최저가 병행수입/직구 제품과 뭐가 다른가요?"</div>
         <div style="font-size:12.5px; color:#1e293b; line-height:1.65;">
-          <b>✔ 확인 답변:</b> 병행수입·모조품은 고장 시 국내에서 부품을 구할 수 없어 장비를 통째로 못 쓰게 됩니다. <b>(주)오라테크 정품 시리얼 등록 장비만 청계천 본사 직영 수리가 보장</b>됩니다.
+          <b>✔ 확인 답변:</b> 병행수입·모조품은 고장 시 국내에서 부품을 구할 수 없어 장비를 통째로 못 쓰게 됩니다. <b>(주)오라테크 정품 시리얼 등록 장비만 오라테크 직접 정비·수리가 보장</b>됩니다.
         </div>
       </div>
       <div class="ora-box-pad" style="background:#f8fafc; border-left:4px solid ${themePrimary}; border-radius:0 12px 12px 0; padding:18px; border-top:1px solid #e2e8f0; border-right:1px solid #e2e8f0; border-bottom:1px solid #e2e8f0; text-align:left;">
@@ -10674,7 +10674,7 @@ AI 상투어·번역체('혁신적','최상의','극대화','솔루션','아키�
             <div style="border:1px solid #cbd5e1; border-radius:8px; padding:14px; font-size:12px; line-height:1.7; background:#f8fafc;">
               <b>■ 납품 및 보증 특기사항 (관공서·나라장터·수의계약 기준)</b><br>
               1. 본 견적 물품은 <b>(주)오라테크가 공식 수입·검수한 100% 정품</b>이며 출고 전 7대 정밀 부하 테스트를 필한 완제품입니다.<br>
-              2. 무상 보증기간: 납품 검수일로부터 1년 (본사 직영 정비센터 순정 부품 100% 상시 보유)<br>
+              2. 무상 보증기간: 납품 검수일로부터 1년 (자체 직영 정비실 순정 부품 100% 상시 보유)<br>
               3. 결제 조건: 국세청 전자세금계산서 발행 / 법인카드 / 나라장터(G2B) 지출 결의 완벽 지원
             </div>
           </div>`;
@@ -10741,7 +10741,7 @@ AI 상투어·번역체('혁신적','최상의','극대화','솔루션','아키�
           `"${cleanTitle.replace(/"/g, '""')}"`,
           price,
           '99',
-          '"(주)오라테크 본사 직영 A/S 센터 1년 무상보증 및 순정 부품 상시 보유"',
+          '"(주)오라테크 자체 정비실 A/S 1년 무상보증 및 순정 부품 상시 보유"',
           '1600-5157',
           '"상세설명참조"',
           '"(주)오라테크 공식수입/제조"',
@@ -10830,7 +10830,7 @@ AI 상투어·번역체('혁신적','최상의','극대화','솔루션','아키�
       <div class="ora-topbar" style="background:#020617; padding:10px 18px; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #1e293b; font-size:11.5px;">
         <div style="display:flex; align-items:center; gap:8px;">
           <span style="width:10px; height:10px; border-radius:9999px; background:#ef4444; display:inline-block; flex-shrink:0;"></span>
-          <span style="font-weight:900; color:#f8fafc;">오라테크 본사 출고 시운전 · [${code}] 정격 부하 점검</span>
+          <span style="font-weight:900; color:#f8fafc;">오라테크 출고 전 시운전 · [${code}] 정격 부하 점검</span>
         </div>
         <span style="color:#fbbf24; font-weight:800; font-family:monospace;">시운전 검증필</span>
       </div>
@@ -11346,7 +11346,7 @@ AI 상투어·번역체('혁신적','최상의','극대화','솔루션','아키�
     </div>
     <div class="ora-grid-3" style="display:grid; grid-template-columns:repeat(3, 1fr); gap:10px; text-align:left;">
       <div style="background:rgba(255,255,255,0.07); border:1px solid rgba(74,222,128,0.35); border-radius:12px; padding:12px 14px;">
-        <div style="font-size:12px; font-weight:900; color:#4ade80;">01 · 청계천·본사 실재고 100%</div>
+        <div style="font-size:12px; font-weight:900; color:#4ade80;">01 · 자체 상시 실재고 100%</div>
         <div style="font-size:11.5px; color:#e2e8f0; margin-top:3px;">주문 확인 즉시 엔지니어 부하 테스트 후 완충 포장 출고</div>
       </div>
       <div style="background:rgba(255,255,255,0.07); border:1px solid rgba(74,222,128,0.35); border-radius:12px; padding:12px 14px;">
@@ -11354,8 +11354,8 @@ AI 상투어·번역체('혁신적','최상의','극대화','솔루션','아키�
         <div style="font-size:11.5px; color:#e2e8f0; margin-top:3px;">와이어 길이 연장·무선리모컨 세팅 요청: <b>1600-5157</b></div>
       </div>
       <div style="background:rgba(255,255,255,0.07); border:1px solid rgba(74,222,128,0.35); border-radius:12px; padding:12px 14px;">
-        <div style="font-size:12px; font-weight:900; color:#38bdf8;">03 · 본사 1년 무상 A/S 보증</div>
-        <div style="font-size:11.5px; color:#e2e8f0; margin-top:3px;">저가 일회용 직구품과 달리 순정 부품을 본사에 상시 보유합니다</div>
+        <div style="font-size:12px; font-weight:900; color:#38bdf8;">03 · 공식 1년 무상 A/S 보증</div>
+        <div style="font-size:11.5px; color:#e2e8f0; margin-top:3px;">저가 일회용 직구품과 달리 순정 부품을 상시 보유합니다</div>
       </div>
     </div>
   </div>`;
@@ -11417,7 +11417,7 @@ AI 상투어·번역체('혁신적','최상의','극대화','솔루션','아키�
         <div style="font-size:11.5px; color:#cbd5e1; line-height:1.5;">${photoTargetLabel}을 편하게 찍어주세요.</div>
       </div>
       <div style="background:rgba(15,23,42,0.85); border:1px solid #334155; border-radius:12px; padding:14px;">
-        <div style="font-size:11px; font-weight:900; color:#fbbf24; margin-bottom:4px;">2단계 · 청계천 본사 직접 판독</div>
+        <div style="font-size:11px; font-weight:900; color:#fbbf24; margin-bottom:4px;">2단계 · 전문 엔지니어 직접 판독</div>
         <div style="font-size:13.5px; font-weight:900; color:#ffffff; margin-bottom:3px;">010-8931-7788 문자 / 1600-5157</div>
         <div style="font-size:11.5px; color:#cbd5e1; line-height:1.5;">실제 하중·경사도·전압을 계산해 과투자나 용량 부족 없는 정확한 모델을 짚어드립니다.</div>
       </div>
@@ -11723,7 +11723,7 @@ AI 상투어·번역체('혁신적','최상의','극대화','솔루션','아키�
               { title: '와이어로프 / 로드체인 현장 맞춤 길이 연장 세팅', desc: '고층 건물 층고 및 작업 깊이에 맞춰 출고 전 정밀 세팅 가능' },
               { title: '산업용 무선 리모컨 (60m~100m 원격 제어) 추가', desc: '유선 펜던트와 병행 사용 가능한 고감도 산업용 무선 송수신기' },
               { title: '스윙암 거치대 · 비계 클램프 · H빔 트롤리 동시출고', desc: '별도 용접 없이 현장에 즉시 설치 가능한 전용 거치 하드웨어' },
-              { title: '마그네틱 브레이크 · 스위치 · 기어 순정 부품 보증', desc: '수년 뒤 소모품 마모 시에도 본사 직영 정비팀 즉시 수리' }
+              { title: '마그네틱 브레이크 · 스위치 · 기어 순정 부품 보증', desc: '수년 뒤 소모품 마모 시에도 자체 직영 정비실 즉시 수리' }
             ]);
 
       return `
@@ -11737,7 +11737,7 @@ AI 상투어·번역체('혁신적','최상의','극대화','솔루션','아키�
             부품 걱정 없이 오래 쓰는 [${code}] 전용 옵션 & 순정 소모품 당일 발송
           </h3>
           <p style="font-size:12.5px; color:#475569; margin:0;">
-            무책임한 해외직구·보따리상 제품은 로프나 스위치 하나만 닳아도 고철이 됩니다. (주)오라테크는 모든 순정 부자재를 청계천 본사에 상시 보유합니다.
+            무책임한 해외직구·보따리상 제품은 로프나 스위치 하나만 닳아도 고철이 됩니다. (주)오라테크는 모든 순정 부자재를 매장에 상시 보유합니다.
           </p>
         </div>
         <!-- 공식 정품 인증 마크 -->
@@ -11747,7 +11747,7 @@ AI 상투어·번역체('혁신적','최상의','극대화','솔루션','아키�
           <text x="50" y="34" fill="#fbbf24" font-size="9" font-weight="900" text-anchor="middle">정품 보증</text>
           <text x="50" y="52" fill="#ffffff" font-size="13" font-weight="900" text-anchor="middle">(주)오라테크</text>
           <text x="50" y="67" fill="#4ade80" font-size="9.5" font-weight="900" text-anchor="middle">100% 공식정품</text>
-          <text x="50" y="80" fill="#94a3b8" font-size="7.5" font-weight="700" text-anchor="middle">서울 청계천 본사</text>
+          <text x="50" y="80" fill="#94a3b8" font-size="7.5" font-weight="700" text-anchor="middle">직접 검수·직접 수리</text>
         </svg>
       </div>
 
@@ -11805,8 +11805,8 @@ AI 상투어·번역체('혁신적','최상의','극대화','솔루션','아키�
 • 합계 금액(부가세 포함): ${grandTotal.toLocaleString()}원 (국세청 전자세금계산서 당일 발행)
 
 ■ 출고 및 보증 조건
-✔ 본사 엔지니어 부하 시운전 검수 완료 후 오늘(오후 3시 전 발주 시) 즉시 화물/택배 출고
-✔ (주)오라테크 본사 1년 무상 A/S 및 순정 소모품 평생 직공급 보증
+✔ 전담 엔지니어 부하 시운전 검수 완료 후 오늘(오후 3시 전 발주 시) 즉시 화물/택배 출고
+✔ (주)오라테크 공식 1년 무상 A/S 및 순정 소모품 평생 직공급 보증
 ✔ 법인카드 / 네이버 스마트스토어 결제 / 계좌이체 모두 가능합니다.
 
 사업자등록증을 이 번호(010-8931-7788)로 문자 주시면 세금계산서 발행 및 출고 송장을 바로 보내드리겠습니다. 감사합니다!
@@ -11884,10 +11884,10 @@ AI 상투어·번역체('혁신적','최상의','극대화','솔루션','아키�
 
 ■ 2. 저가 무인증 직구 제품과 반드시 비교해 보세요!
 시중의 저가 모조품은 표기 하중의 절반도 못 당기고 코일이 타거나, 고장 시 부품이 없어 장비 전체를 폐기해야 하는 경우가 많습니다.
-저희 (주)오라테크에서 출고되는 모든 [${code}] 정품은 본사 엔지니어가 출고 전 부하 테스트와 브레이크 잠금 검수를 100% 완료한 뒤 발송하며, 순정 로프·와이어·리모컨·브레이크 부품을 평생 직공급해 드립니다.
+저희 (주)오라테크에서 출고되는 모든 [${code}] 정품은 담당 엔지니어가 출고 전 부하 테스트와 브레이크 잠금 검수를 100% 완료한 뒤 발송하며, 순정 로프·와이어·리모컨·브레이크 부품을 평생 직공급해 드립니다.
 
 ■ 3. 우리 현장에 맞는 윈치 용량, 사진 1장으로 1분 만에 확인하세요!
-장착하실 차량 적재함, 현장 구조물, 혹은 기존에 쓰시던 윈치 명판 사진을 찍어 [010-8931-7788]로 문자 주시면 청계천 본사 기술진이 정확한 규격과 정식 직인 견적서를 즉시 보내드립니다. (국세청 전자세금계산서·나라장터·스마트스토어 법인카드 결제 지원)
+장착하실 차량 적재함, 현장 구조물, 혹은 기존에 쓰시던 윈치 명판 사진을 찍어 [010-8931-7788]로 문자 주시면 오라테크 기술진이 정확한 규격과 정식 직인 견적서를 즉시 보내드립니다. (국세청 전자세금계산서·나라장터·스마트스토어 법인카드 결제 지원)
 
 📞 (주)오라테크 대표상담: 1600-5157 / 긴급 문자판독: 010-8931-7788`;
         showToast(`✍️ [${code}] 네이버 블로그 상위노출 시공사례 원고가 생성되었습니다!`);
@@ -12000,7 +12000,7 @@ AI 상투어·번역체('혁신적','최상의','극대화','솔루션','아키�
       if (!added) {
         p.customSections.push({
           title: `💎 [${siteType}] 전용 [${p.code}] 고효율 풀세트 엔지니어링 제안`,
-          body: `• <b>현장 최적화 성능:</b> [${siteType}]의 고부하 작업 환경에서도 정격 ${p.pull || p.cap} 출력을 안정적으로 유지합니다.<br>• <b>필수 동반 구매(번들) 추천:</b> 전용 고강도 로프/와이어 연장 + 2배 배력 스윙 도르래(활차) + 결속 슬링벨트 구성 시 작업 속도와 안전율이 200% 향상됩니다.<br>• <b>법적 안전 및 B2B 직납 보증:</b> 견인(Pulling)과 수직 인양(Lifting) 정격 기준을 준수하며, (주)오라테크 본사 당일 화물 출고 및 국세청 전자세금계산서·직인 규격서를 즉시 발행합니다.`
+          body: `• <b>현장 맞춤형 정격 성능:</b> [${siteType}]의 고부하 작업 환경에서도 정격 ${p.pull || p.cap} 출력을 안정적으로 유지합니다.<br>• <b>필수 동반 구매(번들) 추천:</b> 전용 고강도 로프/와이어 연장 + 2배 배력 스윙 도르래(활차) + 결속 슬링벨트 구성 시 작업 속도와 안전율이 200% 향상됩니다.<br>• <b>법적 안전 및 B2B 직납 보증:</b> 견인(Pulling)과 수직 인양(Lifting) 정격 기준을 준수하며, (주)오라테크 당일 화물 출고 및 국세청 전자세금계산서·직인 규격서를 즉시 발행합니다.`
         });
       }
 
